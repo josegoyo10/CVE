@@ -1,0 +1,1088 @@
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript" src="../../TEMPLATE/general/checkfield.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/ajax.js"></script>
+<script>	
+function departamentoarray(valor,arrayid)
+{
+exec_AJAXRPC('POST','../../COMMAND/nuevacotizacion/buscadepartamento.php?dirdesarray=1&departamentoajax='+valor+'&arrayid='+arrayid,'escribedeptoarray');
+}
+function barrioarray(valor,arrayid)
+{
+exec_AJAXRPC('POST','../../COMMAND/nuevacotizacion/buscabarrio.php?&arrayid='+arrayid+'&dirdesarray=1&departamentoajax='+document.getElementById('departamentoarray_'+arrayid).value+'&buscabarrioajax='+valor,'escribebararray');
+}
+function departamento(valor)
+{
+exec_AJAXRPC('POST','../../COMMAND/nuevacotizacion/buscadepartamento.php?dirdesarray=0&departamentoajax='+valor,'escribedepto');
+}
+function barrio(valor)
+{
+exec_AJAXRPC('POST','../../COMMAND/nuevacotizacion/buscabarrio.php?dirdesarray=0&departamentoajax='+document.nueva_cotizacion_01.departamentoajax.value+'&buscabarrioajax='+valor,'escribebarrio');
+}	
+function escribedepto(text)
+{
+document.getElementById('ciudadajax').innerHTML=text;
+}
+function escribebarrio(text)
+{
+document.getElementById('barrioajax').innerHTML=text;
+}
+function escribedeptoarray(text)
+{
+text1 = text.split("|");
+text1[0];
+document.getElementById('ciudadarray_'+text1[1]).innerHTML=text1[0];
+}
+function escribebararray(text)
+{
+text1 = text.split("|");
+text1[0];
+document.getElementById('barrioarray_'+text1[1]).innerHTML=text1[0];
+}
+</script>
+<table width="760" height="15" border="0" cellpadding="0"cellspacing="0">
+
+	<tr>
+
+		<td width="50%"  height="30" class="titulonormal" aling="center">Modificar Datos del Cliente</td>
+
+ 		
+ 	</tr>
+
+</table>
+
+
+
+<table width="760" border="0" cellpadding="0" cellspacing="0">
+
+<FORM NAME="nueva_cotizacion_01" METHOD="POST">
+
+<INPUT TYPE="hidden" NAME="accion" VALUE="grabar">
+
+<INPUT TYPE="hidden" NAME="rut" VALUE="{rut}">
+
+<INPUT TYPE="hidden" NAME="id_giro2" VALUE="{id_giro2}">
+
+<!-- <INPUT TYPE="hidden" NAME="descripcion_giro" VALUE="{descripcion_giro}">-->
+
+<INPUT TYPE="hidden" NAME="id_direccion_elim" VALUE="">
+
+<INPUT TYPE="hidden" NAME="tupla_dir_mod" VALUE="">
+
+
+<INPUT TYPE="hidden" NAME="id_barrio" VALUE="">
+
+
+<INPUT TYPE="hidden" NAME="tipocliente" VALUE="{id_tipocliente}">
+
+
+<INPUT TYPE="hidden" NAME="num_elem_op" VALUE="{num_elem_op}">
+
+<INPUT TYPE="hidden" NAME="comuna2" VALUE="{id_comuna2}">
+
+<INPUT TYPE="hidden" NAME="razonsoc_b" VALUE="{razonsoc}">
+
+<INPUT TYPE="hidden" NAME="contactoe_b" VALUE="{contactoe}">
+
+<INPUT TYPE="hidden" NAME="fonocontactoe_b" VALUE="{fonocontactoe}">
+
+<INPUT TYPE="hidden" NAME="emaile_b" VALUE="{emaile}">
+
+<INPUT TYPE="hidden" NAME="direccione_b" VALUE="{direccione}">
+
+<!--<INPUT TYPE="hidden" NAME="nom_giro_b" VALUE="{nom_giro}">-->
+
+<!--<INPUT TYPE="hidden" NAME="barrios_b" VALUE="{id_barrios}">-->
+
+<INPUT TYPE="hidden" NAME="giro_b" VALUE="{id_giro}">
+
+<INPUT TYPE="hidden" NAME="ciudades_b" VALUE="{id_ciudad}">
+
+
+
+
+
+
+
+	<tr>
+
+		<td valign="top">
+
+			<table width="760" border="0" align="center" cellpadding="2" cellspacing="2">
+
+				<tr>
+
+					<td width="100%" valign="top">
+
+						<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="textonormal">
+
+							<tr>
+
+		 				 		<td>
+
+		 				 			<table width="768"  border="0" align="left" cellpadding="0" cellspacing="0" class="textonormal">
+
+                   				 		<tr>
+
+                      						<td valign="top" class="select1">
+
+												<fieldset><legend><span class="textonormal"></span></legend>
+
+                       							<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+
+                        							 <tr>
+
+                      								 	<td valign="top" class="select1">
+
+															<table width="764" border="0" cellpadding="0" cellspacing="0">
+															
+																<tr>
+
+                                                                   <td class="textonormal"></td>
+
+                                                                   <th class="textonormal" align=left>CC/NIT/RUT(*):</th>
+
+                                                                   <td class="textonormal">{rutdv}</td>
+
+                                                                   <td class="textonormal">&nbsp;Tipo Doc.(*)</td>
+
+                                                                   <th class="textonormal" align=left></th>
+
+                                                                   <td><select id="id_documento_identidad" name="documentoid"  class="textonormal">
+								<option value="">Seleccione</option>
+									<!-- BEGIN tipodoc -->
+									<option value={id_documento_identidad} {selected}>{siglas_documento}-{descripcion_documento}</option>
+									<!-- END tipodoc -->
+								</select></td>
+
+                                                                   <th class="textonormal" align=left>Categoria Cliente</th>
+
+                                                                   <td class="textonormal"><select id="clasificacion_cli" name="id_clasificacion_cli"  class="textonormal">
+								<option value="">Seleccione</option>
+									<!-- BEGIN categoriacli -->
+									<option value={id_clasificacion_cli} {selectedcla}>{descripcion_clasificacion}</option>
+									<!-- END categoriacli -->
+								</select></td>
+
+                                                                 </tr>
+
+                                                                                                     </table>
+                                                                                                     <br>
+                                                                 <table width="764" border="0" cellpadding="0" cellspacing="0">
+                                                                 
+                                                                 <tr>
+
+                                                                   <td class="textonormal"></td>
+
+                                                                   <th width="135" align=left class="textonormal">Raz&oacute;n Social(*):{exclama}</th>
+
+                                                                   <td class="textonormal"><input name="razonsoc" type="text" class="textonormal" value="{razonsoc}" maxlength="90" size="95" ></td>
+
+                                                                   <td class="textonormal"></td>
+
+                                                                   <th class="textonormal" align=left></th>
+
+                                                                   <td class="textonormal"></td>
+
+                                                                   <th class="textonormal" align=left></th>
+
+                                                                   <td class="textonormal"></td>
+
+                                                                 </tr>
+                                                                 
+                                                                 </table>
+                                                                 <br>
+                                                                 <table width="764" border="0" cellpadding="0" cellspacing="0">
+
+                                                                 
+                                                                 
+                                                               <tr>
+
+                                                                   <td class="textonormal"></td>
+
+                                                                   <th class="textonormal" align=left>Nombre Contacto(*):</th>
+
+                                                                   <td class="textonormal">{exclama}<input name="contactoe" type="text" class="textonormal" value="{contactoe}" size="25" maxlength="30" ></td>
+
+                                                                   <td class="textonormal">&nbsp;</td>
+
+                                                                   <th class="textonormal" align=left><span class="tabla1">Primer Apellido(*):</span></th>
+
+                                                                   <td class="textonormal"><input name="apellido" type="text" class="textonormal" value="{apellido}" size="25" maxlength="30" ></td>
+
+                                                                   <th class="textonormal" align=left>Segundo Apellido(*):</th>
+
+                                                                   <td class="textonormal"><input name="apellido1" type="text" value="{apellido1}" class="textonormal" size="25" maxlength="30" ></td>
+
+                                                                 </tr>
+                                                               <tr>
+
+                                                                   <td class="textonormal"></td>
+
+                                                                   <th class="textonormal" align=left>Sexo:</th>
+
+                                                                   <td class="textonormal"><select name="genero"  class="textonormal">
+								    {noaplica}
+									{masculino}
+									{femenino}
+								</select></td>
+
+                                                                   <td class="textonormal">&nbsp;</td>
+
+                                                                   <th class="textonormal" align=left><span class="tabla1">Tel&eacute;fono(*):</span></th>
+
+                                                                   <td class="textonormal"><input name="fonocontactoe" type="text" class="textonormal" value="{fonocontactoe}" size="20" maxlength="20" ></td>
+
+                                                                   <th class="textonormal" align=left>Teléfono Celular:</th>
+
+                                                                   <td class="textonormal"><input name="celcontactoe" type="text" value="{celcontactoe}" class="textonormal" size="20" maxlength="20" ></td>
+
+                                                                 </tr>
+                                                                 </table>
+                                                                 <br>
+                                                                 <table width="764" border="0" cellpadding="0" cellspacing="0">
+                                                                 <tr>
+
+                                                                   <td class="textonormal"></td>
+
+                                                                   <th class="textonormal" align=left>Fax:&nbsp; &nbsp; &nbsp; &nbsp; </th>
+
+                                                                   <td class="textonormal"><input name="fax" type="text" class="textonormal" value="{fax}" size="20" maxlength="20" ></td>
+
+                                                                   <td class="textonormal">&nbsp;</td>
+
+                                                                   <th class="textonormal" align=left><span class="tabla1">Correo Electr&oacute;nico:</span></th>
+
+                                                                   <td class="textonormal"><input name="emaile" type="text" class="textonormal" value="{emaile}" size="60" maxlength="60" ></td>
+
+                                                                   
+                                                                 </tr>
+                                                                 </table>
+                                                                 <br>
+                                                                 <table width="764" border="0" cellpadding="0" cellspacing="0">
+                                                                 <tr>
+
+                                                                   <td class="textonormal"></td>
+
+                                                                   <th class="textonormal" align=left>Tipo Contribuyente(*):</th>
+
+                                                                   <td class="textonormal"><select  name="id_regimencontri"  class="textonormal">
+									<!-- BEGIN contribuyente -->
+									<option value={id_regimencontri} {selectedcontri}>{descripcionregimen}</option>
+									<!-- END contribuyente -->
+								</select></td></td>
+																	
+																	<th class="textonormal" align=left>Retefuente:</th>
+                                                                   
+                                                                   <td class="textonormal"><input type="checkbox" name="retefuente" value="1" {checkrenta} disabled></td>                                                               
+
+                                                                   
+
+                                                                   <td class="textonormal"></td>
+																	<th class="textonormal" align=left> ReteIca:</th>
+																	<td class="textonormal"><input type="checkbox" name="reteica" value="1" {checkica} disabled></td>
+																	<td class="textonormal"></td>
+																	<th class="textonormal" align=left>ReteIva:</th>
+																	<td><input type="checkbox" name="reteiva" value="1" {checkiva} disabled></td>
+                                                                   
+                                                                 </tr>
+                                                                 <tr><td><br></td><td></td><td></td><td></td><td></td>
+                                                                 <td></td><td></td><td></td><td></td></td><td></td><td></tr>
+
+                                                                 <tr><td></td>
+                                                                 <th class="textonormal" align=left>Tipo Cliente (*):</th>
+                                                                 <td>
+                                                                 <select name="tipo_cliente" class="TextoNormal" >
+																 <option value="" class="Textonormal">Seleccione</option>
+																	<!-- BEGIN contri -->
+
+																	<option value="{id}" {selectedcontribu}>{nombrecontri}</option>
+
+																	<!-- END contri -->
+
+						       									</select>
+                                                                 </td>
+                                                                 <td></td>
+                                                                 <td></td>
+                                                                 <td></td>
+                                                                 <td></td>
+                                                                 <td></td>
+                                                                 <td></td>
+                                                                 <td></td>
+                                                                 <td></td>
+                                                                 <td></td></tr>
+                                                                 
+                                                                 
+                                       							</table>
+                                       							<br>
+                                                                 <table width="764" border="0" cellpadding="0" cellspacing="0">
+                                                                 <tr>
+
+                                                                   <td class="textonormal"></td>
+
+                                                                   <th class="textonormal" align=left height=22>Rubro: </th>
+
+                                                                   <td class="textonormal" align=left>&nbsp;{nomrubro}</td>
+
+                                                                   <td class="textonormal"></td>
+
+                                                                   <th class="textonormal" align=left><b>Vendedor:</b></th>
+
+                                                                   <td width="235" class="textonormal">&nbsp;{vendedor} </td>                                                                  
+
+                                                                   <td width="50" class="textonormal" align=left></td>
+
+																  <td width="100" class="textonormal" align=left> </td>
+
+																  <td width="60" class="textonormal" align=left>&nbsp;</td
+
+																 ></tr>
+
+                                                                 <tr>
+
+                                                                   <td class="textonormal"></td>
+
+                                                                   <th class="textonormal" width="170" align=left colspan="2">D&iacute;as condici&oacute;n de Pago:</th>
+
+                                                                   <td class="textonormal" align=left colspan="3">&nbsp;&nbsp;&nbsp;{diascondicion}</td>
+
+                                                                   <td width="50" class="textonormal" align=left><b>Disponible:</b></td>
+																   <td class="textonormal">&nbsp;{disponible}</td>
+																 </tr>																 
+
+                                                                 <tr>
+
+                                                                   <td class="textonormal"></td>
+
+                                                                   <th width="73" align=left class="textonormal">V&iacute;a de Pago:</th>
+
+                                                                   <td width="135" class="textonormal">&nbsp;{nomtipopago} </td>
+
+                                                                   <td width="16" class="textonormal">&nbsp;</td>
+
+                                                                   <th width="135" align=left class="textonormal">Observaciones:</th>
+
+                                                                   <td class="textonormal" colspan="3">{locksap}{lockmoro}{lockcve}{lockfecha}{comentarioe}{saldodisp}</td>
+															
+
+                                                                 </tr>																 
+																 
+
+                                                         	</table>
+
+                                                        </td>
+
+                        							<tr>
+
+                        						</table>
+
+            					 				</fieldset>
+
+                    						</td>
+
+                   						</tr>
+
+                					</table>
+
+		 						</td>
+
+                   				<td width="448" valign="top">&nbsp;</td>
+
+                 			</tr>
+
+           					<tr>
+
+               					<td valign="top" class="select1">
+
+									<fieldset><legend><span class="textonormal">Datos de Facturaci&oacute;n</span></legend>
+
+									<table width="764" border="0" cellpadding="0" cellspacing="0">
+
+                                       	<tr>
+
+                                              <td class="textonormal"></td>
+
+                                              <th width="77" class="textonormal" align=left>Direcci&oacute;n (*): {exclama}</th>
+
+                                              <td width="400" class="textonormal"><input name="direccione" type="text" class="textonormal" size="80" value="{direccione}" {deshabilitadodireccione}></td>
+                                              <th align=left class="textonormal"></th>
+
+                      <td width="128" class="textonormal">
+
+                           </td>
+                                              
+										</tr>
+
+                                        												  
+												</table>
+												<br>
+												
+									
+									<table width="764" border="0" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                        <td class="textonormal"></td>
+                                        <th align=left class="textonormal">Departamento(*):</th>
+                                        <td><select name= "departamentoajax" class="TextoNormal" onChange="departamento(this.value);" {deshabilitadolocalizacion}>
+
+					      <option value="">Seleccione Departamento</option>
+                          			<!-- BEGIN departamentoms -->
+
+							<option value="{id_depto}" {selecteddepto}>{nomdepto}</option>
+
+                                    <!-- END departamentoms -->
+						   </select></td>
+                                        <th align=left class="textonormal">Ciudad (*):</th>
+                                        <td><div id='ciudadajax'><select name="ciudadajax" class="TextoNormal" onChange ="barrio(this.value);" {deshabilitadolocalizacion}>
+                                        <option value="">Seleccione Ciudad</option>
+                                        <!-- BEGIN ciudadesms -->
+
+							<option value="{id_ciudadajax}" {selectedciudadajax}>{nomciudadajax}</option>
+
+                                    <!-- END ciudadesms -->
+                                    </select></div></td>
+						   
+                                        
+										</tr>
+										<tr>
+                                        <td class="textonormal"></td>
+                                        <th align=left class="textonormal">Barrio (*):</th>
+                                        <td><div id='barrioajax'><select name="barrioajax" class="TextoNormal" >
+                                        <option value="">Seleccion Barrio</option>
+                                        <!-- BEGIN barrioms -->
+
+							<option value="{id_barriojax}" {selectedbarrioajax}>{nombarrioajax}</option>
+
+                                    <!-- END barrioms -->
+                                    </select></div></td>
+                                        <th align=left class="textonormal"></th>
+                                        <td></td>
+						   
+                                        
+										</tr>
+									</table>
+									<br>
+									<table width="764" border="0" cellpadding="0" cellspacing="0" align="left">
+									<tr>
+
+                                              
+											
+                                              <th class="textonormal" align=left>Actividad Econ&oacute;mica:<span class="Textonormal">{exclama}</span></th>
+
+                                              <td class="textonormal" width="80%">
+												
+												<select  name="giro" {deshabilitadogiro} class="textonormal">
+												<option value="">Seleccione actividad</option>
+									<!-- BEGIN giro -->
+									<option value={id_giro} {selectedgiro}>{descripcion}</option>
+									<!-- END giro -->
+								</select>
+												    </td>
+												  </tr>
+                                            	<script>
+
+													/*window.document.nueva_cotizacion_01.nom_giro.onkeypress = KeyIsTexto;*/
+
+												</script>
+
+                                              
+
+                                           
+                                              
+                                        <th width="59" class="textonormal" align=left></th>
+
+                                              <td width="128" class="textonormal">
+
+	                                               
+											  </td>
+
+
+                                        </tr>
+                                        </table>
+                                        
+									
+
+						</table>
+
+					</td>
+
+				</tr>
+
+			</table>
+
+		</td>
+
+	</tr>
+
+</table>
+
+
+
+<table>
+		<td class="titulonormal"><span class="textonormal">(*)Datos Obligatorios</span></td>
+	<tr>
+		<td class="titulonormal"></td>
+	</tr>
+
+	<tr>
+
+		<td class="titulonormal">Direcciones de Despacho</td>
+
+		<td><a href="#" border=0><img src="../../IMAGES/add.gif" width="15" border="0" align="right" onClick="adddir()" title="Agregar Direcci&oacute;n Despacho"></a></td>
+
+	</tr>
+
+</table>
+
+
+
+<script>
+
+	arr_direcciones = '';
+
+	var evaluar = '';
+
+</script>
+
+<!-- BEGIN direcciones -->
+
+	<INPUT TYPE="hidden" NAME="id_direccion_{id_direccion}" VALUE="{id_direccion}">
+
+
+
+	<script>arr_direcciones =  arr_direcciones + ',' + '{id_direccion}';</script>
+
+<table>
+
+	<tr>
+
+		<td width=804>
+
+			<fieldset>
+
+				<table border="0" cellpadding="0" cellspacing="0">
+
+					<tr>
+
+						<td class="textonormal">&nbsp;&nbsp;&nbsp;</td>
+
+						<th width="120" align=left class="textonormal">Nombre Direcci&oacute;n(*):</th>
+
+					  <td width="250" class="Textonormal"><input name="descripcion_{id_direccion}" type="text" class="Textonormal" value="{descripcion}" size="40"></td>
+
+						<th width="120" align=left class="Textonormal">Direcci&oacute;n(*):</th>
+
+						<td width="220" class="Textonormal"><input name="direccion_{id_direccion}" type="text" class="textonormal" value="{direccion}" size="60"></td>
+
+					</tr>
+
+					<script>
+
+						window.document.nueva_cotizacion_01.direccion_{id_direccion}.onkeypress = KeyIsTexto;
+
+                        window.document.nueva_cotizacion_01.descripcion_{id_direccion}.onkeypress = KeyIsTexto;
+
+					</script>
+					<tr>
+						<td class="textonormal">&nbsp;&nbsp;&nbsp;</td>
+                      	<td width="128" class="textonormal"><br></td>
+					</tr>
+					<tr>
+
+						<td class="textonormal">&nbsp;&nbsp;&nbsp;</td>
+
+						<th align=left class="textonormal">Departamento (*):</th>
+
+                      <td width="128" class="textonormal">
+
+                           <select name= "departamentoarray_{id_direccion}" class="TextoNormal"  onChange="departamentoarray(this.value,{id_direccion});">
+
+					      <option value="">Seleccione Departamento</option>
+					      {bloque_deptoarray_{id_direccion}}       
+						   </select></td>
+
+						<th align=left class="textonormal">Ciudad(*):</th>
+
+						<td><div id='ciudadarray_{id_direccion}'><select name="ciudadarray_{id_direccion}" class="TextoNormal" onChange ="barrioarray(this.value,{id_direccion});" >
+                                        <option value="">Seleccion Ciudad</option>
+                                        {bloque_ciudadarray_{id_direccion}}</div></td>
+
+					</tr>
+					<tr>
+
+						<td class="textonormal">&nbsp;&nbsp;&nbsp;</td>
+
+						<th align=left class="textonormal">Barrio(*): </th>
+
+                      <td><div id='barrioarray_{id_direccion}'><select name="barrioarray_{id_direccion}" class="TextoNormal">
+                                        <option value="">Seleccion Barrio</option>
+                                        {bloque_barrioarray_{id_direccion}}</div></td>
+
+						<th align=left class="textonormal"></th>
+
+						<th class="textonormal">
+
+		
+
+							&nbsp;&nbsp;
+
+							</th>
+
+					</tr>
+
+							
+                     
+                     
+                     <tr>
+                    <!-- <td class="textonormal">&nbsp;&nbsp;&nbsp;</td>
+                     <th width="59" class="textonormal" align=left>Barrio:{exclama}</th>
+
+                                              <td width="128" class="textonormal">
+
+	                                              <select id="barrios2" disabled="disabled"  name="barrios2" class="textonormal" onChange='cargaContenido2(this.id)'>
+
+	                                                  <option value="0">Seleccione Barrio</option>
+
+	                                                  <!-- BEGIN comunas 
+
+	                                                  <option value="{id_comuna}" {selected}>{nomcomuna}</option>
+
+	                                                  <!--<script>arrayciudades[{id_comuna}] = '{nomciudadl}';</script>-->
+
+	                                                  <!-- END comunas 
+
+                                                </select>
+											  </td>
+                    </tr> -->
+                    <tr>
+						<td class="textonormal">&nbsp;&nbsp;&nbsp;</td>
+
+                      	<td width="128" class="textonormal"><br></td>
+					</tr>
+					<tr>
+
+						<td class="textonormal">&nbsp;&nbsp;&nbsp;</td>
+
+						<th width="120" align=left class="textonormal">Contacto:</th>
+
+					  <td width="250" class="Textonormal"><input name="contacto_{id_direccion}" type="text" class="Textonormal" value="{contacto}"></td>
+
+						<th width="120" align=left class="Textonormal">Teléfono: </th>
+
+						<td width="220" class="Textonormal"><input name="fonocontacto_{id_direccion}" type="text" class="Textonormal" value="{fonocontacto}"></td>
+
+					</tr>
+					<script>
+
+								window.document.nueva_cotizacion_01.contacto_{id_direccion}.onkeypress = KeyIsTexto;
+
+								window.document.nueva_cotizacion_01.fonocontacto_{id_direccion}.onkeypress = KeyIsNumber;
+
+							</script>
+					<tr>
+
+						<td class="textonormal">&nbsp;&nbsp;&nbsp;</td>
+
+						
+
+						<th align=left class="textonormal">e-mail:</th>
+
+						<td><input name="email_{id_direccion}" class="textonormal" type="text" value="{email}" size="60"></td>
+
+					</tr>
+
+						<script>
+
+						window.document.nueva_cotizacion_01.email_{id_direccion}.onkeypress = KeyIsTexto;
+
+						</script>
+
+					<tr>
+
+						<td class="textonormal">&nbsp;&nbsp;&nbsp;</td>
+
+						<th align=left class="textonormal">Comentario:</th>
+
+						<td colspan=2><TEXTAREA class="textonormal" NAME="comentario_{id_direccion}" ROWS="2" COLS="80">{comentario}</TEXTAREA></td>
+
+						<td><a href="#" border=0><img src="../../IMAGES/del.gif" class="deleteME" width="15" title="Eliminar Direcci&oacute;n Despacho" align="right" border="0" id='{id_direccion}' numoe='{num_elem_oe}' numop='{num_elem_op}'; onClick="validaelimdir(this, numoe, numop);" title="Eliminar Direcci?n Despacho"></a></td>
+
+					</tr>
+
+						<script>
+
+						window.document.nueva_cotizacion_01.comentario_{id_direccion}.onkeypress = KeyIsTexto;
+
+						</script>
+
+				</table>
+
+			</fieldset>
+
+		</td>
+
+	</tr>
+
+	<td class="Textonormal">(*)Campos Obligatorios.</td>
+
+</table>
+
+<script>
+evaluar = evaluar + "validadir(document.nueva_cotizacion_01.descripcion_{id_direccion}, document.nueva_cotizacion_01.direccion_{id_direccion}, document.nueva_cotizacion_01.departamentoarray_{id_direccion}, document.nueva_cotizacion_01.ciudadarray_{id_direccion},document.nueva_cotizacion_01.barrioarray_{id_direccion},{id_direccion});";</script>
+<!-- END direcciones -->
+</form>
+
+
+
+<table width=760>
+
+	<tr>
+
+	  <td width="200">&nbsp;</td>
+
+	  <td width="33"><a href="monitor_cliente_nuevo.php"><img src="../../IMAGES/anterior.gif"  alt="prueba" width="23" height="23" border="0" title="Anterior" ></a></td>
+
+	  <td width="59" class="Textonormal">Anterior</td>
+
+	  <td width="70" class="Textonormal">Siguiente</td>
+
+	  <td width="31"><a href="#" onClick="grabacliente();"><img src="../../IMAGES/siguiente.gif" alt="prueba" width="23" height="23" border="0" title="Siguiente" ></a></td>
+
+	  <td width="200">&nbsp;</td>
+
+	</tr>
+
+</table>
+
+</form>
+
+<script LANGUAGE="javascript">
+
+	var dir = '{id_direccion}';
+
+	if(dir!=''){
+
+		window.document.nueva_cotizacion_01.email_{id_direccion}.onkeypress = KeyIsTexto;		
+
+		window.document.nueva_cotizacion_01.comentario_{id_direccion}.onkeypress = KeyIsTexto;		
+
+		window.document.nueva_cotizacion_01.fonocontacto_{id_direccion}.onkeypress = KeyIsTelefono;
+
+		window.document.nueva_cotizacion_01.contacto_{id_direccion}.onkeypress = KeyIsTexto;
+
+		window.document.nueva_cotizacion_01.descripcion_{id_direccion}.onkeypress = KeyIsTexto;
+
+		window.document.nueva_cotizacion_01.direccion_{id_direccion}.onkeypress = KeyIsTexto;	
+
+	}
+
+	window.document.nueva_cotizacion_01.razonsoc.onkeypress = KeyIsTexto;
+
+	window.document.nueva_cotizacion_01.contactoe.onkeypress = KeyIsLetraSinEspacio ;
+	
+	window.document.nueva_cotizacion_01.apellido.onkeypress = KeyIsLetraSinEspacio ;
+	
+	window.document.nueva_cotizacion_01.apellido1.onkeypress = KeyIsLetraSinEspacio ;
+
+	window.document.nueva_cotizacion_01.fonocontactoe.onkeypress = KeyIsTelefono ;
+	
+	window.document.nueva_cotizacion_01.celcontactoe.onkeypress = KeyIsTelefono ;
+	
+	window.document.nueva_cotizacion_01.fax.onkeypress = KeyIsTelefono ;
+
+	window.document.nueva_cotizacion_01.emaile.onkeypress = KeyIsTexto ;
+
+	window.document.nueva_cotizacion_01.direccione.onkeypress = KeyIsTexto;		
+
+	/*window.document.nueva_cotizacion_01.nom_giro.onkeypress = KeyIsTexto;*/
+
+
+
+			
+
+	function grabacliente(){
+	
+	//var indice = document.nueva_cotizacion_01.select_giro.selectedIndex;
+
+		//Si viene cliente tipo SAP, realice validación
+
+		
+
+		if(document.nueva_cotizacion_01.tipocliente.value==1){
+		
+			if(document.nueva_cotizacion_01.departamentoajax.value==''){
+				alert('Selecccione un departamento');
+				document.nueva_cotizacion_01.departamentoajax.focus();
+				return false;
+			}
+			
+			if(document.nueva_cotizacion_01.ciudadajax.value==''){
+				alert('Selecccione una ciudad');
+				document.nueva_cotizacion_01.ciudadajax.focus();
+				return false;
+			}
+			
+			if(document.nueva_cotizacion_01.barrioajax.value==''){
+				alert('Selecccione un barrio');
+				document.nueva_cotizacion_01.barrioajax.focus();
+				return false;
+			}
+
+			//var indice = document.nueva_cotizacion_01.select_giro.selectedIndex;
+
+			//var indice2 = document.nueva_cotizacion_01.comunae.selectedIndex;
+
+			
+
+			if(document.nueva_cotizacion_01.id_giro2.value=='')
+
+			document.nueva_cotizacion_01.id_giro2.value=0;
+
+			if(document.nueva_cotizacion_01.comuna2.value=='')
+
+			document.nueva_cotizacion_01.comuna2.value=0;
+
+
+
+			if((document.nueva_cotizacion_01.razonsoc.value!=document.nueva_cotizacion_01.razonsoc_b.value)||(document.nueva_cotizacion_01.contactoe.value!=document.nueva_cotizacion_01.contactoe_b.value)||(document.nueva_cotizacion_01.contactoe.value!=document.nueva_cotizacion_01.contactoe_b.value)||(document.nueva_cotizacion_01.fonocontactoe.value!=document.nueva_cotizacion_01.fonocontactoe_b.value)||(document.nueva_cotizacion_01.emaile.value!=document.nueva_cotizacion_01.emaile_b.value)||(document.nueva_cotizacion_01.direccione.value!=document.nueva_cotizacion_01.direccione_b.value)/*||(document.nueva_cotizacion_01.select_giro.options[indice].value!=document.nueva_cotizacion_01.id_giro2.value)||(document.nueva_cotizacion_01.comuna2.value!=document.nueva_cotizacion_01.comunae.options[indice2].value)*/){
+
+
+
+				if(confirm('Los datos que ha modificado seran enviados a la base de datos del cliente SAP. ¿Desea continuar?')){
+
+					eval(evaluar);
+
+				if (!evaluardir)
+					
+					return false;
+					
+			
+
+				document.nueva_cotizacion_01.accion.value='grabar';
+
+				document.nueva_cotizacion_01.tupla_dir_mod.value = arr_direcciones;
+
+				document.nueva_cotizacion_01.submit();
+
+				}	
+
+				else
+
+				return false;
+
+			}
+
+		}
+
+		
+
+		if(document.nueva_cotizacion_01.tipocliente.value!=1){
+
+			
+			
+			
+			
+			/**if (document.nueva_cotizacion_01.genero.value==''){
+				alert('Seleccione el genero MASCULINO/FEMENINO');		
+				return false;
+
+			}**/
+				
+			if (document.nueva_cotizacion_01.apellido.value==''){
+				alert('Ingrese el primer apellido');
+				document.nueva_cotizacion_01.apellido.focus();
+				return false;
+
+			}
+			
+			if (document.nueva_cotizacion_01.apellido1.value==''){
+				alert('Ingrese el segundo apellido');
+				document.nueva_cotizacion_01.apellido1.focus();
+				return false;
+			}
+			
+			if (document.nueva_cotizacion_01.id_documento_identidad.value==''){
+				alert('Debe seleccionar un tipo de documento');
+				return false;
+			}
+			
+			if (document.nueva_cotizacion_01.tipo_cliente.value==''){
+				alert('Debe seleccionar un tipo de cliente');
+				return false;
+			}
+
+			if (document.nueva_cotizacion_01.razonsoc.value==''){
+				alert('Debe ingresar Razon Social del Cliente');
+				return false;
+			}
+
+			if (document.nueva_cotizacion_01.contactoe.value==''){
+				alert('Debe ingresar el nombre de contacto del cliente');
+				return false;
+			}
+			
+			if(document.nueva_cotizacion_01.fonocontactoe.value==''){
+				alert('Debe ingresar Teléfono de contacto');
+				document.nueva_cotizacion_01.fonocontactoe.focus();
+				return false;
+			}
+			
+			if(document.nueva_cotizacion_01.departamentoajax.value==''){
+				alert('Selecccione un departamento');
+				document.nueva_cotizacion_01.departamentoajax.focus();
+				return false;
+			}
+			
+			if(document.nueva_cotizacion_01.ciudadajax.value==''){
+				alert('Selecccione una ciudad');
+				document.nueva_cotizacion_01.ciudadajax.focus();
+				return false;
+			}
+			
+			if(document.nueva_cotizacion_01.barrioajax.value==''){
+				alert('Selecccione un barrio');
+				document.nueva_cotizacion_01.barrioajax.focus();
+				return false;
+			}
+			
+			if(document.nueva_cotizacion_01.direccione.value==''){
+				alert('Ingrese dirección de facturación');
+				document.nueva_cotizacion_01.direccione.focus();
+				return false;
+			}
+			
+			/* if(document.nueva_cotizacion_01.nom_giro.value==''){
+
+				alert('Debe ingresar giro de SII');
+
+				return false;
+
+			}*/
+		}
+
+		
+
+		eval(evaluar);
+
+		if (!evaluardir)
+
+			return false;
+			
+		
+		document.nueva_cotizacion_01.accion.value='grabar';
+
+		document.nueva_cotizacion_01.tupla_dir_mod.value = arr_direcciones;
+
+		document.nueva_cotizacion_01.submit()
+
+	}
+
+	
+
+	function validaelimdir(elem,numoe,numop){
+
+
+
+		if(numoe>0&& numop<=0){
+
+			alert('No puede eliminar la direccion de despacho, puesto que esta asociada a '+numoe+' orden(es) de entrega.');
+
+			return;
+
+		}
+
+		if(numoe>0&& numop>0){
+
+		alert('No puede eliminar la direccion de despacho, puesto que esta asociada a '+numoe+' orden(es) de entrega y a '+numop+' orden(es) de picking.');
+
+			return;
+
+		}
+
+		
+
+		if(numop>0&& numoe<=0){
+
+			alert('No puede eliminar la direccion de despacho, puesto que esta asociada a '+numop+' orden(es) de picking.');
+
+			return;
+
+		}
+
+
+
+		else{
+
+		
+
+			if (confirm('Esta seguro que desea eliminar la direccion de despacho?')){
+
+				document.nueva_cotizacion_01.accion.value='elidir'; 
+
+				document.nueva_cotizacion_01.id_direccion_elim.value=elem.id; 
+
+				document.nueva_cotizacion_01.submit(); 
+
+			}
+
+			return;
+
+		}
+
+	}	
+
+	
+
+	function adddir(){
+
+		document.nueva_cotizacion_01.accion.value='adddir'; 
+
+		document.nueva_cotizacion_01.submit(); 
+
+	}
+	
+	evaluardir = true;
+
+function validadir(descripcion, direccion, departamento,ciudad,barrio,iddireccion){
+var falta = '';
+		
+ 		if (!descripcion.value)
+		{
+ 			falta += "- Nombre Dirección\n";
+		}
+ 		if (!direccion.value)
+		{
+ 			falta += "- Dirección\n";
+		}
+		if(!departamento.value){
+
+			falta += "- Departamento\n";
+
+		}
+		if(!ciudad.value){
+
+			falta += "- Ciudad\n";
+
+		}
+		if(!barrio.value){
+
+			falta += "- Barrio\n";
+
+		}
+		if (falta) {
+
+			alert('Faltan los siguientes datos en la direccion de despacho:\n' + falta);
+			evaluardir = false;
+			//alert(evaluardir);
+			return false;
+			
+		}
+
+		else {
+
+			evaluardir = true;
+			return true;
+			
+		}
+
+	}
+</script>

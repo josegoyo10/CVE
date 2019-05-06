@@ -1,0 +1,332 @@
+<html>
+<head>
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/ajax.js"></script>
+<SCRIPT LANGUAGE="JavaScript">
+function imprimir() {
+this.focus();
+//this.print();
+imprimirsinasistente();
+cambiar_estado();
+}
+function cambiar_estado(){
+exec_AJAXRPC('POST','./updatedocyop.php?id_documento={cadenacambioestado}','escriben');
+}
+function escriben(text){
+alert(text);
+}
+</SCRIPT>
+<!--  Funcion que omite la seleccion de impresora, y enva a la impresora Predeterminada del Sistema. -->
+<SCRIPT Language="Javascript">
+function imprimirsinasistente(){  
+if (NS) {
+    window.print() ;  
+} else {
+    var WebBrowser = '<OBJECT ID="WebBrowser1" WIDTH=0 HEIGHT=0 CLASSID="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></OBJECT>';
+	document.body.insertAdjacentHTML('beforeEnd', WebBrowser);
+	WebBrowser1.ExecWB(6, 2);
+  	WebBrowser1.outerHTML = "";  
+}
+}
+</script>
+<SCRIPT Language="Javascript">  
+var NS = (navigator.appName == "Explorer");
+var VERSION = parseInt(navigator.appVersion);
+if (VERSION < 3) {
+	alert ('verifique que este activo el control "Activex no Firmadas", si su version de explorer es inferior a la requerida consulte con el administrador');        
+}
+
+</script>
+
+<style type="text/css">
+H1.SaltoDePagina
+{
+   PAGE-BREAK-AFTER: always
+}
+	
+</style>
+<body topmargin="0" leftmargin="0" marginheight="0" marginwidth="0">
+<script type="text/javascript">
+
+var isFirefox = testCSS('MozBoxSizing');                 // FF 0.8+
+var isIE = /*@cc_on!@*/false || testCSS('msTransform');  // At least IE6
+function testCSS(prop) {
+    return prop in document.documentElement.style;
+}
+
+if( !isIE )
+{
+
+
+	function hookKeyboardEvents(e) {
+		// get key code            
+		var key_code = (window.event) ? event.keyCode : e.which;
+
+		// case :if it is IE event
+			if (window.event)
+			{
+				if (!event.shiftKey && !event.ctrlKey) {
+						window.event.returnValue = null;
+						event.keyCode = 0;
+					}
+			}
+			// case: if it is firefox event
+			else
+					e.preventDefault();
+	}
+
+	window.document.onkeydown = hookKeyboardEvents;
+}
+
+
+if( isIE ) {
+	document.onkeydown = function () { 
+		if (event.keyCode == 17) alert('No se puede imprimir la guia mas de una vez.'); 
+		  if (event.ctrlKey && event.keyCode == 80) {
+
+						  alert('No se puede imprimir la guia mas de una vez.');
+
+						  window.event.returnValue = null; 
+
+						  event.keyCode = 0; 
+
+		  }
+	};
+}
+
+</script>
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+<table width="600" height="403" border="0" bordercolor="black" cellpadding="0" cellspacing="0" style="border: 2px solid #ffffff;">
+	<tr>
+		<td height="69" valign="top">
+		<!-- BEGIN GUIADESP -->
+			<table width="550s"  border="0" cellspacing="2" cellpadding="2" style=" width : 571px;">
+			<tr>
+			    <td></td>
+			    <td align="right" class="titulonormal">{ccliente}{tienda}{fact}</td>
+			</tr>
+			<tr>
+				<td width="15%" height="49"><img src="../../IMAGES/logotipo_negro.gif"></td>
+				<td width="457" class="titulonormal" align="center">&nbsp;GUIA DE DESPACHO N&ordm; {id_ordenent}</td>
+				
+			</tr>
+			<tr>
+				<td height="11" colspan="3" background="../../IMAGES/barra.gif"></td>
+			</tr>   
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top"><!-- InstanceBeginEditable name="Cuerpo" -->
+		<table width="550"  border="0" cellspacing="2" cellpadding="2" class="textonormal">
+		<tr>
+		<td valign="top"><!-- InstanceBeginEditable name="Cuerpo" -->
+		<table width="550"  border="0" cellspacing="2" cellpadding="2" class="textonormal">
+		{reimpresion}
+			<tr>
+			<td valign="top">
+			<table width="550" border="0"  cellpadding="2" cellspacing="1" class="textonormal">
+				<tr>
+					<td><fieldset>
+					<legend><strong>Datos de la Guia de Despachos</strong></legend>
+					<table width="550" border="0" align="center" cellpadding="2" cellspacing="1" class="textonormal">
+						<tr>                 
+							<th align="left" width="20%">N&ordm; Orden de Entrega</th>
+							<td width="30%">{id_ordenent}</td>
+							<th align="left" width="20%">Fecha de Entrega</th>
+							<td  width="30%">{fechaentrega}</td>
+							
+						</tr>
+						<tr>
+						    <th align="left" width="20%">Estado</th>
+							<td  width="30%"><font color="#FF0000">{nomestadorent}</font> </td>
+						</tr>
+						<tr>
+							<th align="left" width="20%">Tienda</th>
+							<td  width="30%" colspan="2">{nom_local}</td>	
+						</tr>
+						<tr>
+							<tr>
+								<th align="left" width="20%">Tipo Entrega</th>
+							    <td  width="30%" colspan="2">{nomtipoentregas}</td>
+							</tr>                  
+							
+						</tr>
+													
+					</table>
+					</fieldset></td>
+				</tr>
+				<tr>
+					<td><fieldset>
+					<legend>Datos Cliente</legend>
+						<table width="550" border="0" align="center" cellpadding="2" cellspacing="1" class="textonormal">
+							<tr>
+								<th align="left" width="20%">Raz&#243;n Social</th>
+								<td width="30%" >{razonsoc}</td>
+								<th align="left" width="20%">CC/NIT/RUT</th>
+								<td  width="30%">{rutcliente}</td>
+							</tr>
+							<tr>
+								<th align="left" width="20%">Actividad Econ&oacute;mica</th>
+								<td  width="30%">{giro}</td>
+							</tr>
+							<tr>
+							    <th align="left" width="20%">Nombre de Contacto</th>
+								<td  width="30%">{contacto}</td>
+								<th align="left" width="20%">Tel&eacute;fono Contacto</th>
+								<td  width="30%">{fonocontacto}</td>
+							</tr>
+							<tr>
+							    <th align="left" width="20%">Direcci&oacute;n de Servicio</th>
+								<td  width="30%">{direccionservicio}</td>
+								<th align="left" width="20%">Departamento</th>
+								<td  width="30%">{departamentoser}</td>
+								
+							</tr>
+							<tr>
+								<th align="left" width="20%">Ciudad</th>
+								<td  width="30%">{ciudadser}</td>
+								<th align="left" width="20%">Barrio</th>
+								<td  width="30%">{comunaser}</td>
+							</tr>
+							<tr>
+								<th align="left" width="20%">Tel&eacute;fono de Servicio</th>
+								<td  width="30%">{fonoservicio}</td>
+								<th align="left" width="20%">Indicaciones</th>
+								<td  width="30%">{indi}</td>
+							</tr>
+						</table>
+					</fieldset></td>
+				</tr>
+				
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<table width="550" border="0" cellpadding="2" cellspacing="0" class="textonormal">
+<tr>
+				<td width="550">
+			  <table width="550" border="0" cellpadding="0" cellspacing="0" class="tabla2">
+				<tr>
+							<th width="40" align="center">CODIGO</th>
+							<th width="280" align="center">DESCRIPCI&Oacute;N</th>
+							<th width="40" align="center">CANTIDAD COMPRADA</th>         
+							<th width="40" align="center">CANTIDAD ENTREGADA</th>
+							
+						</tr>
+					</table>
+			</td>
+		  </tr>
+			<tr>
+				<td valign="top">	
+					<table width="550" border="0"  cellpadding="0" cellspacing="0"  class="tabla2">             
+					<!-- BEGIN detalleproductos -->			              
+			  		{detalleop}
+					<!-- END detalleproductos -->				
+				                
+					</table>
+			  </td>
+			</tr>		
+					</form>
+					</table>
+			  </td>
+			</tr>
+		</table>	
+	  </td>
+	</tr>
+	<tr><td width="550"></td></tr>
+	<tr>
+	<td width="550">
+		<fieldset style=" width : 550px;"><table width="550" border="0" align="center" cellpadding="2" cellspacing="2" class="textonormal" style=" width : 550px;">
+			<tr>
+			   <td align="">PERSONA QUE DESPACHO:</td>
+			</tr>
+			<tr>
+		
+			   <td align="center">----------------------------------------------------------------------------------</td>  
+			   
+		   </tr>			
+		</table></fieldset>
+	</td>
+	</tr>
+	<tr><td width="550"></td></tr>
+	<tr>
+	<td width="550">
+		<fieldset style=" width : 550px;"><table width="550" border="0" align="center" cellpadding="2" cellspacing="2" class="textonormal" style=" width : 550px;">
+			<tr>
+			   <td align="">PERSONA DE SEGURIDAD:</td>
+			</tr>
+			<tr>
+		
+			   <td align="center">----------------------------------------------------------------------------------</td>  
+			   
+		   </tr>			
+		</table></fieldset>
+	</td>
+	</tr>
+	<tr><td width="550"></td></tr>
+	<tr>
+	<td width="550">
+		<fieldset style=" width : 550px;"><table width="550" border="0" align="center" cellpadding="2" cellspacing="2" class="textonormal" style=" width : 550px;">
+			<tr>
+			   <td align="">FIRMA DEL CLIENTE:</td>
+			   <td align="">PERSONA QUE RECIBE:</td>
+			</tr>
+			<tr>
+		
+			   <td style="">----------------------------------------------------------------------------------</td>
+			    <td style="">----------------------------------------------------------------------------------</td>  
+			   
+		   </tr>			
+		</table></fieldset>
+	</td>
+	</tr>
+	</tr>
+	<tr><td width="550"></td></tr>
+	<tr>
+	<td width="550">
+		<fieldset style=" width : 550px;"><table width="550" border="0" align="center" cellpadding="2" cellspacing="2" class="textonormal" style=" width : 550px;">
+			<tr>
+			   <td align=""><strong>DETALLE DE QUIEN RECIBE:</strong></td>
+			</tr>
+			<tr>
+		
+			   <td align="center">------------------------------------------------------------------------------------------------------------------------------------------------------------------</td>  
+			   
+		   </tr>			
+		</table></fieldset>
+	</td>
+	</tr>
+	<tr><td width="550"></td></tr>
+	<tr>
+	<td width="550">
+		<fieldset style=" width : 550px;"><table width="550" border="0" align="center" cellpadding="2" cellspacing="2" class="textonormal" style=" width : 550px;">
+			<tr>
+			   <td align=""><strong>OBSERVACIONES DE ENTREGA:</strong></td>
+			</tr>
+			<tr>
+		
+			   <td align="center">------------------------------------------------------------------------------------------------------------------------------------------------------------------<br><br>
+			   ------------------------------------------------------------------------------------------------------------------------------------------------------------------</td>   
+		   </tr>			
+		</table></fieldset>
+	</td>
+	</tr>
+	<tr><td width="550"></td></tr>
+	<tr>
+	<td width="550">
+		<fieldset style=" width : 550px;"><table width="550" border="0" align="center" cellpadding="2" cellspacing="2" class="textonormal" style=" width : 550px;">
+			<tr>
+			   <td><strong><center>{comentarios}</center></strong></td>
+			</tr>			
+		</table></fieldset>
+		{saltopag}
+	</td>
+	</tr>
+	<!-- END GUIADESP -->
+	<tr><td></td></tr>
+  	
+</table>
+</body>
+</html>

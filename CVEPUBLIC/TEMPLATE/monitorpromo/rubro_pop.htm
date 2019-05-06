@@ -1,0 +1,71 @@
+<script type="text/javascript">if ('{error_app}'){alert('{error_app}')}</script>
+<title>{TITULO}</title>
+<link href="../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css">
+<script>window.name='popup';</script>
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+<SCRIPT LANGUAGE="JavaScript" src="../../TEMPLATE/general/checkfield.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/popup.js"></script>
+<SCRIPT LANGUAGE="JavaScript" type="text/JavaScript" SRC="../../TEMPLATE/general/CalendarPopup.js"></SCRIPT>
+
+<script>
+
+function seleccionar(){
+	formulario = window.document.form_subrubro;
+	if(formulario.rubro.value == ''){
+		alert('Debe ingresar un rubro para la busqueda.');
+		return false;
+	}else{
+		formulario.accion.value = 'select_subrubro';
+		formulario.submit();
+	}
+}
+
+
+</script>
+
+<FORM NAME="form_subrubro" METHOD="POST" target="popup">
+<INPUT TYPE="hidden" NAME="id_subrubro" VALUE="{id_rubro}">
+<INPUT TYPE="hidden" NAME="subrubro" VALUE="{id_subrubro}">
+<INPUT TYPE="hidden" NAME="accion" VALUE="">
+
+
+<table width="100%" border="0" height="100%">
+    <td height="18" colspan="3"  align="left" class="titulonormal">Busqueda de Rubro para Subrubro </td>
+  <tr>
+    <th width="26%" height="21" align="left" class="textonormal" scope="col" colspan="3">Ingrese Rubro 
+      <input type="text" id="{id_rubro}" name="rubro" class="textonormal" value="{rubro}"> <input type="button" name="seleccionar_rubro" class="textonormal" value="Buscar" onClick="seleccionar();"></th>
+  </tr>
+  <tr>
+    <td height="18" colspan="3"  align="left" class="titulonormal">Seleccione  Subrubro</td>
+
+  </tr>
+  <tr>
+  <td height="73" align="center" width="350"> <select name="select_subrubro" class="TextoNormal" onChange="grabar();" size="25" >
+  <option value="0" class="Textonormal">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SELECCIONE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+        <!-- BEGIN subrubro -->
+        <option value="{id_subrubro}">({id_subrubro}) {nom_subrubro}</option>
+        <!-- END subrubro -->
+
+      </select>
+  </td>
+  </tr>
+  <tr>
+    <td align="center" colspan="2">&nbsp;
+        <input type="button" name="cerrar" class="textonormal" value="Cerrar ventana" onClick="window.close();">&nbsp;</td></tr>
+</table>
+
+
+</FORM>
+<script type="text/javascript">
+
+function grabar(){
+	formulario = document.form_subrubro;
+		formulario.accion.value = 'selecciona_rubro';
+		if(confirm('¿Esta seguro de la seleccion realizada?. De no ser asi presione Cancelar.')){
+			document.form_subrubro.submit();
+		}else{
+			return false;
+		}
+}
+
+</script>

@@ -1,0 +1,94 @@
+<body>
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript">
+function editar_registro(elem){
+	var registro = document.location='monitor_vendedor_01.php?rut='+elem.id;
+	if (registro == 'reload')
+		document.location='monitor_vendedor.php';
+	
+}	
+
+</script>
+
+<table width="760" height="15" border="0" cellpadding="0"cellspacing="0">
+  <tr>
+    <td width="50%"  height="30" class="titulonormal">Monitor Vendedores </td>
+</table>
+<table width="778" height="350" border="0" cellpadding="0" cellspacing="0">	
+	<tr>
+		<td width=768>
+			<form NAME="filtro" METHOD="POST" action="">
+			<INPUT TYPE="hidden" NAME="total_encontrado" VALUE="{total_encontrado}">
+				<fieldset>
+				<legend class="Textonormal">Datos de B&uacute;squeda</legend>
+				<table  width="500"align=center>
+					<tr>
+					  <td class="textonormal" align="center">Rubro</td>
+					  <td class="textonormal" align="center">Tipo Cliente</td>
+					  <td class="textonormal" align="center">Registro </td>
+					  <td class="textonormal" align="left"></td>
+					  <td class="textonormal" align="center"></td>
+					</tr>
+					<tr>
+
+						<td class="textonormal" align=center>
+							<select name="select_rubro" class="TextoNormal" >
+								<option value="0" class="Textonormal">TODOS</option>
+								<!-- BEGIN rubro -->
+									<option value="{id}" {selected}>{nombre}</option>
+								<!-- END rubro -->
+							</select>
+						</td>
+                      <span class="textonormal">
+
+						<td class="textonormal" align=center>
+							<select name="select_tipo_cliente" class="TextoNormal" >
+								<option value="0" class="Textonormal">TODOS</option>
+								<!-- BEGIN tipo_cliente -->
+									<option value="{id}" {selected}>{nombre}</option>
+								<!-- END tipo_cliente -->
+							</select>
+						</td>
+
+						<td class="textonormal" align=center>
+							<select name="select_registro" class="TextoNormal">
+								
+
+								<!-- BEGIN registro -->
+									<option value="0" class="Textonormal" {selectedt}>TODOS</option>
+									<option value="1" class="Textonormal" {selectedc}>Completo</option>
+									<option value="2" class="Textonormal" {selectedi}>Incompleto</option>
+									
+								<!-- END registro -->
+							</select>
+						</td>
+						<INPUT TYPE="hidden" NAME="total_encontrado" VALUE="{total_encontrado}">
+						<td class="textonormal" align=center><input type="submit" class="Textonormal" value="Filtrar"></td>
+					</tr></form>
+				</table>
+				</fieldset>		<table  width="768" border="0" cellpadding="2" cellspacing="0" class="tituloadvertencia"><td align="center">{text_maximo}</td></table>
+			<table width="768" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+				<tr>
+					<th width="88" >CC/NIT/RUT&nbsp;</th>
+					<th width="123" >Raz&oacute;n Social </th>
+					<th width="161">Rubro </th>
+					<th width="143" >Tipo Cliente</th>
+					<th width="109">Observaciones</th>
+					<th width="132">Registro</th>
+					<th width="132">Acciones</th>
+				</tr>
+			</table><div style="height:'337'; width:768; overflow:auto;">
+			<table width="100%" border="1" class="tabla2" cellspacing="0">
+				<FORM NAME="monitor_vendedor" METHOD="POST" >
+				<INPUT TYPE="hidden" NAME="rut" VALUE="{rut}">
+				<INPUT TYPE="hidden" NAME="accion5" VALUE="modificar">
+	            <!-- BEGIN infocliente -->
+				<tr>
+				{Registro}
+				</tr>
+	          	<!-- END infocliente -->
+	        </form>
+		</table>
+	</div>
+</table>

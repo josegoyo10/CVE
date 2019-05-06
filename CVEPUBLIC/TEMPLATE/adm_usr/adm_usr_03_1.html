@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>{TITULO}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+<script language="javascript" src="../../TEMPLATE/general/checkfield.js"></script>
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+<script>
+	function validar_form( form ) {
+		if( validar_obligatorio( form.nombre_in, "Debe Ingresar Nombre" ) ) return false;
+		if( validar_obligatorio( form.descripcion_in, "Debe Ingresar Descripcion" ) ) return false;
+		return true;
+	}
+</script>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table width="250" height="30" border="0" cellpadding="0"cellspacing="0"  class="textonormal">
+	<tr>
+		<td  height="30" colspan=5 width="100%" class="titulonormal">Agregar Perfil</td>
+	</tr>
+<form action="adm_usr_03.php" method="post" name="form_agregar" onSubmit="return validar_form(this);">
+<INPUT TYPE="hidden" NAME="action" VALUE="addperfil">
+<INPUT TYPE="hidden" NAME="id_padre" VALUE="{ID_PADRE}">
+	<tr valign=top>
+		<td >&nbsp;Perfil</td>
+		<td > : </td>
+		<td><INPUT TYPE="text" NAME="nombre_in" VALUE="" SIZE="30" MAXLENGTH="200" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);"></td>
+	</tr>
+	<tr valign=top>
+		<td >&nbsp;Descripción</td>
+		<td > : </td>
+		<td><TEXTAREA NAME="descripcion_in" ROWS="4" COLS="25" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);"></TEXTAREA></td>
+	</tr>
+	<tr>
+		<td colspan=5 align="center" ><INPUT TYPE="submit" value="Agregar"></td>
+	</tr>
+</table>
+</form>
+<script language="javascript">
+	window.document.form_agregar.nombre_in.onkeypress = KeyIsTexto;
+	window.document.form_agregar.descripcion_in.onkeypress = KeyIsTexto;
+</script>
+</body>
+</html>

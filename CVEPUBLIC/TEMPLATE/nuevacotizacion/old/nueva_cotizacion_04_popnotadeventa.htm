@@ -1,0 +1,140 @@
+<html>
+<head>
+<title>Datos Nota de Venta</title>
+<body topmargin="0" leftmargin="0" marginheight="0" marginwidth="0">
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+<SCRIPT LANGUAGE="JavaScript" type="text/JavaScript" SRC="../../TEMPLATE/general/CalendarPopup.js"></SCRIPT>
+<script type="text/javascript">
+	window.name="NotaDeVenta";
+
+	function valida_formulario(){
+	f3=true;
+		if (!valida_fecha()){
+			if (!f3){
+				alert('Fecha Limite no puede exceder los '+document.NotaVenta.fechamax.value+' días desde la fecha de inicio');
+			}else{
+				alert('Error en las Fechas');
+			}
+			return false;
+		}
+		document.NotaVenta.submit();	
+	}
+
+	function valida_fecha(){
+		String1 = document.NotaVenta.validdesde.value;
+		String2 = document.NotaVenta.validhasta.value;
+		String3 = document.NotaVenta.validhasta.value;		
+
+		dia1=String1.substring(0,2);
+		mes1=String1.substring(3,5);
+		anyo1=String1.substring(6,10);
+		dia2=String2.substring(0,2);
+		mes2=String2.substring(3,5);
+		anyo2=String2.substring(6,10);
+
+		var myDate1=new Date();
+		var myDate2=new Date();
+		var myDate3=new Date();
+
+		myDate1.setFullYear(anyo1,mes1-1,dia1);
+		myDate2.setFullYear(anyo2,mes2-1,dia2);
+		dia3=eval(String1.substring(0,2)) + parseFloat(document.NotaVenta.fechamax.value);
+		myDate3.setFullYear(anyo1,mes1-1,dia3);
+		if (myDate2>myDate3){
+			f3=false;
+			return false;
+		}
+		return (myDate1 <= myDate2);
+	}
+
+</script>	
+<table width="300" height="403" border="0" bordercolor="black" cellpadding="0" cellspacing="0" style="border: 2px solid #ffffff;">
+	<tr>
+		<td valign="top"><!-- InstanceBeginEditable name="Cuerpo" -->
+			<table width="100%"  border="0" cellspacing="2" cellpadding="2" class="textonormal">
+			<tr>
+				<td width="31%" valign="top">
+				<table width="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="textonormal">
+				<FORM NAME="NotaVenta" METHOD="POST" ACTION="nueva_cotizacion_04_popnotadeventa.php" onSubmit="return valida_formulario();" TARGET="NotaDeVenta">
+				<INPUT TYPE="hidden" NAME="accion" VALUE="grabar">
+				<INPUT TYPE="hidden" NAME="id_cotizacion" VALUE="{id_cotizacion}">
+				<INPUT TYPE="hidden" NAME="fechamax" VALUE="{DIAS_VALID_NVE_MAX}">				
+					<tr>
+						<SCRIPT LANGUAGE="JavaScript">document.write(getCalendarStyles());</SCRIPT>
+						<SCRIPT LANGUAGE="JavaScript" ID="js17">
+						var ayer = new Date();
+						ayer.setDate(ayer.getDate()-1);
+						var cal1 = new CalendarPopup("testdiv1","NotaDeVenta");
+						cal1.offsetX = -200;
+						cal1.offsetY = -100;
+						cal1.addDisabledDates(null,formatDate(ayer,"yyyy-MM-dd"));
+						</SCRIPT> 			
+							<td><fieldset>
+							<legend><strong>Datos Nota de Venta</strong></legend>
+							<table width="600" border="0" align="center" cellpadding="2" cellspacing="1" class="textonormal">
+								<tr>
+									<td width="25%">N&#176;&nbsp;Cotizaci&#243;n</td>
+									<td width="25%">{id_cotizacion}</td>
+									<td width="25%">Usuario Creador</td>
+									<td width="25%">{usuariocrea} </td>
+								</tr>
+								<tr>
+									<td width="25%">Rut</td>
+									<td width="25%">{rutcliente}</td>				
+									<td width="25%">Raz&#243;n Social</td>
+									<td width="25%">{razonsoc}</td>						
+								</tr>
+								<tr>
+									<td width="25%">Local Venta</td>
+									<td width="25%">{nom_local}</td>
+									<td width="25%">Almac&eacute;n</td>
+									<td width="25%">{nom_local_csum}</td>  
+								</tr>
+								<tr>
+									<td width="25%">Direcci&#243;n cliente</td>
+									<td width="25%">{direccion}</td>
+									<td width="25%">Vendedor</td>
+									<td width="25%">{nombrevendedor}</td>
+								</tr>
+								<tr>
+									<td  align="left" width="25%">V&#225;lida Desde</td>
+									<td class="userinput">
+									<input name ="validdesde" readonly id="fec_valid" type="text" size=10 maxlength=10 value="{validdesde}" onClick="cal1.select(document.forms[0].fec_valid,'anchor1','dd/MM/yyyy'); return false;">
+									<a href="#" onClick="cal1.select(document.forms[0].fec_valid,'anchor1','dd/MM/yyyy'); return false;" name="anchor1" id="anchor1">
+									<img src="../../IMAGES/cal.gif" width="16" height="16" border="0" title="Valida Desde"></a>
+									<DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>
+									</td>
+									<td  align="left" width="25%">V&#225;lida Hasta</td>
+									<td class="userinput" width="20%">
+									<input name ="validhasta" readonly id="fec_valid2" type="text" size=10 maxlength=10 value="{validhasta}" onClick="cal1.select(document.forms[0].fec_valid2,'anchor2','dd/MM/yyyy'); return false;">
+									<a href="#" onClick="cal1.select(document.forms[0].fec_valid2,'anchor2','dd/MM/yyyy'); return false;" name="anchor2" id="anchor2">
+									<img src="../../IMAGES/cal.gif" width="16" height="16" border="0" title="Valida Hasta">	</a>
+									<DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>
+									</td>					
+								</tr>
+							</table>
+							</fieldset>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<table width="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="subtitulonormal">
+								<tr>
+									<td colspan="4" align="center">
+
+									<input type="button" name="Button" value="Cancelar" onClick="window.returnValue = 'none'; window.close();">
+									<input type="button" name="Button" value="Genera Nota De Venta" ONCLICK="valida_formulario()"> 
+									</td>	
+								</tr>
+							</table>
+						</td>
+					</tr>	
+				</form>		
+				</td>
+			</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

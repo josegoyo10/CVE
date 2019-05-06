@@ -1,0 +1,244 @@
+<script Language="Javascript">
+{mensajeerror}
+function grabarimpresiones (){
+var cadena;
+
+window.location.href='../../COMMAND/monitororpick/monitor_orpick_02.php?grabarimpresiones={cadena}&logval=1&id_ordenpicking={cadena}&id_usuariore={id_usuariore}&apellidosre={apellidosre}&nombresre={nombresre}';
+}
+	
+function imprimir() {
+		this.focus();
+		imprimirsinasistente();
+		grabarimpresiones();
+}
+--></script>
+<SCRIPT Language="Javascript">
+function imprimirsinasistente(){  
+	if (NS) {
+    	window.print() ;  
+	} else {
+    	var WebBrowser = '<OBJECT ID="WebBrowser1" WIDTH=0 HEIGHT=0 CLASSID="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></OBJECT>';
+		document.body.insertAdjacentHTML('beforeEnd', WebBrowser);
+		WebBrowser1.ExecWB(6, 2);
+  		WebBrowser1.outerHTML = "";  
+	}
+}
+</script>
+<SCRIPT Language="Javascript">  
+var NS = (navigator.appName == "Explorer");
+var VERSION = parseInt(navigator.appVersion);
+if (VERSION < 3) {
+alert ('verifique que este activo el "activex no firmadas",su version de explorer es inferior a la requerida consulte con el administrador');        
+}
+</script>
+<title>Impresi&oacute;n Hoja de Picking</title>
+<STYLE>
+H1.SaltoDePagina
+{
+PAGE-BREAK-AFTER: always
+}
+H2.NoSaltoDePagina
+{
+PAGE-BREAK-AFTER: avoid
+}
+</STYLE>
+<style type="text/css">
+<!--
+	.Estilo1 {font-family: "Courier New", Courier, mono}
+	.Estilo3 {font-size: 12px}
+	.Estilo4 {font-family: "Courier New", Courier, mono; font-size: 12px; }
+	.Estilo6 {font-family: "Courier New", Courier, mono; font-size: 10px; }
+.Estilo8 {
+	font-family: "Courier New", Courier, mono;
+	font-size: 16px;
+	font-weight: bold;
+}
+.Estilo9 {
+font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:bold;
+}
+.Estilo10 {
+font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:10px;
+	font-weight:bold;
+	
+}
+.Estilo11 {
+font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:10px;
+	
+}
+.Estilo12 {
+font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:13px;
+	color: #ff2000;
+	font-weight:bold;
+}
+-->
+</style>
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<table width="660" align="left" border="0" cellpadding="0" cellspacing="0">
+<tr><td>
+<!-- BEGIN PICKING -->
+<table width="660" align="left" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+	  
+		<td>
+		<img src="../../IMAGES/logotipo_negro.gif" width="100" height="50" border=0><span class="Estilo12"> Picking Orden de Picking Nº {id_ordenpicking}</span><br>
+		<img src="../../IMAGES/bandapeligro.GIF" width="650" height="10" border=0>
+			{reimprimir}
+<fieldset>
+			<legend><span class="Estilo10">Datos Orden Picking</legend>
+
+<table width="650" border="0" align="left" cellpadding="0" cellspacing="0" class="Estilo11" >
+
+			<tr>
+				<td align="right" style="width: 150px">No Orden de Picking:</td>
+				<td align="left" style="width: 123px">{id_ordenpicking}</td>
+				                
+				
+				<td align="right" style="width: 140px">Fecha De Generación:</td>								
+				<td align="left" style="width: 156px">{fechacreacion}</td>  
+			</tr>
+			<tr>
+				<td align="right" style="width: 150px">No Orden de Entrega:</td>
+				<td align="left" style="width: 123px">{id_ordenent}</td>
+				                
+				
+				<td align="right" style="width: 140px">Estado:</td>								
+				<td align="left" style="width: 156px">{nomestado}</td>  
+			</tr>
+			<tr>
+				<td align="right" style="width: 150px">Tipo de Orden Picking:</td>
+				<td align="left" style="width: 123px">{codtipo} {nomtipoproduct}</td>
+				                
+				
+				<td align="right" style="width: 140px">Tienda:</td>								
+				<td align="left" style="width: 156px">{nom_local}</td>  
+			</tr>
+			<tr>
+				<td align="right" style="width: 150px">Cotizaciones Cruzadas:</td>
+				<td align="left" style="width: 123px"></td>
+				                
+				
+				<td align="right" style="width: 140px">Fecha de entrega:</td>								
+				<td align="left" style="width: 156px">{fechaentrega}</td>  
+			</tr>
+					
+</table>
+</fieldset><br>
+<fieldset>
+			<legend><span class="Estilo10">Datos del Servicio</legend>
+
+<table width="650" border="0" align="left" cellpadding="0" cellspacing="0" class="Estilo11" >
+
+			<tr>
+				<td align="right" style="width: 150px">Cliente:</td>
+				<td align="left" style="width: 123px">{razonsoc}</td>
+				                
+				
+				<td align="right" style="width: 140px">CC/NIT/RUT:</td>								
+				<td align="left" style="width: 156px">{rutcliente}</td>  
+			</tr>
+			<tr>
+				<td align="right" style="width: 150px">Contacto:</td>
+				<td align="left" style="width: 123px">{contactod}</td>
+				                
+				
+				<td align="right" style="width: 140px">Teléfono Contacto:</td>								
+				<td align="left" style="width: 156px">{fonocontactod}</td>  
+			</tr>
+			<tr>
+				<td align="right" style="width: 150px">Departamento:</td>
+				<td align="left" style="width: 123px">{departamentod}</td>
+				                
+				
+				<td align="right" style="width: 140px">Ciudad:</td>								
+				<td align="left" style="width: 156px">{nomciudadd}</td>  
+			</tr>
+			<tr>
+				<td align="right" style="width: 150px">Dirección Despacho:</td>
+				<td align="left" style="width: 123px">{direcciond}</td>
+				                
+				
+				<td align="right" style="width: 140px">Barrio:</td>								
+				<td align="left" style="width: 156px">{nomcomunad}</td>  
+			</tr>
+			<tr>
+				<td align="right" style="width: 150px">Indicaciones:</td>
+				<td align="left" style="width: 123px">{comentariod}</td>
+				                
+				
+				<td align="right" style="width: 140px">Tipo de Despacho:</td>								
+				<td align="left" style="width: 156px">{desp}</td>  
+			</tr>
+			{titulo_nom_dir}					
+</table>
+</fieldset>
+
+			
+		</td>
+	</tr>
+	<tr>
+	  
+		<td><br>
+			<table width="660" border="0" cellspacing="0" cellpadding="0" class="Estilo10" bgcolor="#c0c0c0">
+				<tr>
+					<td width="70" align="center">UPC/ SAP</td>
+					<td width="261" align="center">Descripción</td>
+					<td width="122" align="center">Unidad Medida</td>
+					<td width="122" align="center">Precio Unitario</td>
+					<td width="106" align="center">Cantidad Solicitada </td>
+					<td width="183" align="center">Cantidad Pickeada</td>
+				</tr>
+			</table>
+			<table width="670" border="0" cellspacing="0" cellpadding="0" class="textonormal">
+				
+{detalle}
+
+			
+{totalcantidadordpink}
+</table>	
+<hr align="left" style="width: 700px">	
+<h5>Firma Operador Logistico  _____________________________________________</h5>
+{salto}
+			<!-- END PICKING -->
+</td>
+</tr>
+</table>
+
+</td></tr></table>
+	
+
+<script type="text/javascript">
+
+
+	function copiacant(linea) {
+		formulario = document.nuevaoe;
+		eval('formulario.cantact_'+linea+'.value = formulario.cantdisp_'+linea+'.value');
+		calculatotallinea(linea);
+		calculatotal();
+	}
+	
+	function copiatodocant() {
+		formulario = document.nuevaoe;
+		for (var i = 0; i<formulario.length; ++i) {
+			if(formulario.elements[i].name.substr(0, 7) == 'cantact') {
+				linea = formulario.elements[i].name.substr(8);
+				eval('formulario.cantact_'+linea+'.value = formulario.cantdisp_'+linea+'.value');
+				calculatotallinea(linea);
+			}
+		}
+	}
+	
+	function calculatotallinea(linea) {
+		formulario = document.nuevaoe;
+		if (trim(eval('formulario.cantact_'+linea+'.value')) == '' || isNaN(eval('formulario.cantact_'+linea+'.value')))
+			eval('formulario.cantact_'+linea+'.value = \'0.00\'');
+		if (parseFloat(eval('formulario.cantact_'+linea+'.value'))>parseFloat(eval('formulario.cantdisp_'+linea+'.value')))
+			eval('formulario.cantact_'+linea+'.value = formulario.cantdisp_'+linea+'.value');
+		eval('formulario.totallinea_'+linea+'.value = Math.round(parseFloat(formulario.cantact_'+linea+'.value) * parseFloat(formulario.precventa_'+linea+'.value))');
+		calculatotal();
+	}
+</script>

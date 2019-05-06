@@ -1,0 +1,246 @@
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/funciones.js"></script>
+<script language="javascript" src="../../TEMPLATE/general/checkfield.js"></script>
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+<script>
+	function validar_form( form ) {
+		if( validar_obligatorio( form.usr_nombres, "Debe Ingresar Nombre" ) ) return false;
+		if( validar_obligatorio( form.usr_apellidos, "Debe Ingresar Apellidos" ) ) return false;
+//		if( validar_obligatorio( form.usr_email, "Debe Ingresar Email" ) ) return false;
+		if( validar_obligatorio( form.usr_login, "Debe Ingresar Usuario" ) ) return false;
+		if( form.usr_clave.value != form.usr_clave2.value ) {
+			alert( "Las claves ingresadas deben ser iguales" );
+			return false;
+		}
+  		//if ( document.form_agregar.tipousuario.value==2 || document.form_agregar.tipousuario.value==3){
+ 			if( validar_obligatorio( form.codigovendedor, "Debe Ingresar Código Vendedor" ) ){
+ 				return false;
+ 			} 
+	 		if ( document.form_agregar.codigovendedor.value<=0){
+				alert('Código Vendedor Debe ser Mayor a 0');
+				return false;			
+			}	
+			if (document.form_agregar.codigovendedor.value.length!=3){
+				alert('Código vendedor debe tener 3 caracteres');
+				return false;
+			}	
+		//}else{
+		//	document.form_agregar.codigovendedor.value='';
+		//}
+		return true;
+	}
+ function codvendedor() {
+	// if(document.form_agregar.tipousuario.value==2 || document.form_agregar.tipousuario.value==3){
+		document.form_agregar.codigovendedor.disabled=false;			 
+	 /*}else{
+		document.form_agregar.codigovendedor.disabled=true;	 
+	 }*/
+ }
+</script>
+<table width="650" border="5" bordercolor="white" cellpadding="0" cellspacing="">
+<tr>
+	<td>
+		<table width="700"  height="15" border="0" cellpadding="0"cellspacing="0">
+		<tr>
+			<td width="100%" class="titulonormal">{TEXT_TITULO}</td>
+		</tr>
+		<tr>
+			<td width="60%"  class="titulonormal">{OUT_BARRA}</td>
+		</tr>
+		<tr>
+			<td width="60%"><p>{TEXT}</p></td>
+		</tr>    
+	</table>
+	</td>
+</tr>
+<tr>
+	<td>
+		<table width="300" border="0"  align="center" cellpadding="0" cellspacing="0"  class="textonormal">
+		<form action="adm_musr_01.php" method="post" name="form_agregar" onSubmit="return validar_form(this);">
+		<INPUT TYPE="hidden" NAME="action" VALUE="upd1">
+		<INPUT TYPE="hidden" NAME="usr_id" VALUE="{usr_id}">
+		<INPUT TYPE="hidden" NAME="ses_usr_codlocal" VALUE="{ses_usr_codlocal}">		
+		<tr>
+			<td >Nombres</td>
+			<td align=center>:</td>
+			<td>
+			<INPUT TYPE="text" NAME="usr_nombres" VALUE="{usr_nombres}" SIZE="30" MAXLENGTH="200" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+			</td>
+		</tr>
+		<tr>
+			<td >Apellidos</td>
+			<td align=center>:</td>
+			<td>
+			<INPUT TYPE="text" NAME="usr_apellidos" VALUE="{usr_apellidos}" SIZE="30" MAXLENGTH="200" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+			</td>
+		</tr>
+		<tr>
+			<td >Tipo Usuario</td>
+			<td  align=center>:</td>
+			<td>
+			<select name="tipousuario" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" onchange="codvendedor()">
+			<!-- BEGIN Tipo_Usuario -->
+			<option value="{id_tipousuario}" {selectedtu}>{nomtipousuario}</option>
+			<!-- END Tipo_Usuario -->
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Codigo Vendedor</td>
+			<td  align=center>:</td>
+			<td>
+			<INPUT TYPE="text" NAME="codigovendedor" VALUE="{codigovendedor}"  {disabledcodigovendedor} {disabled} SIZE="30" MAXLENGTH="200" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);"> 
+			</td>
+		</tr>		
+		<tr>
+			<td >Email</td>
+			<td align=center>:</td>
+			<td>
+			<INPUT TYPE="text" NAME="usr_email" VALUE="{usr_email}" SIZE="30" MAXLENGTH="200" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+			</td>
+		</tr>
+		<tr>
+			<td >Local</td>
+			<td  align=center>:</td>
+			<td>
+			<select name="local" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+			<option value="0">TODOS</option>
+			<!-- BEGIN Locales -->
+			<option value="{cod_local}" {selected}>{nom_local}</option>
+			<!-- END Locales -->
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Login</td>
+			<td align=center>:</td>
+			<td>
+			<INPUT TYPE="text" NAME="usr_login" VALUE="{usr_login}" SIZE="30" MAXLENGTH="200" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+			</td>
+		</tr>
+		<tr>
+			<td >Clave</td>
+			<td align=center>:</td>
+			<td>
+			<INPUT TYPE="password" NAME="usr_clave" VALUE="" SIZE="30" MAXLENGTH="200" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+			</td>
+		</tr>
+		<tr>
+			<td >Reingrese clave</td>
+			<td align=center>:</td>
+			<td>
+			<INPUT TYPE="password" NAME="usr_clave2" VALUE="" SIZE="30" MAXLENGTH="200" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+			</td>
+		</tr>
+		<tr>
+			<td >Estado</td>
+			<td align=center>:</td>
+			<td>
+			<INPUT TYPE="radio" NAME="usr_estado" value="1" {chec1}>Activo
+			<INPUT TYPE="radio" NAME="usr_estado" value="0" {chec2}>Desactivo
+			</td>
+		</tr>
+		<tr>
+			<td colspan=4 align=center><br>
+			<input name="imageField" type="image" src="../../IMAGES/checkin.jpg" alt="{BOTON}" width="25" height="25" border="0"></td>
+		</tr>
+		</tr>
+		</form>
+		</table>
+	</td>
+</tr>
+<tr>
+		<td><p>{TEXT_SUB2}</p></td>	
+</tr>
+<br>
+<tr>
+	<td>
+	<table width="650" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+	<tr>
+	<th align="left" width="100">&nbsp;</th>	
+	<th align="left" width="100">{TEXT_ASOCIAR_CAMPO_1} </th>
+	<th align="left" width="100">{TEXT_ASOCIAR_CAMPO_2} </th>
+	<th align="left" width="100">{TEXT_ASOCIAR_CAMPO_3} </th>
+	<th align="left" width="100">{TEXT_ASOCIAR_CAMPO_4} </th>			
+	<th align="left" width="100">&nbsp;</th>		
+	</tr>
+	<!-- BEGIN Modulos_a -->
+	<form action="adm_musr_01.php" method="post" name="form_asociar">
+	<INPUT TYPE="hidden" NAME="action" VALUE="updmod">
+	<INPUT TYPE="hidden" NAME="usr_id" VALUE="{usr_id}">
+	<INPUT TYPE="hidden" NAME="pemo_mod_id" VALUE="{pemo_mod_id}">
+	<tr >
+		<td width=300>
+		<li>{mod_nombre}</li>
+		</td>
+		<td width=60 align=center>
+		<INPUT TYPE="checkbox" NAME="select_in_d" VALUE="1" checked disabled>
+		<INPUT TYPE="hidden" NAME="select_in" VALUE="1">
+		</td>
+		<td width=60 align=center>
+		<INPUT TYPE="checkbox" NAME="insert_in" VALUE="1" {ch1}>
+		</td>
+		<td width=60 align=center>
+		<INPUT TYPE="checkbox" NAME="delete_in" VALUE="1" {ch2}>
+		</td>
+		<td width=60 align=center>
+		<INPUT TYPE="checkbox" NAME="update_in" VALUE="1" {ch3}>
+		</td>
+		<td width="160" align=center>
+		<input name="imageField3" type="image" src="../../IMAGES/tick.png" alt="Modificar" width="12" height="12" border="0">
+		<!-- input name="imageField2" type="image" src="../../IMAGES/publish_x.png" width="12" height="12" border="0"-->
+		</td>
+	</tr>
+	</form>
+	<!-- END Modulos_a -->
+	</table>
+	</td>
+</tr>
+<tr>
+	<td><p>{TEXT_SUB3}</p></td>
+</tr>
+<tr>
+	<td>
+	<table width="650" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+	<tr>
+		<th align="left" width="100">&nbsp;</th>	
+		<th align="left" width="100">{TEXT_ASOCIAR_CAMPO_1} </th>		
+		<th align="left" width="100">{TEXT_ASOCIAR_CAMPO_2} </th>		
+		<th align="left" width="100">{TEXT_ASOCIAR_CAMPO_3} </th>			
+		<th align="left" width="100">{TEXT_ASOCIAR_CAMPO_4} </th>			
+		<th align="left" width="100">&nbsp;</th>	
+	</tr>
+	<!-- BEGIN Modulos_b -->
+	<form action="adm_musr_01.php" method="post" name="form_asociar">
+	<INPUT TYPE="hidden" NAME="action" VALUE="addmod">
+	<INPUT TYPE="hidden" NAME="usr_id" VALUE="{usr_id}">
+	<INPUT TYPE="hidden" NAME="pemo_mod_id" VALUE="{pemo_mod_id}">
+	<tr >
+		<td width=300><li>{mod_nombre}</li></td>
+		<td width=60 align=center>
+		<INPUT TYPE="checkbox" NAME="select_in_d" VALUE="1" checked disabled>
+		<INPUT TYPE="hidden" NAME="select_in" VALUE="1"></td>
+		<td width=60 align=center>
+		<INPUT TYPE="checkbox" NAME="insert_in" VALUE="1" ></td>
+		<td width=60 align=center>
+		<INPUT TYPE="checkbox" NAME="delete_in" VALUE="1" >	</td>
+		<td width=60 align=center>
+		<INPUT TYPE="checkbox" NAME="update_in" VALUE="1" ></td>
+		<td width="160" align=center>
+		<input name="imageField4" type="image" src="../../IMAGES/tick.png" alt="Asociar" width="12" height="12" border="0"></td>
+	</tr>
+	</form>
+	<!-- END Modulos_b -->
+	</tr>
+	</table>
+	</td>
+</tr>
+</table>
+<script language="javascript">
+window.document.form_agregar.usr_nombres.onkeypress = KeyIsTexto;
+window.document.form_agregar.usr_apellidos.onkeypress = KeyIsTexto;
+window.document.form_agregar.codigovendedor.onkeypress = KeyIsTexto;
+window.document.form_agregar.usr_email.onkeypress = KeyIsTexto;
+window.document.form_agregar.usr_login.onkeypress = KeyIsTexto;
+window.document.form_agregar.usr_clave.onkeypress = KeyIsTexto;
+window.document.form_agregar.usr_clave2.onkeypress = KeyIsTexto;
+</script>

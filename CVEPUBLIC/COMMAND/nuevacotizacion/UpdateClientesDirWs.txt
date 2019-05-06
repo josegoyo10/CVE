@@ -1,0 +1,33 @@
+<request>
+			<customer>
+				<Source>22</Source>
+				<IdCustomer>830033206</IdCustomer>
+				<IdCategory>3</IdCategory>
+				<IdTypeContribuyente>2</IdTypeContribuyente>
+				<TypeCustomer>
+					<IdTypeCustomer>5</IdTypeCustomer>
+				</TypeCustomer>
+				<Location>11001000001076</Location>
+				<IdDoc>31</IdDoc>
+				<FirstName>BODYTECH SA</FirstName>
+				<Surname1> </Surname1>
+				<Surname2> </Surname2>
+				<Address>KR 7 # 7 1 - 5 2 T O - A P 3</Address>		
+				<Phone>7422639</Phone>
+				<Phone2></Phone2>
+				<Fax>7442222</Fax>
+				<Email>COMPRAS.ADMINISTRATIVO@BODYTECHCORP.COM</Email>
+				<AgeRange>0</AgeRange>
+				<Contact>RAMOS L CASAS</Contact>
+				<Gender>M</Gender>
+				<Occupation></Occupation>
+				<Profession>60</Profession>
+				<ReteIca>false</ReteIca>
+				<ReteFuente>false</ReteFuente>
+				<ReteIva>false</ReteIva>
+				<ExenIva>false</ExenIva>
+				<OtrIva>false</OtrIva>
+				<State>A</State>
+				<CustomerLoyality></CustomerLoyality>
+			</customer>	
+		</request>

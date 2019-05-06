@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>{TITULO}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+<script language="javascript" src="../../TEMPLATE/general/checkfield.js"></script>
+
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table width="250" height="15" border="0" cellpadding="0"cellspacing="0">
+	<tr>
+		<td width="50%"  height="30" class="titulonormal">Agregar Usuario</td>
+	</tr>
+	<form action="adm_usr_03.php" method="post" name="form_buscar" >
+	<INPUT TYPE="hidden" NAME="action" VALUE="seausr">
+	<INPUT TYPE="hidden" NAME="id_padre" VALUE="{ID_PADRE}">
+	<tr>
+		<td>
+		<CENTER>
+		<p>Usuario : <INPUT TYPE="text" NAME="c_1" VALUE="{c_1}" SIZE="30" MAXLENGTH="200" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);"></p>
+		</td>
+	</tr>
+	<tr>
+		<td align="center" >
+			<INPUT TYPE="submit" value="Buscar usuario">
+		</td>
+	</tr>
+	<tr>
+		<td align="left">
+		<!-- BEGIN Usuarios -->
+		&nbsp;&nbsp;<a href="adm_usr_03.php?action=addusr&id_padre={ID_PADRE}&usr_id={usr_id}" title="">{usr_login}</a><br>
+		<!-- END Usuarios -->
+		</td>
+	</tr>
+	</form>
+</table>
+<script language="javascript">
+	window.document.form_buscar.c_1.onkeypress = KeyIsTexto;
+</script>
+</body>
+</html>

@@ -1,0 +1,437 @@
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript" src="../../TEMPLATE/general/checkfield.js"></script>
+
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/popup.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript" type="text/JavaScript" SRC="../../TEMPLATE/general/CalendarPopup.js"></SCRIPT>
+
+<script language="JavaScript">
+
+
+
+	function EvaluaFechas(fi,ft){
+
+		var fecha1=new Date()
+
+		var fecha2=new Date()
+
+		var str1 = fi;
+
+		var str2 = ft;
+
+		
+
+		fechaArr1 = new Array;
+
+		fechaArr2 = new Array;
+
+		 
+
+		fechaArr1 = str1.split("/");
+
+		fechaArr2 = str2.split("/");
+
+		/* convierte la fecha a número comparable*/
+
+		fecha1.setFullYear(fechaArr1[2],fechaArr1[1]-1,fechaArr1[0])
+
+		fecha2.setFullYear(fechaArr2[2],fechaArr2[1]-1,fechaArr2[0])
+
+		 
+
+		if (fecha1>fecha2){
+
+		  return false;
+
+		}
+
+		if (fecha1 == fecha2){
+
+		  return true;
+
+		}
+
+		if (fecha1 < fecha2){
+
+		  return true;
+
+		}
+
+	}
+
+	
+
+	function vercoti(elem){
+
+        document.location =
+
+'../nuevacotizacion/nueva_cotizacion_04.php?id_cotizacion=' + elem.id;
+
+    }
+
+    function editarcoti(elem){
+
+        document.location ='../nuevacotizacion/nueva_cotizacion_03.php?editar=Edit&id_cotizacion=' + elem.id;
+
+    }
+    
+    function editarcotipege(elem){
+
+        document.location ='../nuevacotizacion/nueva_cotizacion_03pege.php?editar=Edit&id_cotizacion=' + elem.id;
+
+    }
+
+    function eliminarcoti(elem){
+
+        if (confirm('¿Está seguro que desea eliminar la cotización ' + elem.id+'?')){
+
+            document.monitor_rut.accion.value='eli';
+
+            document.monitor_rut.ideli.value=elem.id;
+
+            document.monitor_rut.submit();
+
+        }
+
+    }
+
+
+
+
+
+function submitForm(){
+
+
+
+	formulario = document.formulario_busqueda;
+
+	var fecha_inicio,fecha_termino;
+
+	var valor=true;
+
+	
+
+	fecha_inicio =document.formulario_busqueda.feini.value;
+
+	fecha_termino=document.formulario_busqueda.fefin.value;
+
+	valor=EvaluaFechas(fecha_inicio,fecha_termino);
+
+	if(valor==false){
+
+		alert('Fecha de inicio mayor que fecha de termino en la busqueda de cotizaciones.');
+
+		document.formulario_busqueda.feini.select();
+
+		return false;
+
+	}
+
+	
+
+	if(formulario.buscar.value != ''){
+
+		if (formulario.filtro[0].checked && validar_numero( formulario.buscar, 'Debe ingresar un número de CC/NIT valido' )){
+
+			return false;
+
+		}
+
+
+
+		if (formulario.filtro[2].checked && validar_numero( formulario.buscar, 'Debe ingresar numero de cotizacion' )) {
+
+			return false;
+
+		}
+
+	}
+
+
+
+	
+
+	formulario.submit();
+
+}
+
+
+
+
+
+
+
+//-->
+
+</script>
+
+		<SCRIPT LANGUAGE="JavaScript">document.write(getCalendarStyles());</SCRIPT>
+
+		<SCRIPT LANGUAGE="JavaScript" ID="js17">
+
+			var ayer = new Date();
+
+			ayer.setDate(ayer.getDate()-1);
+
+			var cal1 = new CalendarPopup("testdiv1");
+
+			cal1.offsetX = -100;
+
+			cal1.offsetY = 45;
+
+			//cal1.addDisabledDates(null,formatDate(ayer,"yyyy-MM-dd"));
+
+	  	</SCRIPT>  
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+
+<script type="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+
+
+<table width="760" height="auto" border="0" cellpadding="0"cellspacing="0">
+
+  <tr>
+
+    <td width="50%"  height="auto" class="titulonormal">Monitor de Cotizaciones</td>
+
+
+
+</table>
+
+<table width="768" height="auto" border="0" cellpadding="0" cellspacing="0">
+
+	<tr>
+
+	
+
+		<td class="textonormal">
+
+		<form name="formulario_busqueda" method="post" onSubmit="return false;">
+
+		<input type=hidden name="accion" value="">
+
+
+
+				<tr>
+
+				  <td width=768> 
+
+				  <fieldset>
+
+				  <legend class="Textonormal">Datos de B&uacute;squeda</legend>
+
+				  <table border="0" height="auto" width="100%"align="left" class="textonormal">
+
+					
+
+                  		<tr>
+
+                        <tr>
+
+                         
+
+						  
+
+                    </tr>
+
+                    <tr>    <td align="right">&nbsp;</td>
+
+    <td align="right">&nbsp;</td>
+
+
+
+    <td scope="col" colspan="6" width="auto" >
+
+    					Desde&nbsp;<input name="feini" id="feini" class="Textonormal" readonly type="text" size=10 maxlength=10 value="{fechaucofini}" onClick="cal1.select(document.formulario_busqueda.feini,'anchor1','dd/MM/yyyy'); return false;">
+
+				<a href="" onClick="cal1.select(document.formulario_busqueda.feini,'anchor1','dd/MM/yyyy'); return false;" name="anchor1" id="anchor1"> <img src="../../IMAGES/cal.gif" width="16" height="16" border="0" title="Fecha Validez"></a>
+
+				<DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>&nbsp;Hasta&nbsp;<input name="fefin" id="fefin"  readonly type="text" class="Textonormal" size=10 maxlength=10 value="{fechaucoffin}" onClick="cal1.select(document.formulario_busqueda.fefin,'anchor2','dd/MM/yyyy'); return false;">
+
+				<a href="#" onClick="cal1.select(document.formulario_busqueda.fefin,'anchor2','dd/MM/yyyy'); return false;" name="anchor2" id="anchor2"> <img src="../../IMAGES/cal.gif" width="16" height="16" border="0" title="Fecha Validez"></a>
+
+				<DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>	
+
+					  
+
+	<input name="filtro" id="radio" type="radio" value="1" {checkr1}>
+
+CC/NIT/RUT
+
+  <input name="filtro" id="radio4" type="radio" value="2" {checkr2}>&nbsp;Raz&oacute;n&nbsp;Social&nbsp;
+
+  <input name="filtro" id="radio7" type="radio" value="3" {checkr3}>
+
+  N&ordm;
+
+         Cotizaci&oacute;n&nbsp;
+
+  <input type="text" size="18" name="buscar" class="Textonormal" value="{buscar}">  
+
+  <input type="button" class="Textonormal" align="left" name="busqueda2" onClick="submitForm()" value="Buscar">  </tr>
+
+  <tr>
+
+    <td align="right">&nbsp;</td>
+
+    
+
+    <td align="right">&nbsp;</td>
+
+    <td>Tipo Venta <select name="select_tipoventa" onChange="submitForm()"  class="TextoNormal" >
+
+        <option value="0" class="Textonormal">TODOS</option>
+
+        <!-- BEGIN tipoventa -->
+
+        <option value="{idventa}" {selected_venta}>{nomtipoventa}</option>
+
+        <!-- END tipoventa -->
+
+      </select></td>
+
+    <td>
+
+	Centro Facturación 
+	  <select name="select_suministro" onChange="submitForm()" class="TextoNormal" {deshabilitar_select} >
+
+      <option value="0" class="Textonormal">TODOS</option>
+
+      <!-- BEGIN suministro -->
+
+      <option value="{codigo_local}" {selected}>{nom_local}</option>
+
+      <!-- END suministro -->
+
+    </select>	</td>
+
+    
+
+    <td>Estado<select name="select_estado" onChange="submitForm()" class="TextoNormal" >
+
+								<option value="0" class="Textonormal">TODOS</option>
+
+								<!-- BEGIN estado -->
+
+								<option value="{id_estado}" {selected}>{descripcion}</option>
+
+								<!-- END estado -->
+
+							</select></td>
+
+  </tr></form>
+
+            	</table>
+
+				  </fieldset>
+
+				  <table  width="768" border="0" cellpadding="2" cellspacing="0" class="tituloadvertencia"><td align="center">{text_maximo}</td></table>
+
+			<table width="768" border="0" cellpadding="2" cellspacing="0" class="tabla2">
+
+				<tr>
+
+					<th width="52" >N&ordm; CO&nbsp;</th>
+
+					<th width="70" >Usuario &nbsp;</th>
+
+					<th width="75" >Fecha Creaci&oacute;n &nbsp;</th>
+
+					<th width="50" >Estado</th>
+
+					<th width="125">Tipo Venta</th>
+
+					<th width="148">Tienda Suministro</th>
+
+					<th width="99">CC/NIT/RUT</th>
+
+					<th width="138">Raz&oacute;n Social</th>
+
+					<th width="128">Acciones</th>
+
+				</tr>
+
+			</table>
+
+			<div style="height:'326'; width:768; overflow:auto; ">
+
+			<table width="100%" border="1" class="tabla2" cellspacing="0">
+
+              <FORM NAME="monitor_rut" METHOD="POST" onSubmit="return false;">
+
+              <input type=hidden name="accion" value="">
+
+              <input type=hidden name="ideli" value="">
+
+                <!-- BEGIN infocotizacion -->
+
+                <tr>
+
+                  <td width="2"  align="center">&nbsp;</td>
+
+                  <td width="30" align="right">{numerocot}&nbsp;</td>
+
+                  <td width="2"  align="center">&nbsp;</td>
+
+                  <td width="2" align="left">{usuariocrea}&nbsp;</td>                  
+
+                  <td width="5"  align="center">&nbsp;</td>
+
+				  <td width="50" align="left">{feccrea}&nbsp;</td>
+
+				  <td width="6"  align="center">&nbsp;</td>
+
+                  <td width="50" align="left">{nomestadocot}&nbsp;</td>
+
+                  <td width="6"  align="center">&nbsp;</td>
+
+                  <td width="80" align="left" >{nomtipoventacot}&nbsp;</td>
+
+                  <td width="125"  align="left">{nom_localcsum}</td>
+
+                  <td width="57" align="left">{rutdv}</td>
+
+                  <td width="1"  align="center">&nbsp;</td>
+
+                  <td width="100"  align="left">{razonsoc}&nbsp;&nbsp;</td>
+
+                  <td width="70"  align="left">{accver}&nbsp;{accmodificar}&nbsp;{acceliminar}</td>
+
+                </tr>
+
+                <!-- END infocotizacion -->
+
+              </form>
+
+			  </table>
+
+			<p>&nbsp;</p>
+
+			</div>
+
+		</td>
+
+	</tr>
+
+</table>
+
+<script type="text/javascript">
+
+<!--
+
+	
+
+function checkDV( elem ){
+	return true;
+}
+
+document.formulario_busqueda.buscar.focus();
+
+//-->
+
+</script>
+
+
+

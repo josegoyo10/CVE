@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html>
+<script>
+function bloquearimpresiones (){
+document.getElementById('desimp').innerHTML='';
+parent.frames[1].imprimir();
+window.location.href='../../COMMAND/monitororpick/prthdr.php?imprimir=1';
+}
+</script>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #ECE9D8;
+}
+-->
+</style></head>
+<body>
+<table width="200" align="left"  border="0" cellpadding="0" cellspacing="0" bgcolor="#ECE9D8" class="textonormal">
+  <tr>
+    <td width="4%"><div id="desimp">{imprimir}</div></td>
+    
+  </tr>
+</table>
+</body>
+</html>

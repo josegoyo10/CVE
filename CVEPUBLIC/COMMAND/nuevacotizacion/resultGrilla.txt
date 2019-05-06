@@ -1,0 +1,6 @@
+connlist Object
+(
+    [first:private] => 
+    [last:private] => 
+    [act:private] => 
+)

@@ -1,0 +1,701 @@
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/popup.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/ajax.js"></script>
+<script language="javascript" src="../../TEMPLATE/general/checkfield.js"></script>
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+<script language="javascript" src="../../TEMPLATE/general/xp_progress.js"></script>
+<script language="JavaScript" type="text/JavaScript">
+   <!--
+   	function crearemail(valor)
+   	{
+        	javascript:bar.togglePause();
+   		exec_AJAXRPC('POST','nueva_cotizacion_email.php?editar=Edit&id_cotizacion='+valor,'resmail');
+   	}
+   	function resmail(text){
+   
+   		javascript:bar.togglePause();
+   		if(text == 1){
+   			if(confirm("Error al generar pdf (CotizaciónCVE.pdf)\n¿Enviar la cotizacion en formato HTML?")){
+   				javascript:bar.togglePause();
+   				exec_AJAXRPC('POST','nueva_cotizacion_email.php?editar=Edit&id_cotizacion={id_cotizacion}&addAttachment=NO','resmail');			
+   			}
+   			else{
+   //alert('cancelar retorna a la ventana ');
+   return false;
+   }
+   //alert('error lanza confirm'+text);
+   }
+   else{
+   alert(text);
+   }
+   //document.getElementById('emailajax').innerHTML=text;
+   }
+   
+   function Eliminar(cotizacion){
+   
+   if (confirm('Esta accion eliminara la cotizacion '+cotizacion+' .\n¿ Desea continuar ?')) {
+   
+   	document.jump.id_cotizacion.value = cotizacion;		
+   
+   	document.jump.accion.value = 'Eliminar';
+   
+   	document.jump.submit();				
+   
+   }
+   
+   }
+   
+   
+   
+   function Imprime(estado,rut){
+   
+   // alert('estado:' + estado + 'Rut:' + rut);
+   
+   if(estado='CV')
+   
+   	popUpWindowModal('../../COMMAND/nuevacotizacion/printframe.php?popup=1&id_cotizacion={id_cotizacion}&rut={rut}',100, 100, 750, 950);
+   
+   else
+   
+   	popUpWindowModal('../../COMMAND/nuevacotizacion/printframe_ndv.php?popup=1&id_cotizacion={id_cotizacion}&id_estado_origen=tipo&rut={rut}',100, 100, 750, 950);		
+   
+   }
+   
+   
+   function Editar(id_cotizacion){
+   
+     // alert('Id Cotizacion:' + id_cotizacion); 
+   
+   if ('{local}'=='Z1'){
+   	alert('para editar la cotizacion es necesario que el usuario {usr_login_edit} tenga un local asignado');
+   	exit;
+   }
+   if (confirm('¿Esta seguro que desea editar la cotizacion '+id_cotizacion+'?')){
+   	if({contadorgenerico} > 0){
+   		location.href='../nuevacotizacion/nueva_cotizacion_03pege.php?editar=Edit&id_cotizacion='+id_cotizacion;
+   	}
+   	else{
+   		location.href='../nuevacotizacion/nueva_cotizacion_03.php?editar=Edit&id_cotizacion='+id_cotizacion;
+   	}
+   }else{
+   	return false;
+   }
+   }
+   
+   
+   
+   function Duplicar(cotizacion, {local}){
+   
+   if (confirm('Esta accion duplicara la cotizacion '+cotizacion+'.\n¿ Desea continuar ?')) {
+   
+   	if('{local}'=='Z1'){
+   
+   		alert('No tiene local asignado. No es posible duplicar la cotizacion.');
+   
+   		return false;
+   
+   	}else{
+   
+   		document.jump.id_cotizacion.value = cotizacion;		
+   
+   		document.jump.accion.value = 'Duplicar';
+   
+   		document.jump.submit();			
+   
+   	}
+   
+   }
+   
+   }
+   
+   function DuplicarCaducada(cotizacion, {local}){
+   
+   if (confirm('Esta accion duplicara la cotizacion '+cotizacion+' que se encuentra en estado caducada.\n¿ Desea continuar ?')) {
+   
+   	if('{local}'=='Z1'){
+   
+   		alert('No tiene local asignado. No es posible duplicar la cotizacion.');
+   
+   		return false;
+   
+   	}else{
+   
+   		document.jump.id_cotizacion.value = cotizacion;		
+   
+   		document.jump.accion.value = 'DuplicarCaducada';
+   
+   		document.jump.submit();			
+   
+   	}
+   
+   }
+   
+   }
+   
+   function DuplicarVencida(cotizacion, {local}){
+   
+   if (confirm('Esta accion duplicara la cotizacion '+cotizacion+' que se encuentra en estado Entregada o Finalizada.\n¿ Desea continuar ?')) {
+   
+   	if('{local}'=='Z1'){
+   
+   		alert('No tiene local asignado. No es posible duplicar la cotizacion.');
+   
+   		return false;
+   
+   	}else{
+   
+   		document.jump.id_cotizacion.value = cotizacion;		
+   
+   		document.jump.accion.value = 'DuplicarVencida';
+   
+   		document.jump.submit();			
+   
+   	}
+   
+   }
+   
+   }
+   
+   function GenSaldo(cotizacion){
+   
+   ///if (confirm('Esta acción generará una nueva cotización con el saldo de la Nota de Venta actual.\n¿ Desea continuar ?')) {
+   
+   	document.jump.id_cotizacion.value = cotizacion;		
+   
+   	document.jump.accion.value = 'GenSaldo';
+   
+   	document.jump.submit();			
+   
+   ///}
+   
+   }
+   
+   
+   
+   function GeneraOe(cotizacion){
+   
+     // alert('Margen OE:'+ {margentotal}); 
+     //alert('Generar OE:'+ cotizacion);
+   
+   //Original
+   //var retorno = popUpWindowModal('nueva_cotizacion_05.php?popup=1&id_cotizacion=' + cotizacion,10, 100,800,910);
+     
+   //cambiado por J.G 21-01-2019.
+   var retorno = popUpWindowModal('nueva_cotizacion_05.php?popup=1&id_cotizacion=' + cotizacion + "&margentotal=" + {margentotal},10, 100,800,910);
+     
+
+
+
+   if (retorno){
+   
+   	if (isNaN(retorno))
+   
+   		location.href='../monitororent/monitor_orden_entrega.php?filtro=3&buscar='+cotizacion;
+   
+   	else
+   
+   		location.href='../ordenent/ordenent_00.php?oe='+retorno;
+   
+   }
+   
+   }
+   
+   
+   
+   function NuevaCot(rut){
+   
+   location.href='../nuevacotizacion/nueva_cotizacion_02.php?rut='+rut;
+   
+   }
+   
+   function financia(cotizacion){
+   
+   location.href='../financiacion/financiacion.php?id_cotizacion='+cotizacion;
+   
+   }
+   
+   function actualizar_detalle(){
+   
+   //location.href='../nuevacotizacion/nueva_cotizacion_04.php?id_cotizacion={id_cotizacion}';
+   location.reload();
+   }
+   
+   function validaestado(estadoorigen, estadodestino, transaccion,cotizacion,terminal) {
+   
+   if(estadoorigen=='CE' && estadodestino=='CV' ){
+   
+   	popupwm = popUpWindowModal('nueva_cotizacion_04_popnotadeventa.php?popup=1&id_cotizacion='+cotizacion+'&estadoorigen='+estadoorigen+'&accion=envia',100, 100,635,300); 
+   
+   	if(popupwm == 'refresh'){		
+   
+   		location.reload(); 		
+   
+   	}
+   
+   	if(popupwm == 'completar'){		
+   
+   		location = '../../COMMAND/nuevacotizacion/nueva_cotizacion_01.php?rut={rut}&faldat=1';
+   
+   	}
+   
+   }else{
+   
+   	if ((terminal==1 && confirm('Al '+transaccion+' la cotizacion no podra volver atras.\n¿ Desea continuar de todas maneras ?'))
+   
+   		|| (terminal==0 && confirm('¿Esta seguro que desea '+transaccion+' la Cotizacion '+cotizacion+' ?'))){
+   
+   		if (estadodestino=='CT' && '{nolocalasignado}' == '1') {
+   
+   			alert('No puede editar la cotizacion debido a que no tiene asignado local');
+   
+   			return false;
+   
+   		}
+   
+   		if (estadodestino=='CT' && '{centrosumdis}' == '1' && '{nomsgactprec}' == '0' && !confirm('La cotizacion que esta intentando editar pertenece a un Almacén distinto al actual. Al editarla, modificara los precios de costo y venta de los productos y se actualizaran los precios al actual Almacén.\n ¿Desea continuar de todas maneras?') ) {
+   
+   			return false;
+   
+   		}
+   
+   		document.jump.transicion.value = transaccion;
+   
+   		document.jump.origen.value     = estadoorigen;
+   
+   		document.jump.destino.value    = estadodestino;
+   
+   		document.jump.id_cotizacion.value = cotizacion;		
+   
+   		document.jump.accion.value = 'CambEst';
+   
+   		document.jump.submit();			
+   
+   	}
+   
+   }
+   
+   }
+   
+   
+   
+   function Valid(){
+   
+   if( document.tracking.descripcion.value){
+   
+   	document.tracking.submit();
+   
+   }else{
+   
+   	alert("Debe ingresar descripción del evento" );
+   
+   	return false; 	
+   
+   }
+   
+   }
+   
+   //-->
+   
+</script>
+<table width="685" height="32" border="0" cellpadding="0"
+   cellspacing="0">
+   <tr>
+      <td width="390" class="titulonormal">&nbsp;Resumen {titulo}</td>
+      <td width="390" class="titulonormal">
+      </td>
+   </tr>
+</table>
+<FORM NAME="jump" METHOD="POST" ACTION="" TARGET="">
+   <input type="hidden" name="transicion" value="">
+   <input type="hidden" name="origen" value="">
+   <input type="hidden" name="destino" value="">
+   <input type="hidden" name="id_cotizacion" value="">	
+   <input type="hidden" name="accion" value="">
+   <input type="hidden" name="nomsgactprec" value="{nomsgactprec}">
+</FORM>
+<table width="650"  border="0" cellpadding="0" cellspacing="0">
+   <tr>
+      <td valign="top">
+         <link id="luna-tab-style-sheet" type="text/css" rel="stylesheet" href="../../INCLUDE/tabs/tabpane.css" />
+         <script type="text/javascript" src="../../INCLUDE/tabs/tabpane.js"></script>
+         <table width="670" align="center" border="0">
+            <tr>
+               <td>
+                  <div class="tab-page" id="modules-cpanel" >
+                     <script type="text/javascript">var tabPane1 = new WebFXTabPane( document.getElementById( "modules-cpanel" ), 0 )	</script>
+                     <div class="tab-page" id="modulo1" style="width:680; height:400;">
+                        <h2 class="tab">
+                           <div onclick="actualizar_detalle ()">Datos {documento}</div>
+                        </h2>
+                        <div align="left">
+                           <strong>Datos {titulo}</strong><br/>
+                           <table width="600"  border="0" cellspacing="0" cellpadding="0" class="textonormal">
+                              <tr>
+                                 <th width="25%" align="left">N&#176;&nbsp;{titulo}</th>
+                                 <td width="25%">{id_cotizacion}</td>
+                                 <th width="25%" align="left">Estado</th>
+                                 <td width="25%" ><strong><font color="#FF0000">{nomestado}</font></strong> </td>
+                              </tr>
+                              <tr>
+                                 <th align="left">Tipo Venta</th>
+                                 <td>{nomtipoventa}</td>
+                                 <th align="left">Vendedor</th>
+                                 <td>{nombrevendedor}</td>
+                              </tr>
+                              <tr>
+                                 <th align="left">Tienda Facturación</th>
+                                 <td>{nom_local}</td>
+                                 <th align="left">Tienda Suministro</th>
+                                 <td>{nom_local_csum}</td>
+                              </tr>
+                              <tr>
+                                 <th align="left">V&#225;lido Desde</th>
+                                 <td>{validdesde}</td>
+                                 <th align="left"> V&#225;lido Hasta</th>
+                                 <td>{validhasta}</td>
+                              </tr>
+                              <tr>
+                                 <th align="left">Margen</th>
+                                 <td>{margentotal}%</td>
+                                 <th align="left"></th>
+                                 <td></td>
+                              </tr>
+                              <tr>
+                                 <th align="left">Observaciones</th>
+                                 <td colspan="3">{nota}</td>
+                              </tr>
+                           </table>
+                           <table width="680" border="0" cellpadding="2" cellspacing="0" class="textonormal">
+                              <tr>
+                                 <td>
+                                    <table width="680" border="2" cellpadding="0" cellspacing="0" class="tabla2">
+                                       <tr>
+                                          <th width="40" align="center">Art&#237;culo{cadenapro}</th>
+                                          <th width="50" align="center">Tipo</th>
+                                          <th width="130" align="center">Descripci&oacute;n</th>
+                                          <th width="70" align="center">Grupo/Categor&iacute;a</th>
+                                          <th width="100" align="center">Tipo Despacho</th>
+                                          <th width="50" align="center">Unimed</th>
+                                          <th width="60" align="center">Instalacion</th>
+                                          <th width="60" align="center">Peso</th>
+                                          <th width="40" align="center">Cantidad</th>
+                                          <th width="100" align="center">Precio Con IVA</th>
+                                          <th width="50" align="center">Descuento</th>
+                                          <th width="50" align="center">Descuento %</th>
+                                          <!--<th width="{tamanopventaiva}" align="center">Bruto + Iva</th> -->  
+                                          <th width="45" align="center">Total</th>
+                                       </tr>
+                                       <!-- BEGIN detalleproductos -->              
+                                       <tr valign="top" {prioridad} >
+                                          <td width="40" align="center">{codprod}&nbsp;</td>
+                                          <td width="40" align="center">{prod_tipo}&nbsp;</td>
+                                          <td width="210" align="center">{descripcion}</td>
+                                          <td width="70" align="center">{grupocat}&nbsp;</td>
+                                          <td width="190" align="center">{desp}&nbsp;</td>
+                                          <td width="70" align="center">{unimed}&nbsp;</td>
+                                          <td width="130"  align="center">{instalacion}</td>
+                                          <td width="50"  align="center">{peso}</td>
+                                          <td width="20"  align="center" style="width: 102px">{cantidad}</td>
+                                          <td width="{tamtituloprecio}"  align="center">{precio}</td>
+                                          <!-- <td width="{tamtitulopventaiva}"  align="right">{pventaiva}</td> -->   
+                                          <td width="90"  align="center">{descuento}</td>
+                                          <td width="90"  align="center">{descuento%}</td>
+                                          <td width="90"  align="center">{totallinea}</td>
+                                       </tr>
+                                       <!-- END detalleproductos -->                
+                                    </table>
+                        </div>
+                        </td>
+                        </tr>	
+                        <tr>
+                        <td valign="top">	
+                        <table width="660" border="0" cellpadding="0" cellspacing="0" class="tabla3">
+                        <tr>
+                        <td width="40" ></td>
+                        <td width="80" ></td>
+                        <td width="200" ></td><td width="100" align="left">Sub Total </td>
+                        <td width="50"  ></td>								
+                        <td width="90"  align="right">{valortotal}</td>               
+                        </tr>
+                        <tr>
+                        <td width="40" ></td>
+                        <td width="80" ></td>
+                        <td width="200" ></td>                
+                        <td width="100" align="left">Descuentos</td>
+                        <td width="50"  ></td>								
+                        <td width="90"  align="right">{descuentot}</td>               
+                        </tr>
+                        <tr>
+                        <td width="40" ></td>
+                        <td width="80" ></td>
+                        <td width="200" ></td>                
+                        <td width="100" align="left">Valor Iva</td>
+                        <td width="50"  ></td>								
+                        <td width="90"  align="right">{cot_iva}</td>               
+                        </tr>
+                        <tr>
+                        <td width="40" ></td>
+                        <td width="80" ></td>
+                        <td width="200" ></td>                
+                        <td width="100" align="left">Retencion Renta</td>
+                        <td width="50"  ></td>								
+                        <td width="90"  align="right">{rete_renta}</td>               
+                        </tr>
+                        <tr>
+                        <td width="40" ></td>
+                        <td width="80" ></td>
+                        <td width="200" ></td>                
+                        <td width="100" align="left">Retencion IVA</td>
+                        <td width="50"  ></td>								
+                        <td width="90"  align="right">{rete_iva}</td>               
+                        </tr>
+                        <tr>
+                        <td width="40" ></td>
+                        <td width="80" ></td>
+                        <td width="200" ></td>                
+                        <td width="100" align="left">Retencion ICA</td>
+                        <td width="50"  ></td>								
+                        <td width="90"  align="right">{rete_ica}</td>               
+                        </tr>
+                        {valorfletetabla}
+                        {visible_reteiva}
+                        {visible_renta}
+                        {visible_ica}
+                        <tr>
+                        <td width="40"></td>
+                        <td width="80"></td>                
+                        <td width="200" ></td>
+                        <td width="100"align="left">Total A Pagar</td>
+                        <td width="50"></td>                
+                        <td width="90" align="right">{sumtotal}</td>
+                        </tr>				
+                        </table>
+                        </td>
+                        </tr>
+                        </table>	
+                     </div>
+                  </div>
+                  <div class="tab-page" id="modulo1" style="width:680; height:400;">
+                     <h2 class="tab">Acciones</h2>
+                     <div align="left">
+                        <strong>Acciones Disponibles</strong><br />
+                        <br>
+                        <table width="680"  border="0" align="center" cellpadding="2" cellspacing="2" class="textonormal">
+                           <tr>
+                              <td>
+                                 <table width="677"  border="0" align="center" cellpadding="4" cellspacing="2" class="subtitulonormal">
+                                    <!-- BEGIN Botones -->
+                                    <tr>
+                                       <td>
+                                          <div align="center">
+                                             {inicio}<input type="button" class="Textonormal" style="width:200{color}" value="{nomaccion}" onClick="validaestado('{id_estado_origen}', '{id_estado_destino}', '{nomaccion}',{id_cotizacion},{estadoterminal})">
+                                             {fin}{nomaccionsin}
+                                          </div>
+                                       </td>
+                                    </tr>
+                                    <!-- END Botones -->
+                                    <tr>
+                                       <td>
+                                          <div align="center">{eliminar}</div>
+                                       </td>
+                                    </tr>
+                                    <!-- <tr><td><div align="center">{imprimir}</div></td></tr> -->
+                                    <tr>
+                                       <td>
+                                          <div align="center">{duplicar}</div>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>
+                                          <div align="center">{duplicarcaducada}</div>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>
+                                          <div align="center">{editar}</div>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>
+                                          <div align="center">{generaoe}</div>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>
+                                          <div align="center">{financia}</div>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>
+                                          <div align="center">{boton_nueva_cotizacion}</div>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>
+                                          <div align="center">
+                                             <input type="button" class="Textonormal" style="width:200" value="Enviar Cotizacion Por Correo" onClick="crearemail({id_cotizacion})"><br><br><br><br><script language="JavaScript" type="text/JavaScript">var bar=createBar(250,15,"white",1,"black","black",85,7,3,"");javascript:bar.togglePause();</script>
+                                          </div>
+                                 </table>
+                              </td>
+                           </tr>
+                        </table>
+                     </div>
+                  </div>
+                  <div class="tab-page" id="modulo1" style="width:680; height:400;">
+                     <h2 class="tab">Datos Cliente </h2>
+                     <div align="left">
+                        <strong>Datos del Cliente</strong><br />
+                        <table width="685"  border="0" bordercolor='white' cellspacing="1" cellpadding="0" class="textonormal">
+                           <tr>
+                              <th align="left" width="150">Rut</th>
+                              <td width="530">{rutcliented}</td>
+                           </tr>
+                           <tr>
+                              <th align="left" >Tipo Cliente</th>
+                              <td>{nomtipcliente}</td>
+                           </tr>
+                           <tr>
+                              <th align="left" >V&iacute;a de Pago </th>
+                              <td>{nomtipdocpago}</td>
+                           </tr>
+                           <tr>
+                              <th align="left" >Raz&oacute;n Social</th>
+                              <td>{razonsoc}</td>
+                           </tr>
+                           <tr>
+                              <th align="left" >Actividad Econ&oacute;mica</th>
+                              <td>{giro}</td>
+                           </tr>
+                           <tr>
+                              <th align="left" >Departamento, Ciudad</th>
+                              <td>{departamentocli},{ciudadcli}</td>
+                           </tr>
+                           <tr>
+                              <th align="left" >Direcci&oacute;n, Barrio</th>
+                              <td>{direccion}, {nomcomuna}</td>
+                           </tr>
+                           <tr>
+                              <th align="left" >Contacto</th>
+                              <td>{contacto}&nbsp;</td>
+                           </tr>
+                           <tr>
+                              <th align="left" >Tel&eacute;fono Contacto </th>
+                              <td>{fonocontacto}</td>
+                           </tr>
+                           <tr>
+                              <th align="left" >Observaciones</th>
+                              <td class="subtitulonormal" >{locksap}{lockmoro}{lockcve}{lockfecha}{comentarioe}{saldodisp}</td>
+                           </tr>
+                        </table>
+                     </div>
+                  </div>
+                  <div class="tab-page" id="modulo1" style="width:680; height:400;">
+                     <h2 class="tab">Tracking</h2>
+                     <div align="left">
+                        <strong>Tracking de la {documento}</strong><br/>
+                        <br>
+                        <table width="685" border="0" align="center" cellpadding="0" cellspacing="0" class="textonormal">
+                           <FORM NAME="tracking" METHOD="POST">
+                              <input type="hidden" name="accion" value="AgrTr">
+                              <input type="hidden" name="tipo" value="USR">				
+                              <input type="hidden" name="id_cotizacion" value="{id_cotizacion}">
+                              <tr>
+                                 <td>
+                                    <table width="680" border="0" cellpadding="0" cellspacing="0" class="tabla2">
+                                       <tr>
+                                          <th width="98">Fecha </th>
+                                          <th width="84">Usuario</th>
+                                          <th width="80">Tip. Evento </th>
+                                          <th width="360">Descripci&oacute;n</th>
+                                       </tr>
+                                    </table>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td>
+                                    <div style="width:680; height:270; overflow:auto;">
+                                       <table width="660" border="0"  cellpadding="0" cellspacing="0" class="tabla1">
+                                          <!-- BEGIN listatracking -->                    
+                                          <tr valign="top">
+                                             <td align="left" width="100">{fecha_track}</td>
+                                             <td width="84">
+                                                <div align="left">&nbsp;{usuario_track}</div>
+                                             </td>
+                                             <td width="84">
+                                                <div align="left">{tipo}</div>
+                                             </td>
+                                             <td width="350" align="left">{descripcion_track}</td>
+                                          </tr>
+                                          <!-- END listatracking -->  
+                                       </table>
+                                    </div>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td>
+                                    <br>			
+                                    <table width="660" border="0" align="center" ellpadding="0" cellspacing="0" class="textonormal">
+                                       <tr valign="top">
+                                          <td width="560"><textarea name="descripcion" cols="70"></textarea></td>
+                                          <td width="100" valign="bottom"><input type="button" class="textonormal" name="Button" value="Ingresar" onClick="Valid()"></td>
+                                       </tr>
+                                    </table>
+                           </FORM>
+                           </td>
+                           </tr>
+                        </table>
+                     </div>
+                  </div>
+                  <div class="tab-page" id="modulo1" style="width:680; height:400;">
+                     <h2 class="tab">Doc.Relac.</h2>
+                     <div align="left">
+                        <strong>Documentos Relacionados</strong>
+                        <br><br>
+                        <table width="685" border="0" align="center" cellpadding="0" cellspacing="0" class="textonormal">
+                           <tr>
+                              <td>
+                                 <table width="680" border="0" cellpadding="0" cellspacing="0" class="tabla2">
+                                    <th width=100">Tipo Doc</th>
+                                    <th width="80" align=center>N&#176; doc</th>
+                                    <th width="150">Estado</th>
+                                    <th width="100">Fecha Creaci&oacute;n</th>
+                                    <th width="100">Usuario Creador</th>
+                                 </table>
+                              </td>
+                           </tr>
+                           <tr>
+                              <td>
+                                 <div style="width:680; height:200; overflow:auto;">
+                                    <table width="660" border="0" cellpadding="0" cellspacing="0" class="tabla1">
+                                       <!-- BEGIN ordenent -->
+                                       <tr valign="top">
+                                          <td width="100" align="left">&nbsp;{tipo_doc}</td>
+                                          <td width="80" align="right">&nbsp;<a href="../ordenent/ordenent_00.php?oe={id_ordenent}">{id_ordenent}</a></td>
+                                          <td width="150" align=left>&nbsp;{nomestadorent}</td>
+                                          <td width="100" align=right>&nbsp;{feccrea}</td>
+                                          <td width="100" align=left>&nbsp;{usrcrea}</td>
+                                       </tr>
+                                       <!-- END ordenent --> 	 
+                                       <tr>
+                                          <td colspan=5>{sindocumentos}</td>
+                                       </tr>
+                                    </table>
+                                 </div>
+                              </td>
+                           </tr>
+                        </table>
+               </td>
+            </tr>
+         </table>
+         </div>
+         </div>
+         </div><!--cierra primer div!-->
+      </td>
+   </tr>
+</table>
+</td>
+</tr>
+</table>
+<script language="javascript">
+   window.document.tracking.descripcion.onkeypress = KeyIsTexto;
+   
+</script>

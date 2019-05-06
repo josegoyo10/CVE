@@ -1,0 +1,58 @@
+connlist Object
+(
+    [first:private] => elementconnlist Object
+        (
+            [prev] => 
+            [next] => 
+            [elem] => dtolocalizacion Object
+                (
+                    [arreglo:private] => Array
+                        (
+                            [id_localizacion] => 5001000000000
+                            [departamento] => 
+                            [provincia] => 
+                            [ciudad] => 
+                            [localidad] => 
+                            [barrio] => 
+                            [id_departamento] => 
+                            [id_provincia] => 
+                            [id_ciudad] => 
+                            [id_localidad] => 
+                            [id_barrio] => 
+                            [id_municipio] => 
+                        )
+
+                )
+
+            [elemName] => 
+        )
+
+    [last:private] => elementconnlist Object
+        (
+            [prev] => 
+            [next] => 
+            [elem] => dtolocalizacion Object
+                (
+                    [arreglo:private] => Array
+                        (
+                            [id_localizacion] => 5001000000000
+                            [departamento] => 
+                            [provincia] => 
+                            [ciudad] => 
+                            [localidad] => 
+                            [barrio] => 
+                            [id_departamento] => 
+                            [id_provincia] => 
+                            [id_ciudad] => 
+                            [id_localidad] => 
+                            [id_barrio] => 
+                            [id_municipio] => 
+                        )
+
+                )
+
+            [elemName] => 
+        )
+
+    [act:private] => 
+)

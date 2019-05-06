@@ -1,0 +1,93 @@
+<table width="778"  border="0" cellpadding="0" cellspacing="0">	 
+	<tr>
+		<td width=768>
+			<form NAME="filtro" METHOD="POST" onSubmit="return false;">
+			<input type="hidden" name="nomvendedor" value="{nomvendedor}">
+			<input type="hidden" name="accion" value="sendrut">
+				<fieldset>
+				<table align=center>
+					<tr>
+						<td class="textonormal" align="center">Tipo Cliente</td>
+					  	<td class="textonormal" align=center>Nombre/ Razon Social</td>
+						<td class="textonormal" align=center>NIT/RUT/CC </td>
+						<td class="textonormal" align=center>Vendedores</td>
+					</tr>
+					<tr>
+										
+					<td align="center"><select name="tipo_cliente" class="TextoNormal" >
+
+							<option value="" class="Textonormal">TODOS</option>
+
+							<!-- BEGIN contri -->
+
+								<option value="{id}" {selectedcontri}>{nombrecontri}</option>
+
+							<!-- END contri -->
+
+						</select>
+						</td>
+					  	<td class="textonormal" align=center>
+						<input type="text" name="nombre" size="25" maxlength="25" class="textonormal" value="{nombreing}">	
+						</td>
+						<td class="textonormal" align=center>
+						<input type="text" name="rutingresado" size="25" maxlength="25" class="textonormal" value="{ruting}">	
+						</td>
+						<td class="textonormal" align=center>
+							<select name="select_vendedores" class="TextoNormal" >
+								<option value="" class="Textonormal">TODOS</option>
+								<!-- BEGIN vendedores -->
+									<option value="{codigovendedor}" {selected}>{nomvendedor}</option>
+								<!-- END vendedores -->
+							</select>
+						</td>
+						
+						<td class="textonormal" align=center><input type="button" class="Textonormal" value="Filtrar" onClick="submitForm()"></td>
+					</tr>
+						</form>
+				</table>
+				</fieldset>
+<br>
+<div align="center">
+<a href="javascript:agregar_todos();" style="font-size:12px;">Agregar todos</a>
+</div>
+<br>
+				
+		<table  width="768" border="0" cellpadding="2" cellspacing="0" class="tituloadvertencia"><td align="center"></td></table>
+			<table width="778" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+				<tr>
+					<th width="15%" align="center">CC/NIT/RUT&nbsp;</th>
+					<th width="20%" align="center">Tipo Cliente&nbsp;</th>
+					<th width="30%" align="center">Raz&oacute;n Social </th>
+					<th width="25%" align="center">Vendedor</th>
+					<th width="10%" align="center">Acciones</th>
+				</tr>
+			</table><div style="height:'348'; width:768; overflow:auto;">
+			<table width="100%" border="1" class="tabla2" cellspacing="0">
+	            <!-- BEGIN infocliente -->
+	            
+<tr style="display:none">
+<td>
+<div style="visibility:hidden;width:0px;height:0px;" name="row_rut_cliente_{i}" id="row_rut_cliente_{i}">{rutdv}</div>
+<div style="visibility:hidden;width:0px;height:0px;" name="row_tipo_cliente_{i}" id="row_tipo_cliente_{i}">{tipocliente}</div>
+<div style="visibility:hidden;width:0px;height:0px;" name="row_razon_cliente_{i}" id="row_razon_cliente_{i}">{razonsoc}</div>
+<div style="visibility:hidden;width:0px;height:0px;" name="row_vendedor_cliente_{i}" id="row_vendedor_cliente_{i}">{vendedor}</div>				
+</td>		
+</tr>	            
+	            
+				<tr>
+					
+					<td width="15%" align="center">{rutdv}</td>
+					<td width="20%" align="center">{tipocliente}</td>
+					<td width="30%" align="left">{razonsoc}</td>
+					<td width="25%"  align="center">{vendedor}</td>
+					<td width="10%"  align="center">{acciones}
+		          
+          </td>
+				</tr>
+				
+
+	          	<!-- END infocliente -->
+	        </form>
+		</table>
+	</div>
+</table>

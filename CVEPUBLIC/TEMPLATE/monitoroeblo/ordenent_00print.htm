@@ -1,0 +1,293 @@
+<title>{TITULO}</title>
+
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+
+<SCRIPT LANGUAGE="JavaScript" src="../../TEMPLATE/general/checkfield.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<script>window.name='ordenent_00print';</script>
+
+<script>
+
+function autorizarorden(id_ordenent){   
+
+		if(document.OE_BLOQUEADA.razon.value){
+			document.OE_BLOQUEADA.condicion.value   = document.OE_CLIENTE.condpagodias[document.OE_CLIENTE.condpagodias.selectedIndex].text;
+
+			document.OE_BLOQUEADA.condpagodias.value= document.OE_CLIENTE.condpagodias[document.OE_CLIENTE.condpagodias.selectedIndex].value;
+
+			document.OE_BLOQUEADA.accion.value='autorizar';
+
+			document.OE_BLOQUEADA.id_ordenent.value = id_ordenent;
+
+			document.OE_BLOQUEADA.submit();	      
+
+		
+}else{
+			alert ('Debe ingresar un comentario para la autorizacion de la orden de entrega.');		
+		}
+}
+
+
+
+function rechazarorden(id_ordenent){		
+
+		if(document.OE_BLOQUEADA.razon.value){
+
+			document.OE_BLOQUEADA.accion.value='rechazar';
+
+			document.OE_BLOQUEADA.id_ordenent.value = id_ordenent;
+
+			document.OE_BLOQUEADA.submit();
+
+		}
+
+		else{
+
+			alert ('Debe ingresar un comentario para el rechazo de la orden de entrega.');
+
+		}
+
+}
+
+
+
+function cierraorden(){    
+
+		document.OE_BLOQUEADA.accion.value='cancelar';
+
+		document.OE_BLOQUEADA.submit();	      
+
+}	
+
+</script>
+
+
+
+<table width="530" border="0" cellpadding="0" cellspacing="0">
+
+	<tr>
+
+	  <td >&nbsp;</td>
+
+	  <td class="titulonormal">&nbsp;Autorizar Orden Entrega</td>
+
+  </tr>
+
+	<tr>
+
+		<td>
+
+			&nbsp;<br>
+
+		</td>
+
+	</tr>
+
+	<tr>
+
+	  <td width="10">&nbsp;</td>
+
+		<td width="550">
+
+		<fieldset>
+
+		<legend class=textonormal>Datos Orden Entrega</legend>
+
+			<table width="505"  border="0" cellspacing="1" cellpadding="1" class="textonormal">
+
+				<tr>                 
+
+					<th align="left" width="120">N&ordm; Orden Entrega </th>
+
+					<td width="174">{id_ordenent}</td>
+
+					<th align="left" width="122">Vendedor</th>
+
+					<td width="178">{nombrevendedor}</td>
+
+				</tr>
+
+				<tr>
+
+					<th align="left">Tipo Entrega </th>
+
+					<td>{nomtipoentrega}</td>
+
+					<th align="left">Tienda</th>
+
+					<td>{nom_local_csum}</td>                    
+
+				</tr>
+
+		</table>
+
+		</fieldset>
+
+		</td>
+
+	</tr>
+
+	<tr>
+
+		<td>
+
+			&nbsp;<br>
+
+		</td>
+
+	</tr>
+
+	<tr>
+
+	  <td>&nbsp;</td>
+
+		<td>
+
+		<fieldset><legend class=textonormal>Datos Cliente</legend>
+
+			<table width="505" border="0" cellspacing="1" cellpadding="1" class="textonormal">
+
+			<form name="OE_CLIENTE" method="post">			
+
+				<tr>
+
+					<th align="left" width="113">CC/NIT/RUT</th>
+
+					<td width="157">{rutdv}</td>
+
+					<th align="left" width="112">Tipo Cliente</th>
+
+					<td width="168">{nomtipcliente}</td>
+
+				</tr>
+
+				<tr>
+
+					<th align="left">Raz&oacute;n Social</th>
+
+					<td>{razonsoc}</td>
+
+					<th align="left">Actividad Econ&oacute;mica</th>
+
+					<td>{giro}</td>
+
+				</tr>
+
+				<tr>
+
+					<th align="left">Disponible</th>
+
+					<td align="left" class="textodisponible">$ {disponible}</td>
+
+					<th align="left">Total Solicitado </th>
+
+					<td align="left" class="textodisponible">$ {monto}</td>
+
+				</tr>
+
+				<tr>
+
+					<th align="left" valign=top>Observaciones</th>
+
+					<td align="left" colspan="3">{locksap}{lockmoro}{lockcve}{lockfecha}{comentario}{saldodisp}</td>
+
+				</tr>
+				<tr>
+				  <th align="left" valign=top>Cond. Pago Cliente </th>
+				  <td align="left" colspan="3">{dias}.</td>
+			  </tr>
+
+				<tr>
+
+					<th align="left" valign=top>Cond. Pago Venta</th>
+
+					<td align="left" colspan="3">
+
+						<select name="condpagodias" class="textonormal" {deshabilitado}>
+
+							<!-- BEGIN condpagod -->
+
+							<option value="{id}" {selected}>{nombre}</option>							
+
+							<!-- END condpagod -->
+
+						</select>
+
+					</td>
+
+				</tr>				
+
+			</form>
+
+		</table>
+
+		</fieldset>
+
+		</td>
+
+	</tr>
+
+	<tr>
+
+	  <td width="20">&nbsp;</td>
+
+		
+
+		<td>
+
+			<table width="506" border="0" align="left" cellpadding="2" cellspacing="0" class="textonormal">
+
+				<form name="OE_BLOQUEADA" method="post" target="ordenent_00print">	
+
+				<input type="hidden" name="accion" value="">
+
+				<input type="hidden" name="id_ordenent" value="">
+
+				<input type="hidden" name="condpagodias" value="">				
+
+				<input type="hidden" name="condicion" value="">					
+
+				<tr>
+
+				  <th width="269" align="left">Comentario</th>
+
+				</tr>
+
+				<tr>
+
+				  <td width="100%"><textarea name="razon" cols="63" rows="3">{razon_rechazo}</textarea></td>
+
+				  
+
+				  
+
+				</tr><br>
+
+				<tr>
+
+				  <td align="center">
+
+				 
+
+				  <input type="button" value="&nbsp;&nbsp;&nbsp;Cancelar&nbsp;&nbsp;&nbsp;" onClick="window.close();">&nbsp;
+
+				  <input type="button" name="autorizar" value="&nbsp;&nbsp;&nbsp;Autorizar&nbsp;&nbsp;&nbsp;" onClick="autorizarorden({id_ordenent})">&nbsp;				  
+
+				  <input name="rechazar" type="button" value="&nbsp;&nbsp;&nbsp;Rechazar&nbsp;&nbsp;&nbsp;" onClick="rechazarorden({id_ordenent})">
+
+				  </td>
+
+				</tr>
+
+				</form>
+
+		  </table>
+
+		</td>
+
+	</tr>
+
+</table>
+

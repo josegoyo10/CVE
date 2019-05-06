@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Validar Impresion de picking</title>
+<script type="text/javascript">
+function cerrar_ventana(){
+	window.close();
+}
+
+alert('Esta orden de picking ya fue impresa. Por favor ingrese su usuario y contraseña para autorizar la reimpresión.');
+</script>
+<style type="text/css">
+<!--
+.Estilo12 {
+font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:13px;
+	color: #ff2000;
+	font-weight:bold;
+}
+-->
+</style>
+</head>
+<body>
+
+<form action="validarimpresion.php" method="POST" onsubmit="cerrar_ventana();">
+<table width="350" align="center" border="0" cellpadding="0" cellspacing="0">
+<tr>
+	  
+		<td style="width: 766px">
+		<img src="../../IMAGES/logotipo_negro.gif" width="100" height="50" border=0><span class="Estilo12">Autorizar Reimpresión</span>
+		<img src="../../IMAGES/bandapeligro.gif" width="720" height="10" border=0><br><br>
+<TABLE width="350" align="center" border="0" cellpadding="0" cellspacing="1">
+	          <tr><td><br><br><br></td><td></td></tr>
+	          <TR>
+	            <TD width="25%" align="right" class="textoLog" style="width: 422px"><b>Usuario:</b></TD>
+	            <TD width="70%"><input name="usuario" type="text" size="22" maxlength=20></TD>
+	            
+	          </TR>
+	          <TR>
+	            <TD align="right" class="textoLog"><b>Password:</b></TD>
+	            <TD style="width: 459px"><input name="clave" type="password" size="22" maxlength=20></TD>        
+	          </TR>
+	          
+	          
+	          <TR>
+	          
+	           	<td colspan="2" align="center" style="width: 723px"><br><input type="Submit" value="Autorizar" style="width: 97px">&nbsp;&nbsp;
+				<INPUT TYPE ="button" VALUE ="Cancelar" style="width: 95px;" onclick="cerrar_ventana();">
+				</td> 
+	            </TR>
+	            <tr><td><br><br><br></td><td></td></tr>
+	        </TABLE>
+<table width="700" align="center" border="0" cellpadding="0" cellspacing="0">
+<tr>
+	  
+		<td style="width: 766px" align="right">
+		
+		<img src="../../IMAGES/logotipo_negro.gif" width="100" height="50" border=0>
+<input type='hidden' name='valuecadenarehtm' value='{cadenar}'>
+<input type='hidden' name='valuecadenahtm' value='{cadena}'>
+<input type='hidden' name='contintentoimp' value='1'>
+
+</body>
+</html>

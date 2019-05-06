@@ -1,0 +1,184 @@
+connlist Object
+(
+    [first:private] => elementconnlist Object
+        (
+            [prev] => 
+            [next] => 
+            [elem] => dtoinfocliente Object
+                (
+                    [arreglo:private] => Array
+                        (
+                            [rut] => 830033206
+                            [id_comuna] => 11001000001076
+                            [id_cotizacion] => 
+                            [nomcomuna] => 
+                            [comunaservicio] => 
+                            [id_ciudad] => 
+                            [nomciudad] => 
+                            [ciudadservicio] => 
+                            [id_region] => 
+                            [diascondicion] => 
+                            [nomregion] => 
+                            [id_rubro] => 
+                            [nomrubro] => 
+                            [id_tipocliente] => 
+                            [nomtipcliente] => 
+                            [id_tipodocpago] => 
+                            [nomtipdocpago] => 
+                            [codigovendedor] => 
+                            [vendedor] => 
+                            [razonsoc] => BODYTECH SA
+                            [id_giro] => C001
+                            [giro] => 
+                            [contacto] => CASAS
+                            [fonocontacto] => 7422639
+                            [fonoservicio] => 
+                            [email] => COMPRAS.ADMINISTRATIVO@BODYTECHCORP.COM
+                            [direccion] => KR 7 # 7 1 - 5 2 T O - A P 3
+                            [direccionservicio] => 
+                            [locksap] => 
+                            [lockmoro] => 
+                            [lockcve] => 
+                            [lockfecha] => 
+                            [valdisp] => 
+                            [comentario] => 
+                            [codlocaluco] => E801
+                            [nomlocaluco] => 
+                            [fechaucofini] => 
+                            [fechaucoffin] => 
+                            [fechauco] => 
+                            [orderby] => 
+                            [disponible] => 
+                            [codclisap] => 
+                            [usrcrea] => 
+                            [feccrea] => 
+                            [usrmod] => 
+                            [fecmod] => 
+                            [fchalimite] => 
+                            [id_linea] => 
+                            [monto] => 
+                            [rutcliente] => 
+                            [id_ordenent] => 
+                            [id_documento] => 
+                            [id_tipoconpago] => 
+                            [numdiaspago] => 
+                            [limite] => 
+                            [total_encontrado] => 
+                            [registro] => 
+                            [id_clientepref] => 
+                            [sinasignar] => 
+                            [rete_iva] => 0
+                            [rete_ica] => 0
+                            [rete_renta] => 0
+                            [id_documento_identidad] => 31
+                            [id_clasificacion_cli] => 3
+                            [apellido] => RAMOS
+                            [apellido1] => L
+                            [celcontactoe] => 
+                            [fax] => 7442222
+                            [id_contribuyente] => 5
+                            [id_regimencontri] => 2
+                            [genero] => M
+                            [accionupdate] => 
+                            [id_profesion] => 60
+                            [profesion] => 
+                            [contribuyente] => 
+                        )
+
+                )
+
+            [elemName] => 
+        )
+
+    [last:private] => elementconnlist Object
+        (
+            [prev] => 
+            [next] => 
+            [elem] => dtoinfocliente Object
+                (
+                    [arreglo:private] => Array
+                        (
+                            [rut] => 830033206
+                            [id_comuna] => 11001000001076
+                            [id_cotizacion] => 
+                            [nomcomuna] => 
+                            [comunaservicio] => 
+                            [id_ciudad] => 
+                            [nomciudad] => 
+                            [ciudadservicio] => 
+                            [id_region] => 
+                            [diascondicion] => 
+                            [nomregion] => 
+                            [id_rubro] => 
+                            [nomrubro] => 
+                            [id_tipocliente] => 
+                            [nomtipcliente] => 
+                            [id_tipodocpago] => 
+                            [nomtipdocpago] => 
+                            [codigovendedor] => 
+                            [vendedor] => 
+                            [razonsoc] => BODYTECH SA
+                            [id_giro] => C001
+                            [giro] => 
+                            [contacto] => CASAS
+                            [fonocontacto] => 7422639
+                            [fonoservicio] => 
+                            [email] => COMPRAS.ADMINISTRATIVO@BODYTECHCORP.COM
+                            [direccion] => KR 7 # 7 1 - 5 2 T O - A P 3
+                            [direccionservicio] => 
+                            [locksap] => 
+                            [lockmoro] => 
+                            [lockcve] => 
+                            [lockfecha] => 
+                            [valdisp] => 
+                            [comentario] => 
+                            [codlocaluco] => E801
+                            [nomlocaluco] => 
+                            [fechaucofini] => 
+                            [fechaucoffin] => 
+                            [fechauco] => 
+                            [orderby] => 
+                            [disponible] => 
+                            [codclisap] => 
+                            [usrcrea] => 
+                            [feccrea] => 
+                            [usrmod] => 
+                            [fecmod] => 
+                            [fchalimite] => 
+                            [id_linea] => 
+                            [monto] => 
+                            [rutcliente] => 
+                            [id_ordenent] => 
+                            [id_documento] => 
+                            [id_tipoconpago] => 
+                            [numdiaspago] => 
+                            [limite] => 
+                            [total_encontrado] => 
+                            [registro] => 
+                            [id_clientepref] => 
+                            [sinasignar] => 
+                            [rete_iva] => 0
+                            [rete_ica] => 0
+                            [rete_renta] => 0
+                            [id_documento_identidad] => 31
+                            [id_clasificacion_cli] => 3
+                            [apellido] => RAMOS
+                            [apellido1] => L
+                            [celcontactoe] => 
+                            [fax] => 7442222
+                            [id_contribuyente] => 5
+                            [id_regimencontri] => 2
+                            [genero] => M
+                            [accionupdate] => 
+                            [id_profesion] => 60
+                            [profesion] => 
+                            [contribuyente] => 
+                        )
+
+                )
+
+            [elemName] => 
+        )
+
+    [act:private] => 
+)

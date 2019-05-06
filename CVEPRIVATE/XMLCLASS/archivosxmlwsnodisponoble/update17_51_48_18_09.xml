@@ -1,0 +1,32 @@
+<request>
+	<customer>
+		<Source>22</Source>
+		<IdCustomer>900018700</IdCustomer>
+		<IdCategory>3</IdCategory>
+		<IdTypeContribuyente>3</IdTypeContribuyente>
+		<TypeCustomer>
+			<IdTypeCustomer>5</IdTypeCustomer>
+		</TypeCustomer>
+		<Location>11001000019040</Location>
+		<IdDoc>31</IdDoc>
+		<FirstName>UP SOLUCIONES LTDA</FirstName>
+		<Surname1> </Surname1>
+		<Surname2> </Surname2>
+		<Address>CRA 61 N° 75-05</Address>		
+		<Phone>2504496</Phone>
+		<Phone2></Phone2>
+		<Fax></Fax>
+		<Email>NRUIZ2000@HOTMAIL</Email>
+		<AgeRange>0</AgeRange>
+		<Quota>0</Quota>
+		<Contact>RUIZ R NESTOR</Contact>
+		<Gender>NA</Gender>
+		<Occupation></Occupation>
+		<ReteIca>false</ReteIca>
+		<ReteFuente>true</ReteFuente>
+		<ReteIva>false</ReteIva>
+		<ExenIva>false</ExenIva>
+		<OtrIva>false</OtrIva>
+		<State>A</State>
+	</customer>	
+</request>

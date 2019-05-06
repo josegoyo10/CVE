@@ -1,0 +1,32 @@
+<request>
+	<customer>
+		<Source>22</Source>
+		<IdCustomer>830013820</IdCustomer>
+		<IdCategory>3</IdCategory>
+		<IdTypeContribuyente>2</IdTypeContribuyente>
+		<TypeCustomer>
+			<IdTypeCustomer>5</IdTypeCustomer>
+		</TypeCustomer>
+		<Location>11001000010068</Location>
+		<IdDoc>31</IdDoc>
+		<FirstName>AGRUPACION DE VIVIENDA LOS HIGUERILLOS</FirstName>
+		<Surname1> </Surname1>
+		<Surname2> </Surname2>
+		<Address>CRA 111 C N°.88-15</Address>		
+		<Phone>7033195</Phone>
+		<Phone2></Phone2>
+		<Fax>3115390629</Fax>
+		<Email>AGRUPACIONHIGUERILLOS@HOTMAIL.COM</Email>
+		<AgeRange>0</AgeRange>
+		<Quota>0</Quota>
+		<Contact>A L L</Contact>
+		<Gender>NA</Gender>
+		<Occupation></Occupation>
+		<ReteIca>false</ReteIca>
+		<ReteFuente>false</ReteFuente>
+		<ReteIva>false</ReteIva>
+		<ExenIva>false</ExenIva>
+		<OtrIva>false</OtrIva>
+		<State>A</State>
+	</customer>	
+</request>

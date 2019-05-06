@@ -1,0 +1,779 @@
+<html>
+
+<head>
+
+<title>Impresión de documento</title>
+
+<body topmargin="0" leftmargin="0" marginheight="0" marginwidth="0">
+
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<script language="javascript" src="../../TEMPLATE/general/checkfield.js"></script>
+
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css">
+
+<SCRIPT LANGUAGE="JavaScript" type="text/JavaScript" SRC="../../TEMPLATE/general/CalendarPopup.js"></SCRIPT>
+
+<script language="javascript" src="../../TEMPLATE/general/popup.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript">
+
+window.name="Guia";
+
+var linea = new Array(); 
+
+var idlinea= new Array(); 
+
+var i=0,k=0,g=0,cont=0;
+
+	function abrelibreta(numinterno, dir_guardada) {
+
+			var retorno = popUpWindowModalscroll('../../COMMAND/ordenent/ordenent_02.php?popup=1&rut={rut}&id_ordenent={oe}&numinterno='+numinterno+'&dir_guardada='+dir_guardada, 100, 100, 580, 400);
+			//var retorno = popUpWindow('ordenent_popguia.php?popup=1&id_ordenent='+id_ordenent,100, 100,700,520);
+			//Siempre se recarga la pagina padre
+			//alert('retorno: '+retorno);
+//			if (retorno && !isNaN(retorno)){
+//alert(retorno);
+var resultado_retorno = retorno.split("_");
+
+/*alert('primer valor: '+resultado_retorno[0]);
+alert('segundo valor: '+resultado_retorno[1]);*/
+var id_direccion = resultado_retorno[0];
+var numinterno = resultado_retorno[1];
+document.direccion.dir.value=id_direccion;
+document.direccion.num_interno.value=numinterno;
+
+/*
+var where_is_mytool="home/mytool/mytool.cgi";
+var mytool_array=where_is_mytool.split("/");
+alert(mytool_array[0]+" "+mytool_array[1]+" "+mytool_array[2]);*/
+//return false;
+		if (numinterno >0) {
+//alert(id_direccion);
+//alert(numinterno);
+			//alert('retorno mayor a 1, por lo tanto nuevamente el item: '+_item);
+			location.href='../ordenent/ordenent_popguia.php?popup=1&id_ordenent={oe}&id_direccion='+id_direccion+'&numinterno='+numinterno+'&dir_guardada='+dir_guardada;
+			//alert('Este es el string completo que vuelve: '+retorno);
+		}
+
+				//alert('esto llego en el retorno: '+retorno);
+			//document.direccion.dir.value = retorno;
+//			document.direccion.dir._item = _item;
+			document.direccion.marcadir.value=1;
+				//var setdir = retorno;
+				//document.detalle.id_direccion.value= setdir;
+
+
+	}
+function Imprime(id_item, numinterno, id_direccion){
+
+	//dir= document.detalle.id_direccion.value;
+	popUpWindowModal('documento.php?popup=1&id_documento='+numinterno+'&numdocumento='+eval('document.detalle.numdoc_'+id_item+'.value')+'&id_direccion='+eval('document.detalle.id_direccion_'+id_item+'.value'),100, 100, 750, 720	);
+}
+
+
+
+function limpiar(ultimo){
+
+	for (i=1;i<document.detalle.ultimo.value;i++){
+
+		eval("document.detalle.numdoc_"+i+".value = ' '");
+
+	}	
+
+}
+
+
+
+function llenar(folio, ultimo){
+
+	for (i=1;i<document.detalle.ultimo.value;i++){
+
+		if( eval('document.detalle.idlinea_'+i+'.checked') == true ){
+
+			eval('document.detalle.numdoc_'+i+'.value = ' + folio);
+
+		}
+
+	}
+
+}
+
+
+
+function CheckTodas(elemento) {
+
+	var folio = parseInt(document.detalle.folio.value);
+
+	var ultimo = parseInt(document.detalle.ultimo.value);
+
+	if (elemento.checked) {
+
+		for (i=0;i<document.detalle.elements.length;i++){
+
+			if (document.detalle.elements[i].type == 'checkbox'){
+
+				document.detalle.elements[i].checked = true;
+
+			}
+
+		}
+
+	}
+
+	else {
+
+		for (i=0;i<document.detalle.elements.length;i++)
+
+			if (document.detalle.elements[i].type == 'checkbox')
+
+				document.detalle.elements[i].checked = false;
+
+	}
+
+	limpiar(ultimo);
+
+	llenar(folio, ultimo);
+
+		//Llenar
+
+	for (i=1;i<document.detalle.ultimo.value;i++){
+
+		if( eval('document.detalle.idlinea_'+i+'.checked') == true ){
+
+			eval('document.detalle.numdoc_'+i+'.value = ' + folio);
+
+			folio++;
+
+		}
+
+	}
+
+}
+
+
+
+
+
+function CheckIguales(elemento,documentof, id_check ){
+
+
+
+	var folio = parseInt(document.detalle.folio.value);
+
+	var ultimo = parseInt(document.detalle.ultimo.value);
+
+
+
+	
+
+	limpiar(ultimo);
+
+	
+
+	//Llenar
+
+	for (i=1;i<document.detalle.ultimo.value;i++){
+
+		if( eval('document.detalle.idlinea_'+i+'.checked') == true ){
+
+			eval('document.detalle.numdoc_'+i+'.value = ' + folio);
+
+			//folio++;
+
+		}
+
+	}
+
+	return true;
+
+}
+
+
+
+function ImprimeGuia(){
+	//var valor = 0;
+       if(document.detalle.print_nodir.value=='1'){
+        alert('Debe ingresar direccion para la Guia de Despacho');
+        return false;
+       }	
+	for (i=1;i<document.detalle.ultimo.value;i++){
+
+		if( eval('document.detalle.idlinea_'+i+'.checked') == true ){
+
+			if(eval('document.detalle.fechadoc_'+i+'.value') == '' ){
+
+				alert('Debe ingresar la fecha en el item '+i);
+
+				eval('document.detalle.fechadoc_'+i+'.focus()');
+
+				return false;
+
+			}
+
+			eval('document.detalle.idfolio_'+i+'.value = document.detalle.numdoc_'+i+'.value');
+
+		}
+			eval('document.detalle.id_direccion_'+i+'.value = document.detalle.id_direccion_'+i+'.value');
+//			alert('eval de id: '+eval('document.detalle.id_direccion_'+i+'.value = document.detalle.id_direccion_'+i+'.value'));
+	}
+
+	//return false;
+
+	var lineacaja  = new Array();
+
+	cont=0;
+
+	i=0;
+
+	for (g=0;g<document.detalle.elements.length;g++){
+
+		if( (document.detalle.elements[g].type == 'checkbox')&& (document.detalle.elements[g].checked == true)&&(document.detalle.elements[g].name!='chekAll')){
+
+			cont++;
+
+			if (arrlockdocprnsap[document.detalle.elements[g].id] == '1') {
+
+				alert('El documento ' + document.detalle.elements[g].desc + ' ya ha sido enviado a SAP.\nNo puede reimprimir el documento');
+
+				return;
+
+			}
+
+			
+
+			if (arrlockop[document.detalle.elements[g].id] > 0) {
+
+				alert('El documento ' + document.detalle.elements[g].desc + ' no puede ser impreso debido a que no se ha cerrado la\nOrden de Picking asociada (OP: '+arrlockop[document.detalle.elements[g].id]+')');
+
+				return;
+
+			}
+
+
+
+			if ('{BLOQUEO_IMPRESION_GDE}'=='1') {
+
+				if (arrlockdoc[document.detalle.elements[g].id] == '1') {
+
+					alert('El documento ' + document.detalle.elements[g].desc + ' ya ha sido impreso.\nContactese con el administrador para desbloquear el documento y volverlo a imprimir');
+
+					return;
+
+				}
+
+			}
+
+			valor=validaFolioFecha(g);
+
+			if (valor==false){
+
+				return;
+
+			}			
+
+			
+
+		}
+
+	if( (document.detalle.elements[g].type=='text') &&(document.detalle.elements[g].name=='impresora') && (document.detalle.elements[g].value=='')){
+
+			alert('Debe ingresar la ruta de una impresora local (Ej: LPT1) o de red (Ej: \\\\servidor\\impresora)');
+
+			document.detalle.elements[g].focus();
+
+			return false;
+
+		}
+
+	}
+
+	if (cont==0){
+
+		alert('Debe seleccionar algun documento para impresion');
+
+		return false; 
+
+	}else{
+
+		document.detalle.submit();
+
+	}
+
+}
+
+
+
+function validaFolioFecha(g){
+
+	if( (document.detalle.elements[i].type=='text') &&(document.detalle.elements[i].id=='numdoc')&& ( (document.detalle.elements[i].value==0)||(document.detalle.elements[i].value==''))){
+
+		var parordenado=new Array();
+
+		var str1 = document.detalle.elements[g].value;
+
+ 		parordenado = str1.split("-");
+
+		alert('Debe ingresar numero de folio para Num. Interno '+parordenado[0]);
+
+		document.detalle.elements[i].focus();
+
+		return false;
+
+	}else{
+
+		for (m=0;m<document.detalle.elements.length;m++){
+
+			if( (document.detalle.elements[m].type=='text') && (document.detalle.elements[m].id=='numdoc')&&((i)!=(m))){	
+
+				if (document.detalle.elements[i].value==document.detalle.elements[m].value){
+
+					alert('Numero de Folio repetido, Ingresar nuevamente');
+
+					document.detalle.elements[m].focus();
+
+					return false;			
+
+				}				
+
+			}
+
+		}
+
+	}
+
+	
+
+	if( (document.detalle.elements[i].type=='text') &&(document.detalle.elements[i].id!='numdoc')&& (document.detalle.elements[i].name!='impresora')&&(document.detalle.elements[i].value=='')){
+
+		var parordenado1=new Array();
+
+		var str2 =document.detalle.elements[g].value;
+
+ 		parordenado1 = str2.split("-");
+
+		alert('Debe ingresar fecha para Num. Interno '+parordenado1[0]);
+
+		//document.detalle.elements[i].focus();
+
+		return false;
+
+	}
+
+}
+
+
+
+
+
+var arrlockdoc = new Array();
+
+var arrlockop = new Array();
+
+var arrlockdocprnsap = new Array();
+
+
+
+<!-- BEGIN doclocklist -->
+
+	arrlockdoc['{id_documento}'] = '{lockprintgde}';
+
+	arrlockop['{id_documento}'] = '{lockprintop}';
+
+	arrlockdocprnsap['{id_documento}'] = '{indmsgsap}';
+
+<!-- END doclocklist -->
+
+</script>
+
+<table width="600" height="403" border="0" bordercolor="black" cellpadding="0" cellspacing="0" style="border: 2px solid #ffffff;">
+
+	<tr>
+
+		<td height="20" valign="top">
+
+			<table width="100%"  border="0" cellspacing="0" cellpadding="2">
+
+			<tr>
+
+				<td width="79%" class="titulonormal">&nbsp;Imprimir Guía</td>
+
+			</tr>
+
+			</table>
+
+		</td>
+
+	</tr>  
+
+	<tr>
+
+		<td valign="top">
+
+		<table width="100%"  border="0" cellspacing="2" cellpadding="2" class="textonormal">
+
+			<tr>
+
+			<td width="31%" valign="top">
+
+			<table width="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="textonormal">
+
+				<tr>
+
+					<td><fieldset>
+
+					<legend><strong>Datos Orden Entrega</strong></legend>
+
+					<table width="600" border="0" align="center" cellpadding="2" cellspacing="1" class="textonormal">
+
+						<tr>                 
+
+							<th align="left" width="20%">N&ordm; OE</th>
+
+							<td width="30%">{oe}</td>
+
+							<th align="left" width="20%">N&ordm; NVE</th>
+
+							<td  width="30%">{id_cotizacion}</td>
+
+						</tr>
+
+						<tr>
+
+							<th align="left" width="20%">Tipo Entrega</th>
+
+							<td  width="30%">{nomtipoentrega}</td>
+
+							<th align="left" width="20%">Tipo Facturaci&oacute;n</th>
+
+							<td  width="30%">{nomtipoflujo}</td>
+
+						</tr>
+
+						<tr>
+
+							<th align="left" width="20%">IVA</th>
+
+							<td  width="30%" >{iva}%</td>
+
+							<th align="left" width="20%">Tienda</th>
+
+							<td  width="30%">{nom_localcsum}</td>                    
+
+						</tr>
+
+					</table>
+
+					</fieldset></td>
+
+				</tr>
+
+				<tr>
+
+					<td><fieldset>
+
+					<legend>Datos Cliente</legend>
+
+						<table width="600" border="0" align="center" cellpadding="2" cellspacing="1" class="textonormal">
+
+							<tr>
+
+								<th align="left" width="20%">Raz&#243;n Social</th>
+
+								<td width="30%" >{razonsoc}</td>
+
+								<th align="left" width="20%">CC/NIT/RUT</th>
+
+								<td  width="30%">{rutcliente}</td>
+
+							</tr>
+
+							<tr>
+
+								<th align="left" width="20%">Actividad Econ&oacute;mica</th>
+
+								<td  width="30%">{giro}</td>
+
+								<th align="left" width="20%">Direcci&oacute;n</th>
+
+								<td  width="30%">{direccion},&nbsp;{comuna}</td>
+
+							</tr>
+
+						</table>
+
+					</fieldset></td>
+
+				</tr>
+
+				<tr>
+
+					<form NAME="detalle" METHOD="POST" action ="ordenent_popguia.php" onSubmit="return valores(this);" TARGET="Guia">				
+
+					<td><fieldset>
+
+					<legend>Datos Impresora</legend>
+
+						<table width="600" border="0" align="center" cellpadding="2" cellspacing="1" class="textonormal">
+
+							<tr>
+
+              					<th align="left" width="20%">Impresora : </th>
+
+					             <td colspan="3"><input name="impresora" type="text" class="userinput" value="{impresora}" size="50"></td>							
+
+							</tr>
+
+						</table>
+
+					</fieldset></td>
+
+				</tr>				
+
+			</table>
+
+		</td>
+
+	</tr>
+
+	<tr>
+
+		<td>
+
+		<input type="hidden" name="id_ordenent" Value="{id_ordenent}">	
+
+		<input type="hidden" name="accion" Value="savefolio"; 	>
+
+		<input type="hidden" name="folio" Value="{numdocumento}">	
+
+		<input type="hidden" name="ultimo" Value="{ultimo}">			
+
+                <input type="hidden" name="print_nodir" Value="{print_nodir}">
+       
+		<input type="hidden" name="folionum" Value="{folionum}">
+
+		<input type="hidden" name="local" Value="{folionum}">
+
+		<input type="hidden" name="marcadire" Value="{marcadire}">		
+				
+		<input type="hidden" name="dir_g" Value="{dir_guardada}">
+		
+		<input type="hidden" name="dir_guardada" value="{dir_guardada}">		
+		
+		<input type="hidden" name="rut" value="{rut}">
+
+		<input type="hidden" name="select_suministro" value="{codlocalvent}">
+
+
+
+		<table width="650" border="0" cellpadding="2" cellspacing="0" class="textonormal">
+
+			<tr>
+
+				<td>
+
+					<table width="650" border="0" cellpadding="0" cellspacing="0" class="tabla2">
+
+						<tr>
+
+							<th width="50" align="center">Item</th>
+
+							<th width="100" align="right">Núm. Interno.</th>
+
+							<th width="120" align="right">Folio.</th>	
+
+							<th width="130" align="right">Fecha Doc.</th>
+
+							<th width="100" align="right">Página</th>
+
+							<th width="60" align="right">Tipo Doc.</th>
+
+							<th width="100" align="right">Ultimo Folio Impreso</th>
+
+							<th width="130" align="right">Monto [$]</th> 							
+
+							<th width="10" align="left"><input name="chekAll" type="checkbox" onClick="CheckTodas(this);"></th>
+
+						</tr>
+
+					</table>
+
+				</td>
+
+			</tr>
+
+			<tr>
+
+				<td valign="top">	
+
+				<div style="width:670; height:200; overflow:auto;">					
+
+					<table width="650" border="0"  cellpadding="0" cellspacing="0"  class="tabla2">             
+
+					<!-- BEGIN detalleDocumentos --> 
+
+					<SCRIPT LANGUAGE="JavaScript">
+
+						document.write(getCalendarStyles());
+
+						var ayer = new Date();
+
+						ayer.setDate(ayer.getDate()-30);
+
+						var cal1 = new CalendarPopup("testdiv1","Guia");
+
+						cal1.offsetX = 50;
+
+						cal1.offsetY = -260;
+
+						cal1.addDisabledDates(null,formatDate(ayer,"yyyy-MM-dd"));
+
+						//alert(window.document.detalle.numdoc[].value);
+
+					</SCRIPT>					
+
+					
+
+					<tr valign="top">
+
+						
+						<td width="100"  align="center">{item}&nbsp;</td>
+
+						<td width="100"  align="center">
+
+						<a href="#" onClick="Imprime({item},{numinterno},{id_direccion})">{numinterno}</a>&nbsp;</td>
+
+						<td width="100" align="right"><input name="numdoc_{item}" type="text" value="" size=12 maxlength=20 class="textofolios" readonly></td> 							
+
+						<td width="150" align=center>
+
+							<!--  input type="text" name="fechadoc_{item}" readonly id="fec_valid_{item}" size=10 maxlength=10 value="{fechadoc}" class="textofolios" onClick="cal1.select(document.forms[0].fec_valid_{item},'anchor_{item}','dd/MM/yyyy'); return false;">
+
+							<a href="#" onClick="cal1.select(document.forms[0].fec_valid_{item},'anchor_{item}','dd/MM/yyyy'); return false;" name="anchor_{item}" id="anchor_{item}">
+
+							<img src="../../IMAGES/cal.gif" width="16" height="16" border="0" title="Valida Desde"></a>
+
+							<DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>-->
+
+							<input type="text" name="fechadoc_{item}" readonly id="fec_valid_{item}" size=10 maxlength=10 value="{fechadoc}" class="textofolios" >
+
+							<a href="#" name="anchor_{item}" id="anchor_{item}">
+
+							</a>
+
+							<DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>
+
+
+
+					  </td> 
+
+						<td width="100"  align="center">{pagina}&nbsp;</td>  
+
+						<td width="60" align="center">{sigtipodoc}&nbsp;</td>  
+
+						<td width="120" align="center">{numimpreso}&nbsp;</td>  
+
+						<td width="100" align="right">&nbsp;{totalnumiva}&nbsp;&nbsp;</td>  						
+
+						<td width="10"  align="left">
+
+						<input id="{numinterno}" desc="{numinterno}" item="{item}" name="idlinea_{item}" type="checkbox" value="{numinterno}-{item}" id2="{numdocumento}" onClick="CheckIguales(this,{numint}, {item})">
+
+						<input type="hidden" name="idfolio_{item}" Value="">			
+
+						</td>						
+
+					</tr>
+
+					<input id="linea_{numinterno}" type="hidden" name="linea[]" value="{numinterno}";>
+
+					<SCRIPT>
+
+						linea[i++] = document.getElementById('linea_{numinterno}');
+
+						for (g=0;g<document.detalle.elements.length;g++){
+
+							if( (document.detalle.elements[g].type=='text') &&(document.detalle.elements[g].id=='numdoc')){						
+
+								window.document.detalle.elements[g].onkeypress = KeyIsNumber 								
+
+							}							
+
+						}							
+
+					</SCRIPT>	
+
+						<td width="40" align="center" ><a href="#"><img src="../../IMAGES/book.gif" title="Libreta de Direcciones" border=0 onClick="abrelibreta({numinterno},{dir_guardada})"></a></td>
+
+						  <td width="650" align="left" colspan="4">Direccion Asociada: {nombre_direccion}&nbsp;</td>
+						  <input type="hidden" name="id_direccion_{item}" readonly id="id_direccion_{item}" size=10 maxlength=10 value="{id_direccion}" class="textofolios" >
+						  
+						  <td width="622" align="left" colspan="4">&nbsp;</td>
+						  <tr>
+					      <td align="center" class="fondoregistro">&nbsp;</td>
+					      <td align="left" colspan="4" class="fondoregistro">&nbsp;</td>
+					      <td align="left" colspan="4" class="fondoregistro">&nbsp;</td>
+					<!-- END detalleDocumentos -->                
+
+
+			        </table>
+<tabl
+					</div>
+
+				</td>
+
+				</form>
+	<form name=direccion method=post target="popup1">
+
+		<input type=hidden name=oe value='{id_ordenent}'>
+		<input type="hidden" name="marcadir" value="">
+		<input type="hidden" name="dir_guardada" value="{dir_guardada}">
+		<input type="hidden" name="dir_g" Value="{dir_guardada}">			
+		<input type=hidden name=dir value=''>
+		<input type=hidden name=num_interno value=''>
+
+	</form>
+			</tr>	
+
+			<tr>
+
+				<td>
+
+					<table   width="650" border="0" cellpadding="0" cellspacing="0" align="center" class="subtitulonormal">
+
+						<tr>
+
+							<td width="100" align="left">&nbsp;</td>
+
+							<td width="100" align="left"><input type=button value='Cancelar' onClick='window.close()'></td>
+
+							<td width="100" align="right"><input type=button value='Imprimir Guía' onClick='ImprimeGuia()'></td>
+
+						</tr>
+
+					</table>
+
+				</td>
+
+			</tr>
+
+		</table>	
+
+		</td>
+
+	</tr>
+
+</table>
+
+<script language="javascript">
+
+	window.document.detalle.impresora.onkeypress = KeyIsRuta;
+
+</script>
+
+
+
+</body>
+
+</html>
+

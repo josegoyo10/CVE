@@ -1,0 +1,19 @@
+DBAccess2 Object
+(
+    [arrayValidTypes:private] => Array
+        (
+            [d] => 1
+            [f] => 2
+            [n] => 3
+            [s] => 4
+        )
+
+    [link:private] => mysqli Object
+        (
+        )
+
+    [res:private] => mysqli_result Object
+        (
+        )
+
+)

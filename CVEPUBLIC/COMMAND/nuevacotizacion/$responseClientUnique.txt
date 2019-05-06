@@ -1,0 +1,3 @@
+2KR 68 D # 1 7 - 1 1ANDRES AVILES LEONARDOlavilesa@invima.gov.coINVIMA08300001673101100100000822129487000falsefalsefalse1INVIMACliente consultado exitósamenteBOGOTABOGOTAfalsefalseA1020
+      <IdTypeCustomer>5</IdTypeCustomer>
+    0Array

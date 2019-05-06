@@ -1,0 +1,150 @@
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript" src="../../TEMPLATE/general/checkfield.js"></script>
+
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/popup.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript" type="text/JavaScript" SRC="../../TEMPLATE/general/CalendarPopup.js"></SCRIPT>
+
+<script language="JavaScript">
+
+function anulardoc(elem, tipodoc, folio_asoc, enviado_sap){
+	if(enviado_sap == 1){
+		alert('No es posible anular el documento, ya que ha sido enviado a SAP.');
+		return false;
+	}/*
+	if('{enviado_sap_gde}' == 1 && tipodoc == 2){
+		alert('No es posible anular la Guia de despacho, ya que ha sido enviada a SAP.');
+		return false;
+	}	*/
+	if(!folio_asoc){
+			if (confirm('¿Está seguro que desea anular el documento con el folio: ' + elem.id+'?')){
+		
+				document.picking.accion.value='anu';
+		
+				document.picking.ideli.value=elem.id;
+				if(tipodoc == '1'){
+					if (confirm('¿Desea anular la orden de entrega asociada a este documento?')){
+						document.picking.accion2.value='anu_oe';			
+						document.picking.submit();			
+					}
+				}
+				document.picking.submit();	
+			}
+		}else{
+			alert('No es posible anular la Factura, ya que ha sido emitida la guia de despacho Nº: '+folio_asoc);
+			return false;
+		}
+
+}
+
+
+function Imprime(id_item, numinterno, folio){
+	popUpWindowModal('documento.php?flete=1&popup=0&id_documento='+numinterno+'&numdocumento='+folio,100, 100, 760, 720	);
+}
+
+</script>
+
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+
+<script type="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+
+
+<style type="text/css">
+<!--
+.Estilo1 {color: #FF0000}
+-->
+</style>
+	  	<table width="760" height="15" border="0" cellpadding="0"cellspacing="0">
+
+	<tr>
+
+    <td width="50%"  height="30" class="titulonormal">Anulacion de {nomtipodoc} </td>
+
+
+
+</table>
+
+<table width="780" border="0" align="left" cellpadding="2" cellspacing="0" class="tabla2">
+
+				<tr>
+
+					<th width="50" align="left">Ítem&nbsp;</th>
+					<th width="88" >N&ordm; Interno </th>
+
+					<th width="88" >Folio GDE  Asociado </th>
+					<th width="111" >Folio&nbsp;</th>
+
+					<th width="80" >Tipo Documento </th>
+					<th width="111" >&nbsp;Estado</th>
+
+					<th width="58">&nbsp;Pagina</th>
+
+					<th width="124">Local Emisor </th>
+
+					<th width="118">Fecha ultima modificacion </th>
+
+					<th width="73">CC/NIT/RUT </th>
+
+					<th width="200">Raz&oacute;n Social</th>
+
+					<th width="187">Acciones</th>
+
+				</tr>
+						
+						<!-- BEGIN documentos -->
+				<tr>
+				  <td width="50" align="center" class="{fondoregistro}">{item}&nbsp;</td>
+				  <td width="88" align="center" class="{fondoregistro}">
+				  <a href="#" onClick="Imprime({item},{numinterno},{numdocumento})">{numinterno}</a>&nbsp;</td>
+				  <td width="88" align="center" class="{fondoregistro}">{folio_gde_asoc}</td>
+				  <td  align="center" class="{fondoregistro}">{numdocumento}&nbsp;</td>
+				  <td  align="center" class="{fondoregistro}">{tipodoc}&nbsp;</td>
+				  <td  align="center" width="160" class="{fondoregistro}">{estado}&nbsp;</td>
+				  <td align="center" class="{fondoregistro}">{pagina}&nbsp;</td>
+				  <td align="center" class="{fondoregistro}">{codlocalventa}&nbsp;</td>
+				  <td align="center" class="{fondoregistro}">{fechadocumento}&nbsp;</td>
+				  <td align="left" class="{fondoregistro}">{rutcliente}&nbsp;</td>
+				  <td align="right" class="{fondoregistro}">{razonsoc}&nbsp;</td>
+				  <td align="center" class="{fondoregistro}">{acceliminar}&nbsp;</td>				  
+  </tr>
+		<!-- END documentos -->
+</table>
+
+		  <div style="height:'190'; width:768; overflow:auto; ">
+
+				<table width="100%" border="1" class="tabla2" cellspacing="0">
+
+				<form name=picking method=post  onSubmit="return false;">
+
+				<input type=hidden name="accion" value="">
+
+				<input type=hidden name="accion2" value="">				
+
+				<input type=hidden name="ideli" value="">
+
+				<input type=hidden name="rut" value="{rut}">
+
+				<INPUT TYPE=hidden NAME="sendrut" VALUE="">
+
+				<INPUT TYPE=hidden NAME="tupla" VALUE="">
+				
+				<INPUT TYPE=hidden NAME="numorigen" VALUE="{numorigen}">				
+				
+				<INPUT TYPE=hidden NAME="tipodoc" VALUE="{tipodoc}">				
+
+			</form>
+
+			
+
+		</table>
+
+ </div>
+	            </td>
+				<table width="100%" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+
+				<td align="center" width="100%"><input type="button" name="button" class="Textonormal" value="&nbsp;&nbsp;Cerrar Ventana&nbsp;&nbsp;" onClick="window.close()"></td>
+				</table>
+                </tr>

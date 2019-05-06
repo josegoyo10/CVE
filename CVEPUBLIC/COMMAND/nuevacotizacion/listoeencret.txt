@@ -1,0 +1,276 @@
+connlist Object
+(
+    [first:private] => elementconnlist Object
+        (
+            [prev] => 
+            [next] => 
+            [elem] => dtoencordenent Object
+                (
+                    [arreglo:private] => Array
+                        (
+                            [id_ordenent] => 
+                            [id_cotizacion] => 892309
+                            [id_estado] => OA
+                            [id_estado_destino] => 
+                            [id_tipopago] => 2
+                            [id_tipodocpago] => 
+                            [id_tipoentrega] => 1
+                            [nomtipoentrega] => 
+                            [id_direccion] => 8158
+                            [id_tipoflujo] => 2
+                            [nomtipoflujo] => 
+                            [codigovendedor] => 979
+                            [numdocpago] => 
+                            [rutcliente] => 53003119
+                            [rutvendedor] => 
+                            [codlocalventa] => E812
+                            [codlocalcsum] => E812
+                            [validdesde] => 
+                            [validhasta] => 
+                            [fecha_retira_cliente] => 
+                            [fecha_retira_inmediato] => 
+                            [fecha_despacho_programado] => 
+                            [nom_local] => 
+                            [nom_localcsum] => 
+                            [nom_localventa] => 
+                            [razonsoc] => DEISY 
+                            [giro] => 
+                            [id_giro] => 
+                            [direccion] => CARRER 7A # 02-99 SUR
+                            [comuna] => CAZUCA-COMUNA 01
+                            [ciudad] => 
+                            [iva] => 19.00
+                            [condicion] => Contado
+                            [diascondicion] => 0
+                            [fonocontacto] => 575 9009
+                            [observaciones] => 
+                            [nota] => 
+                            [id_usuario] => 
+                            [fechacompra] => 
+                            [obsdesb] => 
+                            [usrcrea] => 
+                            [usrmod] => 
+                            [fecmod] => 
+                            [feccrea] => 
+                            [tipo] => 
+                            [nomestadorent] => 
+                            [puedever] => 
+                            [indmsgsap] => 
+                            [numdocumento] => 
+                            [fechaucofini] => 
+                            [fechaucoffin] => 
+                            [limite] => 
+                            [total_orden] => 
+                            [prorrateoflete] => 
+                            [numorigen] => 
+                            [telefono] => 
+                            [id_ordenpicking] => 
+                            [id_documento] => 
+                            [tipodocgen] => 
+                            [monto] => 
+                            [prioridadpick] => 
+                            [var_descripcion] => 
+                            [feccreacoti] => 
+                            [rete_ica] => 
+                            [rete_renta] => 
+                            [rete_iva] => 
+                            [cot_iva] => 
+                            [valortotal] => 
+                            [totaliva] => 65462
+                            [id_dirdespacho] => 
+                            [zona] => 0
+                            [rete_iva_oe] => 0
+                            [totaloe] => 
+                            [tipo_mensaje] => 
+                            [margen] => 
+                            [verif_anul_tiempo] => 
+                        )
+
+                )
+
+            [elemName] => 
+        )
+
+    [last:private] => elementconnlist Object
+        (
+            [prev] => 
+            [next] => 
+            [elem] => dtoencordenent Object
+                (
+                    [arreglo:private] => Array
+                        (
+                            [id_ordenent] => 
+                            [id_cotizacion] => 892309
+                            [id_estado] => OA
+                            [id_estado_destino] => 
+                            [id_tipopago] => 2
+                            [id_tipodocpago] => 
+                            [id_tipoentrega] => 1
+                            [nomtipoentrega] => 
+                            [id_direccion] => 8158
+                            [id_tipoflujo] => 2
+                            [nomtipoflujo] => 
+                            [codigovendedor] => 979
+                            [numdocpago] => 
+                            [rutcliente] => 53003119
+                            [rutvendedor] => 
+                            [codlocalventa] => E812
+                            [codlocalcsum] => E812
+                            [validdesde] => 
+                            [validhasta] => 
+                            [fecha_retira_cliente] => 
+                            [fecha_retira_inmediato] => 
+                            [fecha_despacho_programado] => 
+                            [nom_local] => 
+                            [nom_localcsum] => 
+                            [nom_localventa] => 
+                            [razonsoc] => DEISY 
+                            [giro] => 
+                            [id_giro] => 
+                            [direccion] => CARRER 7A # 02-99 SUR
+                            [comuna] => CAZUCA-COMUNA 01
+                            [ciudad] => 
+                            [iva] => 19.00
+                            [condicion] => Contado
+                            [diascondicion] => 0
+                            [fonocontacto] => 575 9009
+                            [observaciones] => 
+                            [nota] => 
+                            [id_usuario] => 
+                            [fechacompra] => 
+                            [obsdesb] => 
+                            [usrcrea] => 
+                            [usrmod] => 
+                            [fecmod] => 
+                            [feccrea] => 
+                            [tipo] => 
+                            [nomestadorent] => 
+                            [puedever] => 
+                            [indmsgsap] => 
+                            [numdocumento] => 
+                            [fechaucofini] => 
+                            [fechaucoffin] => 
+                            [limite] => 
+                            [total_orden] => 
+                            [prorrateoflete] => 
+                            [numorigen] => 
+                            [telefono] => 
+                            [id_ordenpicking] => 
+                            [id_documento] => 
+                            [tipodocgen] => 
+                            [monto] => 
+                            [prioridadpick] => 
+                            [var_descripcion] => 
+                            [feccreacoti] => 
+                            [rete_ica] => 
+                            [rete_renta] => 
+                            [rete_iva] => 
+                            [cot_iva] => 
+                            [valortotal] => 
+                            [totaliva] => 65462
+                            [id_dirdespacho] => 
+                            [zona] => 0
+                            [rete_iva_oe] => 0
+                            [totaloe] => 
+                            [tipo_mensaje] => 
+                            [margen] => 
+                            [verif_anul_tiempo] => 
+                        )
+
+                )
+
+            [elemName] => 
+        )
+
+    [act:private] => elementconnlist Object
+        (
+            [prev] => 
+            [next] => 
+            [elem] => dtoencordenent Object
+                (
+                    [arreglo:private] => Array
+                        (
+                            [id_ordenent] => 
+                            [id_cotizacion] => 892309
+                            [id_estado] => OA
+                            [id_estado_destino] => 
+                            [id_tipopago] => 2
+                            [id_tipodocpago] => 
+                            [id_tipoentrega] => 1
+                            [nomtipoentrega] => 
+                            [id_direccion] => 8158
+                            [id_tipoflujo] => 2
+                            [nomtipoflujo] => 
+                            [codigovendedor] => 979
+                            [numdocpago] => 
+                            [rutcliente] => 53003119
+                            [rutvendedor] => 
+                            [codlocalventa] => E812
+                            [codlocalcsum] => E812
+                            [validdesde] => 
+                            [validhasta] => 
+                            [fecha_retira_cliente] => 
+                            [fecha_retira_inmediato] => 
+                            [fecha_despacho_programado] => 
+                            [nom_local] => 
+                            [nom_localcsum] => 
+                            [nom_localventa] => 
+                            [razonsoc] => DEISY 
+                            [giro] => 
+                            [id_giro] => 
+                            [direccion] => CARRER 7A # 02-99 SUR
+                            [comuna] => CAZUCA-COMUNA 01
+                            [ciudad] => 
+                            [iva] => 19.00
+                            [condicion] => Contado
+                            [diascondicion] => 0
+                            [fonocontacto] => 575 9009
+                            [observaciones] => 
+                            [nota] => 
+                            [id_usuario] => 
+                            [fechacompra] => 
+                            [obsdesb] => 
+                            [usrcrea] => 
+                            [usrmod] => 
+                            [fecmod] => 
+                            [feccrea] => 
+                            [tipo] => 
+                            [nomestadorent] => 
+                            [puedever] => 
+                            [indmsgsap] => 
+                            [numdocumento] => 
+                            [fechaucofini] => 
+                            [fechaucoffin] => 
+                            [limite] => 
+                            [total_orden] => 
+                            [prorrateoflete] => 
+                            [numorigen] => 
+                            [telefono] => 
+                            [id_ordenpicking] => 
+                            [id_documento] => 
+                            [tipodocgen] => 
+                            [monto] => 
+                            [prioridadpick] => 
+                            [var_descripcion] => 
+                            [feccreacoti] => 
+                            [rete_ica] => 
+                            [rete_renta] => 
+                            [rete_iva] => 
+                            [cot_iva] => 
+                            [valortotal] => 
+                            [totaliva] => 65462
+                            [id_dirdespacho] => 
+                            [zona] => 0
+                            [rete_iva_oe] => 0
+                            [totaloe] => 
+                            [tipo_mensaje] => 
+                            [margen] => 
+                            [verif_anul_tiempo] => 
+                        )
+
+                )
+
+            [elemName] => 
+        )
+
+)

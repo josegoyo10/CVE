@@ -1,0 +1,32 @@
+<request>
+	<customer>
+		<Source>22</Source>
+		<IdCustomer>39538985</IdCustomer>
+		<IdCategory>3</IdCategory>
+		<IdTypeContribuyente>3</IdTypeContribuyente>
+		<TypeCustomer>
+			<IdTypeCustomer>5</IdTypeCustomer>
+		</TypeCustomer>
+		<Location>11001000010061</Location>
+		<IdDoc>31</IdDoc>
+		<FirstName>EL MUNDO DE LA CAMISETA</FirstName>
+		<Surname1> </Surname1>
+		<Surname2> </Surname2>
+		<Address>CALLE 48 N° 72B -18</Address>		
+		<Phone>2811993</Phone>
+		<Phone2></Phone2>
+		<Fax></Fax>
+		<Email>ELMUNDODELACAMISETA03@HOTMAIL.COM</Email>
+		<AgeRange>0</AgeRange>
+		<Quota>0</Quota>
+		<Contact>GARCIA G AMPARO</Contact>
+		<Gender>NA</Gender>
+		<Occupation></Occupation>
+		<ReteIca>false</ReteIca>
+		<ReteFuente>false</ReteFuente>
+		<ReteIva>false</ReteIva>
+		<ExenIva>false</ExenIva>
+		<OtrIva>false</OtrIva>
+		<State>A</State>
+	</customer>	
+</request>

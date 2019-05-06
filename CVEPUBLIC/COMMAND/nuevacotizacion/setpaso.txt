@@ -1,0 +1,303 @@
+connlist Object
+(
+    [first:private] => elementconnlist Object
+        (
+            [prev] => 
+            [next] => elementconnlist Object
+                (
+                    [prev] => elementconnlist Object
+ *RECURSION*
+                    [next] => 
+                    [elem] => dtoproducto Object
+                        (
+                            [arreglo:private] => Array
+                                (
+                                    [catprod] => 
+                                    [descat] => 
+                                    [nivel] => 
+                                    [catpadre] => 
+                                    [cod_prod1] => 
+                                    [id_producto] => 165385
+                                    [sap] => 1131310
+                                    [barra] => 11313106
+                                    [descripcion] => SILLA PC WORK NEGRO
+                                    [descripcionc] => 
+                                    [prod_tipo] => PS
+                                    [prod_subtipo] => PS
+                                    [csum] => E801
+                                    [pcosto] => 87877
+                                    [plista] => 
+                                    [pventa] => 173390
+                                    [stock] => 15
+                                    [unidmed] => un
+                                    [idprov] => 
+                                    [nomprov] => CANTON HOMLINK DEVELOPMENT CO., LTD
+                                    [rutproveedor] => 
+                                    [razonsocprov] => 
+                                    [numretreal] => 
+                                    [numretlimit] => 0
+                                    [numretlimitdes] => 
+                                    [pagactual] => 
+                                    [id_catprod] => 470704
+                                    [peso] => 0.0080000
+                                    [ica] => 1.1040
+                                    [ivap] => 19.0000
+                                    [renta] => 3.5000
+                                    [codtipo] => 
+                                    [tipopedido] => 
+                                    [actualizarinventario] => 1
+                                    [grupocat] => 
+                                )
+
+                        )
+
+                    [elemName] => 
+                )
+
+            [elem] => dtoproducto Object
+                (
+                    [arreglo:private] => Array
+                        (
+                            [catprod] => 
+                            [descat] => 
+                            [nivel] => 
+                            [catpadre] => 
+                            [cod_prod1] => 
+                            [id_producto] => 165385
+                            [sap] => 1131310
+                            [barra] => 2082003279834
+                            [descripcion] => SILLA PC WORK NEGRO
+                            [descripcionc] => 
+                            [prod_tipo] => PS
+                            [prod_subtipo] => PS
+                            [csum] => E801
+                            [pcosto] => 87877
+                            [plista] => 
+                            [pventa] => 173390
+                            [stock] => 15
+                            [unidmed] => un
+                            [idprov] => 
+                            [nomprov] => CANTON HOMLINK DEVELOPMENT CO., LTD
+                            [rutproveedor] => 
+                            [razonsocprov] => 
+                            [numretreal] => 
+                            [numretlimit] => 0
+                            [numretlimitdes] => 
+                            [pagactual] => 
+                            [id_catprod] => 470704
+                            [peso] => 0.0080000
+                            [ica] => 1.1040
+                            [ivap] => 19.0000
+                            [renta] => 3.5000
+                            [codtipo] => 
+                            [tipopedido] => 
+                            [actualizarinventario] => 1
+                            [grupocat] => 
+                        )
+
+                )
+
+            [elemName] => 
+        )
+
+    [last:private] => elementconnlist Object
+        (
+            [prev] => elementconnlist Object
+                (
+                    [prev] => 
+                    [next] => elementconnlist Object
+ *RECURSION*
+                    [elem] => dtoproducto Object
+                        (
+                            [arreglo:private] => Array
+                                (
+                                    [catprod] => 
+                                    [descat] => 
+                                    [nivel] => 
+                                    [catpadre] => 
+                                    [cod_prod1] => 
+                                    [id_producto] => 165385
+                                    [sap] => 1131310
+                                    [barra] => 2082003279834
+                                    [descripcion] => SILLA PC WORK NEGRO
+                                    [descripcionc] => 
+                                    [prod_tipo] => PS
+                                    [prod_subtipo] => PS
+                                    [csum] => E801
+                                    [pcosto] => 87877
+                                    [plista] => 
+                                    [pventa] => 173390
+                                    [stock] => 15
+                                    [unidmed] => un
+                                    [idprov] => 
+                                    [nomprov] => CANTON HOMLINK DEVELOPMENT CO., LTD
+                                    [rutproveedor] => 
+                                    [razonsocprov] => 
+                                    [numretreal] => 
+                                    [numretlimit] => 0
+                                    [numretlimitdes] => 
+                                    [pagactual] => 
+                                    [id_catprod] => 470704
+                                    [peso] => 0.0080000
+                                    [ica] => 1.1040
+                                    [ivap] => 19.0000
+                                    [renta] => 3.5000
+                                    [codtipo] => 
+                                    [tipopedido] => 
+                                    [actualizarinventario] => 1
+                                    [grupocat] => 
+                                )
+
+                        )
+
+                    [elemName] => 
+                )
+
+            [next] => 
+            [elem] => dtoproducto Object
+                (
+                    [arreglo:private] => Array
+                        (
+                            [catprod] => 
+                            [descat] => 
+                            [nivel] => 
+                            [catpadre] => 
+                            [cod_prod1] => 
+                            [id_producto] => 165385
+                            [sap] => 1131310
+                            [barra] => 11313106
+                            [descripcion] => SILLA PC WORK NEGRO
+                            [descripcionc] => 
+                            [prod_tipo] => PS
+                            [prod_subtipo] => PS
+                            [csum] => E801
+                            [pcosto] => 87877
+                            [plista] => 
+                            [pventa] => 173390
+                            [stock] => 15
+                            [unidmed] => un
+                            [idprov] => 
+                            [nomprov] => CANTON HOMLINK DEVELOPMENT CO., LTD
+                            [rutproveedor] => 
+                            [razonsocprov] => 
+                            [numretreal] => 
+                            [numretlimit] => 0
+                            [numretlimitdes] => 
+                            [pagactual] => 
+                            [id_catprod] => 470704
+                            [peso] => 0.0080000
+                            [ica] => 1.1040
+                            [ivap] => 19.0000
+                            [renta] => 3.5000
+                            [codtipo] => 
+                            [tipopedido] => 
+                            [actualizarinventario] => 1
+                            [grupocat] => 
+                        )
+
+                )
+
+            [elemName] => 
+        )
+
+    [act:private] => elementconnlist Object
+        (
+            [prev] => 
+            [next] => elementconnlist Object
+                (
+                    [prev] => elementconnlist Object
+ *RECURSION*
+                    [next] => 
+                    [elem] => dtoproducto Object
+                        (
+                            [arreglo:private] => Array
+                                (
+                                    [catprod] => 
+                                    [descat] => 
+                                    [nivel] => 
+                                    [catpadre] => 
+                                    [cod_prod1] => 
+                                    [id_producto] => 165385
+                                    [sap] => 1131310
+                                    [barra] => 11313106
+                                    [descripcion] => SILLA PC WORK NEGRO
+                                    [descripcionc] => 
+                                    [prod_tipo] => PS
+                                    [prod_subtipo] => PS
+                                    [csum] => E801
+                                    [pcosto] => 87877
+                                    [plista] => 
+                                    [pventa] => 173390
+                                    [stock] => 15
+                                    [unidmed] => un
+                                    [idprov] => 
+                                    [nomprov] => CANTON HOMLINK DEVELOPMENT CO., LTD
+                                    [rutproveedor] => 
+                                    [razonsocprov] => 
+                                    [numretreal] => 
+                                    [numretlimit] => 0
+                                    [numretlimitdes] => 
+                                    [pagactual] => 
+                                    [id_catprod] => 470704
+                                    [peso] => 0.0080000
+                                    [ica] => 1.1040
+                                    [ivap] => 19.0000
+                                    [renta] => 3.5000
+                                    [codtipo] => 
+                                    [tipopedido] => 
+                                    [actualizarinventario] => 1
+                                    [grupocat] => 
+                                )
+
+                        )
+
+                    [elemName] => 
+                )
+
+            [elem] => dtoproducto Object
+                (
+                    [arreglo:private] => Array
+                        (
+                            [catprod] => 
+                            [descat] => 
+                            [nivel] => 
+                            [catpadre] => 
+                            [cod_prod1] => 
+                            [id_producto] => 165385
+                            [sap] => 1131310
+                            [barra] => 2082003279834
+                            [descripcion] => SILLA PC WORK NEGRO
+                            [descripcionc] => 
+                            [prod_tipo] => PS
+                            [prod_subtipo] => PS
+                            [csum] => E801
+                            [pcosto] => 87877
+                            [plista] => 
+                            [pventa] => 173390
+                            [stock] => 15
+                            [unidmed] => un
+                            [idprov] => 
+                            [nomprov] => CANTON HOMLINK DEVELOPMENT CO., LTD
+                            [rutproveedor] => 
+                            [razonsocprov] => 
+                            [numretreal] => 
+                            [numretlimit] => 0
+                            [numretlimitdes] => 
+                            [pagactual] => 
+                            [id_catprod] => 470704
+                            [peso] => 0.0080000
+                            [ica] => 1.1040
+                            [ivap] => 19.0000
+                            [renta] => 3.5000
+                            [codtipo] => 
+                            [tipopedido] => 
+                            [actualizarinventario] => 1
+                            [grupocat] => 
+                        )
+
+                )
+
+            [elemName] => 
+        )
+
+)

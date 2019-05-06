@@ -1,0 +1,5 @@
+SELECT e.ID as id_barrio, e.ID_DEPARTMENT as id_departamento, e.ID_PROVINCE as id_provincia, e.ID_CITY as id_ciudad, e.ID_LOCALITY as id_localidad, a.DESCRIPTION as departamento,b.DESCRIPTION as provincia,c.DESCRIPTION as ciudad,d.DESCRIPTION as localidad,e.DESCRIPTION as barrio FROM cu_department a inner join cu_province b
+on (a.ID=b.ID_DEPARTMENT) inner join cu_city c on (b.ID=c.ID_PROVINCE and b.ID_DEPARTMENT=c.ID_DEPARTMENT) inner join  cu_locality d
+on (d.ID_DEPARTMENT=c.ID_DEPARTMENT and c.ID_PROVINCE=d.ID_PROVINCE and c.ID=d.ID_CITY) inner join cu_neighborhood e
+on (d.ID_DEPARTMENT=e.ID_DEPARTMENT and d.ID_PROVINCE=e.ID_PROVINCE and d.ID_CITY=e.ID_CITY and d.ID=e.ID_LOCALITY)
+where e.ID=176 and e.ID_DEPARTMENT=11 and e.ID_PROVINCE=001 and e.ID_CITY=000  and e.ID_LOCALITY=007

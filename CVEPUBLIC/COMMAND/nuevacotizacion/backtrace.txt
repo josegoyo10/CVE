@@ -1,0 +1,1362 @@
+Array
+(
+    [0] => Array
+        (
+            [file] => C:\wamp\www\Trunk\Colombia\CVE\CVE_PPAL\CVEPRIVATE\CTRLCLASS\ctrlcotizacion.class.php
+            [line] => 238
+            [function] => savedetcotizacion
+            [class] => daocotizacion
+            [object] => daocotizacion Object
+                (
+                    [bd:private] => DBAccess2 Object
+                        (
+                            [arrayValidTypes:private] => Array
+                                (
+                                    [d] => 1
+                                    [f] => 2
+                                    [n] => 3
+                                    [s] => 4
+                                )
+
+                            [link:private] => mysqli Object
+                                (
+                                )
+
+                            [res:private] => mysqli_result Object
+                                (
+                                )
+
+                        )
+
+                    [bd1:private] => DBAccess2 Object
+                        (
+                            [arrayValidTypes:private] => Array
+                                (
+                                    [d] => 1
+                                    [f] => 2
+                                    [n] => 3
+                                    [s] => 4
+                                )
+
+                            [link:private] => mysqli Object
+                                (
+                                )
+
+                            [res:private] => 
+                        )
+
+                )
+
+            [type] => ->
+            [args] => Array
+                (
+                    [0] => connlist Object
+                        (
+                            [first:private] => elementconnlist Object
+                                (
+                                    [prev] => 
+                                    [next] => 
+                                    [elem] => dtocotizacion Object
+                                        (
+                                            [arreglo:private] => Array
+                                                (
+                                                    [id_cotizacion] => 892038
+                                                    [id_estado] => CT
+                                                    [nomestado] => 
+                                                    [cargoflete] => 
+                                                    [flete] => 
+                                                    [numlinea1] => 
+                                                    [stock] => 
+                                                    [id_tipoventa] => 
+                                                    [nomtipoventa] => 
+                                                    [codigovendedor] => 
+                                                    [rutcliente] => 
+                                                    [codlocalventa] => 
+                                                    [nom_local] => 
+                                                    [dir_local] => 
+                                                    [dir_localcsum] => 
+                                                    [codlocalcsum] => 
+                                                    [nom_localcsum] => 
+                                                    [razonsoc] => 
+                                                    [id_giro] => 
+                                                    [giro] => 
+                                                    [direccion] => CL 2 # 18 - 93 MZ P1 - P A R Q - I
+                                                    [comuna] => 
+                                                    [iva] => 
+                                                    [validdesde] => 2018-06-26
+                                                    [validhasta] => 2018-06-27
+                                                    [validdias] => 
+                                                    [nvevaliddesde] => 
+                                                    [nvevalidhasta] => 
+                                                    [nvevaliddias] => 
+                                                    [condicion] => 
+                                                    [diascondicion] => 
+                                                    [fonocontacto] => 
+                                                    [observaciones] => 
+                                                    [nota] => 
+                                                    [id_usuario] => 
+                                                    [usuariocrea] => 
+                                                    [valortotal] => NaN
+                                                    [margentotal] => 7.05
+                                                    [obsdesb] => 
+                                                    [puedever] => 
+                                                    [puedemodificar] => 
+                                                    [puedeeliminar] => 
+                                                    [orderby] => 
+                                                    [reqdet] => 
+                                                    [feccrea] => 
+                                                    [usrmod] => 
+                                                    [estado] => 
+                                                    [id_tipopago] => 
+                                                    [fechaucofini] => 
+                                                    [fechaucoffin] => 
+                                                    [numlinea] => 
+                                                    [barra] => 
+                                                    [nomproveedor] => 
+                                                    [rutproveedor] => 
+                                                    [limite] => 
+                                                    [total_coti] => 
+                                                    [prorrateoflete] => 
+                                                    [bloqueopormargen] => 
+                                                    [bloqueoporcarga] => 
+                                                    [rete_iva] => '0'
+                                                    [rete_ica] => '0'
+                                                    [rete_renta] => '0'
+                                                    [cot_iva] => 0
+                                                    [ciudad] => 
+                                                    [contacto] => 
+                                                    [comentariodir] => 
+                                                    [id_dirdespacho] => 00
+                                                    [zona] => 
+                                                    [actualizarinventario] => 
+                                                    [nom_localventa] => 
+                                                )
+
+                                        )
+
+                                    [elemName] => 
+                                )
+
+                            [last:private] => elementconnlist Object
+                                (
+                                    [prev] => 
+                                    [next] => 
+                                    [elem] => dtocotizacion Object
+                                        (
+                                            [arreglo:private] => Array
+                                                (
+                                                    [id_cotizacion] => 892038
+                                                    [id_estado] => CT
+                                                    [nomestado] => 
+                                                    [cargoflete] => 
+                                                    [flete] => 
+                                                    [numlinea1] => 
+                                                    [stock] => 
+                                                    [id_tipoventa] => 
+                                                    [nomtipoventa] => 
+                                                    [codigovendedor] => 
+                                                    [rutcliente] => 
+                                                    [codlocalventa] => 
+                                                    [nom_local] => 
+                                                    [dir_local] => 
+                                                    [dir_localcsum] => 
+                                                    [codlocalcsum] => 
+                                                    [nom_localcsum] => 
+                                                    [razonsoc] => 
+                                                    [id_giro] => 
+                                                    [giro] => 
+                                                    [direccion] => CL 2 # 18 - 93 MZ P1 - P A R Q - I
+                                                    [comuna] => 
+                                                    [iva] => 
+                                                    [validdesde] => 2018-06-26
+                                                    [validhasta] => 2018-06-27
+                                                    [validdias] => 
+                                                    [nvevaliddesde] => 
+                                                    [nvevalidhasta] => 
+                                                    [nvevaliddias] => 
+                                                    [condicion] => 
+                                                    [diascondicion] => 
+                                                    [fonocontacto] => 
+                                                    [observaciones] => 
+                                                    [nota] => 
+                                                    [id_usuario] => 
+                                                    [usuariocrea] => 
+                                                    [valortotal] => NaN
+                                                    [margentotal] => 7.05
+                                                    [obsdesb] => 
+                                                    [puedever] => 
+                                                    [puedemodificar] => 
+                                                    [puedeeliminar] => 
+                                                    [orderby] => 
+                                                    [reqdet] => 
+                                                    [feccrea] => 
+                                                    [usrmod] => 
+                                                    [estado] => 
+                                                    [id_tipopago] => 
+                                                    [fechaucofini] => 
+                                                    [fechaucoffin] => 
+                                                    [numlinea] => 
+                                                    [barra] => 
+                                                    [nomproveedor] => 
+                                                    [rutproveedor] => 
+                                                    [limite] => 
+                                                    [total_coti] => 
+                                                    [prorrateoflete] => 
+                                                    [bloqueopormargen] => 
+                                                    [bloqueoporcarga] => 
+                                                    [rete_iva] => '0'
+                                                    [rete_ica] => '0'
+                                                    [rete_renta] => '0'
+                                                    [cot_iva] => 0
+                                                    [ciudad] => 
+                                                    [contacto] => 
+                                                    [comentariodir] => 
+                                                    [id_dirdespacho] => 00
+                                                    [zona] => 
+                                                    [actualizarinventario] => 
+                                                    [nom_localventa] => 
+                                                )
+
+                                        )
+
+                                    [elemName] => 
+                                )
+
+                            [act:private] => elementconnlist Object
+                                (
+                                    [prev] => 
+                                    [next] => 
+                                    [elem] => dtocotizacion Object
+                                        (
+                                            [arreglo:private] => Array
+                                                (
+                                                    [id_cotizacion] => 892038
+                                                    [id_estado] => CT
+                                                    [nomestado] => 
+                                                    [cargoflete] => 
+                                                    [flete] => 
+                                                    [numlinea1] => 
+                                                    [stock] => 
+                                                    [id_tipoventa] => 
+                                                    [nomtipoventa] => 
+                                                    [codigovendedor] => 
+                                                    [rutcliente] => 
+                                                    [codlocalventa] => 
+                                                    [nom_local] => 
+                                                    [dir_local] => 
+                                                    [dir_localcsum] => 
+                                                    [codlocalcsum] => 
+                                                    [nom_localcsum] => 
+                                                    [razonsoc] => 
+                                                    [id_giro] => 
+                                                    [giro] => 
+                                                    [direccion] => CL 2 # 18 - 93 MZ P1 - P A R Q - I
+                                                    [comuna] => 
+                                                    [iva] => 
+                                                    [validdesde] => 2018-06-26
+                                                    [validhasta] => 2018-06-27
+                                                    [validdias] => 
+                                                    [nvevaliddesde] => 
+                                                    [nvevalidhasta] => 
+                                                    [nvevaliddias] => 
+                                                    [condicion] => 
+                                                    [diascondicion] => 
+                                                    [fonocontacto] => 
+                                                    [observaciones] => 
+                                                    [nota] => 
+                                                    [id_usuario] => 
+                                                    [usuariocrea] => 
+                                                    [valortotal] => NaN
+                                                    [margentotal] => 7.05
+                                                    [obsdesb] => 
+                                                    [puedever] => 
+                                                    [puedemodificar] => 
+                                                    [puedeeliminar] => 
+                                                    [orderby] => 
+                                                    [reqdet] => 
+                                                    [feccrea] => 
+                                                    [usrmod] => 
+                                                    [estado] => 
+                                                    [id_tipopago] => 
+                                                    [fechaucofini] => 
+                                                    [fechaucoffin] => 
+                                                    [numlinea] => 
+                                                    [barra] => 
+                                                    [nomproveedor] => 
+                                                    [rutproveedor] => 
+                                                    [limite] => 
+                                                    [total_coti] => 
+                                                    [prorrateoflete] => 
+                                                    [bloqueopormargen] => 
+                                                    [bloqueoporcarga] => 
+                                                    [rete_iva] => '0'
+                                                    [rete_ica] => '0'
+                                                    [rete_renta] => '0'
+                                                    [cot_iva] => 0
+                                                    [ciudad] => 
+                                                    [contacto] => 
+                                                    [comentariodir] => 
+                                                    [id_dirdespacho] => 00
+                                                    [zona] => 
+                                                    [actualizarinventario] => 
+                                                    [nom_localventa] => 
+                                                )
+
+                                        )
+
+                                    [elemName] => 
+                                )
+
+                        )
+
+                    [1] => connlist Object
+                        (
+                            [first:private] => elementconnlist Object
+                                (
+                                    [prev] => 
+                                    [next] => 
+                                    [elem] => dtodetcotizacion Object
+                                        (
+                                            [arreglo:private] => Array
+                                                (
+                                                    [id_linea] => 
+                                                    [id_cotizacion] => 892038
+                                                    [id_tiporetiro] => 1
+                                                    [id_tipoentrega] => 2
+                                                    [nomtiporetiro] => 
+                                                    [numlinea] => 0
+                                                    [descripcion] => CEMENTO TEQUENDAMA PORTLAND TIPO I X 50K
+                                                    [codlocalcsum] => 
+                                                    [codprod] => 2181940
+                                                    [barra] => 2090000011982
+                                                    [nomprov] => Seleccione...
+                                                    [rutproveedor] => 0
+                                                    [pcosto] => 19054
+                                                    [pventaneto] => 20500
+                                                    [cargoflete] => 0
+                                                    [valorfleteh] => undefined
+                                                    [pventaiva] => 24395
+                                                    [totallinea] => 20500
+                                                    [cantidad] => 1
+                                                    [cantidade] => 
+                                                    [margenlinea] => 7.05
+                                                    [incluirentotal] => 
+                                                    [usrcrea] => 
+                                                    [unimed] => un
+                                                    [codtipo] => PS
+                                                    [codsubtipo] => PS
+                                                    [reqdet] => 
+                                                    [lisdetprod] => 
+                                                    [marcaflete] => 
+                                                    [instalacion] => NO
+                                                    [descuento] => 0
+                                                    [peso] => 50.0000000
+                                                    [rete_ica] => 0
+                                                    [rete_renta] => 0
+                                                    [cot_iva] => 19.0000
+                                                    [sumiva] => 
+                                                    [sumtotaliva] => 
+                                                    [actualizarinventario] => 
+                                                    [grupocat] => 
+                                                )
+
+                                        )
+
+                                    [elemName] => 
+                                )
+
+                            [last:private] => elementconnlist Object
+                                (
+                                    [prev] => 
+                                    [next] => 
+                                    [elem] => dtodetcotizacion Object
+                                        (
+                                            [arreglo:private] => Array
+                                                (
+                                                    [id_linea] => 
+                                                    [id_cotizacion] => 892038
+                                                    [id_tiporetiro] => 1
+                                                    [id_tipoentrega] => 2
+                                                    [nomtiporetiro] => 
+                                                    [numlinea] => 0
+                                                    [descripcion] => CEMENTO TEQUENDAMA PORTLAND TIPO I X 50K
+                                                    [codlocalcsum] => 
+                                                    [codprod] => 2181940
+                                                    [barra] => 2090000011982
+                                                    [nomprov] => Seleccione...
+                                                    [rutproveedor] => 0
+                                                    [pcosto] => 19054
+                                                    [pventaneto] => 20500
+                                                    [cargoflete] => 0
+                                                    [valorfleteh] => undefined
+                                                    [pventaiva] => 24395
+                                                    [totallinea] => 20500
+                                                    [cantidad] => 1
+                                                    [cantidade] => 
+                                                    [margenlinea] => 7.05
+                                                    [incluirentotal] => 
+                                                    [usrcrea] => 
+                                                    [unimed] => un
+                                                    [codtipo] => PS
+                                                    [codsubtipo] => PS
+                                                    [reqdet] => 
+                                                    [lisdetprod] => 
+                                                    [marcaflete] => 
+                                                    [instalacion] => NO
+                                                    [descuento] => 0
+                                                    [peso] => 50.0000000
+                                                    [rete_ica] => 0
+                                                    [rete_renta] => 0
+                                                    [cot_iva] => 19.0000
+                                                    [sumiva] => 
+                                                    [sumtotaliva] => 
+                                                    [actualizarinventario] => 
+                                                    [grupocat] => 
+                                                )
+
+                                        )
+
+                                    [elemName] => 
+                                )
+
+                            [act:private] => elementconnlist Object
+                                (
+                                    [prev] => 
+                                    [next] => 
+                                    [elem] => dtodetcotizacion Object
+                                        (
+                                            [arreglo:private] => Array
+                                                (
+                                                    [id_linea] => 
+                                                    [id_cotizacion] => 892038
+                                                    [id_tiporetiro] => 1
+                                                    [id_tipoentrega] => 2
+                                                    [nomtiporetiro] => 
+                                                    [numlinea] => 0
+                                                    [descripcion] => CEMENTO TEQUENDAMA PORTLAND TIPO I X 50K
+                                                    [codlocalcsum] => 
+                                                    [codprod] => 2181940
+                                                    [barra] => 2090000011982
+                                                    [nomprov] => Seleccione...
+                                                    [rutproveedor] => 0
+                                                    [pcosto] => 19054
+                                                    [pventaneto] => 20500
+                                                    [cargoflete] => 0
+                                                    [valorfleteh] => undefined
+                                                    [pventaiva] => 24395
+                                                    [totallinea] => 20500
+                                                    [cantidad] => 1
+                                                    [cantidade] => 
+                                                    [margenlinea] => 7.05
+                                                    [incluirentotal] => 
+                                                    [usrcrea] => 
+                                                    [unimed] => un
+                                                    [codtipo] => PS
+                                                    [codsubtipo] => PS
+                                                    [reqdet] => 
+                                                    [lisdetprod] => 
+                                                    [marcaflete] => 
+                                                    [instalacion] => NO
+                                                    [descuento] => 0
+                                                    [peso] => 50.0000000
+                                                    [rete_ica] => 0
+                                                    [rete_renta] => 0
+                                                    [cot_iva] => 19.0000
+                                                    [sumiva] => 
+                                                    [sumtotaliva] => 
+                                                    [actualizarinventario] => 
+                                                    [grupocat] => 
+                                                )
+
+                                        )
+
+                                    [elemName] => 
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [1] => Array
+        (
+            [file] => C:\wamp\www\Trunk\Colombia\CVE\CVE_PPAL\CVEPUBLIC\BIZCLASS\bizcve.class.php
+            [line] => 1406
+            [function] => putcotizacion
+            [class] => ctrlcotizacion
+            [object] => ctrlcotizacion Object
+                (
+                )
+
+            [type] => ->
+            [args] => Array
+                (
+                    [0] => connlist Object
+                        (
+                            [first:private] => elementconnlist Object
+                                (
+                                    [prev] => 
+                                    [next] => 
+                                    [elem] => dtocotizacion Object
+                                        (
+                                            [arreglo:private] => Array
+                                                (
+                                                    [id_cotizacion] => 892038
+                                                    [id_estado] => CT
+                                                    [nomestado] => 
+                                                    [cargoflete] => 
+                                                    [flete] => 
+                                                    [numlinea1] => 
+                                                    [stock] => 
+                                                    [id_tipoventa] => 
+                                                    [nomtipoventa] => 
+                                                    [codigovendedor] => 
+                                                    [rutcliente] => 
+                                                    [codlocalventa] => 
+                                                    [nom_local] => 
+                                                    [dir_local] => 
+                                                    [dir_localcsum] => 
+                                                    [codlocalcsum] => 
+                                                    [nom_localcsum] => 
+                                                    [razonsoc] => 
+                                                    [id_giro] => 
+                                                    [giro] => 
+                                                    [direccion] => CL 2 # 18 - 93 MZ P1 - P A R Q - I
+                                                    [comuna] => 
+                                                    [iva] => 
+                                                    [validdesde] => 2018-06-26
+                                                    [validhasta] => 2018-06-27
+                                                    [validdias] => 
+                                                    [nvevaliddesde] => 
+                                                    [nvevalidhasta] => 
+                                                    [nvevaliddias] => 
+                                                    [condicion] => 
+                                                    [diascondicion] => 
+                                                    [fonocontacto] => 
+                                                    [observaciones] => 
+                                                    [nota] => 
+                                                    [id_usuario] => 
+                                                    [usuariocrea] => 
+                                                    [valortotal] => NaN
+                                                    [margentotal] => 7.05
+                                                    [obsdesb] => 
+                                                    [puedever] => 
+                                                    [puedemodificar] => 
+                                                    [puedeeliminar] => 
+                                                    [orderby] => 
+                                                    [reqdet] => 
+                                                    [feccrea] => 
+                                                    [usrmod] => 
+                                                    [estado] => 
+                                                    [id_tipopago] => 
+                                                    [fechaucofini] => 
+                                                    [fechaucoffin] => 
+                                                    [numlinea] => 
+                                                    [barra] => 
+                                                    [nomproveedor] => 
+                                                    [rutproveedor] => 
+                                                    [limite] => 
+                                                    [total_coti] => 
+                                                    [prorrateoflete] => 
+                                                    [bloqueopormargen] => 
+                                                    [bloqueoporcarga] => 
+                                                    [rete_iva] => '0'
+                                                    [rete_ica] => '0'
+                                                    [rete_renta] => '0'
+                                                    [cot_iva] => 0
+                                                    [ciudad] => 
+                                                    [contacto] => 
+                                                    [comentariodir] => 
+                                                    [id_dirdespacho] => 00
+                                                    [zona] => 
+                                                    [actualizarinventario] => 
+                                                    [nom_localventa] => 
+                                                )
+
+                                        )
+
+                                    [elemName] => 
+                                )
+
+                            [last:private] => elementconnlist Object
+                                (
+                                    [prev] => 
+                                    [next] => 
+                                    [elem] => dtocotizacion Object
+                                        (
+                                            [arreglo:private] => Array
+                                                (
+                                                    [id_cotizacion] => 892038
+                                                    [id_estado] => CT
+                                                    [nomestado] => 
+                                                    [cargoflete] => 
+                                                    [flete] => 
+                                                    [numlinea1] => 
+                                                    [stock] => 
+                                                    [id_tipoventa] => 
+                                                    [nomtipoventa] => 
+                                                    [codigovendedor] => 
+                                                    [rutcliente] => 
+                                                    [codlocalventa] => 
+                                                    [nom_local] => 
+                                                    [dir_local] => 
+                                                    [dir_localcsum] => 
+                                                    [codlocalcsum] => 
+                                                    [nom_localcsum] => 
+                                                    [razonsoc] => 
+                                                    [id_giro] => 
+                                                    [giro] => 
+                                                    [direccion] => CL 2 # 18 - 93 MZ P1 - P A R Q - I
+                                                    [comuna] => 
+                                                    [iva] => 
+                                                    [validdesde] => 2018-06-26
+                                                    [validhasta] => 2018-06-27
+                                                    [validdias] => 
+                                                    [nvevaliddesde] => 
+                                                    [nvevalidhasta] => 
+                                                    [nvevaliddias] => 
+                                                    [condicion] => 
+                                                    [diascondicion] => 
+                                                    [fonocontacto] => 
+                                                    [observaciones] => 
+                                                    [nota] => 
+                                                    [id_usuario] => 
+                                                    [usuariocrea] => 
+                                                    [valortotal] => NaN
+                                                    [margentotal] => 7.05
+                                                    [obsdesb] => 
+                                                    [puedever] => 
+                                                    [puedemodificar] => 
+                                                    [puedeeliminar] => 
+                                                    [orderby] => 
+                                                    [reqdet] => 
+                                                    [feccrea] => 
+                                                    [usrmod] => 
+                                                    [estado] => 
+                                                    [id_tipopago] => 
+                                                    [fechaucofini] => 
+                                                    [fechaucoffin] => 
+                                                    [numlinea] => 
+                                                    [barra] => 
+                                                    [nomproveedor] => 
+                                                    [rutproveedor] => 
+                                                    [limite] => 
+                                                    [total_coti] => 
+                                                    [prorrateoflete] => 
+                                                    [bloqueopormargen] => 
+                                                    [bloqueoporcarga] => 
+                                                    [rete_iva] => '0'
+                                                    [rete_ica] => '0'
+                                                    [rete_renta] => '0'
+                                                    [cot_iva] => 0
+                                                    [ciudad] => 
+                                                    [contacto] => 
+                                                    [comentariodir] => 
+                                                    [id_dirdespacho] => 00
+                                                    [zona] => 
+                                                    [actualizarinventario] => 
+                                                    [nom_localventa] => 
+                                                )
+
+                                        )
+
+                                    [elemName] => 
+                                )
+
+                            [act:private] => elementconnlist Object
+                                (
+                                    [prev] => 
+                                    [next] => 
+                                    [elem] => dtocotizacion Object
+                                        (
+                                            [arreglo:private] => Array
+                                                (
+                                                    [id_cotizacion] => 892038
+                                                    [id_estado] => CT
+                                                    [nomestado] => 
+                                                    [cargoflete] => 
+                                                    [flete] => 
+                                                    [numlinea1] => 
+                                                    [stock] => 
+                                                    [id_tipoventa] => 
+                                                    [nomtipoventa] => 
+                                                    [codigovendedor] => 
+                                                    [rutcliente] => 
+                                                    [codlocalventa] => 
+                                                    [nom_local] => 
+                                                    [dir_local] => 
+                                                    [dir_localcsum] => 
+                                                    [codlocalcsum] => 
+                                                    [nom_localcsum] => 
+                                                    [razonsoc] => 
+                                                    [id_giro] => 
+                                                    [giro] => 
+                                                    [direccion] => CL 2 # 18 - 93 MZ P1 - P A R Q - I
+                                                    [comuna] => 
+                                                    [iva] => 
+                                                    [validdesde] => 2018-06-26
+                                                    [validhasta] => 2018-06-27
+                                                    [validdias] => 
+                                                    [nvevaliddesde] => 
+                                                    [nvevalidhasta] => 
+                                                    [nvevaliddias] => 
+                                                    [condicion] => 
+                                                    [diascondicion] => 
+                                                    [fonocontacto] => 
+                                                    [observaciones] => 
+                                                    [nota] => 
+                                                    [id_usuario] => 
+                                                    [usuariocrea] => 
+                                                    [valortotal] => NaN
+                                                    [margentotal] => 7.05
+                                                    [obsdesb] => 
+                                                    [puedever] => 
+                                                    [puedemodificar] => 
+                                                    [puedeeliminar] => 
+                                                    [orderby] => 
+                                                    [reqdet] => 
+                                                    [feccrea] => 
+                                                    [usrmod] => 
+                                                    [estado] => 
+                                                    [id_tipopago] => 
+                                                    [fechaucofini] => 
+                                                    [fechaucoffin] => 
+                                                    [numlinea] => 
+                                                    [barra] => 
+                                                    [nomproveedor] => 
+                                                    [rutproveedor] => 
+                                                    [limite] => 
+                                                    [total_coti] => 
+                                                    [prorrateoflete] => 
+                                                    [bloqueopormargen] => 
+                                                    [bloqueoporcarga] => 
+                                                    [rete_iva] => '0'
+                                                    [rete_ica] => '0'
+                                                    [rete_renta] => '0'
+                                                    [cot_iva] => 0
+                                                    [ciudad] => 
+                                                    [contacto] => 
+                                                    [comentariodir] => 
+                                                    [id_dirdespacho] => 00
+                                                    [zona] => 
+                                                    [actualizarinventario] => 
+                                                    [nom_localventa] => 
+                                                )
+
+                                        )
+
+                                    [elemName] => 
+                                )
+
+                        )
+
+                    [1] => connlist Object
+                        (
+                            [first:private] => elementconnlist Object
+                                (
+                                    [prev] => 
+                                    [next] => 
+                                    [elem] => dtodetcotizacion Object
+                                        (
+                                            [arreglo:private] => Array
+                                                (
+                                                    [id_linea] => 
+                                                    [id_cotizacion] => 892038
+                                                    [id_tiporetiro] => 1
+                                                    [id_tipoentrega] => 2
+                                                    [nomtiporetiro] => 
+                                                    [numlinea] => 0
+                                                    [descripcion] => CEMENTO TEQUENDAMA PORTLAND TIPO I X 50K
+                                                    [codlocalcsum] => 
+                                                    [codprod] => 2181940
+                                                    [barra] => 2090000011982
+                                                    [nomprov] => Seleccione...
+                                                    [rutproveedor] => 0
+                                                    [pcosto] => 19054
+                                                    [pventaneto] => 20500
+                                                    [cargoflete] => 0
+                                                    [valorfleteh] => undefined
+                                                    [pventaiva] => 24395
+                                                    [totallinea] => 20500
+                                                    [cantidad] => 1
+                                                    [cantidade] => 
+                                                    [margenlinea] => 7.05
+                                                    [incluirentotal] => 
+                                                    [usrcrea] => 
+                                                    [unimed] => un
+                                                    [codtipo] => PS
+                                                    [codsubtipo] => PS
+                                                    [reqdet] => 
+                                                    [lisdetprod] => 
+                                                    [marcaflete] => 
+                                                    [instalacion] => NO
+                                                    [descuento] => 0
+                                                    [peso] => 50.0000000
+                                                    [rete_ica] => 0
+                                                    [rete_renta] => 0
+                                                    [cot_iva] => 19.0000
+                                                    [sumiva] => 
+                                                    [sumtotaliva] => 
+                                                    [actualizarinventario] => 
+                                                    [grupocat] => 
+                                                )
+
+                                        )
+
+                                    [elemName] => 
+                                )
+
+                            [last:private] => elementconnlist Object
+                                (
+                                    [prev] => 
+                                    [next] => 
+                                    [elem] => dtodetcotizacion Object
+                                        (
+                                            [arreglo:private] => Array
+                                                (
+                                                    [id_linea] => 
+                                                    [id_cotizacion] => 892038
+                                                    [id_tiporetiro] => 1
+                                                    [id_tipoentrega] => 2
+                                                    [nomtiporetiro] => 
+                                                    [numlinea] => 0
+                                                    [descripcion] => CEMENTO TEQUENDAMA PORTLAND TIPO I X 50K
+                                                    [codlocalcsum] => 
+                                                    [codprod] => 2181940
+                                                    [barra] => 2090000011982
+                                                    [nomprov] => Seleccione...
+                                                    [rutproveedor] => 0
+                                                    [pcosto] => 19054
+                                                    [pventaneto] => 20500
+                                                    [cargoflete] => 0
+                                                    [valorfleteh] => undefined
+                                                    [pventaiva] => 24395
+                                                    [totallinea] => 20500
+                                                    [cantidad] => 1
+                                                    [cantidade] => 
+                                                    [margenlinea] => 7.05
+                                                    [incluirentotal] => 
+                                                    [usrcrea] => 
+                                                    [unimed] => un
+                                                    [codtipo] => PS
+                                                    [codsubtipo] => PS
+                                                    [reqdet] => 
+                                                    [lisdetprod] => 
+                                                    [marcaflete] => 
+                                                    [instalacion] => NO
+                                                    [descuento] => 0
+                                                    [peso] => 50.0000000
+                                                    [rete_ica] => 0
+                                                    [rete_renta] => 0
+                                                    [cot_iva] => 19.0000
+                                                    [sumiva] => 
+                                                    [sumtotaliva] => 
+                                                    [actualizarinventario] => 
+                                                    [grupocat] => 
+                                                )
+
+                                        )
+
+                                    [elemName] => 
+                                )
+
+                            [act:private] => elementconnlist Object
+                                (
+                                    [prev] => 
+                                    [next] => 
+                                    [elem] => dtodetcotizacion Object
+                                        (
+                                            [arreglo:private] => Array
+                                                (
+                                                    [id_linea] => 
+                                                    [id_cotizacion] => 892038
+                                                    [id_tiporetiro] => 1
+                                                    [id_tipoentrega] => 2
+                                                    [nomtiporetiro] => 
+                                                    [numlinea] => 0
+                                                    [descripcion] => CEMENTO TEQUENDAMA PORTLAND TIPO I X 50K
+                                                    [codlocalcsum] => 
+                                                    [codprod] => 2181940
+                                                    [barra] => 2090000011982
+                                                    [nomprov] => Seleccione...
+                                                    [rutproveedor] => 0
+                                                    [pcosto] => 19054
+                                                    [pventaneto] => 20500
+                                                    [cargoflete] => 0
+                                                    [valorfleteh] => undefined
+                                                    [pventaiva] => 24395
+                                                    [totallinea] => 20500
+                                                    [cantidad] => 1
+                                                    [cantidade] => 
+                                                    [margenlinea] => 7.05
+                                                    [incluirentotal] => 
+                                                    [usrcrea] => 
+                                                    [unimed] => un
+                                                    [codtipo] => PS
+                                                    [codsubtipo] => PS
+                                                    [reqdet] => 
+                                                    [lisdetprod] => 
+                                                    [marcaflete] => 
+                                                    [instalacion] => NO
+                                                    [descuento] => 0
+                                                    [peso] => 50.0000000
+                                                    [rete_ica] => 0
+                                                    [rete_renta] => 0
+                                                    [cot_iva] => 19.0000
+                                                    [sumiva] => 
+                                                    [sumtotaliva] => 
+                                                    [actualizarinventario] => 
+                                                    [grupocat] => 
+                                                )
+
+                                        )
+
+                                    [elemName] => 
+                                )
+
+                        )
+
+                )
+
+        )
+
+    [2] => Array
+        (
+            [file] => C:\wamp\www\Trunk\Colombia\CVE\CVE_PPAL\CVEPUBLIC\COMMAND\nuevacotizacion\nueva_cotizacion_03.php
+            [line] => 89
+            [function] => putcotizacion
+            [class] => bizcve
+            [type] => ::
+            [args] => Array
+                (
+                    [0] => connlist Object
+                        (
+                            [first:private] => elementconnlist Object
+                                (
+                                    [prev] => 
+                                    [next] => 
+                                    [elem] => dtocotizacion Object
+                                        (
+                                            [arreglo:private] => Array
+                                                (
+                                                    [id_cotizacion] => 892038
+                                                    [id_estado] => CT
+                                                    [nomestado] => 
+                                                    [cargoflete] => 
+                                                    [flete] => 
+                                                    [numlinea1] => 
+                                                    [stock] => 
+                                                    [id_tipoventa] => 
+                                                    [nomtipoventa] => 
+                                                    [codigovendedor] => 
+                                                    [rutcliente] => 
+                                                    [codlocalventa] => 
+                                                    [nom_local] => 
+                                                    [dir_local] => 
+                                                    [dir_localcsum] => 
+                                                    [codlocalcsum] => 
+                                                    [nom_localcsum] => 
+                                                    [razonsoc] => 
+                                                    [id_giro] => 
+                                                    [giro] => 
+                                                    [direccion] => CL 2 # 18 - 93 MZ P1 - P A R Q - I
+                                                    [comuna] => 
+                                                    [iva] => 
+                                                    [validdesde] => 2018-06-26
+                                                    [validhasta] => 2018-06-27
+                                                    [validdias] => 
+                                                    [nvevaliddesde] => 
+                                                    [nvevalidhasta] => 
+                                                    [nvevaliddias] => 
+                                                    [condicion] => 
+                                                    [diascondicion] => 
+                                                    [fonocontacto] => 
+                                                    [observaciones] => 
+                                                    [nota] => 
+                                                    [id_usuario] => 
+                                                    [usuariocrea] => 
+                                                    [valortotal] => NaN
+                                                    [margentotal] => 7.05
+                                                    [obsdesb] => 
+                                                    [puedever] => 
+                                                    [puedemodificar] => 
+                                                    [puedeeliminar] => 
+                                                    [orderby] => 
+                                                    [reqdet] => 
+                                                    [feccrea] => 
+                                                    [usrmod] => 
+                                                    [estado] => 
+                                                    [id_tipopago] => 
+                                                    [fechaucofini] => 
+                                                    [fechaucoffin] => 
+                                                    [numlinea] => 
+                                                    [barra] => 
+                                                    [nomproveedor] => 
+                                                    [rutproveedor] => 
+                                                    [limite] => 
+                                                    [total_coti] => 
+                                                    [prorrateoflete] => 
+                                                    [bloqueopormargen] => 
+                                                    [bloqueoporcarga] => 
+                                                    [rete_iva] => '0'
+                                                    [rete_ica] => '0'
+                                                    [rete_renta] => '0'
+                                                    [cot_iva] => 0
+                                                    [ciudad] => 
+                                                    [contacto] => 
+                                                    [comentariodir] => 
+                                                    [id_dirdespacho] => 00
+                                                    [zona] => 
+                                                    [actualizarinventario] => 
+                                                    [nom_localventa] => 
+                                                )
+
+                                        )
+
+                                    [elemName] => 
+                                )
+
+                            [last:private] => elementconnlist Object
+                                (
+                                    [prev] => 
+                                    [next] => 
+                                    [elem] => dtocotizacion Object
+                                        (
+                                            [arreglo:private] => Array
+                                                (
+                                                    [id_cotizacion] => 892038
+                                                    [id_estado] => CT
+                                                    [nomestado] => 
+                                                    [cargoflete] => 
+                                                    [flete] => 
+                                                    [numlinea1] => 
+                                                    [stock] => 
+                                                    [id_tipoventa] => 
+                                                    [nomtipoventa] => 
+                                                    [codigovendedor] => 
+                                                    [rutcliente] => 
+                                                    [codlocalventa] => 
+                                                    [nom_local] => 
+                                                    [dir_local] => 
+                                                    [dir_localcsum] => 
+                                                    [codlocalcsum] => 
+                                                    [nom_localcsum] => 
+                                                    [razonsoc] => 
+                                                    [id_giro] => 
+                                                    [giro] => 
+                                                    [direccion] => CL 2 # 18 - 93 MZ P1 - P A R Q - I
+                                                    [comuna] => 
+                                                    [iva] => 
+                                                    [validdesde] => 2018-06-26
+                                                    [validhasta] => 2018-06-27
+                                                    [validdias] => 
+                                                    [nvevaliddesde] => 
+                                                    [nvevalidhasta] => 
+                                                    [nvevaliddias] => 
+                                                    [condicion] => 
+                                                    [diascondicion] => 
+                                                    [fonocontacto] => 
+                                                    [observaciones] => 
+                                                    [nota] => 
+                                                    [id_usuario] => 
+                                                    [usuariocrea] => 
+                                                    [valortotal] => NaN
+                                                    [margentotal] => 7.05
+                                                    [obsdesb] => 
+                                                    [puedever] => 
+                                                    [puedemodificar] => 
+                                                    [puedeeliminar] => 
+                                                    [orderby] => 
+                                                    [reqdet] => 
+                                                    [feccrea] => 
+                                                    [usrmod] => 
+                                                    [estado] => 
+                                                    [id_tipopago] => 
+                                                    [fechaucofini] => 
+                                                    [fechaucoffin] => 
+                                                    [numlinea] => 
+                                                    [barra] => 
+                                                    [nomproveedor] => 
+                                                    [rutproveedor] => 
+                                                    [limite] => 
+                                                    [total_coti] => 
+                                                    [prorrateoflete] => 
+                                                    [bloqueopormargen] => 
+                                                    [bloqueoporcarga] => 
+                                                    [rete_iva] => '0'
+                                                    [rete_ica] => '0'
+                                                    [rete_renta] => '0'
+                                                    [cot_iva] => 0
+                                                    [ciudad] => 
+                                                    [contacto] => 
+                                                    [comentariodir] => 
+                                                    [id_dirdespacho] => 00
+                                                    [zona] => 
+                                                    [actualizarinventario] => 
+                                                    [nom_localventa] => 
+                                                )
+
+                                        )
+
+                                    [elemName] => 
+                                )
+
+                            [act:private] => elementconnlist Object
+                                (
+                                    [prev] => 
+                                    [next] => 
+                                    [elem] => dtocotizacion Object
+                                        (
+                                            [arreglo:private] => Array
+                                                (
+                                                    [id_cotizacion] => 892038
+                                                    [id_estado] => CT
+                                                    [nomestado] => 
+                                                    [cargoflete] => 
+                                                    [flete] => 
+                                                    [numlinea1] => 
+                                                    [stock] => 
+                                                    [id_tipoventa] => 
+                                                    [nomtipoventa] => 
+                                                    [codigovendedor] => 
+                                                    [rutcliente] => 
+                                                    [codlocalventa] => 
+                                                    [nom_local] => 
+                                                    [dir_local] => 
+                                                    [dir_localcsum] => 
+                                                    [codlocalcsum] => 
+                                                    [nom_localcsum] => 
+                                                    [razonsoc] => 
+                                                    [id_giro] => 
+                                                    [giro] => 
+                                                    [direccion] => CL 2 # 18 - 93 MZ P1 - P A R Q - I
+                                                    [comuna] => 
+                                                    [iva] => 
+                                                    [validdesde] => 2018-06-26
+                                                    [validhasta] => 2018-06-27
+                                                    [validdias] => 
+                                                    [nvevaliddesde] => 
+                                                    [nvevalidhasta] => 
+                                                    [nvevaliddias] => 
+                                                    [condicion] => 
+                                                    [diascondicion] => 
+                                                    [fonocontacto] => 
+                                                    [observaciones] => 
+                                                    [nota] => 
+                                                    [id_usuario] => 
+                                                    [usuariocrea] => 
+                                                    [valortotal] => NaN
+                                                    [margentotal] => 7.05
+                                                    [obsdesb] => 
+                                                    [puedever] => 
+                                                    [puedemodificar] => 
+                                                    [puedeeliminar] => 
+                                                    [orderby] => 
+                                                    [reqdet] => 
+                                                    [feccrea] => 
+                                                    [usrmod] => 
+                                                    [estado] => 
+                                                    [id_tipopago] => 
+                                                    [fechaucofini] => 
+                                                    [fechaucoffin] => 
+                                                    [numlinea] => 
+                                                    [barra] => 
+                                                    [nomproveedor] => 
+                                                    [rutproveedor] => 
+                                                    [limite] => 
+                                                    [total_coti] => 
+                                                    [prorrateoflete] => 
+                                                    [bloqueopormargen] => 
+                                                    [bloqueoporcarga] => 
+                                                    [rete_iva] => '0'
+                                                    [rete_ica] => '0'
+                                                    [rete_renta] => '0'
+                                                    [cot_iva] => 0
+                                                    [ciudad] => 
+                                                    [contacto] => 
+                                                    [comentariodir] => 
+                                                    [id_dirdespacho] => 00
+                                                    [zona] => 
+                                                    [actualizarinventario] => 
+                                                    [nom_localventa] => 
+                                                )
+
+                                        )
+
+                                    [elemName] => 
+                                )
+
+                        )
+
+                    [1] => connlist Object
+                        (
+                            [first:private] => elementconnlist Object
+                                (
+                                    [prev] => 
+                                    [next] => 
+                                    [elem] => dtodetcotizacion Object
+                                        (
+                                            [arreglo:private] => Array
+                                                (
+                                                    [id_linea] => 
+                                                    [id_cotizacion] => 892038
+                                                    [id_tiporetiro] => 1
+                                                    [id_tipoentrega] => 2
+                                                    [nomtiporetiro] => 
+                                                    [numlinea] => 0
+                                                    [descripcion] => CEMENTO TEQUENDAMA PORTLAND TIPO I X 50K
+                                                    [codlocalcsum] => 
+                                                    [codprod] => 2181940
+                                                    [barra] => 2090000011982
+                                                    [nomprov] => Seleccione...
+                                                    [rutproveedor] => 0
+                                                    [pcosto] => 19054
+                                                    [pventaneto] => 20500
+                                                    [cargoflete] => 0
+                                                    [valorfleteh] => undefined
+                                                    [pventaiva] => 24395
+                                                    [totallinea] => 20500
+                                                    [cantidad] => 1
+                                                    [cantidade] => 
+                                                    [margenlinea] => 7.05
+                                                    [incluirentotal] => 
+                                                    [usrcrea] => 
+                                                    [unimed] => un
+                                                    [codtipo] => PS
+                                                    [codsubtipo] => PS
+                                                    [reqdet] => 
+                                                    [lisdetprod] => 
+                                                    [marcaflete] => 
+                                                    [instalacion] => NO
+                                                    [descuento] => 0
+                                                    [peso] => 50.0000000
+                                                    [rete_ica] => 0
+                                                    [rete_renta] => 0
+                                                    [cot_iva] => 19.0000
+                                                    [sumiva] => 
+                                                    [sumtotaliva] => 
+                                                    [actualizarinventario] => 
+                                                    [grupocat] => 
+                                                )
+
+                                        )
+
+                                    [elemName] => 
+                                )
+
+                            [last:private] => elementconnlist Object
+                                (
+                                    [prev] => 
+                                    [next] => 
+                                    [elem] => dtodetcotizacion Object
+                                        (
+                                            [arreglo:private] => Array
+                                                (
+                                                    [id_linea] => 
+                                                    [id_cotizacion] => 892038
+                                                    [id_tiporetiro] => 1
+                                                    [id_tipoentrega] => 2
+                                                    [nomtiporetiro] => 
+                                                    [numlinea] => 0
+                                                    [descripcion] => CEMENTO TEQUENDAMA PORTLAND TIPO I X 50K
+                                                    [codlocalcsum] => 
+                                                    [codprod] => 2181940
+                                                    [barra] => 2090000011982
+                                                    [nomprov] => Seleccione...
+                                                    [rutproveedor] => 0
+                                                    [pcosto] => 19054
+                                                    [pventaneto] => 20500
+                                                    [cargoflete] => 0
+                                                    [valorfleteh] => undefined
+                                                    [pventaiva] => 24395
+                                                    [totallinea] => 20500
+                                                    [cantidad] => 1
+                                                    [cantidade] => 
+                                                    [margenlinea] => 7.05
+                                                    [incluirentotal] => 
+                                                    [usrcrea] => 
+                                                    [unimed] => un
+                                                    [codtipo] => PS
+                                                    [codsubtipo] => PS
+                                                    [reqdet] => 
+                                                    [lisdetprod] => 
+                                                    [marcaflete] => 
+                                                    [instalacion] => NO
+                                                    [descuento] => 0
+                                                    [peso] => 50.0000000
+                                                    [rete_ica] => 0
+                                                    [rete_renta] => 0
+                                                    [cot_iva] => 19.0000
+                                                    [sumiva] => 
+                                                    [sumtotaliva] => 
+                                                    [actualizarinventario] => 
+                                                    [grupocat] => 
+                                                )
+
+                                        )
+
+                                    [elemName] => 
+                                )
+
+                            [act:private] => elementconnlist Object
+                                (
+                                    [prev] => 
+                                    [next] => 
+                                    [elem] => dtodetcotizacion Object
+                                        (
+                                            [arreglo:private] => Array
+                                                (
+                                                    [id_linea] => 
+                                                    [id_cotizacion] => 892038
+                                                    [id_tiporetiro] => 1
+                                                    [id_tipoentrega] => 2
+                                                    [nomtiporetiro] => 
+                                                    [numlinea] => 0
+                                                    [descripcion] => CEMENTO TEQUENDAMA PORTLAND TIPO I X 50K
+                                                    [codlocalcsum] => 
+                                                    [codprod] => 2181940
+                                                    [barra] => 2090000011982
+                                                    [nomprov] => Seleccione...
+                                                    [rutproveedor] => 0
+                                                    [pcosto] => 19054
+                                                    [pventaneto] => 20500
+                                                    [cargoflete] => 0
+                                                    [valorfleteh] => undefined
+                                                    [pventaiva] => 24395
+                                                    [totallinea] => 20500
+                                                    [cantidad] => 1
+                                                    [cantidade] => 
+                                                    [margenlinea] => 7.05
+                                                    [incluirentotal] => 
+                                                    [usrcrea] => 
+                                                    [unimed] => un
+                                                    [codtipo] => PS
+                                                    [codsubtipo] => PS
+                                                    [reqdet] => 
+                                                    [lisdetprod] => 
+                                                    [marcaflete] => 
+                                                    [instalacion] => NO
+                                                    [descuento] => 0
+                                                    [peso] => 50.0000000
+                                                    [rete_ica] => 0
+                                                    [rete_renta] => 0
+                                                    [cot_iva] => 19.0000
+                                                    [sumiva] => 
+                                                    [sumtotaliva] => 
+                                                    [actualizarinventario] => 
+                                                    [grupocat] => 
+                                                )
+
+                                        )
+
+                                    [elemName] => 
+                                )
+
+                        )
+
+                )
+
+        )
+
+)

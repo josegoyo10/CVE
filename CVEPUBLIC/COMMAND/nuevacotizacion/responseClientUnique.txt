@@ -1,0 +1,3 @@
+2KR 7 # 7 1 - 5 2 T O - A P 30RAMOS L CASAScompras.administrativo@bodytechcorp.com7442222BODYTECH SAM38300332063121100100000107674226390falsefalsefalse1BODYTECH SACliente consultado exitósamenteBOGOTABOGOTAfalsefalseA600
+      <IdTypeCustomer>5</IdTypeCustomer>
+    0Array

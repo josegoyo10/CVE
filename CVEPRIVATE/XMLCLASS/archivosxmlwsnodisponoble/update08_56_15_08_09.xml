@@ -1,0 +1,32 @@
+<request>
+	<customer>
+		<Source>22</Source>
+		<IdCustomer>800203250</IdCustomer>
+		<IdCategory>3</IdCategory>
+		<IdTypeContribuyente>3</IdTypeContribuyente>
+		<TypeCustomer>
+			<IdTypeCustomer>5</IdTypeCustomer>
+		</TypeCustomer>
+		<Location>11001000016056</Location>
+		<IdDoc>31</IdDoc>
+		<FirstName>CAFEOMA</FirstName>
+		<Surname1> </Surname1>
+		<Surname2> </Surname2>
+		<Address>CRA 42 A BIS  N°.13-83</Address>		
+		<Phone>2440820</Phone>
+		<Phone2></Phone2>
+		<Fax>2690290</Fax>
+		<Email>COMPRASCVAFETC@CAFEOMA.COM</Email>
+		<AgeRange>0</AgeRange>
+		<Quota>0</Quota>
+		<Contact>ROMERO R FRANCISCO</Contact>
+		<Gender>NA</Gender>
+		<Occupation></Occupation>
+		<ReteIca>false</ReteIca>
+		<ReteFuente>true</ReteFuente>
+		<ReteIva>false</ReteIva>
+		<ExenIva>false</ExenIva>
+		<OtrIva>false</OtrIva>
+		<State>A</State>
+	</customer>	
+</request>

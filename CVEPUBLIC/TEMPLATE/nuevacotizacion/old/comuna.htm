@@ -1,0 +1,560 @@
+<HTML><HEAD><TITLE>Nueva Cotizaci&oacute;n - Paso 1 - Ingreso de Usuario</TITLE>
+
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+
+<META HTTP-EQUIV="EXPIRES" CONTENT="0">
+
+
+
+<link rel="stylesheet" type="text/css" href="../../TEMPLATE/general/estilos.css">
+
+
+
+<BODY leftMargin=0 topMargin=0 marginheight="0" marginwidth="0" background="/../IMAGES/bg_pattern_002.jpg">
+
+<script type="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+
+
+<script type="text/JavaScript">
+
+function Editar(){
+
+	window.location="nueva_cotizacion_01.php?={rut}";
+
+	
+
+}
+
+function Tipo_Venta(){
+
+	popUpWindowModal('../../Template/nuevacotizacion/nueva_cotizacion_02_popup.htm',100, 100, 350, 300);
+
+	window.location='nueva_cotizacion_02.php';
+
+}
+
+
+
+</script>
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+
+<table width="760" height="15" border="0" cellpadding="0"cellspacing="0">
+
+  <tr>
+
+    <td width="50%"  height="30" class="titulonormal">Listado de Cotizaciones Cliente Empresa </td>
+
+    <td width="414" class="titulonormal"><table  border="0" align="right" cellpadding="0" cellspacing="0">
+
+        <td><img src="../../IMAGES/1a.gif" width="40" height="40"></td>
+
+            <td><img src="../../IMAGES/redarrow.gif" width="24" height="20"></td>
+
+            <td><img src="../../IMAGES/2a.gif" width="40" height="40"></td>
+
+            <td><img src="../../IMAGES/redarrow.gif" width="24" height="20"></td>
+
+            <td><img src="../../IMAGES/3b.gif" width="40" height="40"></td>
+
+            <td><img src="../../IMAGES/redarrow.gif" width="24" height="20"></td>
+
+            <td><img src="../../IMAGES/4a.gif" width="40" height="40"></td>
+
+            <td><img src="../../IMAGES/redarrow.gif" width="24" height="20"></td>
+
+            <td><img src="../../IMAGES/5a.gif" width="40" height="40"></td>
+
+    </table></td>
+
+</table>
+
+<table width="750" border="0" height="80%" cellpadding="0"	cellspacing="0">
+
+	<tr>
+
+	  <td valign="top">
+
+		<table width="750" border="0" cellspacing="2" cellpadding="2">
+
+			<tr>
+
+			  <td width="31%" valign="top"><FORM NAME="nueva_cotizacion_02"  METHOD="POST" ACTION="../../COMMAND/nuevacotizacion/nueva_cotizacion_01.php?={rut}" ><table width="750" border="0" class="textonormal">
+
+                  <tr>
+
+                    <th width="42%" scope="col"><fieldset>
+
+                    <legend>Datos del Cliente</legend>
+
+                        <table height="131" border="0" align="left" class="textonormal">
+
+                          <tr class="userinput">
+
+                            <th width="109" height="26" class="tabla1" scope="col"><div align="left"><strong>CC/NIT/RUT</strong></div></th>
+
+                            <th width="112" scope="col"><div align="left"> {rut} </div></th>
+
+                            <th width="124" class="tabla1" scope="col"><div align="left" class="tabla1"><strong>Razon Social</strong></div></th>
+
+                            <th width="121" scope="col"><div align="left"> {razonsoc} </div></th>
+
+                            <th width="123" class="tabla1" scope="col"><div align="left" class="tabla1"><strong>Tipo Cliente </strong></div></th>
+
+                            <th width="129" scope="col"><div align="left"> {id_tipocondicion} </div></th>
+
+                          </tr>
+
+                          <tr class="userinput">
+
+                            <td height="33" class="tabla1"><div align="left">Direcci&oacute;n</div></td>
+
+                            <td><div align="left"> {id_ciudad} </div></td>
+
+                            <td><div align="left" class="tabla1">Barrio</div></td>
+
+                            <td><div align="left"> {id_comuna} </div></td>
+
+                            <td class="tabla1"><div align="left">Disponible </div></td>
+
+                            <td><div align="left"> {disponible} </div></td>
+
+                          </tr>
+
+                          <tr class="userinput">
+
+                            <td class="tabla1"><div align="left">Tel&eacute;fono Contacto</div></td>
+
+                            <td><div align="left"> {fonocontacto} </div></td>
+
+                            <td class="tabla1"><div align="left">Estado </div></td>
+
+                            <td><div align="left"> {estado} </div></td>
+
+                            <td>&nbsp;</td>
+
+                            <td>&nbsp;</td>
+
+                          </tr>
+
+                          <tr class="userinput">
+
+                            <td class="tabla1"><div align="left">Comentario</div></td>
+
+                            <td><div align="left"></div></td>
+
+                            <td>&nbsp;</td>
+
+                            <td>&nbsp;</td>
+
+                            <td><div align="left"></div></td>
+
+                            <td><div align="left"></div></td>
+
+                          </tr>
+
+                    </table>
+
+                    </fieldset>                    </th>
+
+                  </tr>
+
+                  <tr>
+
+                    <th scope="col"><label>
+
+                    <input name="button" type="submit" value="Editar" onclick="editar();">
+
+                    </label></th>
+
+                  </tr>				  
+
+                </table></form>
+
+				<table align="center" class="textonormal">
+
+				<tr>
+
+                <td valign="top"><p class="userinput">
+
+                    <fieldset>
+
+                        <legend>Crear Cotización </legend>
+
+                        <script language="JavaScript" type="text/JavaScript" src="../../Template/general/popup.js"></script>
+
+                        <table  border="0" cellspacing="2" cellpadding="2">
+
+                            <tr>
+
+                                <td align="left"><input type="button" id="blanco"  name="Button3" value="Crear cotizaci&oacute;n"  onClick="Tipo_Venta()"></td>
+
+                            </tr>
+
+                      </table>
+
+                    </fieldset></td>
+
+                <td valign="top"><fieldset>
+
+                  <legend>Tipo Venta</legend>
+
+                  <table  border="0" cellspacing="2" cellpadding="2">
+
+                    <tr>
+
+                      <td><span class="userinput">
+
+                        <select  class="select1" >
+
+                          <option value="" selected >Todos</option>
+
+                          <option value="">Stock</option>
+
+                          <option value="">Calzada</option>
+
+                        </select></span></td>
+
+                      <td><input type="button" name="Button232" value="Filtrar"></td>
+
+                    </tr>
+
+                  </table>
+
+                </fieldset></td>
+
+			 <td valign="top"><fieldset>
+
+                  <legend>Centro Suministro</legend>
+
+                  <table  border="0" cellspacing="2" cellpadding="2">
+
+                    <tr>
+
+                      <td><span class="userinput">
+
+                        <select class="select1">
+
+                          <option value="" selected >Easy Florida</option>
+
+                          <option value="">Easy La Dehesa</option>
+
+                          <option value="">Easy Maipu</option>
+
+                        </select></span></td>
+
+                      <td><input type="button" name="Button232" value="Filtrar"></td>
+
+                    </tr>
+
+                  </table>
+
+                </fieldset></td>
+
+			<td valign="top"><fieldset>
+
+                  <legend>Condición</legend>
+
+                  <table  border="0" cellspacing="2" cellpadding="2">
+
+                    <tr>
+
+                      <td><span class="userinput">
+
+                        <select class="select1">
+
+                          <option value="" selected >Todos</option>
+
+                          <option value="">Crédito</option>
+
+                          <option value="">Contado</option>
+
+                        </select></span></td>
+
+                      <td><input type="button" name="Button232" value="Filtrar"></td>
+
+                    </tr>
+
+                  </table>
+
+                </fieldset></td>
+
+                <FORM NAME="nueva_cotizacion_02_filtra_estado" METHOD="POST" ACTION="nueva_cotizacion_02.php" onSubmit="">
+
+                <input type="hidden" name="accion" value="filtra_esta">
+
+                <input type="hidden" name="rut" value="{rut}">
+
+                <td valign="top">
+
+                <p class="userinput">
+
+                    <fieldset>
+
+                    <legend>Estado</legend>
+
+                        <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+
+                        <tr>
+
+                            <td><span class="userinput">
+
+                            <select name="select_estado"  class="select1">
+
+                              <option value="{id_estado}">Todos</option>
+
+							  <option value="">OS En Trabajo</option>
+
+							  <option value="">OS Entregada</option>
+
+							  <option value="">OS Nula</option>
+
+							  <option value="">OS Bloqueada CB</option>
+
+							  <option value="">OS Caduca</option>
+
+							  <option value="">OS Nota de Venta</option>
+
+							  <option value="">Nota de Venta finalizada</option>
+
+                            </select></span></td>
+
+                            <td><input type="button" name="accion" value="Filtrar"></td>
+
+                        </tr>	
+
+                        </table>
+
+                    </fieldset>                </td>
+
+                </FORM>
+
+              </tr>
+
+				</table>
+
+				
+
+				<table width="700" border="0" align="center" cellpadding="2"
+
+					cellspacing="0" class="tabla2">
+
+				    <tr>
+
+				      <th width="100">
+
+			          N&ordm; CO&nbsp;<IMG src='../../IMAGES/downarrow.gif' border=0 align=middle></th>
+
+					  <th width="150">Estado &nbsp;<IMG src='../../IMAGES/uparrow.gif' border=0 align=middle><br>
+
+					  <th width="150">Tipo Venta</th>
+
+					  <th width="100">Condición </th>
+
+					  <th width="150">Centro Sum</th>
+
+					  <th width="100">Válido Hasta</th>
+
+					  <th width="150">Acciones</th>
+
+				    </tr>
+
+			    </table>
+
+					<div style="width:750; height:'140'; overflow:auto;">
+
+					<table width="700" border="0" align="center" cellpadding="2"
+
+					cellspacing="0" class="tabla2">
+
+					<tr>
+
+				      <td width="100"> <div align="right">123456</div></td>
+
+					  <td width="200"><div align="center">OS En trabajo</div></td>
+
+					  <td width="200"><div align="center">Venta Calzada</div></td>
+
+					  <td width="100"><div align="left">Crédito </div></td>
+
+					  <td width="150"><div align="left">Easy Florida</div></td>
+
+					  <td width="100"><div align="right">01/08/2006</div></td>
+
+					  <td width="100"><div align="right">
+
+						  <table width="77" border="0">
+
+                          <tr>
+
+                            <th width="20" scope="col"><a href="sumario_cotizacion.htm"><img src="../../IMAGES/info.gif" alt="Ver" width="16" height="16" border="0"></a></th>
+
+                            <th width="23" scope="col"><a href="ingreso_productos.htm"><img src="../../IMAGES/editicon.gif" alt="Editar" width="19" height="17" border="0"></a></th>
+
+                            <th width="23" scope="col"><img src="../../IMAGES/trash.gif" alt="Eliminar" border="0"></th>
+
+                          </tr>
+
+                        </table>
+
+				      </div></td>
+
+				    </tr>
+
+					<tr>
+
+				      <td width="100"> <div align="right"></div></td>
+
+					  <td width="200"><div align="center"></div></td>
+
+					  <td width="200"><div align="center"></div></td>
+
+					  <td width="100"><div align="left"></div></td>
+
+					  <td width="150"><div align="left"></div></td>
+
+					  <td width="100"><div align="right"></div></td>
+
+					  <td width="100"><div align="right">
+
+					        <table width="77" border="0">
+
+                              <tr>
+
+                            <th width="20" scope="col"><a href="sumario_cotizacion.htm"><img src="../../IMAGES/info.gif" alt="Ver" width="16" height="16" border="0"></a></th>
+
+                            <th width="23" scope="col"><a href="ingreso_productos.htm"><img src="../../IMAGES/editicon.gif" alt="Editar" width="19" height="17" border="0"></a></th>
+
+                            <th width="23" scope="col"></th>
+
+                              </tr>
+
+                            </table>
+
+				      </div></td>
+
+				    </tr>
+
+
+
+					<tr>
+
+				      <td width="100">&nbsp;</td>
+
+					  <td width="200">&nbsp;</td>
+
+					  <td width="200"><div align="center"></div></td>
+
+					  <td width="100"><div align="left"></div></td>
+
+					  <td width="150"><div align="left"></div></td>
+
+					  <td width="100"><div align="right"></div></td>
+
+					  <td width="100"><div align="right">
+
+					    <table width="77" border="0">
+
+                          <tr>
+
+                            <th width="20" scope="col"><a href="sumario_cotizacion.htm"><img src="../../IMAGES/info.gif" alt="Ver" width="16" height="16" border="0"></a></th>
+
+                            <th width="23" scope="col"></th>
+
+                            <th width="23" scope="col"></th>
+
+                          </tr>
+
+                        </table>
+
+				      </div></td>
+
+				    </tr>
+
+
+
+					<tr>
+
+				      <td width="100"> <div align="right"></div></td>
+
+					  <td width="200"><div align="center"></div></td>
+
+					  <td width="200"><div align="center"></div></td>
+
+					  <td width="100"><div align="left"></div></td>
+
+					  <td width="150"><div align="left"></div></td>
+
+					  <td width="100"><div align="right"></div></td>
+
+					  <td width="100"><div align="right">
+
+					    <table width="77" border="0">
+
+                          <tr>
+
+                            <th width="20" scope="col"><a href="sumario_cotizacion.htm"><img src="../../IMAGES/info.gif" alt="Ver" width="16" height="16" border="0"></a></th>
+
+                            <th width="23" scope="col"></th>
+
+                            <th width="23" scope="col"></th>
+
+						  </tr>
+
+                        </table>
+
+				      </div></td>
+
+				    </tr>
+
+		      </table>
+
+			  <br>
+
+			  </div></td>
+
+			</tr>
+
+			
+
+			<tr>
+
+				<td><table width="219"  border="0" align="center" cellpadding="2" cellspacing="2">
+
+                  <br>
+
+                  <tr>
+
+                    <td width="33"><span class="Estilo6"><a href="#" onclick="Editar();"><img src="../../IMAGES/anterior.gif"  alt="prueba" width="23" height="23" border="0" title="Anterior" ></a></span></td>
+
+                    <td width="59" class="tabla1">Anterior</td>
+
+                    <td width="70" class="tabla1"><div align="right" class="Estilo6">Siguiente </div></td>
+
+                      <td width="31"><span class="Estilo6"> <a href="../../COMMAND/nuevacotizacion/nueva_cotizacion_03.php"><img src="../../IMAGES/siguiente.gif" alt="prueba" width="23" height="23" border="0"  title="Siguiente" action="../../../CVEPRIVATE/daoclass/daoinsertdatacliente.php" ></a></span></td>
+
+                  </tr>
+
+                </table></td>
+
+			</tr>
+
+		</table>
+
+	 </td>
+
+	</tr>
+
+</table>
+
+
+
+
+
+</body>
+
+<!-- InstanceEnd -->
+
+</html>
+

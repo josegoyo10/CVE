@@ -1,0 +1,193 @@
+<link href="../nuevacotizacion/estilos.css" rel="stylesheet" type="text/css">
+
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript" src="../../TEMPLATE/general/checkfield.js"></script>
+
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/popup.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript" type="text/JavaScript" SRC="../../TEMPLATE/general/CalendarPopup.js"></SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript">document.write(getCalendarStyles());</SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript">
+
+	function EvaluaFechas()
+        {   
+            var ahora = (new Date()).getTime();
+            var fhDesde  = document.getElementById('fec_valid').value;
+            var fhinicio = fhDesde.split('/').reverse().join('/');
+            var fhHasta = document.getElementById('fec_valid2').value;
+            var fhfin = fhHasta.split('/').reverse().join('/');
+                       
+            var rangoini = Date.parse(fhinicio);
+            var rangofin = Date.parse(fhfin);
+                        
+                        
+            
+            if ( (fhDesde=== null || fhDesde=== '')||(fhHasta=== null || fhHasta=== ''))
+            {
+                return 1;
+            } 
+            
+            if(((rangofin)>=(rangoini)) &&((rangoini < ahora )&&(rangofin < ahora)))
+            {
+                return 3;
+            } 
+            
+            if (((rangoini)) > ((rangofin))) 
+            {
+
+                return 2;
+            
+            }  
+            
+            if ( (rangoini > ahora )&&(rangofin > ahora))
+            {
+                return 4;
+            } else {return true;}
+
+	}
+
+	
+
+	function Ver_Reporte(accion)
+        {
+            var retorno = EvaluaFechas(document.mreporte.fec_valid.value,document.mreporte.fec_valid2.value);
+//            alert(retorno);
+            switch(retorno) 
+            {
+                    case 1:
+			alert('Para generar el reporte seleccione un rango de Fechas');
+			document.mreporte.fec_valid.select();
+                        return false ;
+                        break;
+                    case 2:
+			alert('La fecha desde no puede ser mayor a la fecha de Hasta');
+			document.mreporte.fec_valid.select();
+                        return false ;
+                        break;
+                    case 3:
+//                        alert('La fecha Hasta debe ser mayor a la fecha Desde');
+//			document.mreporte.fec_valid2.select();
+//                        return false ;
+//                        break;
+                        document.mreporte.accion.value = 'ver';
+                        document.mreporte.submit();
+                        break;
+                    case 4:
+			alert('Las fechas seleccionadas son futuras, superan el d\u00eda de la fecha actual. Vuelva a ingresar un rango v\u00e1lido');
+			document.mreporte.fec_valid.select();
+                        return false ;
+                        break;
+                    default :
+            }
+
+        }
+
+</SCRIPT> 
+
+
+
+<SCRIPT LANGUAGE="JavaScript" ID="js17">
+
+	var ayer = new Date();
+
+	ayer.setDate(ayer.getDate()-1);
+
+	var cal1 = new CalendarPopup("testdiv1");
+
+	cal1.offsetX = -80;
+
+	cal1.offsetY =  30;
+
+</SCRIPT>  
+
+
+
+<table width="760" border="0" cellpadding="0"cellspacing="0">
+
+	<tr>
+
+    	<td width="50%" height="30" class="titulonormal">Reporte Medios de Pago y Entrega de la Venta</td>
+
+    </tr>
+
+</table>
+
+
+
+<table width="900" height="450" border="0" cellpadding="0" cellspacing="0">
+
+	<form NAME="mreporte" METHOD="POST">
+
+	<input type=hidden name=accion>
+
+	<tr>
+
+		<td valign=top height="50" >
+
+			<fieldset>
+
+			<legend class="Textonormal">Par&aacute;metros de B&uacute;squeda</legend>
+
+			<table>
+
+				<tr>
+                                        <td class="textonormal">&nbsp;</td>
+					<td class="textonormal">Fecha Desde</td>
+					<td class="textonormal">Fecha Hasta</td>
+					
+
+				</tr>
+
+				<tr>
+                                    <td class="userinput">&nbsp;</td>
+                                    
+                                    <td class="userinput">
+
+                                            <input name="fec_valid" readonly id="fec_valid" class="Textonormal" type="text" size=10 maxlength=10 value="{fec_valid}" onClick="cal1.select(document.mreporte.fec_valid,'anchor1','dd/MM/yyyy'); return false;">
+
+                                            <a href="" onClick="cal1.select(document.mreporte.fec_valid,'anchor1','dd/MM/yyyy'); return false;" name="anchor1" id="anchor1"> <img src="../../IMAGES/cal.gif" width="16" height="16" border="0" title="Fecha Desde"> </a>
+
+                                            <DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>
+
+                                    </td>
+
+                                    <td class="userinput"> 
+
+                                            <input name="fec_valid2"  readonly id="fec_valid2" class="Textonormal" type="text" size=10 maxlength=10 value="{fec_valid2}" onClick="cal1.select(document.mreporte.fec_valid2,'anchor2','dd/MM/yyyy'); return false;">
+
+                                            <a href="#" onClick="cal1.select(document.mreporte.fec_valid2,'anchor2','dd/MM/yyyy'); return false;" name="anchor2" id="anchor2"> <img src="../../IMAGES/cal.gif" width="16" height="16" border="0" title="Fecha Hasta"></a>
+
+                                            <DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>
+
+                                    </td>
+                                    
+                                    <td>
+                                            <input type="button" name="button" value="Exportar EXCEL" class="Textonormal" onClick="Ver_Reporte(1)">
+                                    </td>
+
+				</tr>
+
+			</table>
+
+			</fieldset>
+
+		</td>
+
+	</tr>
+
+	</form>
+
+</table>
+
+<SCRIPT LANGUAGE="JavaScript">
+
+	//window.document.mreporte.codventa.onkeypress = KeyIsNumber;
+
+</SCRIPT>  
+
+
+
+

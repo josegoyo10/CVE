@@ -1,0 +1,32 @@
+<request>
+	<customer>
+		<Source>22</Source>
+		<IdCustomer>860072045</IdCustomer>
+		<IdCategory>3</IdCategory>
+		<IdTypeContribuyente>1</IdTypeContribuyente>
+		<TypeCustomer>
+			<IdTypeCustomer>5</IdTypeCustomer>
+		</TypeCustomer>
+		<Location>11001000011047</Location>
+		<IdDoc>31</IdDoc>
+		<FirstName>H L INGENIEROS S A</FirstName>
+		<Surname1> </Surname1>
+		<Surname2> </Surname2>
+		<Address>AV CRA 45 N 128A 73 OF 401</Address>		
+		<Phone>5922777</Phone>
+		<Phone2></Phone2>
+		<Fax>5922777</Fax>
+		<Email>JSAENZ@HLINGENIEROS.COM</Email>
+		<AgeRange>0</AgeRange>
+		<Quota>0</Quota>
+		<Contact>J Ñ H</Contact>
+		<Gender>NA</Gender>
+		<Occupation></Occupation>
+		<ReteIca>false</ReteIca>
+		<ReteFuente>false</ReteFuente>
+		<ReteIva>false</ReteIva>
+		<ExenIva>false</ExenIva>
+		<OtrIva>false</OtrIva>
+		<State>A</State>
+	</customer>	
+</request>

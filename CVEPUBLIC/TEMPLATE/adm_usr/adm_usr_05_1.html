@@ -1,0 +1,98 @@
+<html>
+<head>
+<title>{TITULO}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+<script>
+
+	function validar_form( form ) {
+		if( validar_obligatorio( form.nombre_in, "Obligatorio" ) ) return false;
+		if( validar_obligatorio( form.descripcion_in, "Obligatorio" ) ) return false;
+		return true;
+	}
+
+</script>
+
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+<table width="250" align="center" border="0" cellpadding="0"cellspacing="0">
+	<tr>
+	<td>
+	<table width="250" height="15" border="0" cellpadding="0"cellspacing="0" >
+	<tr>
+		<td width="50%"  height="30" class="titulonormal">Administración de perfiles</td>
+	</tr>
+
+<form action="adm_usr_05.php" method="post" name="form_modificar" onSubmit="return validar_form(this);">
+<INPUT TYPE="hidden" NAME="action" VALUE="updper">
+<INPUT TYPE="hidden" NAME="id_perfil" VALUE="{ID_PERFIL}">
+	<table border="0"  align="center" cellpadding="0" cellspacing="0"  class="textonormal">
+		<tr valign=top>
+			<td width="100" >Nombre</td>
+			<td > : </td>
+			<td>
+			<INPUT TYPE="text" NAME="nombre_in" VALUE="{per_nombre}" SIZE="30" MAXLENGTH="200" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);"></td>
+			<td>&nbsp;</td>        
+		</tr>
+		<tr valign=top>
+			<td >Descripción</td>
+			<td > : </td>
+			<td>
+			<TEXTAREA NAME="descripcion_in" ROWS="4" COLS="20" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">{per_descripcion}</TEXTAREA></td>
+			<td>&nbsp;</td>
+		</tr>
+		 <tr>
+                      <td colspan="3" align="center">&nbsp;Solo lectura<INPUT TYPE="checkbox" NAME="lectura_in" value="1" {solo_lectura} ></td>
+                </tr>
+		<tr>
+			<td colspan=5 align="center">
+			<INPUT TYPE="submit" value="Modificar Perfil"></td>
+		</tr>
+	</table>
+</form>
+
+<table width="250" border="0" align="left" cellpadding="2" cellspacing="0" class="tabla2">
+	<tr>
+		<th  colspan=2 align=left>Eliminar perfil</th>	
+	</tr>
+	<tr>
+		<td  colspan=2 align=left><p>{msg}</p></td>
+	</tr>
+	<tr>
+		<th colspan=2 align=left>Módulos asociados</th>
+	</tr>	
+	<tr>
+		<td>
+		<!-- BEGIN Modulos -->
+		<tr >
+			<td width="200">
+			{espacios}{mod_nombre}
+			</td>
+			<td width=50 align=center>
+			<a href="adm_usr_05.php?action=f_mod_asociar&id_perfil={ID_PERFIL}&pemo_mod_id={pemo_mod_id}" ><IMG SRC='../../IMAGES/editicon.gif' HEIGHT='16' BORDER=0 ></a> 
+			<a href="adm_usr_05.php?action=desasociar&id_perfil={ID_PERFIL}&pemo_mod_id={pemo_mod_id}" ><IMG SRC='../../IMAGES/down.gif' BORDER=0 ></a>
+			</td>
+		</tr>
+	<!-- END Modulos -->
+		</td>
+	</tr>
+	<tr>
+		<th  colspan=2 align=left>Asociar módulo</th>	
+	</tr>
+	<!-- BEGIN Modulos_na -->
+	<tr>
+		<td width="200">
+		{espacios}{mod_nombre}
+		</td>
+		<td width=50 align=center>
+		<a href="adm_usr_05.php?action=f_asociar&id_perfil={ID_PERFIL}&pemo_mod_id={pemo_mod_id}" ><IMG SRC='../../IMAGES/up.gif' BORDER=0 ></a>
+		</td>
+	</tr>
+	<!-- END Modulos_na -->
+</table>
+</td>
+</tr>
+</table>
+<br>

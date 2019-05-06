@@ -1,0 +1,28 @@
+SELECT	p.id_producto,
+                        p.cod_prod1 sap,
+                        b.cod_barra barra,
+                        p.des_larga descripcion,
+                        p.des_corta descripcionc,
+                        p.prod_tipo,
+                        p.prod_subtipo,
+                        p.peso,
+                        r.cod_local csum,
+						r.prec_costo pcosto,
+                        r.prec_valor pventa,
+                        r.stock,
+                        b.unid_med unidmed,
+                        v.nom_prov nomprov
+                FROM 	productos p
+                JOIN 	precios r on r.cod_prod1 = p.cod_prod1
+                LEFT JOIN codbarra b on b.cod_prod1 = p.cod_prod1
+                LEFT JOIN prodxprov x on x.cod_prod1 = p.cod_prod1
+                  JOIN 	proveedores v on v.cod_prov = x.cod_prov 
+                WHERE 1
+                
+                
+                 AND p.des_larga like '%bombillo%' 
+                 AND r.cod_local = 'E813' 
+                
+                 AND p.prod_subtipo <> 'GE'
+                AND b.unid_med in ('ST', 'CS', 'KG', 'PLS', 'M2', 'TON', 'UN', 'M', 'ROM', 'PAL', 'PAK','BOL') AND p.estadoactivo <>'E'  AND cod_ppal = 1 AND b.estadoactivo <>'E' ORDER BY unidmed DESC LIMIT 0, 200 ;
+                

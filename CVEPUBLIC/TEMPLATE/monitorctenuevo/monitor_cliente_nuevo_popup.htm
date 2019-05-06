@@ -1,0 +1,80 @@
+<title>{TITULO}</title>
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+<script>window.name='popup';</script>
+
+<FORM NAME="monitor_cliente_nuevo_popup" METHOD="POST" target="popup">
+<INPUT TYPE="hidden" NAME="rut" VALUE="{rut}">
+
+<INPUT TYPE="hidden" NAME="accionmod" VALUE="grabarmod">
+<INPUT TYPE="hidden" NAME="nomvendedor" VALUE="{nomvendedor}">
+
+
+<table width="90%" border="0" cellpadding="0" cellspacing="0" align=center>
+	<tr>
+		<td class="titulonormal">
+			Asignaci&oacute;n de Vendedor<br>
+			<br>
+		</td>
+	</tr>
+	<tr>
+		<td class="titulonormal"><fieldset><legend class=Textonormal>Resumen de Cliente</legend>
+			<table>
+				<tr>
+					<table width="600" border="0"   align="center" cellpadding="2" cellspacing="1" class="textonormal">
+					<tr>
+						<td width="151">Raz&#243;n Social</td>
+						<td width="138">{dcrazonsoc}</td>
+						<td width="145">CC/NIT/RUT</td>
+						<td width="145">{rutdv}</td>
+					</tr>
+					<tr>
+						<td width="151">Actividad Economica </td>
+						<td width="138">{dcdescripcion}</td>
+						<td width="145">&nbsp;</td>
+						<td width="145">&nbsp;</td>
+					</tr>
+					<tr>
+						<td>Direcci&oacute;n</td>
+						<td>{dcdireccion}</td>
+						<td>Tel&eacute;fono Contacto</td>
+						<td>{dcfonocontacto}</td>
+					</tr>
+					<tr>
+						<td>Departamento</td>
+						<td>{dcdepartamento}</td>
+						<td>Ciudad</td>
+						<td>{dcciudad}</td>
+					</tr>
+					<tr>
+						<td width="151">Barrio</td>
+						<td  colspan="3">{dcnomcomuna}</td>
+						 						
+					</tr>
+				</table>
+				</tr>
+				<tr>
+					<table width="600" border="0"   align="center" cellpadding="2" cellspacing="1" class="textonormal">
+					<tr>
+						<td width="151" align="center">Vendedores</td>						
+						<td width="138" class="textonormal" align=center>
+								<select name="select_vendedores" class="TextoNormal"  onChange="document.monitor_cliente_nuevo_popup.nomvendedor.value=document.monitor_cliente_nuevo_popup.select_vendedores.options(document.monitor_cliente_nuevo_popup.select_vendedores.selectedIndex).text">
+									<option value="" class="Textonormal">-- Sin Asignar --</option>
+									<!-- BEGIN vendedores -->
+									<option value="{codigovendedor}" {selected}>{nomvendedor}</option>
+									<!-- END vendedores -->
+								</select>
+							</td>
+					</tr>
+					<tr>
+						<TD class="textonormal" align="right"><input type="button" name="Button" class="Textonormal" value="Cancelar" onClick="window.close();"></TD>
+							<TD class="textonormal"><input type="submit" class="Textonormal" value="&nbsp;Modificar&nbsp;"></TD>
+
+					</tr>
+
+				</table>
+				</tr>
+			</table>
+		</td>
+	</tr>
+ </table>
+</FORM>

@@ -1,0 +1,73 @@
+[DATABASE]
+DBSERVER = 127.0.0.1 	
+DBUSER = root
+DBPASS = 3des*.
+DBDATABASE = cvecolprod
+
+[DATABASE_CPE]
+DBSERVER = 172.20.4.62
+DBUSER = root
+DBPASS = 3des*.
+DBDATABASE = cpprod
+
+[APPLICATION]
+PATH_PDF  = ../../../CVEPRIVATE/CREATEPDF/
+PATH_HLP  = ../../../CVEPRIVATE/HLPCLASS/
+PATH_DAO  = ../../../CVEPRIVATE/DAOCLASS/
+PATH_CTRL = ../../../CVEPRIVATE/CTRLCLASS/
+PATH_DTO  = ../../../CVEPRIVATE/DTOCLASS/
+PATH_XML  = ../../../CVEPRIVATE/XMLCLASS/
+PATH_WSCLI= ../../../CVEPRIVATE/WSCLIENT/
+PATH_EMAIL= ../../../CVEPRIVATE/EMAILCLASS/
+PATH_BIZ  = ../../../CVEPUBLIC/BIZCLASS/
+PATH_TPL  = ../../../CVEPUBLIC/TEMPLATE/
+APP_TITLE = Centro Venta Empresa
+PATH_LOG  = ../../../log/
+PATH_BIN_OUT  = /var/www/bin/cve/archivos/arch_out/
+PATH_BIN_OUT_TEMP = /var/www/bin/cve/archivos/arch_out_temp/
+PATH_OUT_5 = /var/www/bin/cve/archivos/arch_out_5/
+PATH_BIN_OUT_BKP  = /var/www/bin/cve/archivos/arch_out_backup/
+PATH_BIN_PROC = /var/www/bin/cve/archivosproc/arch_in_proc/
+PATH_BIN_IN  = /var/www/bin/cve/archivos/arch_in/
+PATH_BIN_IN_PREF = /var/www/bin/cve/archivos/arch_in/preferente/
+
+[IDENTIFICACION_DE_LA_APLICACION]
+COD_CVE=22
+OE_ID_WILLIAM=1791
+
+[ID_MODULO]
+ID_MODULO_GDREIMPRESION = 112
+ID_MODULO_REIMPRESION = 111
+ID_MODULO_PAGOM = 116
+
+[MENSAJES]
+ID_MENSAJE_MA= 102
+ID_MENSAJE_MB= 103
+ID_MENSAJE_MC= 104
+ID_MENSAJE_MD= 105
+ID_MENSAJE_ME= 106
+
+[CONTRIBUYENTE]
+JURIDICO= 7
+EMPRESARIAL= 5
+NATURAL= 6
+SOCIOE= 8
+
+[VISIBLE_IMPUESTOS]
+FLETES= true
+IMPUESTO_RETEIVA= false
+IMPUESTO_RENTA= false
+IMPUESTO_ICA= false
+[VENJUR]
+VENDE= 278
+
+[RESPUESTAWS]
+RESPUESTABUSCARCU=1
+
+[PROCESS]
+
+[WEBSERVICES]
+CONSULTA_STOCK_PRODUCTO=http://osbprod.cencosud.corp:8101/HC00_Stock/StockInquiry/ConsolidatedStockInquiry?WSDL
+CONSULTA_CREDITO_CLIENTE=http://osbprod.cencosud.corp:8101/CreditLimit?WSDL
+
+

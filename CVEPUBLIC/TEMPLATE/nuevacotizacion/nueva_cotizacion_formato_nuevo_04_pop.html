@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+<head>
+<STYLE>
+H1.SaltoDePagina
+{
+PAGE-BREAK-AFTER: always
+}
+</STYLE>
+<SCRIPT LANGUAGE="JavaScript">
+function imprimir() {
+this.focus();
+this.print();
+}
+</SCRIPT>
+<style type="text/css">
+<!--
+.titulocot{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:14px;
+	font-weight:bold;
+}
+.negrita{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:10px;
+	font-weight:bold;
+}
+.titulo{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;	
+}
+.textonormal2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+}
+-->
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title></title>
+</head>
+<body>
+<table align="center" border="0" width="640">
+<tr>
+<td>
+	<table align="center" border="0" width="640">
+	<tr>
+	<td align="left" width="20%">
+	<img src="../../IMAGES/logo3.gif">
+	</td>
+	<td width="80%">
+		<table align="left" class="textonormal2" >
+		<tr>
+		<td>{razonsoccencosud}</td><td align="center" class="titulocot">VENTA MAYORISTA A EMPRESAS Y CONSTRUCTORAS</td>
+		</tr>
+		<tr>
+		<td>Nit 900,155,107-1</td><td></td>
+		</tr>
+		<tr>
+		<td class="negrita">Sede Administrativa:</td><td align="justify">{dir_local} {nom_local}</td>
+		</tr>
+		<tr>
+		<td colspan="2" align="justify"><b>Productos :</b>&nbsp;Artículos para el Hogar, Materiales de Construcción, Ferretería, Accesorios de vehículos, Artículos Deportivos, Camping, Alquiler de Herramienta, Alimentos para Animales, Comercialización de Insumos, Servicios, vehículos, Maquinaria y Equipo Agrícola.</td>
+		</tr>
+		<tr>
+		<td colspan="2" align="justify" class="negrita" >Grandes Contribuyentes Res.14047 del 23 Dic de 2009  -Autorretenedor Res. 12688 del 23 Nov de 2009 - Agente Retenedor Iva Res.12466 de 13 Nov de 2009
+		</td>
+		</tr>
+		</table>
+	</td>
+	</tr>
+	</table>
+</td>
+</tr>
+<tr>
+<td>
+	<table align="center" border="0" width="640" class="textonormal2">
+	<tr>
+	<!--  Autorretenedor XXXXX - Agente Retenedor de Iva XXXXXX --> 
+	<td align="left" width="70%"></td>
+	<td align="center" width="30%" style="border-color: black; border-style:solid; border-width: 1;" ><b>{tipo_spa} No {id_cotizacion}</b></td>
+	</tr>
+	<tr>
+	<td height="11" colspan="3" background="../../IMAGES/barra.gif"></td>
+	</tr>
+	</table>
+</td>
+</tr>
+<tr>
+<td>
+<fieldset>
+		<table class="textonormal" width="640">
+		<tr><td align="left" width="45%"><b class="negrita">CLIENTE : </b>{razonsoc}</td><td align="left" width="27%"><b class="negrita">NIT : </b>{rutcliente}</td><td width="28%"  align="left"><b class="negrita">CIUDAD : </b>{ciudad}</td></tr>
+		<tr><td align="left"><b class="negrita">DIRECCIÓN DE ENTREGA : </b>{direccion}</td><td align="left"><b class="negrita">BARRIO : </b>{comuna}</td><td align="left"><b class="negrita">TELEFONO : </b>{fonocontacto}</td></tr>
+		<tr><td align="left"><b class="negrita">CONTACTO : </b>{contacto}</td><td align="left" colspan="2"><b class="negrita">EMAIL : </b>{email}</td></tr>
+		<tr><td align="left" colspan="2"><b class="negrita">EJECUTIVO DE VENTAS : </b>{nombrevendedor}</td><td align="left"><b class="negrita">FECHA : </b>{validdesde}</td></tr>
+		{obra}
+		</table>
+</fieldset>
+<br>
+</td>
+</tr>
+<tr>
+<td>
+	<table width="640" border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2">	
+			<tr>
+				<th align="center">Codigo</th>
+				<th align="center">Descripci&oacute;n</th>
+                                <th align="center">Categor&iacute;a / Art&iacute;culo</th>
+				<th align="center">Cantidad</th>               
+				<th align="center">Precio</th>
+				<th align="center">Descuento %</th>
+				<th align="center">Total</th>
+			</tr>
+		<!-- BEGIN detalleproductos -->              
+		<tr>
+			<td align="right">{barra}{codprod}&nbsp;</td>
+			<td align="left">&nbsp;{descripcion}&nbsp;</td>
+                        <td align="right">{grupocat}&nbsp;</td>
+			<td align="right">{cantidad}&nbsp;</td>
+			<td align="right">{precio}&nbsp;</td> 
+			<td align="center">{descuento%}&nbsp;</td>              
+			<td align="right">{totallinea}&nbsp;</td>
+		</tr>
+	  <!-- END detalleproductos -->
+	  </table><br>
+	  <table width="640" border="0" align="left" cellpadding="0" cellspacing="0" >	
+	 		<tr>
+				<td width="49%">
+					<table border="0" align="left" cellpadding="0" cellspacing="0" class="tabla2">
+					<tr><td>
+					<b class="negrita">OBSERVACIONES: </b><br>{observaciones}<br>{nota}
+					</td></tr>
+					</table>
+				</td>
+				<td width="2%"></td>
+				<td width="49%">
+					<table width="100%" border="0" align="left" cellpadding="0" cellspacing="0" class="tabla3">	
+					<tr>                
+					<td width="48%" align="left">Sub-Total</td>
+					<td width="4%"  ></td>								
+					<td width="48%"  align="right">{valortotal}&nbsp;</td>
+					</tr>
+					<tr>
+					<td align="left">Descuentos</td>
+					<td></td>
+					<td align="right">{descuentot}&nbsp;</td>
+					</tr>
+					<tr>
+					<td align="left">Valor IVA</td>
+					<td></td>
+					<td align="right">{viva}&nbsp;</td>
+					</tr>
+					{valorfletetabla}
+					<tr>
+				               
+				<td align="left">Retención IVA</td>
+				<td></td>								
+				<td align="right">{rete_iva}&nbsp;</td>  
+			</tr>
+			<tr>
+				               
+				<td align="left">Retención Renta</td>
+				<td></td>								
+				<td align="right">{rete_renta}&nbsp;</td>  
+			</tr>
+			<tr>
+				              
+				<td align="left">Retención ICA</td>
+				<td></td>								
+				<td align="right">{rete_ica}&nbsp;</td>  
+			</tr>
+					<tr>
+					<td align="left">Total A Pagar</td>
+					<td></td>
+					<td align="right">{sumtotal}&nbsp;</td>
+					</tr>
+					</table>
+				</td>
+	 </tr>
+	</table>
+</td>
+</tr>
+<tr>
+<td><br>
+	<table align="center" border="0" width="640" class="textonormal">
+	<!-- <b class="negrita">TIEMPO DE ENTREGA : </b>xxxxxx --> 
+	<tr><td align="left" width="50%"><font color="white"></td><td align="left" width="20%"><b class="negrita">ACEPTADA POR:</b></td><td  width="30%" align="center"> <br><br>___________________________ <br> Firma y sello autorizado<br></td></tr>
+	<tr><td align="left"><b class="negrita">VALIDEZ DE LA OFERTA : </b>{validhasta}</td><td align="left"><b class="negrita">NOMBRE LEGIBLE : </b></td><td align="center"><br>___________________________ <br></td></tr>
+	<tr><td align="left"><b class="negrita">ELABORADA POR : </b>{nombrevendedor}</td><td align="left"><b class="negrita">CEDULA : </b></td><td align="center">___________________________ </td></tr>
+	</table>
+<H1 class=SaltoDePagina> </H1>	
+</td>
+</tr>
+<tr>
+<td align="center" class="textonormal">DETALLE DE IVA INCLUIDO EN LA COTIZACION<fieldset>
+	<table align="center" border="0" width="640" class="tabla2">
+	<tr>
+				<td width="30%" align="center">Descripción</td>
+				<td width="3%" align="center" ></td>                
+				<td width="30%" align="center">Base IVA</td>
+				<td width="3%" align="center"></td>								
+				<td width="30%"  align="center">Vlr IVA</td>
+				<td width="3%" align="center"></td>  
+			</tr>	
+		<!-- BEGIN prueba -->	
+			<tr>
+				<td align="right">{ivap}{signoivap}</td>
+				<td></td>                
+				<td align="right">{totalsiniva}</td>
+				<td></td>								
+				<td align="right">{impivatotal}</td>  
+				<td></td>
+			</tr>
+		<!-- END prueba -->
+									
+	</table>
+	</fieldset>
+</td>
+</tr>
+<tr>
+{codigoreterenta}
+<!-- BEGIN ciclorenta -->	
+			<tr>
+				<td align="right">{imprete_renta}{signorenta}</td>
+				<td></td>                
+				<td align="right">{$totalrenta}</td>
+				<td></td>								
+				<td align="right">{imprenta}</td>  
+				<td></td>
+			</tr>
+		<!-- END ciclorenta -->							
+	{codigorenta_fin}
+</tr>
+<tr>
+{codigoreteica}
+<!-- BEGIN cicloica -->	
+			<tr>
+				<td align="right">{imprete_ica}{signoica}</td>
+				<td></td>                
+				<td align="right">{totalica}</td>
+				<td></td>								
+				<td align="right">{impica}</td>  
+				<td></td>
+			</tr>
+		<!-- END cicloica -->								
+	{codigoica_fin}
+</tr>
+
+<tr><td><fieldset>{infocotioe}</fieldset></td>
+<tr><td><br></td>
+<tr><td><fieldset>{infocotioe2}</fieldset>
+</td><tr><td><br></td>
+<tr><td><fieldset>{infocotioe3}</fieldset></td>
+<tr><td><br></td>
+<tr><td><fieldset>{infocotioe4}</fieldset></td>
+</table>
+</table>
+</body>
+</html>

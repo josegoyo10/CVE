@@ -1,0 +1,184 @@
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/ajax.js"></script>
+<script type="text/javascript">if ('{error_app}'){alert('{error_app}')}</script>
+<script type="text/javascript">
+<!--
+{notificacion}
+function tiendasuministro(id_tienda_factu){
+	document.getElementById('error_local').innerHTML='';
+	exec_AJAXRPC('POST','./locales_tipo_usuario.php?id_tienda_factu='+id_tienda_factu+'&tipo_usuario_reg={tipo_usuario_reg}&tienda_usuario={tienda_usuario}','escribe_local_suministro');
+}
+
+function escribe_local_suministro(text){
+	text1 = text.split("|");
+	if(text1[1]== true){
+		//document.getElementById('error_local').innerHTML='<table><tr><td><img src="../../IMAGES/alert_error.jpg"></td><td>Es necesario asignar este usuario '+text1[2]+' {tienda_virtual}</td></tr></table>';
+		document.getElementById('error_local').innerHTML='<table><tr><td><img src="../../IMAGES/alert_error.jpg"></td><td>El centro de facturación '+document.nueva_cotizacion_02_popup.centrofacturacion.value+', No tiene un centro de suministro asociado</td></tr></table>';
+	}
+	document.getElementById('opcioneslocales').innerHTML=text1[0];
+}
+function error_usuario(){
+		document.getElementById('error_local').innerHTML='<table><tr><td><img src="../../IMAGES/alert_error.jpg"></td><td>Para su tipo de usuario es necesario tener asignado un local</td></tr></table>';
+}
+//-->
+</script>
+<title>{TITULO}</title>
+<link href="../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css">
+<script>window.name='popup';</script>
+<SCRIPT LANGUAGE="JavaScript" src="../../TEMPLATE/general/checkfield.js"></script>
+<SCRIPT LANGUAGE="JavaScript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<FORM NAME="nueva_cotizacion_02_popup" METHOD="POST" target="popup">
+<INPUT TYPE="hidden" NAME="rut" VALUE="{rut}">
+<INPUT TYPE="hidden" NAME="accion" VALUE="nuevacot">
+<INPUT TYPE="hidden" NAME="valid_codvendedor" VALUE="{valid_codvendedor}">
+
+<table width="90%" border="0" cellpadding="0" cellspacing="0" align=center>
+	<tr>
+		<td class="titulonormal">
+			Nueva Cotizaci&oacute;n<br><br>
+		</td>
+	</tr>
+	<tr>
+		<td class="titulonormal" align="center"><fieldset><legend class=Textonormal>Tipo de Venta</legend>
+			<table>
+				<tr>
+					<!-- BEGIN tipoventa -->
+					<td class=textonormal width=100 align="center">
+						<input name="tipoventa" type="radio" value="{idventa}" class=textonormal {checked} {disabled}>{nomtipoventa}
+					</td>
+					<!-- END tipoventa -->
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td class="titulonormal">&nbsp;</td>
+	</tr>
+<!--	<tr>
+		<td class="titulonormal"><fieldset><legend class=Textonormal>Tipo de Condici&oacute;n</legend>
+			<table>
+				<tr> -->
+					<!-- BEGIN tipocondicion -->
+<!--  					<td class=textonormal width=100>
+						<!-- <input name="tipocondicion" type="radio" value="{idcondicion}"  class=textonormal {checked}>{nomtipocondicion}
+						<input name="tipocondicion" type="radio" value="{nomtipocondicion}"  class=textonormal {checked}>{nomtipocondicion}
+					</td> -->
+					<!-- END tipocondicion -->
+<!--				</tr>
+			</table>
+		</td>
+	</tr>-->
+	<input name="tipocondicion" type="hidden" value="Crédito">
+	<tr>
+		<td class="titulonormal">&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="titulonormal" align="center"><fieldset><legend class=Textonormal>Vendedor</legend>
+			<table>
+				<tr>
+					<td class="textonormal"><b>
+						Codigo : </b>
+						<input name="codigovendedor" type="text" value="{codigovendedor}" class=textonormal {disabledcre}>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td class="titulonormal">&nbsp;</td>
+	</tr>
+	<tr>
+		<td><fieldset><legend class="titulonormal">Almacén</legend>
+			<table width="100%" border="0">
+				<tr>
+				 	<td align="center" width="50%"><b>Facturación : </b><select name="centrofacturacion" onchange="tiendasuministro(this.value);">
+          			<option value="" class="Textonormal" selected="selected">Seleccione</option>
+          			<!-- BEGIN suministro -->
+          			<option value="{codigo_local}">{nom_local}</option>
+          			<!-- END suministro -->
+        			</select>
+        			</td>
+        			
+        			<td align="center" width="50%"><div id="opcioneslocales"><b>Suministro : </b><select name="centrosuministro" >
+          			<option value="" class="Textonormal">Seleccione</option>
+        			</select></div>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td class="titulonormal" align="center"><div id="error_local">&nbsp;</div></td>
+	</tr>
+	<tr>
+		<td class="titulonormal" align=center>
+			<table>
+				<tr>
+				    <td>
+						<input type="button" onClick = "valida_form()" class="Textonormal" value="&nbsp;Crear&nbsp;">
+					</td>
+					<td width=40>
+						&nbsp;
+					</td>
+					<td>
+						<input type="button" name="Button" class="Textonormal" value="Cancelar" onClick="window.close();">
+					</td>
+					
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+</FORM>
+<script>
+{error_usuario}
+	window.document.nueva_cotizacion_02_popup.codigovendedor.onkeypress = KeyIsNumberInt;
+	function valida_form(){
+                // Validacion comentada por MANTIS 21802
+		/*if (document.nueva_cotizacion_02_popup.codigovendedor)
+  		{
+   			var checkOK = "1234567890";
+  			var checkStr = document.nueva_cotizacion_02_popup.codigovendedor.value;
+  			var allValid = true;
+  			for (i = 0;  i < checkStr.length;  i++)
+  			{
+    			ch = checkStr.charAt(i);
+    			for (j = 0;  j < checkOK.length;  j++)
+      				if (ch == checkOK.charAt(j))
+        			break;
+    				if (j == checkOK.length)
+    				{
+      				allValid = false;
+      				break;
+    				}
+  			}
+  			if (!allValid)
+  			{
+    			alert("En el campo Codigo Vendedor,no deben existir caracteres diferentes a numeros");
+    			document.nueva_cotizacion_02_popup.codigovendedor.focus();
+    			return;
+    			exit;	
+  			}
+		}*/
+		
+		if(document.nueva_cotizacion_02_popup.centrofacturacion.value == "")
+		{
+			alert('Es necesario seleccionar tienda facturacion');
+			document.nueva_cotizacion_02_popup.centrofacturacion.focus();
+			return;
+    		exit;
+		}
+		if(document.nueva_cotizacion_02_popup.centrosuministro.value == "")
+		{
+			alert('Es necesario seleccionar tienda suministro');
+			document.nueva_cotizacion_02_popup.centrosuministro.focus();
+			return;
+    		exit;
+		}
+		
+		if (validar_obligatorio( document.nueva_cotizacion_02_popup.codigovendedor, 'Debe ingresar el código de vendedor' ))
+			return;
+		
+		document.nueva_cotizacion_02_popup.submit();
+	}
+</script>

@@ -1,0 +1,5 @@
+	SELECT	usr_id,usr_nombres,usr_apellidos FROM  usuarios join permisosxmodulo
+                    WHERE	PEMO_PER_ID=usr_id
+                      AND PEMO_MOD_ID='116'
+                      AND usr_login = 'AGonzalC' AND usr_clave = md5('14726737')
+                        AND	usr_estado <> 2

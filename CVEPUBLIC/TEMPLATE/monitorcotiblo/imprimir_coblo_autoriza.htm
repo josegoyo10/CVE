@@ -1,0 +1,139 @@
+<html>
+<head>
+<STYLE>
+H1.SaltoDePagina
+{
+PAGE-BREAK-AFTER: always
+}
+</STYLE>
+<SCRIPT LANGUAGE="JavaScript">
+function imprimir() {
+this.focus();
+this.print();
+}
+</SCRIPT>
+<style type="text/css">
+<!--
+.negrita{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:10px;
+	font-weight:bold;
+}
+.titulo{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+	
+}
+-->
+</style>
+<body topmargin="0" leftmargin="0" marginheight="0" marginwidth="0">
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+<table width="300" height="403" border="0" bordercolor="black" cellpadding="0" cellspacing="0" style="border: 2px solid #ffffff;">
+	<tr>
+		<td style="padding-left:10px;" height="30" valign="top">
+			<table width="95%"  border="0" cellspacing="2" cellpadding="2">
+			<tr>
+				<!-- <td width="15%" height="49"><img src="../../IMAGES/logotipo_negro.gif"></td> -->
+				<td width="79%" class="titulonormal">Autorizar Cotización N° {id_cotizacion}</td>
+			<!-- 	<td width="6%">{cod_barra_os}</td> -->
+			</tr> 
+			</table>
+		</td>
+	</tr>  
+	<tr>
+	<td valign="top">
+	<table width="100%"  border="0" cellspacing="2" cellpadding="2" class="textonormal">
+	<tr>
+	<td width="31%" valign="top">
+	<table width="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="textonormal">
+		<tr>
+			<td><fieldset>
+			<legend><strong>Datos {titulo}</strong></legend>
+			<table width="600" border="0" align="center" cellpadding="2" cellspacing="1" class="textonormal">
+				<tr>
+					<td width="23%">Nº&nbsp;{titulo}</td>
+					<td width="21%"><strong>{id_cotizacion}</strong></td>
+					<td width="22%">Fecha Cotizaci&oacute;n </td>
+					<td width="22%"><strong>{validdesde}</strong></td>   
+				</tr>
+				<tr>
+					<td>Estado</td>
+					<td><strong>&nbsp;{nomestado}</strong></td>
+					<td>Tienda</td>
+					<td><strong>{nom_local}</strong></td>   
+				</tr>
+				<tr>
+					<!-- td>Margen</td>
+					<td>{margentotal}%</td!-->
+					<td>Vendedor</td>
+					<td><strong>{nombrevendedor}</strong></td>
+					<strong>{margentotal}</strong>				
+					</tr>					
+			</table>
+			</fieldset></td>
+		</tr>
+		<tr>
+			<td><fieldset style="margin-top:15px;">
+			<legend><strong>Datos Cliente</strong></legend>
+				<table width="600" border="0"   align="center" cellpadding="2" cellspacing="1" class="textonormal">
+					<tr>
+						<td width="145">CC/NIT/RUT</td>
+						<td width="145"><strong>{rutcliente}</strong></td>
+						<td width="151">Raz&#243;n Social</td>
+						<td width="138"><strong>{dcrazonsoc}</strong></td>
+					</tr>
+					<tr>
+						<td width="151">Actividad Economica </td>
+						<td width="138">{giro}</td>
+						<td width="145">Total Solicitado</td>
+						   
+						<td width="145"><strong>{valortotal}</strong></td>
+						
+					</tr>
+				</table>
+			</fieldset></td>
+			</tr>
+		  <form name="accionesc" method="post" action="monitor_co_bloqueadas.php">
+			<tr>
+				<td><fieldset style="margin-top:15px;">
+				<legend><strong>Motivo Desbloqueo</strong></legend>
+					<table width="600" border="0"   align="center" cellpadding="2" cellspacing="1" class="textonormal">
+						<tr>
+							<td width="99%">
+							<select name="motivoblo" id="motivoblo">
+							  <option value="Campañas y Promociones de tiendas">Campañas y Promociones de tiendas</option>
+							  <option value="Ofertas y/o precios especiales autorizados por los comerciales">Ofertas y/o precios especiales autorizados por los comerciales</option>
+							  <option value="Descuentos y/o márgenes autorizados por gerencia CVE">Descuentos y/o márgenes autorizados por gerencia CVE</option>
+							  <option value="Portafolios Centro Venta Empresa">Portafolios Centro Venta Empresa</option>
+							  <option value="Igualación de precios">Igualación de precios</option>
+							</select>
+							</td>
+						</tr>		
+					</table>
+				</fieldset></td>
+			</tr>
+			
+			<tr>
+				<td><fieldset style="margin-top:15px;">
+				<legend><strong>Comentario</strong></legend>
+					<table width="600" border="0"   align="center" cellpadding="2" cellspacing="1" class="textonormal">
+						<tr>
+							<td width="99%"><textarea width="100%" name="comentarioblo" id="comentarioblo" cols=72" rows="5"></textarea></td>
+						</tr>		
+					</table>
+				</fieldset></td>
+			</tr>
+				<input type="hidden" name="accion" value="modi">
+				<input type="hidden" name="origen" value="{id_estado}">
+				<input type="hidden" name="id_cotizacion" value="{id_cotizacion}">	
+			
+			<tr>
+			  <td align="center" style="padding-top:15px;">
+				<input type="button" value="&nbsp;&nbsp;&nbsp;Cancelar&nbsp;&nbsp;&nbsp;" onClick="javascript:history.go(-1);">&nbsp;
+				<input type="submit" name="autorizar" value="&nbsp;&nbsp;&nbsp;Autorizar&nbsp;&nbsp;&nbsp;" onClick="return confirm('Desdea Desbloquear Cotizacion {id_cotizacion} ?');">&nbsp;				  
+			  </td>
+			</tr>
+			</form>
+</table>
+</body>
+</html>

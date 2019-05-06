@@ -1,0 +1,21 @@
+  SELECT e.id_ordenent,
+                           e.rutcliente, 
+                           e.direccion, 
+                           e.comuna, 
+                           e.id_estado, 
+                           e.codlocalventa, 
+                           e.id_tipoentrega, 
+                           d.codtipo
+                    FROM ordenent_e e
+                    LEFT JOIN ordenent_d d on d.id_ordenent = e.id_ordenent
+                    WHERE 1
+                     and e.rutcliente = 88256818
+                    and e.id_estado = 'OG'
+                     and e.codlocalventa = 'E806'
+                     and e.codlocalventa = 'E806'
+                    and e.id_tipoentrega = 2
+                     and e.fecha_despacho_programado = '--'
+                    
+                     and e.direccion = 'CRA 44 43 41'                  
+                   
+                    

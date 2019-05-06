@@ -1,0 +1,408 @@
+<script language="javascript" src="../../TEMPLATE/general/checkfield.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/ajax.js"></script>
+<SCRIPT LANGUAGE="JavaScript" type="text/JavaScript" SRC="../../TEMPLATE/general/funciones.js"></SCRIPT>
+<script>
+function imprimir() {
+this.focus();
+this.print();
+}
+function anularpicking(idop){
+exec_AJAXRPC('POST','./cambio_estado.php?id_picking='+idop,'escriben');
+}
+function escriben(text){
+alert(text);
+opener.document.location.reload();
+window.close();
+}
+
+</script>
+
+<title>Impresi&oacute;n Orden de Picking</title>
+
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/popup.js"></script>
+
+<script language="javascript" src="../../TEMPLATE/general/checkfield.js">
+
+</script>
+
+<script>
+
+function imprime(id_ordenpicking){
+
+	if ('reload' == popUpWindowModal('../../COMMAND/monitororpick/printframe.php?popup=1&id_ordenpicking='+id_ordenpicking,100, 100, 740, 500))
+
+		document.location='../../COMMAND/monitororpick/monitor_orpick_01.php';
+
+}
+
+
+
+</script>
+<style type="text/css">
+<!--
+.Estilo10 {
+font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:10px;
+	font-weight:bold;
+	
+}
+-->
+</style>
+
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+
+
+
+<table width="700" border="0" cellpadding="0" cellspacing="0">
+
+	<tr>
+
+		<td class="titulonormal">&nbsp; Picking Orden de Picking  #  {id_ordenpicking}</td>
+
+	</tr>
+
+</table>
+
+<table width="700" border="0" cellpadding="0" cellspacing="0">
+
+	<br><tr>
+
+		<td>
+
+		<fieldset>
+
+		<legend><span class="Estilo10">Datos Orden de Picking </legend>
+
+			<table width="680"  border="0" cellspacing="0" cellpadding="0" class="textonormal">
+
+				<tr>                 
+
+					<th align="right" width="140">N&ordm; Orden de Picking :</th>
+<td style="width: 23px"></td>
+					<td width="200">{id_ordenpicking}</td>
+					
+
+					<th align="right" width="140">Fecha De Generación:</th>
+					<td style="width: 22px"></td>
+					<td width="200">{fechacreacion}</td>
+
+				</tr>
+
+				<tr>
+
+					<th align="right">N&ordm; Orden de Entrega :</th>
+<td></td>
+					<td>{id_ordenent}</td>
+
+					<th align="right">&nbsp;Estado:</th>
+<td></td>
+					<td>{nomestadop}</td>                    
+
+				</tr>
+
+				<tr>
+
+				  <th align="right"> Tipo de Orden Picking :</th>
+<td></td>
+				  <td>{codtipo} {nomtipoproduct}</td>
+
+				  <th align="right">Tienda:</th>
+<td></td>
+				  <td>{nom_local_csum}</td>
+
+			  </tr>
+
+				<tr>
+
+				  <th align="right">Cotizaciones Cruzadas :</th>
+<td></td>
+				  <td></td>
+
+				  <th align="right" width="140">Fecha De Entrega:</th>
+				  <td style="width: 22px"></td>
+				  <td width="200">{fechaentrega}</td>
+
+			  </tr>
+
+			</table>
+
+		</fieldset>
+
+		</td>
+
+	</tr>
+
+	<tr>
+
+		<td>
+
+		<fieldset><legend><span class="Estilo10">Datos Cliente</legend>
+
+			<table width="680" border="0" cellspacing="0" cellpadding="0" class="textonormal">
+
+				<tr>
+
+					<th align="right" width="140">CC/NIT/RUT:</th>
+					<td style="width: 20px"></td>
+					<td width="200">{rutcliente}</td>
+
+					<th align="right" width="140">Actividad Economica:</th>
+					<td style="width: 19px"></td>
+					<td width="200">{giro}</td>
+
+				</tr>
+
+				<tr>
+
+					<th align="right">Cliente:</th>
+					<td></td>
+					<td>{razonsoc}</td>
+
+					<th align="right">Teléfono  Contacto:</th>
+					<td></td>
+					<td>{fonocontacto}</td>
+
+				</tr>
+
+				<tr>
+
+					<th align="right">Contacto:</th>
+					<td></td>
+					<td>{contacto}&nbsp;</td>
+
+					<th align="right"> </th>
+
+					<td></td>
+
+				</tr>
+				<tr>
+
+					<th align="right" width="140">Departamento:</th>
+					<td style="width: 20px"></td>
+					<td width="200">{nomdepartamento}</td>
+
+					<th align="right" width="140">Ciudad:</th>
+					<td style="width: 19px"></td>
+					<td width="200">{nomciudad}</td>
+
+				</tr>
+				<tr>
+
+					<th align="right" width="140">Direcci&oacute;n:</th>
+					<td style="width: 20px"></td>
+					<td width="200">{direccion}</td>
+
+					<th align="right" width="140">Barrio:</th>
+					<td style="width: 19px"></td>
+					<td width="200">{nomcomuna}</td>
+
+				</tr>
+
+			</table>
+
+		  </fieldset>
+
+		    <fieldset>
+
+		    <legend><span class="Estilo10">Datos del Servicio </legend>
+
+			<table width="680" border="0" cellspacing="0" cellpadding="0" class="textonormal">
+
+              <tr>
+
+                <th align="right" width="140">Contacto:</th>
+				<td style="width: 20px"></td>
+                <td width="200">{contactod}</td>
+
+                <th align="right" width="140">Teléfono Contacto:</th>
+				<td style="width: 20px"></td>
+                <td width="200">{fonocontactod}</td>
+
+              </tr>
+
+              <tr>
+
+                <th align="right">Departamento:</th>
+				<td style="width: 20px"></td>
+                <td>{departamentod}</td>
+
+                <th align="right">Ciudad:</th>
+				<td style="width: 20px"></td>
+                <td>{ciudadd}</td>
+
+              </tr>
+              <tr>
+
+                <th align="right">Dirección Despacho:</th>
+				<td style="width: 20px"></td>
+                <td>{direcciond}</td>
+
+                <th align="right">Barrio:</th>
+				<td style="width: 20px"></td>
+                <td>{comunad}</td>
+
+              </tr>
+
+              <tr>
+
+                <th align="right">Indicaciones: </th>
+				<td style="width: 20px"></td>
+                <td>{comentariod}&nbsp;</td>
+
+                <th align="right">Tipo de Despacho:</th>
+				<td style="width: 20px"></td>
+                <td>{nomtipoentrega} {desp}</td>
+
+              </tr>
+
+            </table>
+
+		</fieldset>
+
+		</td>
+
+	</tr>
+
+	<tr>
+
+		<td>
+
+			<table width="680" border="0" align="center" cellpadding="2" cellspacing="0" class="textonormal">
+
+				<tr>
+
+				  <td>
+
+				  <table width="680" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+
+					  <tr>
+
+					    <th width="65" align="center">Art&iacute;culo</th>
+
+					    <th width="354" align="center">Descripci&oacute;n</th>
+
+					    <th width="100" align="center">Cant Disp</th>
+
+					    <th width="100" align="center">Cant {titulocolumna}</th>						
+
+					    <th width="60" align="center">Unimed</th>
+
+				    </tr>
+
+					</table>
+
+				</td>
+
+				</tr>
+
+				<form name=nuevaoe method=post>
+
+				<input type=hidden name=id_cotizacion value={id_cotizacion}>
+
+				<tr>
+
+					<td valign="top">					 
+
+						<table width="680" border="0" align="left" cellpadding="0" cellspacing="2"  class="tabla2">
+
+						<!-- BEGIN detalleproductos -->
+
+                          
+
+                          <tr valign="top">
+
+                            <td width="57" align="right">{codprod}&nbsp;</td>
+
+                            <td width="10" align="right">&nbsp;</td>
+
+                            <td width="312" align="left">{descripcion}&nbsp;</td>
+
+                            <td width="102" align="right"><input type=text value="{cantidad}" name="cantdisp_{id_linea}" size=4 maxlength=10 class="textoespecial2" readonly>&nbsp;</td>
+
+                            <td width="60" align="left">&nbsp;</td>
+
+							<td width="73" align="left"><input type=text value="{cantidadp}" name="cantact_{id_linea}" size=2 maxlength=8 class="textoespecial2" readonly>&nbsp;</td>
+
+                            <td width="50" align="left">{unimed}&nbsp;</td>
+
+                           
+
+                          </tr>
+
+						<!-- END detalleproductos -->
+
+                        </table>
+
+					</td>
+
+				</tr>
+				<tr>
+				<td>
+				{botonanular}
+				</td>
+				</tr>	
+
+				</form>
+
+			</table>
+
+		</td>
+
+	</tr>
+
+</table>
+
+
+
+<script type="text/javascript">
+
+
+
+	function copiacant(linea) {
+
+		formulario = document.nuevaoe;
+
+		eval('formulario.cantact_'+linea+'.value = formulario.cantdisp_'+linea+'.value');
+
+	}
+
+	
+
+	function copiatodocant() {
+
+		formulario = document.nuevaoe;
+
+		for (var i = 0; i<formulario.length; ++i) {
+
+			if(formulario.elements[i].name.substr(0, 7) == 'cantact') {
+
+				linea = formulario.elements[i].name.substr(8);
+
+				eval('formulario.cantact_'+linea+'.value = formulario.cantdisp_'+linea+'.value');
+
+			}
+
+		}
+
+	}
+
+	
+
+	function calculatotallinea(linea) {
+
+		formulario = document.nuevaoe;
+
+		if (trim(eval('formulario.cantact_'+linea+'.value')) == '' || isNaN(eval('formulario.cantact_'+linea+'.value')))
+
+			eval('formulario.cantact_'+linea+'.value = \'0.00\'');
+
+		if (parseFloat(eval('formulario.cantact_'+linea+'.value'))>parseFloat(eval('formulario.cantdisp_'+linea+'.value')))
+
+			eval('formulario.cantact_'+linea+'.value = formulario.cantdisp_'+linea+'.value');		
+
+	}
+
+</script>
+

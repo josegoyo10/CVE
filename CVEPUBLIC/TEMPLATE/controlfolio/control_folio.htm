@@ -1,0 +1,173 @@
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+<SCRIPT LANGUAGE="JavaScript" src="../../TEMPLATE/general/checkfield.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/popup.js"></script>
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<script type="javascript" src="../../TEMPLATE/general/funciones.js">
+<script type="javascript" src="../../TEMPLATE/general/checkfield.js">
+alert(window.document.formularioguia.guia.value);</script>
+<style type="text/css">
+<!--
+.style1 {
+	color: #FF0000;
+	font-weight: bold;
+}
+-->
+</style>
+<table width="760" height="5" border="0" cellpadding="0"cellspacing="0">
+						
+
+	<tr>
+    <td width="50%"  height="30" class="titulonormal">Control de Folios  </td>
+</table>
+	<table width="778" height="400" border="0" cellpadding="0" cellspacing="0">
+
+		<tr>
+			<td class="textonormal">
+					<tr>
+						<td width=287> 
+						<fieldset>
+						<legend class="Textonormal">Informaci&oacute;n de documentos</legend>
+				
+				
+
+					<table width="755" border="0" height="376" class="textonormal">
+					
+							
+					 <tr>
+					  
+					  <form name="formulariounico" method="post" >
+
+					  <td height="80" align="center">
+
+					   <div align="center">Local				      
+					    <select name="select_suministro" onchange="obtenerfolios()" class="TextoNormal" {deshabilitar_select}>
+                          <option value="0" class="Textonormal">SELECCIONE</option>
+                          <!-- BEGIN suministro -->
+                          <option value="{codigo_local}" {selected}>{nom_local}</option>
+                          <!-- END suministro -->
+                        </select>
+					  </div></td></form>
+					  </tr>
+					<tr>
+					  <td align="center" colspan="4" height="15"><span class="Titulonormal">Folio Factura</span></td>
+					  </tr>
+					<tr>
+					<form name="formulariofct" method="post" >
+							<input type="hidden" name="accion" value="cambiarfct">
+							<input type="hidden" name="select_suministro" value="{codigo_local}">
+							<input type="hidden" name="folio_fct" value="{numfolio_fct}">
+							<input type="hidden" name="folio_gde" value="{numfolio_gde}">							
+			
+						<td height="15" align="center"><div align="center">
+                              <input type="text" name="fct" width="50" class="textogrande" maxlength="20" value="{numfolio_fct}" />
+                              <br>
+					  </div>					 </td>
+					  </form>
+					</tr>
+
+					<tr>
+					  <td align="center" height="15" colspan="4"><input type="button" name="modificar_fct"  class="Textonormal" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Modificar Folio Factura&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" onclick="validarfct({numfolio_fct})" /></td>
+					</tr>
+					<tr>
+					  <td align="center" height="60" colspan="4">&nbsp;</td>
+					  </tr>
+					  
+				
+
+					<tr>
+					  <td align="center" colspan="4" class="Titulonormal" height="15"><span class="Titulonormal">Folio Guia de Despacho</span></td>
+					</tr>
+					<tr>
+					<form name="formulariogde" method="post" >
+					<input type="hidden" name="accion" value="cambiargde">
+					<input type="hidden" name="select_suministro" value="{codigo_local}">
+					<input type="hidden" name="folio_fct" value="{numfolio_fct}">
+					<input type="hidden" name="folio_gde" value="{numfolio_gde}">							
+
+					  <td height="15" align="center"><div align="center">
+                              <input type="text" name="gde" width="50" class="textogrande" maxlength="20" value="{numfolio_gde}" />
+                              <br>
+					  </div>                      </td>
+					  </form>
+					</tr>
+					<tr><input type="hidden" name="guia" value="0">
+					  <td align="center" height="15" colspan="4"><input type="button" name="modificar_gde" class="Textonormal" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Modificar Guia de Despacho&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" onclick="validargde({numfolio_gde})" /></td>
+					</tr>
+					<tr>					  </tr>
+				</table>
+			</fieldset>                 
+		
+	</td>
+</tr>
+</table>
+<script>
+
+window.document.formulariofct.fct.onkeypress = KeyIsNumber;
+window.document.formulariogde.gde.onkeypress = KeyIsNumber;
+function obtenerfolios()
+{
+formulario = window.document.formulariounico;
+formulario.submit();
+}
+
+function IsNumeric(valor){ 
+	var log=valor.length; 
+	var sw="S"; 
+	
+	for (x=0; x<log; x++){
+		v1=valor.substr(x,1); 
+		v2 = parseInt(v1); 
+		//Compruebo si es un valor numérico 
+		if (isNaN(v2)){ 
+			sw= "N";
+		} 
+	} 
+	if (sw=="S"){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+function validarfct(){
+	formulario = window.document.formulariofct;
+	var valor =	formulario.fct.value;
+	formulario = window.document.formulariofct;
+	formulario.select_suministro.value=window.document.formulariounico.select_suministro.value;
+	if(formulario.fct.value==''||formulario.fct.value==formulario.folio_fct.value){
+		alert ('Debe ingresar el nuevo folio de la factura.');
+	}else{
+		if(IsNumeric(valor)){
+			if(confirm('¿Esta seguro que desea realizar el cambio de folio para la factura?.'))
+				formulario.submit();		
+			else
+				return false;
+		}else{
+			alert('Solamente debe ingresar numeros en el campo de texto de la factura.');
+		}
+	}
+}
+
+function validargde(valor){
+	formulario = window.document.formulariogde;
+	var valor =	formulario.gde.value;	
+
+	formulario = window.document.formulariogde;
+	formulario.select_suministro.value=window.document.formulariounico.select_suministro.value;
+	if(formulario.gde.value==''||formulario.gde.value==formulario.folio_gde.value){
+		alert ('Debe ingresar el nuevo folio de la guia de despacho.');
+	
+	}else{
+	
+		if(IsNumeric(valor)){
+			if(confirm('¿Esta seguro que desea realizar el cambio de folio para la guia de despacho?.'))
+				formulario.submit();		
+			else
+				return false;
+		}else{
+			alert('Solamente debe ingresar numeros en el campo de texto de la guia de despacho.');
+		}
+	}
+}	
+
+</script>

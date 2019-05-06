@@ -1,0 +1,276 @@
+connlist Object
+(
+    [first:private] => elementconnlist Object
+        (
+            [prev] => 
+            [next] => 
+            [elem] => dtoencordenent Object
+                (
+                    [arreglo:private] => Array
+                        (
+                            [id_ordenent] => 
+                            [id_cotizacion] => 892313
+                            [id_estado] => OA
+                            [id_estado_destino] => 
+                            [id_tipopago] => 2
+                            [id_tipodocpago] => 
+                            [id_tipoentrega] => 2
+                            [nomtipoentrega] => 
+                            [id_direccion] => 0
+                            [id_tipoflujo] => 3
+                            [nomtipoflujo] => 
+                            [codigovendedor] => 910
+                            [numdocpago] => 
+                            [rutcliente] => 830033206
+                            [rutvendedor] => 
+                            [codlocalventa] => E801
+                            [codlocalcsum] => E801
+                            [validdesde] => 
+                            [validhasta] => 
+                            [fecha_retira_cliente] => 
+                            [fecha_retira_inmediato] => 
+                            [fecha_despacho_programado] => 
+                            [nom_local] => 
+                            [nom_localcsum] => 
+                            [nom_localventa] => 
+                            [razonsoc] => BODYTECH SA
+                            [giro] => 0 Actividad sin Clas
+                            [id_giro] => C001
+                            [direccion] => KR 7 # 7 1 - 5 2 T O - A P 3
+                            [comuna] => 
+                            [ciudad] => 
+                            [iva] => 19.00
+                            [condicion] => Contado
+                            [diascondicion] => 0
+                            [fonocontacto] => 7422639
+                            [observaciones] => 
+                            [nota] => 
+                            [id_usuario] => 
+                            [fechacompra] => 
+                            [obsdesb] => 
+                            [usrcrea] => 
+                            [usrmod] => 
+                            [fecmod] => 
+                            [feccrea] => 
+                            [tipo] => 
+                            [nomestadorent] => 
+                            [puedever] => 
+                            [indmsgsap] => 
+                            [numdocumento] => 
+                            [fechaucofini] => 
+                            [fechaucoffin] => 
+                            [limite] => 
+                            [total_orden] => 
+                            [prorrateoflete] => 
+                            [numorigen] => 
+                            [telefono] => 
+                            [id_ordenpicking] => 
+                            [id_documento] => 
+                            [tipodocgen] => 
+                            [monto] => 
+                            [prioridadpick] => 
+                            [var_descripcion] => 
+                            [feccreacoti] => 
+                            [rete_ica] => 
+                            [rete_renta] => 
+                            [rete_iva] => 
+                            [cot_iva] => 
+                            [valortotal] => 
+                            [totaliva] => 86165
+                            [id_dirdespacho] => 
+                            [zona] => 26
+                            [rete_iva_oe] => 0
+                            [totaloe] => 
+                            [tipo_mensaje] => 
+                            [margen] => 
+                            [verif_anul_tiempo] => 
+                        )
+
+                )
+
+            [elemName] => 
+        )
+
+    [last:private] => elementconnlist Object
+        (
+            [prev] => 
+            [next] => 
+            [elem] => dtoencordenent Object
+                (
+                    [arreglo:private] => Array
+                        (
+                            [id_ordenent] => 
+                            [id_cotizacion] => 892313
+                            [id_estado] => OA
+                            [id_estado_destino] => 
+                            [id_tipopago] => 2
+                            [id_tipodocpago] => 
+                            [id_tipoentrega] => 2
+                            [nomtipoentrega] => 
+                            [id_direccion] => 0
+                            [id_tipoflujo] => 3
+                            [nomtipoflujo] => 
+                            [codigovendedor] => 910
+                            [numdocpago] => 
+                            [rutcliente] => 830033206
+                            [rutvendedor] => 
+                            [codlocalventa] => E801
+                            [codlocalcsum] => E801
+                            [validdesde] => 
+                            [validhasta] => 
+                            [fecha_retira_cliente] => 
+                            [fecha_retira_inmediato] => 
+                            [fecha_despacho_programado] => 
+                            [nom_local] => 
+                            [nom_localcsum] => 
+                            [nom_localventa] => 
+                            [razonsoc] => BODYTECH SA
+                            [giro] => 0 Actividad sin Clas
+                            [id_giro] => C001
+                            [direccion] => KR 7 # 7 1 - 5 2 T O - A P 3
+                            [comuna] => 
+                            [ciudad] => 
+                            [iva] => 19.00
+                            [condicion] => Contado
+                            [diascondicion] => 0
+                            [fonocontacto] => 7422639
+                            [observaciones] => 
+                            [nota] => 
+                            [id_usuario] => 
+                            [fechacompra] => 
+                            [obsdesb] => 
+                            [usrcrea] => 
+                            [usrmod] => 
+                            [fecmod] => 
+                            [feccrea] => 
+                            [tipo] => 
+                            [nomestadorent] => 
+                            [puedever] => 
+                            [indmsgsap] => 
+                            [numdocumento] => 
+                            [fechaucofini] => 
+                            [fechaucoffin] => 
+                            [limite] => 
+                            [total_orden] => 
+                            [prorrateoflete] => 
+                            [numorigen] => 
+                            [telefono] => 
+                            [id_ordenpicking] => 
+                            [id_documento] => 
+                            [tipodocgen] => 
+                            [monto] => 
+                            [prioridadpick] => 
+                            [var_descripcion] => 
+                            [feccreacoti] => 
+                            [rete_ica] => 
+                            [rete_renta] => 
+                            [rete_iva] => 
+                            [cot_iva] => 
+                            [valortotal] => 
+                            [totaliva] => 86165
+                            [id_dirdespacho] => 
+                            [zona] => 26
+                            [rete_iva_oe] => 0
+                            [totaloe] => 
+                            [tipo_mensaje] => 
+                            [margen] => 
+                            [verif_anul_tiempo] => 
+                        )
+
+                )
+
+            [elemName] => 
+        )
+
+    [act:private] => elementconnlist Object
+        (
+            [prev] => 
+            [next] => 
+            [elem] => dtoencordenent Object
+                (
+                    [arreglo:private] => Array
+                        (
+                            [id_ordenent] => 
+                            [id_cotizacion] => 892313
+                            [id_estado] => OA
+                            [id_estado_destino] => 
+                            [id_tipopago] => 2
+                            [id_tipodocpago] => 
+                            [id_tipoentrega] => 2
+                            [nomtipoentrega] => 
+                            [id_direccion] => 0
+                            [id_tipoflujo] => 3
+                            [nomtipoflujo] => 
+                            [codigovendedor] => 910
+                            [numdocpago] => 
+                            [rutcliente] => 830033206
+                            [rutvendedor] => 
+                            [codlocalventa] => E801
+                            [codlocalcsum] => E801
+                            [validdesde] => 
+                            [validhasta] => 
+                            [fecha_retira_cliente] => 
+                            [fecha_retira_inmediato] => 
+                            [fecha_despacho_programado] => 
+                            [nom_local] => 
+                            [nom_localcsum] => 
+                            [nom_localventa] => 
+                            [razonsoc] => BODYTECH SA
+                            [giro] => 0 Actividad sin Clas
+                            [id_giro] => C001
+                            [direccion] => KR 7 # 7 1 - 5 2 T O - A P 3
+                            [comuna] => 
+                            [ciudad] => 
+                            [iva] => 19.00
+                            [condicion] => Contado
+                            [diascondicion] => 0
+                            [fonocontacto] => 7422639
+                            [observaciones] => 
+                            [nota] => 
+                            [id_usuario] => 
+                            [fechacompra] => 
+                            [obsdesb] => 
+                            [usrcrea] => 
+                            [usrmod] => 
+                            [fecmod] => 
+                            [feccrea] => 
+                            [tipo] => 
+                            [nomestadorent] => 
+                            [puedever] => 
+                            [indmsgsap] => 
+                            [numdocumento] => 
+                            [fechaucofini] => 
+                            [fechaucoffin] => 
+                            [limite] => 
+                            [total_orden] => 
+                            [prorrateoflete] => 
+                            [numorigen] => 
+                            [telefono] => 
+                            [id_ordenpicking] => 
+                            [id_documento] => 
+                            [tipodocgen] => 
+                            [monto] => 
+                            [prioridadpick] => 
+                            [var_descripcion] => 
+                            [feccreacoti] => 
+                            [rete_ica] => 
+                            [rete_renta] => 
+                            [rete_iva] => 
+                            [cot_iva] => 
+                            [valortotal] => 
+                            [totaliva] => 86165
+                            [id_dirdespacho] => 
+                            [zona] => 26
+                            [rete_iva_oe] => 0
+                            [totaloe] => 
+                            [tipo_mensaje] => 
+                            [margen] => 
+                            [verif_anul_tiempo] => 
+                        )
+
+                )
+
+            [elemName] => 
+        )
+
+)

@@ -1,0 +1,37 @@
+SELECT 	o.fechacompra,
+                                        lo.nom_local,
+                                        o.rutcliente,
+                                        o.razonsoc,
+                                        o.id_ordenent,
+                                        sum(od.descuento) as descuento,
+                                        if(id_tipoentrega=1 and id_tiporetiro=2,'Retira Cliente' ,if(id_tipoentrega=2 and id_tiporetiro=2,'Desp. Programado',if(id_tipoentrega=1 and id_tiporetiro=1,'Retira Inmediato','No aisgnado'))) as tipo_salida,
+                                        estado.descripcion as estado,
+                                        usu.usr_nombres,
+                                        usu.usr_apellidos,
+                                        usu.codigovendedor, 
+                                        sum(od.totallinea) as totaldet,
+              				o.totaloe as total,
+              				(round((((sum(od.totallinea)-(sum(od.pcosto* od.cantidade)))* 100)/sum(od.totallinea)) * 100)/100) as margen,
+              				id_contribuyente,
+              				numdocumento,
+              				sum(round((od.totallinea/((od.iva/100)+1))*(od.rete_renta/100))) as rete_renta,
+                                        sum(round((od.totallinea/((od.iva/100)+1))*(od.rete_ica/100))) as rete_ica,
+                                        o.rete_iva_oe as rete_iva,
+                                        o.totaliva as totaliva
+                                FROM ordenent_d od join ordenent_e o on (o.id_ordenent=od.id_ordenent) 
+                                join cliente cli on(rut=rutcliente) 
+                                join locales lo on (o.codlocalventa=cod_local) 
+                                join estado on (o.id_estado=estado.id_estado) 
+                                left join usuarios usu on (usu.codigovendedor=o.codigovendedor and usu.codigovendedor <> '')
+                                left join documento_e de on(de.sigtipodoc='FCT' and o.id_ordenent=de.numorigen) 
+                                where o.id_estado='OG' 
+                                     and o.codlocalventa = 'E806'  
+                                     and fechacompra >= '2018-02-14' 
+                                     and fechacompra<= '2018-02-14' 
+                                      
+                                     
+                                     
+                                    
+                                    
+				group by o.id_ordenent,o.fechacompra,lo.nom_local,o.rutcliente,o.razonsoc,estado.descripcion,usu.usr_nombres,usu.usr_apellidos,usu.codigovendedor,o.totaloe,id_contribuyente,numdocumento,o.rete_iva_oe,o.totaliva
+                                order by o.fechacompra,o.rutcliente

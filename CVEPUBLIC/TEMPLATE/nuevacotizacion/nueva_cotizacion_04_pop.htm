@@ -1,0 +1,353 @@
+<html>
+<head>
+<STYLE>
+H1.SaltoDePagina
+{
+PAGE-BREAK-AFTER: always
+}
+</STYLE>
+<SCRIPT LANGUAGE="JavaScript">
+function imprimir() {
+this.focus();
+this.print();
+}
+</SCRIPT>
+<style type="text/css">
+<!--
+.negrita{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:10px;
+	font-weight:bold;
+}
+.titulo{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+	
+}
+-->
+</style>
+<body topmargin="0" leftmargin="0" marginheight="0" marginwidth="0">
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+<table width="300" height="403" border="0" bordercolor="black" cellpadding="0" cellspacing="0" style="border: 2px solid #ffffff;">
+	<tr>
+		<td height="69" valign="top">
+			<table width="95%"  border="0" cellspacing="2" cellpadding="2">
+			<tr>
+				<td width="15%" height="49"><img src="../../IMAGES/logotipo_negro.gif"></td>
+				<td width="79%" class="titulonormal">{titulo}&nbsp;-&nbsp;{titulo_pagina}  N&ordm; {id_cotizacion}</td>
+				<td width="6%">{cod_barra_os}</td>
+			</tr>
+			<tr>
+				<td height="11" colspan="3" background="../../IMAGES/barra.gif"></td>
+			</tr>   
+			</table>
+		</td>
+	</tr>  
+	<tr>
+	<td valign="top">
+	<table width="100%"  border="0" cellspacing="2" cellpadding="2" class="textonormal">
+	<tr>
+	<td width="31%" valign="top">
+	<table width="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="textonormal">
+		<tr>
+			<td><fieldset>
+			<legend><strong>Datos {titulo}</strong></legend>
+			<table width="600" border="0" align="center" cellpadding="2" cellspacing="1" class="textonormal">
+				<tr>
+					<td width="26%">Nº&nbsp;{titulo}</td>
+					<td width="24%">{id_cotizacion}</td>
+					<td width="25%">Fecha Cotizaci&oacute;n </td>
+					<td width="25%">{validdesde}</td>   
+				</tr>
+				<tr>
+					<td>Estado</td>
+					<td>&nbsp;{nomestado}</td>
+					<td>Tienda</td>
+					<td>{nom_local}</td>   
+				</tr>
+				<tr>
+					<!-- td>Margen</td>
+					<td>{margentotal}%</td!-->
+					<td>Vendedor</td>
+					<td>{nombrevendedor}</td>
+					{margentotal}					
+					</tr>
+				<tr>
+					<td class="negrita">Válido Desde</td>
+					<td>{validdesde}</td>	
+					<td><strong class="negrita">Válido Hasta</strong></td>
+					<td>{validhasta} </td>
+				</tr>
+				{titulo_nom_dir}
+				<tr>
+					<td class="negrita">Observaciones</td>
+					<td colspan="3">{observaciones}</td>		
+				</tr>					
+			</table>
+			</fieldset></td>
+		</tr>
+		<tr>
+			<td><fieldset>
+			<legend>Datos Cliente</legend>
+				<table width="600" border="0"   align="center" cellpadding="2" cellspacing="1" class="textonormal">
+					<tr>
+						<td width="151" >Raz&#243;n Social</td>
+						<td width="138">{dcrazonsoc}</td>
+						<td width="145">CC/NIT/RUT</td>
+						<td width="145">{rutcliente}</td>
+					</tr>
+					<tr>
+						<td width="151">Actividad Economica </td>
+						<td width="138">{giro}</td>
+						<td width="145">&nbsp;</td>
+						<td width="145">&nbsp;</td>
+					</tr>
+					<tr>
+						<td>Direcci&oacute;n</td>
+						<td>{dcdireccion}</td>
+						<td>Tel&eacute;fono Contacto</td>
+						<td>{dcfonocontacto}</td>
+					</tr>
+					<tr>
+						<td>Departamento</td>
+						<td>{dcdepartamento}</td>
+						<td>Ciudad</td>
+						<td>{dcciudad}</td>
+					</tr>
+					<tr>
+						<td width="151">Barrio</td>
+						<td width="138">{dcnomcomuna}</td>
+						<!--  td width="25%">Comentario</td>
+						<td width="25%">{comentario}</td>-->  						
+					</tr>
+				</table>
+			</fieldset></td>
+		</tr>
+		<tr>
+			<td><fieldset>
+			<legend>Direcci&oacute;n de Servicio   (Despachos e Instalaciones)</legend>
+				<table width="600" border="0"   align="center" cellpadding="2" cellspacing="1" class="textonormal">
+					<tr>
+						<td width="25%">Telefono</td>
+						<td width="25%">{fonocontacto}</td>
+						<td width="25%">&nbsp;Direcci&oacute;n</td>
+						<td width="25%">&nbsp;{direccion}</td>
+					</tr>
+					<tr>
+						<td width="25%">Departamento</td>
+						<td width="25%">{departamento}</td>
+						<td width="25%">Ciudad</td>
+						<td width="25%">{ciudad}</td>
+					</tr>
+					<tr>
+						<td>Barrio</td>
+						<td>{comuna}</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+					</tr>
+				</table>
+				<table width="600" border="0"   align="center" cellpadding="2" cellspacing="1" class="textonormal">
+					
+					<tr>
+						<td width="25%">Indicaciones</td>
+						<td align="lefth">{nota}</td>
+					</tr>
+				</table>
+			</fieldset></td>
+		</tr>
+	</table>
+	<br>
+	<!---include de os-detalle!-->
+	<table width="600" border="0" align="center" cellpadding="0" cellspacing="0" class="textonormal">
+	<tr>
+		<td>
+			<table width="600" border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2">	
+				<tr>
+				<th align="center">Codigo</th>
+				<th align="center">Tipo</th>
+				<th align="center">Descripci&oacute;n</th>
+				<th align="center">Tipo Despacho</th>
+				<th align="center">Unimed</th>
+				<th align="center">Instalación</th>
+				<th align="center">Peso</th> 
+				<th align="center">Cantidad</th>               
+				<th align="center">Precio</th>
+				<th align="center">Descuento</th>
+				<th align="center">Descuento %</th>
+				<th align="center">Total</th>
+				</tr>
+			
+		
+	
+		        
+		<!-- BEGIN detalleproductos -->              
+		<tr>
+			<td align="center">{barra}{codprod}&nbsp;</td>
+			<td align="center">{codsubtipo}&nbsp;</td>
+			<td align="left">&nbsp;{descripcion}&nbsp;</td>
+			<td align="center">{desp}&nbsp;</td>
+			<td align="center">&nbsp;{unimed}&nbsp;</td>
+			<td align="center">{instala}&nbsp;</td>
+			<td align="center">{peso}&nbsp;</td>  
+			<td align="center">{cantidad}&nbsp;</td>
+			<td align="center">{precio}&nbsp;</td> 
+			<td align="center">{descuento}&nbsp;</td>
+			<td align="center">{descuento%}&nbsp;</td>              
+			<td align="center">{totallinea}&nbsp;</td>
+		</tr>
+	  <!-- END detalleproductos -->
+		</table>
+	</td>
+	</tr>
+	<tr>
+	<td>		
+		<table width="600" border="0" align="left" cellpadding="0" cellspacing="0" class="tabla3" >	
+			<tr>
+				<td width="40" ></td>
+				<td width="80" ></td>
+				<td width="200" ></td>                
+				<td width="100" align="left">Sub-Total</td>
+				<td width="50"  ></td>								
+				<td width="90"  align="right">{valortotal}&nbsp;</td>  
+			</tr>
+			<tr>
+				<td width="40" ></td>
+				<td width="80" ></td>
+				<td width="200" ></td>                
+				<td width="100" align="left">Descuentos</td>
+				<td width="50"  ></td>								
+				<td width="90"  align="right">{descuentot}&nbsp;</td>  
+			</tr>
+			<tr>
+				<td width="40" ></td>
+				<td width="80" ></td>
+				<td width="200" ></td>                
+				<td width="100" align="left">Valor IVA</td>
+				<td width="50"  ></td>								
+				<td width="90"  align="right">{viva}&nbsp;</td>  
+			</tr>
+			{valorfletetabla}
+			<tr>
+			   <td width="40" ></td>
+				<td width="80" ></td>
+				<td width="200" ></td>           
+				<td width="100" align="left">Retención IVA</td>
+				<td width="50"></td>								
+				<td width="90" align="right">{rete_iva}&nbsp;</td>  
+			</tr>
+			<tr>
+			         <td width="40" ></td>
+				<td width="80" ></td>
+				<td width="200" ></td>        
+				<td width="100" align="left">Retención Renta</td>
+				<td width="50"></td>								
+				<td width="90" align="right">{rete_renta}&nbsp;</td>  
+			</tr>
+			<tr><td width="40" ></td>
+				<td width="80" ></td>
+				<td width="200" ></td>  
+			                
+				<td width="100" align="left">Retención ICA</td>
+				<td width="50"></td>								
+				<td width="90" align="right">{rete_ica}&nbsp;</td>  
+			</tr>
+				<tr>
+				<td width="40" ></td>
+				<td width="80" ></td>
+				<td width="200" ></td>  
+				<td align="left"  width="100">Total A Pagar</td>
+				<td></td>						
+				<td align="right" width="90">{sumtotal}&nbsp;</td>
+			</tr>	
+			
+		</table>
+<H1 class=SaltoDePagina> </H1>
+
+		  
+	</td>
+	</tr>
+
+<tr><td><br></tr>			
+		<tr>
+		<td>
+<table width="550" border="0" align="center" cellpadding="0" cellspacing="0" class="titulo">
+<tr><td align="center">DETALLE DE IVA INCLUIDO EN LA COTIZACION</td></tr></table>
+<tr>
+		<td><fieldset>
+
+<table width="550" border="0" align="left" cellpadding="0" cellspacing="0" class="tabla2" >
+
+			<tr>
+				<td width="40" align="center"></td>
+				<td width="80" align="center">Descripción</td>
+				<td width="200" align="center" ></td>                
+				<td width="100" align="center">Base IVA</td>
+				<td width="50" align="center"></td>								
+				<td width="90"  align="center">Vlr IVA</td>  
+			</tr>	
+		<!-- BEGIN prueba -->	
+			<tr>
+				<td width="40" ></td>
+				<td width="80" align="right">{ivap}{signoivap}</td>
+				<td width="200" ></td>                
+				<td width="100" align="right">{totalsiniva}</td>
+				<td width="50"  ></td>								
+				<td width="90"  align="right">{impivatotal}</td>  
+			</tr>
+		<!-- END prueba -->
+									
+</table>
+<tr><td><br></tr>
+</fieldset></td>
+<tr>
+<td>
+{codigoreterenta}
+<!-- BEGIN ciclorenta -->	
+			<tr>
+				<td width="40" ></td>
+				<td width="80" align="right">{imprete_renta}{signorenta}</td>
+				<td width="200" ></td>                
+				<td width="100" align="right">{$totalrenta}</td>
+				<td width="50"  ></td>								
+				<td width="90"  align="right">{imprenta}</td>  
+			</tr>
+<!-- END ciclorenta -->
+</fieldset></table>
+</td>
+<tr><td><br></tr>
+<tr>
+<td>
+{codigoreteica}
+<!-- BEGIN cicloica -->	
+			<tr>
+				<td width="40" ></td>
+				<td width="80" align="right">{imprete_ica}{signoica}</td>
+				<td width="200" ></td>                
+				<td width="100" align="right">{totalica}</td>
+				<td width="50"  ></td>								
+				<td width="90"  align="right">{impica}</td>  
+			</tr>
+<!-- END cicloica -->
+</fieldset></table>
+<tr><td><br></tr>
+<tr><td><br></tr>
+<tr>
+<td>
+<table width="600" border="0" align="left" cellpadding="0" cellspacing="0" class="tabla2" >
+<tr><td><fieldset>{infocotioe}</fieldset></td>
+<tr><td><br></td>
+<tr><td><fieldset>{infocotioe2}</fieldset>
+</td><tr><td><br></td>
+<tr><td><fieldset>{infocotioe3}</fieldset></td>
+<tr><td><br></td>
+<tr><td><fieldset>{infocotioe4}</fieldset></td>
+</table>
+		
+			</table> 
+		</tr>
+	 </table>
+	</td>
+  </tr>
+</table>
+</body>
+</html>

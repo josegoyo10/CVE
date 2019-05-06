@@ -1,0 +1,308 @@
+<body>
+<script language="javascript" src="../../TEMPLATE/general/checkfield.js"></script>
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/popup.js"></script>
+<SCRIPT LANGUAGE="JavaScript" type="text/JavaScript" SRC="../../TEMPLATE/general/CalendarPopup.js"></SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript">
+var cliente_ruts = new Array();
+if (!Array.prototype.indexOf)
+  {
+
+       Array.prototype.indexOf = function(searchElement /*, fromIndex */)
+
+    {
+
+
+    "use strict";
+
+    if (this === void 0 || this === null)
+      throw new TypeError();
+
+    var t = Object(this);
+    var len = t.length >>> 0;
+    if (len === 0)
+      return -1;
+
+    var n = 0;
+    if (arguments.length > 0)
+    {
+      n = Number(arguments[1]);
+      if (n !== n)
+        n = 0;
+      else if (n !== 0 && n !== (1 / 0) && n !== -(1 / 0))
+        n = (n > 0 || -1) * Math.floor(Math.abs(n));
+    }
+
+    if (n >= len)
+      return -1;
+
+    var k = n >= 0
+          ? n
+          : Math.max(len - Math.abs(n), 0);
+
+    for (; k < len; k++)
+    {
+      if (k in t && t[k] === searchElement)
+        return k;
+    }
+    return -1;
+  };
+
+}
+
+function in_array(arr,obj) {
+    return (arr.indexOf(obj) != -1);
+}
+
+function array_remove_element(arr,value)
+{
+	var idx = arr.indexOf(value);		
+	if(idx!=-1) visibleIds.splice(idx, 1);	
+}
+
+function editar_vendedor(elem){
+	var vende = popUpWindowModal('monitor_cliente_nuevo_popup.php?popup=1&rut='+elem.id+'&codigovendedor='+elem.id2,350, 350, 750, 300);
+	if (vende == 'reload')
+		document.location='monitor_cliente_nuevo.php';
+	
+}
+
+function editar_registro(elem){
+	var registro = document.location='monitor_cliente_nuevo_01.php?rut='+elem.id;
+	if (registro == 'reload')
+		document.location='monitor_cliente_nuevo.php';
+}
+
+	
+function submitForm(){
+
+	formulario = document.filtro;
+	if (formulario.tipo_cliente.value=='' && formulario.nombre.value=='' && formulario.rutingresado.value=='' && formulario.select_vendedores.value==''){
+			alert('Debe ingresar un criterio para la busqueda');
+			return false;
+	}
+	
+	
+	if (formulario.rutingresado.value)
+  	{
+   	var checkOK = "1234567890";
+ 	var checkStr = formulario.rutingresado.value;
+  	var allValid = true;
+  	for (i = 0;  i < checkStr.length;  i++)
+  	{
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+  	}
+  	if (!allValid)
+  	{
+    alert("No debe ingresar caracteres diferentes a números");
+    formulario.rutingresado.focus();
+    return (false);
+    exit;	
+  	}
+}
+	// construyo el query string y llamo a 
+  makeRequest('transferencia.php?accion=ajax&tipo_cliente='+formulario.tipo_cliente.value+'&nombre='+formulario.nombre.value+'&rutingresado'+formulario.rutingresado.value+'&select_vendedores='+formulario.select_vendedores.value);
+	// formulario.tipo_cliente.value
+	// formulario.nombre.value
+	// formulario.rutingresado.value
+	// formulario.select_vendedores.value
+	//formulario.submit();
+}
+
+
+function agregar_todos()
+{
+  var teniaAgregados=false;
+  // recorro todos los rut
+  for(i=0;i<1000000;i++)
+  {
+    if(document.getElementById('row_rut_cliente_'+i) == null)
+      break;
+    var rut = document.getElementById('row_rut_cliente_'+i).innerHTML;  
+    if( in_array(cliente_ruts, rut ) )	
+    {
+      teniaAgregados=true;
+    }
+    else
+    {
+      addRow(document.getElementById('row_rut_cliente_'+i).innerHTML, document.getElementById('row_tipo_cliente_'+i).innerHTML, document.getElementById('row_razon_cliente_'+i).innerHTML,document.getElementById('row_vendedor_cliente_'+i).innerHTML,false);
+    }
+  }
+  if(teniaAgregados)
+    alert('Uno o varios de los clientes que desea agregar ya se encuentran en la lista de seleccionados y no fueron agregados.');
+}
+
+function makeRequest(url) {
+    var httpRequest;
+    
+    document.getElementById('buscadori').innerHTML='<div style="margin:50px;width:670px" align="center"><img src="../../IMAGES/ajax-loader.gif"></div>';
+
+    if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+        httpRequest = new XMLHttpRequest();
+        if (httpRequest.overrideMimeType) {
+            httpRequest.overrideMimeType('text/xml');
+        }
+    }
+    else if (window.ActiveXObject) { // IE
+        try {
+            httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+        }
+        catch (e) {
+            try {
+                httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            catch (e) {}
+        }
+    }
+
+    if (!httpRequest) {
+        alert('Giving up :(  Cannot create an XMLHTTP instance');
+        return false;
+    }
+    httpRequest.onreadystatechange = function() { state_Change(httpRequest); };
+    httpRequest.open('GET', url, true);
+    httpRequest.send(null);
+
+}
+
+function state_Change(httpRequest) {
+
+    if (httpRequest.readyState == 4) {
+        if (httpRequest.status == 200) {
+            document.getElementById("buscadori").innerHTML=httpRequest.responseText;
+            
+          	window.document.filtro.nombre.onkeypress = KeyIsLetra;
+          	window.document.filtro.rutingresado.onkeypress = KeyIsNumber;             
+            
+        } else {
+            alert("Problem retrieving data:" + httpRequest.statusText);
+        }
+    }
+}
+
+
+</script>
+
+<script type="text/javascript">
+var current_index = 1;
+function addRow(rut, tipo, razon_social, vendedor, check) {
+	var table = document.getElementById('clientes_seleccionados');
+	check = typeof(check) != 'undefined' ? check : true;
+
+	// si ya existe este rut en la lista, no lo agrego
+	if( in_array(cliente_ruts, rut ) && check )
+  {	
+	 alert('El cliente que desea agregar ya se encuentra en la lista de seleccionados y no fue agregado.');  
+	 return;
+	}
+	 
+	var rowCount = table.rows.length;
+	var row = table.insertRow(rowCount);
+	
+  cliente_ruts.push(rut);
+	
+	// Agrego las columnas con sus respectivos datos
+	var newcell = row.insertCell(0);
+	newcell.innerHTML = rut;
+	newcell.align='center';
+	var newcell = row.insertCell(1);
+	newcell.innerHTML = tipo;
+  newcell.align='center';	
+	var newcell = row.insertCell(2);
+	newcell.innerHTML = razon_social;
+	newcell.align='center';
+	var newcell = row.insertCell(3);
+	newcell.innerHTML = vendedor;
+	newcell.align='center';
+	var newcell = row.insertCell(4);	
+	newcell.align='center';
+	newcell.innerHTML = '<input type="hidden" name="clientes_seleccionados[]" id="clientes_seleccionados[]" value="'+rut+'"><a href="#" onClick="deleteRow(this.parentNode.parentNode.rowIndex)">Eliminar de lista</a>';
+	current_index++;				
+}
+
+function deleteRow(i)
+{
+  cliente_ruts.splice((i-1), 1);	
+
+	var table = document.getElementById('clientes_seleccionados');
+	table.deleteRow(i);
+	current_index--;
+}
+
+</script>
+		
+<link href="../nuevacotizacion/estilos.css" rel="stylesheet" type="text/css">
+
+<table width="760" height="15" border="0" cellpadding="0"cellspacing="0">
+	<tr>
+    <td width="50%"  height="30" class="titulonormal">Transferencia Clientes</td>
+</table>
+
+<form action="transferencia.php" method="post">
+
+<table border="0" cellpadding="0" cellspacing="0" height="100" width="776">	 
+	<tbody><tr valign="top">
+		<td width="768">
+			<div style="font-size:12px;text-align:center" class="textonormal" align="center">
+Lista clientes seleccionados que seran transferidos al nuevo vendedor.<br><br>
+</div>
+<table class="tabla2" align="center" border="0" cellpadding="2" cellspacing="0" width="778" name="clientes_seleccionados" id="clientes_seleccionados">
+				<tbody><tr>
+					<th align="center" width="15%">CC/NIT/RUT&nbsp;</th>
+					<th align="center" width="10%">Tipo Cliente&nbsp;</th>
+					<th align="center" width="30%">Razn Social </th>
+					<th width="25%" align="center">Vendedor</th>
+					<th align="center" width="20%">Acciones</th>
+				</tr>
+			</tbody></table><br>
+
+<div style="font-size:12px;text-align:center" class="textonormal" align="center">
+Seleccione el vendedor al que desea transferir clientes.<br><br>
+<select name="nuevo_vendedor" id="nuevo_vendedor">		
+
+<!-- BEGIN vendedores -->
+	<option value="{id}" >{nomvendedor}</option>
+<!-- END vendedores -->						
+</select>
+<br><br>
+<input value="Transferir Clientes Seleccionados Ahora" type="submit">
+</div>
+<br>
+
+<div class="textonormal" style="font-size:12px" 
+align="center">Seleccione los clientes que desea agregar a la lista para 
+ser transferidos utilizando los filtros indicados mas abajo.</div><br>
+
+
+	
+						</td>
+					
+					</tr>
+						
+				</tbody></table>
+				
+
+</form>
+				
+				
+<div  id="buscadori" name="buscadori">
+  <div style="margin:50px;width:670px" align="center">
+  <img src="../../IMAGES/ajax-loader.gif">
+  </div>
+</div>
+
+<script>
+	window.onload = function () {
+  makeRequest('transferencia.php?accion=ajax');
+
+}	
+</script>

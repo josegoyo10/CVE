@@ -1,0 +1,45 @@
+<table border="0" cellpadding="0" cellspacing="0" width = "100%">
+	<tr>
+		<td>
+			<table border="0" cellpadding="2" cellspacing="2" class="tabla1" width="950">
+				<tr>
+					<th align="center">Fecha De Pago</th>
+					<th align="center">Tienda</th>
+					<th align="center">CC/NIT/RUT</th>
+					<th align="center">Nombre Del Cliente</th>					
+					<th align="center">No Orden De Entrega </th>
+					<th align="center">No Factura</th>
+					<th align="center">Vendedor </th>
+					<th align="center">Margen% </th>
+					<th align="center">Tipo De Entrega</th>
+					<th align="center">Estado</th>
+					<th align="center">Descuentos</th>
+					<th align="center">Total</th>
+				</tr>
+
+<!-- BEGIN reportedetalle_NOM -->            
+				<tr>
+					<td align="center">{fechapago}</td>
+					<td align="left">{tienda}</td>
+					<td align="center">{rut}</td>
+					<td align="left">{nomcli}</td>
+					<td align="center">{oentrega}</td>					
+					<td align="center">{nfactura}</td>
+					<td align="left">{vendedor}</td>
+					<td align="center">{margen}</td>
+					<td align="center">{tentrega}</td>
+					<td align="center">{estado}</td>
+					<td align="right">$ {descuento}</td>
+					<td align="right">$ {total}</td>
+				</tr>
+<!-- END reportedetalle_NOM --> 
+
+				<tr>
+					<th align="center" colspan="10">TOTAL</th>
+					<th align="right"><nobr>$ {totalvalor12}</nobr></th>
+					<th align="right"><nobr>$ {totalvalor11}</nobr></th>
+				</tr>
+			</table>
+		</td>
+	</tr>	
+</table>

@@ -1,0 +1,604 @@
+03052019 150232 172.24.97.25 admin => Inicio de sesion usuario
+03052019 150234 172.24.97.25 admin => Inicio de sesion usuario
+03052019 150933 10.128.96.110 mcertuche => Inicio de sesion usuario
+03052019 151007 10.134.242.216 JRodriguezP => Inicio de sesion usuario
+03052019 151022 10.128.96.110 mcertuche => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 151022 10.128.96.110 mcertuche => grupos tipos consulta5
+03052019 151022 10.128.96.110 mcertuche => Se han guardado los  datos del cliente en cve, consultados desde cliente unico
+03052019 151037 10.128.96.110 mcertuche => Se han modificado los siguientes datos del cliente desde el paso 2 de nueva cotizacion:  Razon Social:  Actividad Econ髆ica:  Fono contacto: contacto: email: direccion: comuna: comentario: rubro: Bloqueo CVE: 
+03052019 151039 10.128.96.110 mcertuche => Se ha actualizado exit髎amente el cliente.
+03052019 151051 10.134.242.216 JRodriguezP => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 151109 10.128.130.59 DCRISTANCHO => Inicio de sesion usuario
+03052019 151131 10.128.130.59 DCRISTANCHO => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 151133 10.128.96.110 mcertuche => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 151147 10.134.242.216 JRodriguezP => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 151154 10.128.96.110 mcertuche => Mensaje de Envio Calculo de Fletes : Array
+03052019 151154 10.128.96.110 mcertuche => Response Funcion Fletes : Array
+03052019 151205 10.134.242.216 JRodriguezP => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 151205 10.134.242.216 JRodriguezP => grupos tipos consulta5
+03052019 151205 10.134.242.216 JRodriguezP => Se han guardado los  datos del cliente en cve, consultados desde cliente unico
+03052019 151221 10.128.16.72 jparradol => Inicio de sesion usuario
+03052019 151243 10.128.16.72 jparradol => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 151253 10.134.242.216 JRodriguezP => Se han modificado los siguientes datos del cliente desde el paso 2 de nueva cotizacion:  Razon Social:  Actividad Econ髆ica:  Fono contacto: contacto: email: direccion: comuna: comentario: rubro: Bloqueo CVE: 
+03052019 151253 10.134.242.216 JRodriguezP => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el paso 2 de nueva cotizacion:  Numero direccion: 6835 descripcion: OBRA EN CONSTRUCCION  direccion: CARRERA 58 # 9 - 83 PUENTE ARANDAcontacto: SERGIO BUENO Tel閒ono1: 3006713008email: comentario: HOSPITAL DE SANIDAD MILITAR 
+ARQUITECTA PILAR MATALLANA - ING. GRACIELA PRIETO Nuevo Campo soc Nuevo Campo ob respuesta para insert1
+03052019 151253 10.134.242.216 JRodriguezP => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el paso 2 de nueva cotizacion:  Numero direccion: 6836 descripcion: INSTITUTO ROOSEVELT direccion: CARRERA 4 ESTE # 17-50contacto: MARIANA URIBETel閒ono1: 3008541548email: MURIBE@LINARQ.COcomentario:  Nuevo Campo soc Nuevo Campo ob 2respuesta para insert2
+03052019 151253 10.134.242.216 JRodriguezP => Se ha actualizado exit髎amente el cliente.
+03052019 151259 10.128.16.72 jparradol => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 151259 10.128.16.72 jparradol => grupos tipos consulta5
+03052019 151259 10.128.16.72 jparradol => Se han guardado los  datos del cliente en cve, consultados desde cliente unico
+03052019 151315 10.128.130.59 DCRISTANCHO => Se verifica la existencia de fletes en la cotizaci贸n n煤mero 892287 para su posterior eliminaci贸n del detalle
+03052019 151316 10.128.130.59 DCRISTANCHO => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 151322 10.128.130.59 DCRISTANCHO => Duplicando encabezado	INSERT INTO cotizacion_e (id_cotizacion, id_estado, id_tipoventa, codigovendedor, rutcliente, codlocalventa, codlocalcsum, razonsoc, id_giro, giro, direccion, comuna, iva, validdesde, validhasta, validdias, nvevaliddesde, nvevalidhasta, nvevaliddias, condicion, diascondicion, fonocontacto, observaciones, nota, id_usuario, usuariocrea, valortotal, margentotal, obsdesb, usrcrea, feccrea, usrmod, fecmod, rete_iva, rete_ica, rete_renta, cot_iva, id_dirdespacho)
+                        SELECT NULL, 'CV', id_tipoventa, codigovendedor, rutcliente,'E811','E811' , razonsoc, id_giro, giro, direccion, comuna, iva, now(),DATE_ADD(now(), INTERVAL 1 DAY), 1,now(),DATE_ADD(now(), INTERVAL 1 DAY),1, condicion, diascondicion, fonocontacto, null, null, '1657', 'DCRISTANCHO', 0, 0, null, 'DCRISTANCHO', now(), 'DCRISTANCHO', now(), 0, 0, 0, 0, 0 
+						FROM cotizacion_e
+						WHERE id_cotizacion = 892287
+03052019 151322 10.128.130.59 DCRISTANCHO => Conexion 2    
+03052019 151322 10.128.130.59 DCRISTANCHO => Duplicando detalle 	INSERT INTO cotizacion_d (id_linea, id_cotizacion, id_tiporetiro, id_tipoentrega, numlinea, descripcion, codprod, barra, pcosto, pventaneto, cargoflete, valorfleteh, pventaiva, totallinea, cantidad, cantidade, margenlinea, incluirentotal, unimed, codtipo, codsubtipo, usrcrea, feccrea, usrmod, fecmod, rutproveedor, nomproveedor, instalacion, descuento, peso, rete_ica, rete_renta, cot_iva)
+                        SELECT NULL, 892305, id_tiporetiro, id_tipoentrega, numlinea, descripcion, codprod, barra, pcosto, pventaneto, cargoflete, valorfleteh,0, 0, cantidad, 0, 0, null, unimed, codtipo, codsubtipo, 'DCRISTANCHO', now(), 'DCRISTANCHO', now(), rutproveedor, nomproveedor, instalacion, 0, peso, 0, 0, 0
+						FROM cotizacion_d 
+						WHERE id_cotizacion = 892287  order by  numlinea 
+03052019 151322 10.128.130.59 DCRISTANCHO => getdetcotizacion NUEVA FUERA LOOPVIEJA  COT NUM ->892305
+03052019 151322 10.128.130.59 DCRISTANCHO => getdetcotizacion NUEVA FUERA LOOPVIEJA  OBJ->892305
+03052019 151322 10.128.130.59 DCRISTANCHO => QUERY LOCAL VENTA SELECT codlocalventa FROM cotizacion_e  WHERE id_cotizacion =892305
+03052019 151322 10.128.130.59 DCRISTANCHO => COD LOCAL VENTA  ->E811
+03052019 151322 10.128.130.59 DCRISTANCHO => QUERY PRODUCTO DUPLICADO SELECT codprod FROM cotizacion_d  WHERE id_cotizacion =892305
+03052019 151322 10.128.130.59 DCRISTANCHO => COD PRODUCTO ->2190911
+03052019 151322 10.128.130.59 DCRISTANCHO => QUERY PRECIOS -->SELECT prec_valor as precio FROM precios WHERE (cod_local='E811' and cod_prod1='2190911')
+03052019 151322 10.128.130.59 DCRISTANCHO => PRECIOS ->20500.00
+03052019 151322 10.128.130.59 DCRISTANCHO => Query Actualiza Precios ->UPDATE 	cotizacion_d   SET 	pventaneto = '20500.00' WHERE 	(codprod ='2190911' AND id_cotizacion ='892305')
+03052019 151322 10.128.130.59 DCRISTANCHO => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 151328 10.128.130.59 DCRISTANCHO => Se verifica la existencia de fletes en la cotizaci贸n n煤mero 892305 para su posterior eliminaci贸n del detalle
+03052019 151334 10.128.16.72 jparradol => Se han modificado los siguientes datos del cliente desde el paso 2 de nueva cotizacion:  Razon Social:  Actividad Econ髆ica:  Fono contacto: contacto: email: direccion: comuna: comentario: rubro: Bloqueo CVE: 
+03052019 151334 10.128.16.72 jparradol => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el paso 2 de nueva cotizacion:  Numero direccion: 7499 descripcion: LAS FERIAS direccion: CALLE 78 NO 69-25contacto: Tel閒ono1: email: comentario: MIGUEL HERNANDEZ-HORARIO VIERNES DE 8-12 Y 2-4 PM Nuevo Campo soc Nuevo Campo ob respuesta para insert1
+03052019 151334 10.128.16.72 jparradol => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el paso 2 de nueva cotizacion:  Numero direccion: 7576 descripcion: HOYUELOS direccion: CALLE 20 NO 82-52 LOCAL 4-59 C.C.HAYUELOS.contacto: Tel閒ono1: email: comentario: JUAN QUEVEDO Nuevo Campo soc Nuevo Campo ob respuesta para insert1
+03052019 151334 10.128.16.72 jparradol => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el paso 2 de nueva cotizacion:  Numero direccion: 7577 descripcion: CHIA direccion: AV PRADILLA NO 5-31.C.C. PLAZA MAYOR LOCAL 121contacto: Tel閒ono1: email: comentario: LINDA NI袿 Nuevo Campo soc Nuevo Campo ob respuesta para insert1
+03052019 151335 10.128.16.72 jparradol => Se ha actualizado exit髎amente el cliente.
+03052019 151341 10.134.242.216 JRodriguezP => query productos BSELECT	p.id_producto,
+                        p.cod_prod1 sap,
+                        b.cod_barra barra,
+                        p.des_larga descripcion,
+                        p.des_corta descripcionc,
+                        p.prod_tipo,
+                        p.prod_subtipo,
+                        p.peso,
+                        r.cod_local csum,
+						r.prec_costo pcosto,
+                        r.prec_valor pventa,
+                        r.stock,
+                        b.unid_med unidmed,
+                        v.nom_prov nomprov
+                FROM 	productos p
+                JOIN 	precios r on r.cod_prod1 = p.cod_prod1
+                LEFT JOIN codbarra b on b.cod_prod1 = p.cod_prod1
+                LEFT JOIN prodxprov x on x.cod_prod1 = p.cod_prod1
+                  JOIN 	proveedores v on v.cod_prov = x.cod_prov 
+                WHERE 1
+                
+                
+                 AND p.des_larga like '%flete%' 
+                 AND r.cod_local = 'E814' 
+                
+                 AND p.prod_subtipo <> 'GE'
+                AND b.unid_med in ('ST', 'CS', 'KG', 'PLS', 'M2', 'TON', 'UN', 'M', 'ROM', 'PAL', 'PAK','BOL') AND p.estadoactivo <>'E'  AND cod_ppal = 1 AND b.estadoactivo <>'E' ORDER BY unidmed DESC LIMIT 0, 200 ;
+                
+03052019 151351 10.128.130.59 DCRISTANCHO => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 151357 10.134.242.216 JRodriguezP => query productos BSELECT	p.id_producto,
+                        p.cod_prod1 sap,
+                        b.cod_barra barra,
+                        p.des_larga descripcion,
+                        p.des_corta descripcionc,
+                        p.prod_tipo,
+                        p.prod_subtipo,
+                        p.peso,
+                        r.cod_local csum,
+						r.prec_costo pcosto,
+                        r.prec_valor pventa,
+                        r.stock,
+                        b.unid_med unidmed,
+                        v.nom_prov nomprov
+                FROM 	productos p
+                JOIN 	precios r on r.cod_prod1 = p.cod_prod1
+                LEFT JOIN codbarra b on b.cod_prod1 = p.cod_prod1
+                LEFT JOIN prodxprov x on x.cod_prod1 = p.cod_prod1
+                  JOIN 	proveedores v on v.cod_prov = x.cod_prov 
+                WHERE 1
+                
+                
+                 AND p.des_larga like '%flete%' 
+                 AND r.cod_local = 'E814' 
+                
+                 AND p.prod_subtipo <> 'GE'
+                AND b.unid_med in ('ST', 'CS', 'KG', 'PLS', 'M2', 'TON', 'UN', 'M', 'ROM', 'PAL', 'PAK','BOL') AND p.estadoactivo <>'E'  AND cod_ppal = 1 AND b.estadoactivo <>'E' ORDER BY unidmed DESC LIMIT 0, 200 ;
+                
+03052019 151406 10.128.130.59 DCRISTANCHO => Mensaje de Envio Calculo de Fletes : Array
+03052019 151406 10.128.130.59 DCRISTANCHO => Response Funcion Fletes : Array
+03052019 151431 10.128.96.110 mcertuche => La cotizaci髇  892303cambio a estado Cotizaci髇 finalizada
+03052019 151445 10.134.242.216 JRodriguezP => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 151449 10.128.16.72 jparradol => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 151459 10.134.242.216 JRodriguezP => Se verifica la existencia de fletes en la cotizaci贸n n煤mero 892304 para su posterior eliminaci贸n del detalle
+03052019 151536 10.128.130.59 DCRISTANCHO => Inicio de sesion usuario
+03052019 151559 10.128.130.59 DCRISTANCHO => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 151613 10.128.130.59 DCRISTANCHO => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 151613 10.128.130.59 DCRISTANCHO => grupos tipos consulta5
+03052019 151613 10.128.130.59 DCRISTANCHO => Se han guardado los  datos del cliente en cve, consultados desde cliente unico
+03052019 151618 10.128.48.75 jejimene => Inicio de sesion usuario
+03052019 151625 10.128.130.59 DCRISTANCHO => Se han modificado los siguientes datos del cliente desde el paso 2 de nueva cotizacion:  Razon Social:  Actividad Econ髆ica:  Fono contacto: contacto: email: direccion: comuna: comentario: rubro: Bloqueo CVE: 
+03052019 151625 10.128.130.59 DCRISTANCHO => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el paso 2 de nueva cotizacion:  Numero direccion: 3516 descripcion: BODEGA  EN CONSTRUCCION  direccion: CRA 71  19-20 contacto: PEDRO CAMARGO Tel閒ono1: 320 -3447806email: comentario: ENCARGADO DE LA OBRA  JUANITO 3104801580  Nuevo Campo soc Nuevo Campo ob respuesta para insert1
+03052019 151626 10.128.130.59 DCRISTANCHO => Se ha actualizado exit髎amente el cliente.
+03052019 151652 10.128.48.75 jejimene => Se verifica la existencia de fletes en la cotizaci贸n n煤mero 891796 para su posterior eliminaci贸n del detalle
+03052019 151653 10.128.48.75 jejimene => Se verifica la existencia de fletes en la cotizaci贸n n煤mero 891796 para su posterior eliminaci贸n del detalle
+03052019 151655 10.128.48.75 jejimene => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 151705 10.128.130.59 DCRISTANCHO => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 151717 10.128.130.59 DCRISTANCHO => Mensaje de Envio Calculo de Fletes : Array
+03052019 151717 10.128.130.59 DCRISTANCHO => Response Funcion Fletes : Array
+03052019 151729 10.134.242.216 JRodriguezP => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 151953 10.128.130.59 DCRISTANCHO => Se verifica la existencia de fletes en la cotizaci贸n n煤mero 892307 para su posterior eliminaci贸n del detalle
+03052019 152020 10.128.130.59 DCRISTANCHO => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 152031 10.128.130.59 DCRISTANCHO => Mensaje de Envio Calculo de Fletes : Array
+03052019 152031 10.128.130.59 DCRISTANCHO => Response Funcion Fletes : Array
+03052019 152456 10.95.48.139 admin => Inicio de sesion usuario
+03052019 152703 10.95.48.139 admin => Inicio de sesion usuario
+03052019 152716 10.95.48.139 admin => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 152716 10.95.48.139 admin => grupos tipos consulta5
+03052019 152716 10.95.48.139 admin => Se han guardado los  datos del cliente en cve, consultados desde cliente unico
+03052019 152737 10.95.48.139 admin => Se han modificado los siguientes datos del cliente desde el paso 2 de nueva cotizacion:  Razon Social:  Actividad Econ髆ica:  Fono contacto: contacto: email: direccion: comuna: comentario: rubro: Bloqueo CVE: 
+03052019 152737 10.95.48.139 admin => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el paso 2 de nueva cotizacion:  Numero direccion: 7499 descripcion: LAS FERIAS direccion: CALLE 78 NO 69-25contacto: Tel閒ono1: email: comentario: MIGUEL HERNANDEZ-HORARIO VIERNES DE 8-12 Y 2-4 PM Nuevo Campo soc Nuevo Campo ob respuesta para insert1
+03052019 152737 10.95.48.139 admin => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el paso 2 de nueva cotizacion:  Numero direccion: 7576 descripcion: HOYUELOS direccion: CALLE 20 NO 82-52 LOCAL 4-59 C.C.HAYUELOS.contacto: Tel閒ono1: email: comentario: JUAN QUEVEDO Nuevo Campo soc Nuevo Campo ob respuesta para insert1
+03052019 152737 10.95.48.139 admin => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el paso 2 de nueva cotizacion:  Numero direccion: 7577 descripcion: CHIA direccion: AV PRADILLA NO 5-31.C.C. PLAZA MAYOR LOCAL 121contacto: Tel閒ono1: email: comentario: LINDA NI袿 Nuevo Campo soc Nuevo Campo ob respuesta para insert1
+03052019 152738 10.95.48.139 admin => Se ha actualizado exit髎amente el cliente.
+03052019 152830 10.95.48.139 admin => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 152851 10.95.48.139 admin => Mensaje de Envio Calculo de Fletes : Array
+03052019 152851 10.95.48.139 admin => Response Funcion Fletes : Array
+03052019 153020 10.128.96.110 mcertuche => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 153133 10.128.96.110 mcertuche => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 153133 10.128.96.110 mcertuche => grupos tipos consulta5
+03052019 153133 10.128.96.110 mcertuche => Se han guardado los  datos del cliente en cve, consultados desde cliente unico
+03052019 153141 10.128.96.110 mcertuche => Se han modificado los siguientes datos del cliente desde el paso 2 de nueva cotizacion:  Razon Social:  Actividad Econ髆ica:  Fono contacto: contacto: email: direccion: comuna: comentario: rubro: Bloqueo CVE: 
+03052019 153142 10.128.96.110 mcertuche => Se ha actualizado exit髎amente el cliente.
+03052019 153206 10.128.96.110 mcertuche => Se han modificado los siguientes datos del cliente desde el paso 2 de nueva cotizacion:  Razon Social:  Actividad Econ髆ica:  Fono contacto: contacto: email: direccion: comuna: comentario: rubro: Bloqueo CVE: 
+03052019 153206 10.128.96.110 mcertuche => Se ha actualizado exit髎amente el cliente.
+03052019 153422 10.128.96.110 mcertuche => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el monitor de vendedores:  Numero direccion:  descripcion:  direccion: contacto: fono contacto: email: comentario: 
+03052019 153422 10.128.96.110 mcertuche => Se han modificado los siguientes datos del cliente desde el paso 2 de nueva cotizacion:  Razon Social:  Actividad Econ髆ica:  Fono contacto: contacto: email: direccion: comuna: comentario: rubro: Bloqueo CVE: 
+03052019 153608 10.128.96.110 mcertuche => Se han modificado los siguientes datos del cliente desde el paso 2 de nueva cotizacion:  Razon Social:  Actividad Econ髆ica:  Fono contacto: contacto: email: direccion: comuna: comentario: rubro: Bloqueo CVE: 
+03052019 153608 10.128.96.110 mcertuche => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el paso 2 de nueva cotizacion:  Numero direccion: 8158 descripcion: parque campestre direccion: carrer 7a # 02-99 surcontacto: Tel閒ono1: email: comentario:  Nuevo Campo soc Nuevo Campo ob respuesta para insert1
+03052019 153608 10.128.96.110 mcertuche => Se ha actualizado exit髎amente el cliente.
+03052019 153635 10.128.96.110 mcertuche => Se verifica la existencia de fletes en la cotizaci贸n n煤mero 892309 para su posterior eliminaci贸n del detalle
+03052019 153648 10.128.96.110 mcertuche => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 153703 10.128.96.110 mcertuche => Se verifica la existencia de fletes en la cotizaci贸n n煤mero 892309 para su posterior eliminaci贸n del detalle
+03052019 153803 10.128.96.110 mcertuche => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 153834 10.128.96.110 mcertuche => Se verifica la existencia de fletes en la cotizaci贸n n煤mero 892309 para su posterior eliminaci贸n del detalle
+03052019 153845 10.128.96.110 mcertuche => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 153901 10.128.96.110 mcertuche => La cotizaci髇  892309cambio a estado Cotizaci髇 finalizada
+03052019 153943 10.128.96.110 mcertuche => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 153943 10.128.96.110 mcertuche => grupos tipos consulta5
+03052019 153943 10.128.96.110 mcertuche => Se han guardado los  datos del cliente en cve, consultados desde cliente unico
+03052019 153948 10.128.96.110 mcertuche => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 153948 10.128.96.110 mcertuche => grupos tipos consulta5
+03052019 153948 10.128.96.110 mcertuche => Se han guardado los  datos del cliente en cve, consultados desde cliente unico
+03052019 153954 10.128.96.110 mcertuche => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 153954 10.128.96.110 mcertuche => grupos tipos consulta5
+03052019 153954 10.128.96.110 mcertuche => Se han guardado los  datos del cliente en cve, consultados desde cliente unico
+03052019 153959 10.128.96.110 mcertuche => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 153959 10.128.96.110 mcertuche => grupos tipos consulta5
+03052019 153959 10.128.96.110 mcertuche => Se han guardado los  datos del cliente en cve, consultados desde cliente unico
+03052019 154007 10.128.96.110 mcertuche => Se han modificado los siguientes datos del cliente desde el paso 2 de nueva cotizacion:  Razon Social:  Actividad Econ髆ica:  Fono contacto: contacto: email: direccion: comuna: comentario: rubro: Bloqueo CVE: 
+03052019 154007 10.128.96.110 mcertuche => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el paso 2 de nueva cotizacion:  Numero direccion: 8158 descripcion: PARQUE CAMPESTRE direccion: CARRER 7A # 02-99 SURcontacto: Tel閒ono1: email: comentario:  Nuevo Campo soc Nuevo Campo ob respuesta para insert1
+03052019 154007 10.128.96.110 mcertuche => Se ha actualizado exit髎amente el cliente.
+03052019 154155 10.128.96.110 mcertuche => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 154200 10.128.96.110 mcertuche => Se verifica la existencia de fletes en la cotizaci贸n n煤mero 892310 para su posterior eliminaci贸n del detalle
+03052019 154210 10.128.96.110 mcertuche => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 154921 10.128.16.72 jparradol => Inicio de sesion usuario
+03052019 154946 10.128.16.72 jparradol => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 155037 10.128.16.72 jparradol => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 155037 10.128.16.72 jparradol => grupos tipos consulta5
+03052019 155037 10.128.16.72 jparradol => Se han guardado los  datos del cliente en cve, consultados desde cliente unico
+03052019 155101 10.128.16.72 jparradol => Se han modificado los siguientes datos del cliente desde el paso 2 de nueva cotizacion:  Razon Social:  Actividad Econ髆ica:  Fono contacto: contacto: email: direccion: comuna: comentario: rubro: Bloqueo CVE: 
+03052019 155101 10.128.16.72 jparradol => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el paso 2 de nueva cotizacion:  Numero direccion: 7499 descripcion: LAS FERIAS direccion: CALLE 78 NO 69-25contacto: Tel閒ono1: email: comentario: MIGUEL HERNANDEZ-HORARIO VIERNES DE 8-12 Y 2-4 PM Nuevo Campo soc Nuevo Campo ob respuesta para insert1
+03052019 155101 10.128.16.72 jparradol => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el paso 2 de nueva cotizacion:  Numero direccion: 7576 descripcion: HOYUELOS direccion: CALLE 20 NO 82-52 LOCAL 4-59 C.C.HAYUELOS.contacto: Tel閒ono1: email: comentario: JUAN QUEVEDO Nuevo Campo soc Nuevo Campo ob respuesta para insert1
+03052019 155101 10.128.16.72 jparradol => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el paso 2 de nueva cotizacion:  Numero direccion: 7577 descripcion: CHIA direccion: AV PRADILLA NO 5-31.C.C. PLAZA MAYOR LOCAL 121contacto: Tel閒ono1: email: comentario: LINDA NI袿 Nuevo Campo soc Nuevo Campo ob respuesta para insert1
+03052019 155101 10.128.16.72 jparradol => Se ha actualizado exit髎amente el cliente.
+03052019 155556 10.128.16.72 jparradol => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 160114 10.95.5.68 admin => Inicio de sesion usuario
+03052019 160129 10.95.5.68 admin => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 160129 10.95.5.68 admin => grupos tipos consulta5
+03052019 160129 10.95.5.68 admin => Se han guardado los  datos del cliente en cve, consultados desde cliente unico
+03052019 160147 10.95.5.68 admin => Se han modificado los siguientes datos del cliente desde el paso 2 de nueva cotizacion:  Razon Social:  Actividad Econ髆ica:  Fono contacto: contacto: email: direccion: comuna: comentario: rubro: Bloqueo CVE: 
+03052019 160147 10.95.5.68 admin => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el paso 2 de nueva cotizacion:  Numero direccion: 7499 descripcion: LAS FERIAS direccion: CALLE 78 NO 69-25contacto: Tel閒ono1: email: comentario: MIGUEL HERNANDEZ-HORARIO VIERNES DE 8-12 Y 2-4 PM Nuevo Campo soc Nuevo Campo ob respuesta para insert1
+03052019 160147 10.95.5.68 admin => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el paso 2 de nueva cotizacion:  Numero direccion: 7576 descripcion: HOYUELOS direccion: CALLE 20 NO 82-52 LOCAL 4-59 C.C.HAYUELOS.contacto: Tel閒ono1: email: comentario: JUAN QUEVEDO Nuevo Campo soc Nuevo Campo ob respuesta para insert1
+03052019 160147 10.95.5.68 admin => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el paso 2 de nueva cotizacion:  Numero direccion: 7577 descripcion: CHIA direccion: AV PRADILLA NO 5-31.C.C. PLAZA MAYOR LOCAL 121contacto: Tel閒ono1: email: comentario: LINDA NI袿 Nuevo Campo soc Nuevo Campo ob respuesta para insert1
+03052019 160147 10.95.5.68 admin => Se ha actualizado exit髎amente el cliente.
+03052019 160246 10.95.5.68  => Intento de acceso a p谩gina TOP /Trunk/Colombia/CVE/CVE_PPAL/CVEPUBLIC/COMMAND/nuevacotizacion/nueva_cotizacion_02.php sin sesi贸n
+03052019 160256 10.95.5.68 admin => Inicio de sesion usuario
+03052019 160319 10.95.5.68 admin => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 160319 10.95.5.68 admin => grupos tipos consulta5
+03052019 160319 10.95.5.68 admin => grupos tipos consulta8
+03052019 160319 10.95.5.68 admin => grupos tipos consulta9
+03052019 160327 10.95.5.68 admin => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 160327 10.95.5.68 admin => grupos tipos consulta5
+03052019 160327 10.95.5.68 admin => Se han guardado los  datos del cliente en cve, consultados desde cliente unico
+03052019 160339 10.95.5.68 admin => Se han modificado los siguientes datos del cliente desde el paso 2 de nueva cotizacion:  Razon Social:  Actividad Econ髆ica:  Fono contacto: contacto: email: direccion: comuna: comentario: rubro: Bloqueo CVE: 
+03052019 160339 10.95.5.68 admin => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el paso 2 de nueva cotizacion:  Numero direccion: 7499 descripcion: LAS FERIAS direccion: CALLE 78 NO 69-25contacto: Tel閒ono1: email: comentario: MIGUEL HERNANDEZ-HORARIO VIERNES DE 8-12 Y 2-4 PM Nuevo Campo soc Nuevo Campo ob respuesta para insert1
+03052019 160339 10.95.5.68 admin => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el paso 2 de nueva cotizacion:  Numero direccion: 7576 descripcion: HOYUELOS direccion: CALLE 20 NO 82-52 LOCAL 4-59 C.C.HAYUELOS.contacto: Tel閒ono1: email: comentario: JUAN QUEVEDO Nuevo Campo soc Nuevo Campo ob respuesta para insert1
+03052019 160339 10.95.5.68 admin => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el paso 2 de nueva cotizacion:  Numero direccion: 7577 descripcion: CHIA direccion: AV PRADILLA NO 5-31.C.C. PLAZA MAYOR LOCAL 121contacto: Tel閒ono1: email: comentario: LINDA NI袿 Nuevo Campo soc Nuevo Campo ob respuesta para insert1
+03052019 160339 10.95.5.68 admin => Se ha actualizado exit髎amente el cliente.
+03052019 160443 10.95.5.68 admin => query productos BSELECT	p.id_producto,
+                        p.cod_prod1 sap,
+                        b.cod_barra barra,
+                        p.des_larga descripcion,
+                        p.des_corta descripcionc,
+                        p.prod_tipo,
+                        p.prod_subtipo,
+                        p.peso,
+                        r.cod_local csum,
+						r.prec_costo pcosto,
+                        r.prec_valor pventa,
+                        r.stock,
+                        b.unid_med unidmed,
+                        v.nom_prov nomprov
+                FROM 	productos p
+                JOIN 	precios r on r.cod_prod1 = p.cod_prod1
+                LEFT JOIN codbarra b on b.cod_prod1 = p.cod_prod1
+                LEFT JOIN prodxprov x on x.cod_prod1 = p.cod_prod1
+                  JOIN 	proveedores v on v.cod_prov = x.cod_prov 
+                WHERE 1
+                
+                
+                 AND p.des_larga like '%cemento%' 
+                 AND r.cod_local = 'E801' 
+                
+                 AND p.prod_subtipo <> 'GE'
+                AND b.unid_med in ('ST', 'CS', 'KG', 'PLS', 'M2', 'TON', 'UN', 'M', 'ROM', 'PAL', 'PAK','BOL') AND p.estadoactivo <>'E'  AND cod_ppal = 1 AND b.estadoactivo <>'E' ORDER BY unidmed DESC LIMIT 0, 200 ;
+                
+03052019 160459 10.95.5.68 admin => query productos BSELECT	p.id_producto,
+                        p.cod_prod1 sap,
+                        b.cod_barra barra,
+                        p.des_larga descripcion,
+                        p.des_corta descripcionc,
+                        p.prod_tipo,
+                        p.prod_subtipo,
+                        p.peso,
+                        r.cod_local csum,
+						r.prec_costo pcosto,
+                        r.prec_valor pventa,
+                        r.stock,
+                        b.unid_med unidmed,
+                        v.nom_prov nomprov
+                FROM 	productos p
+                JOIN 	precios r on r.cod_prod1 = p.cod_prod1
+                LEFT JOIN codbarra b on b.cod_prod1 = p.cod_prod1
+                LEFT JOIN prodxprov x on x.cod_prod1 = p.cod_prod1
+                  JOIN 	proveedores v on v.cod_prov = x.cod_prov 
+                WHERE 1
+                
+                
+                 AND p.des_larga like '%cemento%' 
+                 AND r.cod_local = 'E801' 
+                
+                 AND p.prod_subtipo <> 'GE'
+                AND b.unid_med in ('ST', 'CS', 'KG', 'PLS', 'M2', 'TON', 'UN', 'M', 'ROM', 'PAL', 'PAK','BOL') AND p.estadoactivo <>'E'  AND cod_ppal = 1 AND b.estadoactivo <>'E' ORDER BY unidmed DESC LIMIT 0, 200 ;
+                
+03052019 160526 10.95.5.68 admin => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 160555 10.95.5.68 admin => Se verifica la existencia de fletes en la cotizaci贸n n煤mero 892312 para su posterior eliminaci贸n del detalle
+03052019 160610 10.95.5.68 admin => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 160624 10.95.5.68 admin => Mensaje de Envio Calculo de Fletes : Array
+03052019 160624 10.95.5.68 admin => Response Funcion Fletes : Array
+03052019 161219 10.95.48.139 admin => Inicio de sesion usuario
+03052019 161410 10.95.48.139 admin => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 161410 10.95.48.139 admin => grupos tipos consulta5
+03052019 161410 10.95.48.139 admin => Se han guardado los  datos del cliente en cve, consultados desde cliente unico
+03052019 161531 10.95.48.139 admin => Se han modificado los siguientes datos del cliente desde el paso 2 de nueva cotizacion:  Razon Social:  Actividad Econ髆ica:  Fono contacto: contacto: email: direccion: comuna: comentario: rubro: Bloqueo CVE: 
+03052019 161531 10.95.48.139 admin => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el paso 2 de nueva cotizacion:  Numero direccion: 7499 descripcion: LAS FERIAS direccion: CALLE 78 NO 69-25contacto: Tel閒ono1: email: comentario: MIGUEL HERNANDEZ-HORARIO VIERNES DE 8-12 Y 2-4 PM Nuevo Campo soc Nuevo Campo ob respuesta para insert1
+03052019 161531 10.95.48.139 admin => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el paso 2 de nueva cotizacion:  Numero direccion: 7576 descripcion: HOYUELOS direccion: CALLE 20 NO 82-52 LOCAL 4-59 C.C.HAYUELOS.contacto: Tel閒ono1: email: comentario: JUAN QUEVEDO Nuevo Campo soc Nuevo Campo ob respuesta para insert1
+03052019 161531 10.95.48.139 admin => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el paso 2 de nueva cotizacion:  Numero direccion: 7577 descripcion: CHIA direccion: AV PRADILLA NO 5-31.C.C. PLAZA MAYOR LOCAL 121contacto: Tel閒ono1: email: comentario: LINDA NI袿 Nuevo Campo soc Nuevo Campo ob respuesta para insert1
+03052019 161531 10.95.48.139 admin => Se ha actualizado exit髎amente el cliente.
+03052019 161605 10.95.48.139 admin => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 161617 10.95.48.139 admin => Se verifica la existencia de fletes en la cotizaci贸n n煤mero 892313 para su posterior eliminaci贸n del detalle
+03052019 161628 10.95.48.139 admin => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 161653 10.95.48.139 admin => Mensaje de Envio Calculo de Fletes : Array
+03052019 161653 10.95.48.139 admin => Response Funcion Fletes : Array
+03052019 161746 10.95.48.139 admin => La cotizaci髇  892313cambio a estado Cotizaci髇 finalizada
+03052019 175814 127.0.0.1 admin => Inicio de sesion usuario
+03052019 175849 127.0.0.1 admin => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 175849 127.0.0.1 admin => grupos tipos consulta5
+03052019 175849 127.0.0.1 admin => Se han guardado los  datos del cliente en cve, consultados desde cliente unico
+03052019 175901 127.0.0.1 admin => SELECT id_contribuyente, descripcion, admitido 
+        		  FROM tipocontribuyente
+        		  WHERE 1
+                   AND admitido = 1  
+        		  order by id_contribuyente
+03052019 175901 127.0.0.1 admin => grupos tipos consulta5
+03052019 175901 127.0.0.1 admin => Se han guardado los  datos del cliente en cve, consultados desde cliente unico
+03052019 180312 127.0.0.1 admin => Se han modificado los siguientes datos del cliente desde el paso 2 de nueva cotizacion:  Razon Social:  Actividad Econ髆ica:  Fono contacto: contacto: email: direccion: comuna: comentario: rubro: Bloqueo CVE: 
+03052019 180312 127.0.0.1 admin => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el paso 2 de nueva cotizacion:  Numero direccion: 7499 descripcion: LAS FERIAS direccion: CALLE 78 NO 69-25contacto: Tel閒ono1: email: comentario: MIGUEL HERNANDEZ-HORARIO VIERNES DE 8-12 Y 2-4 PM Nuevo Campo soc Nuevo Campo ob respuesta para insert1
+03052019 180312 127.0.0.1 admin => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el paso 2 de nueva cotizacion:  Numero direccion: 7576 descripcion: HOYUELOS direccion: CALLE 20 NO 82-52 LOCAL 4-59 C.C.HAYUELOS.contacto: Tel閒ono1: email: comentario: JUAN QUEVEDO Nuevo Campo soc Nuevo Campo ob respuesta para insert1
+03052019 180312 127.0.0.1 admin => Se han modificado los siguientes datos en la direccion de despacho del cliente desde el paso 2 de nueva cotizacion:  Numero direccion: 7577 descripcion: CHIA direccion: AV PRADILLA NO 5-31.C.C. PLAZA MAYOR LOCAL 121contacto: Tel閒ono1: email: comentario: LINDA NI袿 Nuevo Campo soc Nuevo Campo ob respuesta para insert1
+03052019 180313 127.0.0.1 admin => Se ha actualizado exit髎amente el cliente.
+03052019 180637 127.0.0.1 admin => query productos BSELECT	p.id_producto,
+                        p.cod_prod1 sap,
+                        b.cod_barra barra,
+                        p.des_larga descripcion,
+                        p.des_corta descripcionc,
+                        p.prod_tipo,
+                        p.prod_subtipo,
+                        p.peso,
+                        r.cod_local csum,
+						r.prec_costo pcosto,
+                        r.prec_valor pventa,
+                        r.stock,
+                        b.unid_med unidmed,
+                        v.nom_prov nomprov
+                FROM 	productos p
+                JOIN 	precios r on r.cod_prod1 = p.cod_prod1
+                LEFT JOIN codbarra b on b.cod_prod1 = p.cod_prod1
+                LEFT JOIN prodxprov x on x.cod_prod1 = p.cod_prod1
+                  JOIN 	proveedores v on v.cod_prov = x.cod_prov 
+                WHERE 1
+                
+                
+                 AND p.des_larga like '%ceramica%' 
+                 AND r.cod_local = 'E801' 
+                
+                 AND p.prod_subtipo <> 'GE'
+                AND b.unid_med in ('ST', 'CS', 'KG', 'PLS', 'M2', 'TON', 'UN', 'M', 'ROM', 'PAL', 'PAK','BOL') AND p.estadoactivo <>'E'  AND cod_ppal = 1 AND b.estadoactivo <>'E' ORDER BY unidmed DESC LIMIT 0, 200 ;
+                
+03052019 180653 127.0.0.1 admin => query productos BSELECT	p.id_producto,
+                        p.cod_prod1 sap,
+                        b.cod_barra barra,
+                        p.des_larga descripcion,
+                        p.des_corta descripcionc,
+                        p.prod_tipo,
+                        p.prod_subtipo,
+                        p.peso,
+                        r.cod_local csum,
+						r.prec_costo pcosto,
+                        r.prec_valor pventa,
+                        r.stock,
+                        b.unid_med unidmed,
+                        v.nom_prov nomprov
+                FROM 	productos p
+                JOIN 	precios r on r.cod_prod1 = p.cod_prod1
+                LEFT JOIN codbarra b on b.cod_prod1 = p.cod_prod1
+                LEFT JOIN prodxprov x on x.cod_prod1 = p.cod_prod1
+                  JOIN 	proveedores v on v.cod_prov = x.cod_prov 
+                WHERE 1
+                
+                
+                 AND p.des_larga like '%ceramica%' 
+                 AND r.cod_local = 'E801' 
+                
+                 AND p.prod_subtipo <> 'GE'
+                AND b.unid_med in ('ST', 'CS', 'KG', 'PLS', 'M2', 'TON', 'UN', 'M', 'ROM', 'PAL', 'PAK','BOL') AND p.estadoactivo <>'E'  AND cod_ppal = 1 AND b.estadoactivo <>'E' ORDER BY unidmed DESC LIMIT 0, 200 ;
+                
+03052019 182748 127.0.0.1 admin => query productos BSELECT	p.id_producto,
+                        p.cod_prod1 sap,
+                        b.cod_barra barra,
+                        p.des_larga descripcion,
+                        p.des_corta descripcionc,
+                        p.prod_tipo,
+                        p.prod_subtipo,
+                        p.peso,
+                        r.cod_local csum,
+						r.prec_costo pcosto,
+                        r.prec_valor pventa,
+                        r.stock,
+                        b.unid_med unidmed,
+                        v.nom_prov nomprov
+                FROM 	productos p
+                JOIN 	precios r on r.cod_prod1 = p.cod_prod1
+                LEFT JOIN codbarra b on b.cod_prod1 = p.cod_prod1
+                LEFT JOIN prodxprov x on x.cod_prod1 = p.cod_prod1
+                  JOIN 	proveedores v on v.cod_prov = x.cod_prov 
+                WHERE 1
+                
+                
+                 AND p.des_larga like '%bombillo%' 
+                 AND r.cod_local = 'E801' 
+                
+                 AND p.prod_subtipo <> 'GE'
+                AND b.unid_med in ('ST', 'CS', 'KG', 'PLS', 'M2', 'TON', 'UN', 'M', 'ROM', 'PAL', 'PAK','BOL') AND p.estadoactivo <>'E'  AND cod_ppal = 1 AND b.estadoactivo <>'E' ORDER BY unidmed DESC LIMIT 0, 200 ;
+                
+03052019 182804 127.0.0.1 admin => query productos BSELECT	p.id_producto,
+                        p.cod_prod1 sap,
+                        b.cod_barra barra,
+                        p.des_larga descripcion,
+                        p.des_corta descripcionc,
+                        p.prod_tipo,
+                        p.prod_subtipo,
+                        p.peso,
+                        r.cod_local csum,
+						r.prec_costo pcosto,
+                        r.prec_valor pventa,
+                        r.stock,
+                        b.unid_med unidmed,
+                        v.nom_prov nomprov
+                FROM 	productos p
+                JOIN 	precios r on r.cod_prod1 = p.cod_prod1
+                LEFT JOIN codbarra b on b.cod_prod1 = p.cod_prod1
+                LEFT JOIN prodxprov x on x.cod_prod1 = p.cod_prod1
+                  JOIN 	proveedores v on v.cod_prov = x.cod_prov 
+                WHERE 1
+                
+                
+                 AND p.des_larga like '%bombillo%' 
+                 AND r.cod_local = 'E801' 
+                
+                 AND p.prod_subtipo <> 'GE'
+                AND b.unid_med in ('ST', 'CS', 'KG', 'PLS', 'M2', 'TON', 'UN', 'M', 'ROM', 'PAL', 'PAK','BOL') AND p.estadoactivo <>'E'  AND cod_ppal = 1 AND b.estadoactivo <>'E' ORDER BY unidmed DESC LIMIT 0, 200 ;
+                

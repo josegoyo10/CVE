@@ -1,0 +1,596 @@
+<title>Orden Entrega</title>
+
+<script>window.name='popup1'</script>
+
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<script language="javascript" src="../../TEMPLATE/general/popup.js"></script>
+
+<script language="javascript" src="../../TEMPLATE/general/checkfield.js"></script>
+
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+
+<table width="680" height="32" border="0" cellpadding="0" cellspacing="0">
+
+	<tr>
+
+		<td class="titulonormal">&nbsp;Orden Entrega </td>
+
+	</tr>
+
+</table>
+
+
+
+<table width="680" align=center cellpadding="0" cellspacing="0">
+
+	<tr>
+
+		<td>
+
+		<fieldset><legend class=textonormal>Datos Orden de Entrega</legend>
+
+			<table width="680"  border="0" cellspacing="1" cellpadding="0" class="textonormal">
+
+				<tr>                 
+
+					<th align="left" width="100">N&ordm; OE</th>
+
+					<td width="240">{id_ordenent}</td>
+
+					<th align="left" width="100">N&ordm; NVE</th>
+
+					<td width="240">{id_cotizacion}</td>
+
+				</tr>
+
+				<tr>
+
+					<th align="left">Tipo Entrega</th>
+
+					<td>{nomtipoentrega}</td>
+
+					<th align="left">Vendedor</th>
+
+					<td>{nombrevendedor}</td>
+
+				</tr>
+
+				<tr>
+
+					<th align="left">IVA</th>
+
+					<td>{iva}%</td>
+
+					<th align="left">Tienda</th>
+
+					<td><font color="#FF0000">{nom_local_csum}</font></td>                    
+
+				</tr>
+
+				<tr>
+
+					<th align="left">Condici&oacute;n Pago</th>
+
+					<td>{tipopago}&nbsp;{condicion}</td>				
+
+					<th align="left">Nota</th>
+
+					<td colspan=3>{nota}</td>
+
+				</tr>
+
+			</table>
+
+		</fieldset>
+
+		</td>
+
+	</tr>
+
+	<tr>
+
+		<td height=5>
+
+		</td>
+
+	</tr>
+
+	<tr>
+
+		<td>
+
+		<fieldset><legend class=textonormal>Datos Cliente</legend>
+
+			<table width="680" border="0" cellspacing="1" cellpadding="0" class="textonormal">
+
+				<tr>
+
+					<th align="left" width="100">CC/NIT/RUT</th>
+
+					<td width="240">{rutcliente}</td>
+
+					<th align="left" width="100">Tipo Cliente</th>
+
+					<td width="240">{nomtipcliente}</td>
+
+				</tr>
+
+				<tr>
+
+					<th align="left">Raz&oacute;n Social</th>
+
+					<td>{razonsoc}</td>
+
+					<th align="left">Direcci&oacute;n</th>
+
+					<td>{direccion}, {nomcomuna}</td>
+
+				</tr>
+
+				<tr>
+
+					<th align="left">Contacto</th>
+
+					<td>{contacto}&nbsp;</td>
+
+					<th align="left">Tel&eacute;fono Contacto </th>
+
+					<td>{fonocontacto}</td>
+
+				</tr>
+
+				<tr>
+
+					<th align="left">Observaciones</th>
+
+					<td colspan=3>{locksap}{lockmoro}{lockcve}{lockfecha}{comentario}</td>
+
+				</tr>
+
+			</table>
+
+		</fieldset>
+
+		</td>
+
+	</tr>
+
+	<tr>
+
+		<td height=5>
+
+		</td>
+
+	</tr>
+
+<form name="nuevaoe" method=post target='popup1'>
+
+<input type=hidden name="accion" value=pagar>
+
+<input type=hidden name="id_ordenent" value={id_ordenent}>
+
+	<tr>
+
+		<td>
+
+		<fieldset name="fieldset1"><legend class=textonormal>Datos Pago y Tipo Facturaci&oacute;n</legend>
+
+			<table width="680" border="0" cellspacing="1" cellpadding="0" class="textonormal">
+
+				<tr>
+
+					<th align="left" width="80">Vía de Pago</th>
+
+					<td width="240"  class="textonormal">
+
+						<script>var arrt = new Array();</script>
+
+						<select name="id_tipodocpago">
+
+						<!-- BEGIN detallepagos -->
+
+							<option value={id} {selected}>{nombre}</option>
+
+							<script>arrt['{id}'] = '{reqnumdoc}'</script>
+
+						<!-- END detallepagos -->
+
+						</select>
+
+					</td>
+
+					<th align="left" width="110">Num Doc. Pago:</th>
+
+					<td align="left" width="200"><input type=text name="numdocpago" size=40 maxlength=40 class="textonormal"></td>
+
+				</tr>
+
+				<tr>
+
+					<th align="left">Tipo Facturaci&oacute;n</th>
+
+					<td>
+
+						<input type=radio name="id_tipofacturacion" value ="{valtfant}" {checkedant} {disabledant}>Anticipada&nbsp;&nbsp;
+
+						<input type=radio name="id_tipofacturacion" value ="{valtfpos}" {checkedpos} {disabledpos}>Diferida&nbsp;&nbsp;
+
+					</td>
+
+					<th align="left">Prioridad Picking</th>
+
+					<td>
+
+						<input type=radio name="id_priorpick" value ="1" checked {disablednp}>Normal&nbsp;&nbsp;
+
+						<input type=radio name="id_priorpick" value ="2" {disablednp}>Alta&nbsp;&nbsp;
+
+					</td>
+
+				</tr>
+
+				<tr>
+
+					<th align="left">Direcci&oacute;n Despacho</th>
+
+					<td colspan=3>
+
+						<select name="id_direccion" {disableddd}>
+
+						<!-- BEGIN dirdesp -->
+
+							<option value={id_direccion} {selected}>{nombre}</option>
+
+						<!-- END dirdesp -->
+
+						</select>
+
+						&nbsp;<a href="#"><img src="../../IMAGES/book.gif" title="Libreta de Direcciones" border=0 onClick="abrelibreta()"></a>
+
+					</td>
+
+				</tr>
+
+			</table>
+
+		</fieldset>
+
+		</td>
+
+	</tr>
+
+	<tr>
+
+		<td height=5>
+
+		</td>
+
+	</tr>
+
+	<tr>
+
+		<td>
+
+			<table width="680" border="0" align="center" cellpadding="2" cellspacing="0" class="textonormal">
+
+				<tr>
+
+					<td>
+
+						<table width="680" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+
+							<tr>
+
+								<th width="80" align="center">SAP</th>
+
+								<th width="260" align="center">Descripci&oacute;n</th>
+
+								<th width="50" align="center">Cant Disp</th>
+
+								<th width="50" align="center">Unimed</th>                
+
+								<th width="80" align="center">Precio</th>
+
+								<th width="100" align="center">Total</th>
+
+							</tr>
+
+						</table>
+
+					</td>
+
+				</tr>
+
+				<tr>
+
+					<td valign="top"  align="center" >
+
+						<div style="height:110;overflow-y:scroll;">
+
+						<table width="660" border="1" align="left" cellpadding="0" cellspacing="2"  class="tabla2">              
+
+							<!-- BEGIN detalleproductos -->              
+
+							<tr valign="top" {prioridad}>
+
+								<td width="80" align="center">{codprod}&nbsp;</td>
+
+								<td width="240" align="left">{descripcion}</td>
+
+								<td width="40" align="right">{cantidad}</td>
+
+								<td width="50" align="center">{unimed}</td>  
+
+								<td width="80" align="right">{pventanetof}</td>
+
+								<td width="80" align="right">
+
+									{totallineaf}
+
+									<input type=hidden value="{totallinea}" name="totallinea_{id_linea}">
+
+								</td>
+
+							</tr>
+
+							<!-- END detalleproductos -->                
+
+						</table>
+
+						</div>
+
+					</td>
+
+				</tr>	
+
+				<tr>
+
+					<td valign="top"  align="right">
+
+						<table border="0" cellpadding="0" cellspacing="0" align=left valign=bottom class="subtitulonormal">
+
+							<tr>
+
+								<td colspan=3>&nbsp;</td>
+
+							</tr>
+
+							<tr>
+
+								<td width="50" align="left">&nbsp;</td>
+
+								<td width="180" align="left"><a href="#"><img alt="Cerrar Ventana" src="../../IMAGES/close.gif" onClick='window.close()' border = 0></a>&nbsp;&nbsp;&nbsp;&nbsp;Cerrar Ventana</td>
+
+								<td width="200" align="left"><a href="#"><!--  <img alt="Pagar Orden Entrega" src="../../IMAGES/peso.gif" onClick='pagaroe()' border = 0></a>&nbsp;&nbsp;&nbsp;&nbsp;Pagar Orden Entrega--></td>
+
+							</tr>
+
+						</table>
+
+						<table border="0" cellpadding="0" cellspacing="0" class="subtitulonormal">
+
+							<tr>
+
+								<th width="70" align="left">Total Neto</th>
+
+								<th width="100" align="right">
+
+									<input type=text value="0" name="totalneto" size=8 maxlength=10 class="textoespecial4" readonly>
+
+									<input type=hidden name="totalnetoh" value=0>
+
+								</th>
+
+								<th width="30" align="left">&nbsp;</th>
+
+							</tr>
+
+							<tr>
+
+								<th width="70" align="left" >IVA ({iva}%)</th>
+
+								<th width="100" align="right">
+
+									<input type=text value="0" name="totaliva" size=8 maxlength=10 class="textoespecial4" readonly>
+
+									<input type=hidden name="totalivah" value=0>
+
+								</th>
+
+								<th width="30" align="left">&nbsp;</th>
+
+							</tr>
+
+							<tr>
+
+								<th width="70" align="left" >Total A Pagar</th>
+
+								<th width="100" align="right">
+
+									<input type=text value="0" name="totalciva" size=8 maxlength=10 class="textoespecial4" readonly>
+
+									<input type=hidden name="totalcivah" value=0>
+
+								</th>
+
+								<th width="30" align="left">&nbsp;</th>
+
+							</tr>				
+
+						</table>
+
+	  				</td>
+
+				</tr>
+
+			</table>
+
+		</td>
+
+	</tr>
+
+	</form>
+
+	<form name=direccion method=get target="popup1">
+
+		<input type=hidden name=oe value='{id_ordenent}'>
+
+		<input type=hidden name=dir value=''>
+
+	</form>
+
+</table>
+
+
+
+<script type="text/javascript">
+
+	///document.nuevaoe.numdocpago.onkeypress = KeyIsNumber;
+
+	   document.nuevaoe.numdocpago.onkeypress = KeyIsTexto;
+
+
+
+	function calculatotal(){
+
+		formulario = document.nuevaoe;
+
+		var total = 0;
+
+		for (var i = 0; i<formulario.length; ++i) {
+
+			if(formulario.elements[i].name.substr(0, 10) == 'totallinea') {
+
+				total += parseFloat(formulario.elements[i].value);
+
+			}
+
+		}
+
+		var iva = {iva}+0;
+
+		formulario.totalneto.value = total;
+
+		formulario.totaliva.value = Math.round(parseFloat(total)*parseFloat(iva)/100);
+
+		formulario.totalciva.value = parseFloat(total) + parseFloat(formulario.totaliva.value);
+
+
+
+		formulario.totalnetoh.value = total;
+
+		formulario.totalivah.value = formulario.totaliva.value;
+
+		formulario.totalcivah.value = formulario.totalciva.value;
+
+		
+
+		formulario.totalneto.value = addCommas(formulario.totalneto.value);
+
+		formulario.totaliva.value = addCommas(formulario.totaliva.value);
+
+		formulario.totalciva.value = addCommas(formulario.totalciva.value);
+
+	}
+
+
+
+	function pagaroe() {
+
+		formulario = document.nuevaoe;
+
+		//Validar número de documento obligatorio para los tipos de pago documentados
+
+		if (arrt[formulario.id_tipodocpago.options[formulario.id_tipodocpago.selectedIndex].value] == '1' && formulario.numdocpago.value == '') {
+
+			alert('Debe ingresar Documento de Referencia');
+
+			formulario.numdocpago.focus();
+
+			return false;
+
+		}
+
+
+
+		//Validar direccion de despacho para los flujos 3, 4 y 5
+
+		if ('{id_tipoentrega}'!='1' && (formulario.id_direccion.selectedIndex==-1 || !formulario.id_direccion[formulario.id_direccion.selectedIndex].value)) {
+
+			alert('Debe agregar y seleccionar una direccion de despacho');
+
+			return false;
+
+		}
+
+		
+
+		if ('{id_tipopago}' == '1') {
+
+			if (confirm('Esta accion rebajara el monto solicitado de la cuenta corriente del cliente. \n¿Desea continuar?') &&
+
+				confirm('Va a efectuar el pago de la Orden de Entrega {id_ordenent} por un total de $ ' + formulario.totalciva.value + ' pesos con tipo de pago ' + formulario.id_tipodocpago.options[formulario.id_tipodocpago.selectedIndex].text + '\n¿Desea continuar con el pago?'))
+
+				document.nuevaoe.submit();
+
+		}
+
+		else {
+
+			if (confirm('Va a efectuar el pago de la Orden de Entrega {id_ordenent} por un total de $ ' + formulario.totalciva.value + ' pesos con tipo de pago ' + formulario.id_tipodocpago.options[formulario.id_tipodocpago.selectedIndex].text + '\n¿Desea continuar con el pago?'))
+
+				document.nuevaoe.submit();
+
+		}
+
+/*		if ('{id_tipocliente}' == '1') {
+
+			if (confirm('Esta acción rebajará el monto solicitado de la cuenta corriente del cliente. \nDesea continuar?'))
+
+				document.nuevaoe.submit();
+
+		}
+
+		else if ('{id_tipocliente}' == '2') {
+
+			if (confirm('El cliente NO es un cliente SAP. Esto indica que no posee control de disponible. \nDesea continuar de todas maneras?'))
+
+				document.nuevaoe.submit();
+
+		}
+
+		else
+
+			alert('No se reconoce el tipo de cliente');*/
+
+	}
+
+
+
+	function abrelibreta() {
+
+		if ({despachodd}) {
+
+			retorno = popUpWindowModalscroll('../../COMMAND/ordenent/ordenent_02.php?popup=1&rut={rut}', 100, 100, 580, 400);
+
+			//Siempre se recarga la pagina padre
+
+//			if (retorno && !isNaN(retorno)){
+
+				document.direccion.dir.value = retorno;
+
+				document.direccion.submit();
+
+//			}
+
+		}
+
+	}
+
+
+
+	calculatotal();
+
+</script>
+

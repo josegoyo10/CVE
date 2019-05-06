@@ -1,0 +1,32 @@
+<request>
+	<customer>
+		<Source>22</Source>
+		<IdCustomer>830049026</IdCustomer>
+		<IdCategory>3</IdCategory>
+		<IdTypeContribuyente>3</IdTypeContribuyente>
+		<TypeCustomer>
+			<IdTypeCustomer>5</IdTypeCustomer>
+		</TypeCustomer>
+		<Location>11001000002035</Location>
+		<IdDoc>31</IdDoc>
+		<FirstName>FENIX INGENIERIA LTDA</FirstName>
+		<Surname1> </Surname1>
+		<Surname2> </Surname2>
+		<Address>AV. CRA 9  N° 100-07 OF.612</Address>		
+		<Phone>2500939</Phone>
+		<Phone2></Phone2>
+		<Fax>6913419</Fax>
+		<Email>PROYECTOSFENIX@ETB.NET.CO</Email>
+		<AgeRange>0</AgeRange>
+		<Quota>0</Quota>
+		<Contact>ZULUAGA A MILENA</Contact>
+		<Gender>NA</Gender>
+		<Occupation></Occupation>
+		<ReteIca>false</ReteIca>
+		<ReteFuente>true</ReteFuente>
+		<ReteIva>false</ReteIva>
+		<ExenIva>false</ExenIva>
+		<OtrIva>false</OtrIva>
+		<State>A</State>
+	</customer>	
+</request>

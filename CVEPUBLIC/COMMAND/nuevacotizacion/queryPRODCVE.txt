@@ -1,0 +1,37 @@
+SELECT	Distinct
+						ct.id_catprod catprod,
+        				p.id_producto,
+        				(p.peso / 1000) as peso,
+        				r.reteica,
+        				r.iva,
+        				r.retefuente,
+                        p.cod_prod1 sap,
+						b.cod_barra,
+                        p.des_larga descripcion,
+                        p.prod_tipo,
+                        p.prod_subtipo,
+                        r.cod_local csum,
+						r.prec_costo pcosto,
+                        r.prec_valor pventa,
+                        r.stock stock,
+                        b.unid_med unidmed,
+                        v.nom_prov nomprov,
+						p.id_catprod
+                FROM 	productos p
+                JOIN 	precios r on r.cod_prod1 = p.cod_prod1
+                LEFT JOIN codbarra b on b.cod_prod1 = p.cod_prod1
+                LEFT JOIN prodxprov x on x.cod_prod1 = p.cod_prod1
+                LEFT JOIN	proveedores v on v.cod_prov = x.cod_prov 
+				LEFT JOIN 	catprod cat on cat.id_catprod = p.id_catprod
+                LEFT JOIN catprod ct on cat.id_catpadre = ct.id_catprod
+                WHERE 1
+                
+                 AND b.cod_barra = '7702048245681' 
+                
+                 AND r.cod_local = 'E813' 
+                
+                 AND p.prod_subtipo <> 'GE'
+                AND b.unid_med in ('ST', 'CS', 'KG', 'PLS', 'M2', 'TON', 'UN', 'M', 'ROM', 'PAL', 'PAK','BOL') AND p.estadoactivo <>'E' 
+                ORDER BY unidmed DESC, cod_ppal DESC
+                LIMIT 0, 20
+                

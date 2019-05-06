@@ -1,0 +1,32 @@
+<request>
+	<customer>
+		<Source>22</Source>
+		<IdCustomer>830121424</IdCustomer>
+		<IdCategory>3</IdCategory>
+		<IdTypeContribuyente>3</IdTypeContribuyente>
+		<TypeCustomer>
+			<IdTypeCustomer>5</IdTypeCustomer>
+		</TypeCustomer>
+		<Location>11001000011096</Location>
+		<IdDoc>31</IdDoc>
+		<FirstName>QUINTAL ARQUITECTOS EU</FirstName>
+		<Surname1> </Surname1>
+		<Surname2> </Surname2>
+		<Address>CALLE 100 N°.49-87</Address>		
+		<Phone>6008023</Phone>
+		<Phone2></Phone2>
+		<Fax></Fax>
+		<Email>ARQJORGENELSON@HOTMAIL.COM</Email>
+		<AgeRange>0</AgeRange>
+		<Quota>0</Quota>
+		<Contact>VELA FONSECA JORGENELSON</Contact>
+		<Gender>NA</Gender>
+		<Occupation></Occupation>
+		<ReteIca>false</ReteIca>
+		<ReteFuente>true</ReteFuente>
+		<ReteIva>false</ReteIva>
+		<ExenIva>false</ExenIva>
+		<OtrIva>false</OtrIva>
+		<State>A</State>
+	</customer>	
+</request>

@@ -1,0 +1,12 @@
+Array
+(
+    [id] => 2
+    [tipoflete] => 0
+    [tipodesp] => 2
+    [tipoenv] => 1
+    [valorflet] => 19500
+    [cantidad] => 1
+    [codsap] => 9525
+    [zona] => 26
+    [id_location] => 11001000001076
+)

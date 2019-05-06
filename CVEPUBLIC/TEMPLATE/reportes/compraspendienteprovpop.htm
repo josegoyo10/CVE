@@ -1,0 +1,159 @@
+<script language="javascript" src="../../TEMPLATE/general/checkfield.js"></script>
+<html>
+<head>
+<STYLE>
+H1.SaltoDePagina
+{
+PAGE-BREAK-AFTER: always
+}
+</STYLE>
+<SCRIPT LANGUAGE="JavaScript">
+
+var id;
+function codprov(elem){
+	opener.formulario_busqueda.proveedor.value=elem.id;
+	window.close();
+}
+function veritexin(id){
+if(id == 1){
+window.document.busquedaprov.textoin.onkeypress = KeyIsRut;
+document.busquedaprov.reset();
+}
+else{
+window.document.busquedaprov.textoin.onkeypress = KeyIsTexto;
+}
+}
+function buscarprov(){
+if(document.busquedaprov.textoin.value.length < 1){
+	alert('ingrese datos para el inicio de la busqueda');
+	return false;
+	}
+document.busquedaprov.submit();
+}
+function imprimir() {
+this.focus();
+this.print();
+}
+</SCRIPT>
+<style type="text/css">
+<!--
+.negrita{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:10px;
+	font-weight:bold;
+}
+.titulo{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+	
+}
+-->
+</style>
+<form name="busquedaprov" method="post" onSubmit="return false;">
+<body topmargin="0" leftmargin="0" marginheight="0" marginwidth="0">
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+<table width="300" height="403" border="0" bordercolor="black" cellpadding="0" cellspacing="0" style="border: 2px solid #ffffff;">
+	<tr>
+		<td height="69" valign="top">
+			<table width="95%"  border="0" cellspacing="2" cellpadding="2">
+			<tr>
+				<td width="15%" height="49"><img src="../../IMAGES/logotipo_negro.gif"></td>
+				<td width="79%" class="titulonormal">Lista De Proveedores</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="TextoNormal" align="center">RUT<input type="radio" value="1" name="iddusqueda" onclick="veritexin({idrut});" checked="checked">Razon Social <input type="radio" value="3" name="iddusqueda" onclick="veritexin({idrc});"> Nombre <input type="radio" value="2" name="iddusqueda" onclick="veritexin({idnom});">
+				
+				<input type="text" value="" class="TextoNormal" name="textoin">
+				<input type="submit" onclick="buscarprov();"  value="Buscar" class="TextoNormal"></td>
+			</tr>   
+			</table>
+		</td>
+	</tr>  
+	<tr>
+	<td valign="top">
+	<table width="100%"  border="0" cellspacing="2" cellpadding="2" class="textonormal">
+	<tr>
+	<td width="31%" valign="top">
+	
+	<br>
+	
+	
+	<table width="600" border="0" align="center" cellpadding="0" cellspacing="0" class="textonormal">
+	<tr>
+		<td>
+			<table width="600" border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2">	
+				<tr>
+				<th align="center" width="5%">OP</th>
+				<th align="center" width="10%">Codigo</th>
+				<th align="center" width="10%">RUT</th>
+				<th align="center" width="40%">Razón Social</th>
+				<th align="center" width="40%">Nombre Del Proveedor</th>
+				</tr>
+			
+	</table>
+	<div style="height:'331'; width:630; overflow:auto;">	
+	<table width="600" border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+		        
+		<!-- BEGIN infoproveedor -->              
+		<tr>
+			<td align="center" width="6%">{imagen}</td>
+			<td align="center" width="10%">{idprov}</td>
+			<td align="center" width="10%">{rutprov}</td>
+			<td align="left" width="40%">{razonsocprov}</td>
+			<td align="left" width="40%">{nomprov}</td>
+		</tr>
+		<!-- END infoproveedor -->
+		</table>
+		</div>
+	</td>
+	</tr>
+	<tr>
+	
+	</tr>
+
+<tr></tr>			
+		<tr>
+		<tr>
+		<tr></tr>
+</fieldset></td>
+<tr>
+<tr>
+				
+				
+				                
+				
+												
+				  
+			</tr>
+
+</fieldset></table>
+</td>
+<tr></tr>
+<tr>
+<tr>
+				
+				
+				                
+				
+												
+				  
+			</tr>
+
+</fieldset></table>
+<tr></tr>
+<tr></tr>
+<tr>
+</table> 
+		</tr>
+	 </table>
+	</td>
+  </tr>
+</table>
+</body>
+</html>
+<script>
+	
+	window.document.busquedaprov.textoin.onkeypress = KeyIsRut;
+	document.busquedaprov.textoin.focus();
+	
+</script>

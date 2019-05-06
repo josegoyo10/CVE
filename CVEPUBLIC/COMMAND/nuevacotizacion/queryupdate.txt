@@ -1,0 +1,40 @@
+	UPDATE cotizacion_e 
+                        SET	usrcrea = usrcrea
+                        , id_estado = 'CT'
+                        , id_tipoventa = 2
+                        , codigovendedor = '910'
+                        , rutcliente = 830033206
+                        , codlocalventa = 'E801'
+                        , codlocalcsum = 'E801'
+                        , razonsoc = 'BODYTECH SA'
+                        , id_giro = 'C001'
+                        , giro = '0 Actividad sin Clas'
+                        , direccion = 'KR 7 # 7 1 - 5 2 T O - A P 3'
+                        
+                        , iva = 19.00
+                        , validdesde = '2019-05-03'
+                        , validhasta = '2019-05-04'
+                        , validdias = 1
+                        , nvevaliddesde = '0000-00-00'
+                        , nvevalidhasta = '2019-05-04'
+                        
+                        , condicion = 'Crédito'
+                        
+                        , fonocontacto = '7422639'
+                        
+                        
+                        
+                        , cot_iva = '83052'
+                        
+                        
+                        
+                        , id_usuario = 798 
+                        , usuariocrea = 'admin'
+                        , valortotal = 520170
+                        , margentotal = 49.32
+                        
+                        , usrmod = 'admin' 
+                        , fecmod = now()
+
+
+                        WHERE id_cotizacion = 892313

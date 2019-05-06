@@ -1,0 +1,125 @@
+
+<html>
+<head>
+	<script src="runtime2/lib/aw.js"></script>
+	<script src="ajax.js"></script>
+	<link href="runtime2/styles/xp/aw.css" rel="stylesheet"></link>
+</head>
+<style>
+	#myGrid { width: 750px; }
+	#myGrid .aw-column-0 {width: 100px; border-right: 1px dotted #ccc;}
+	#myGrid .aw-column-1 {width: 22px; border-right: 1px dotted #ccc; text-align: center;}
+	#myGrid .aw-column-2 {width: 150px; text-align: center;}
+	#myGrid .aw-column-3 {width: 50px; text-align: center;}
+	#myGrid .aw-column-4 {text-align: center;}
+	#myGrid .aw-column-7 {width: 22px; text-align: center;}
+	#myGrid .aw-mouseover-row {background: #F9F99F;}
+
+</style>
+<body>
+<script>
+	var obj = new AW.UI.Grid;
+	obj.setId("myGrid");
+	var myColumns = [
+	"Articulo", "","Descripcion","Cantidad","Precio Venta","Margen","","Comentario"
+	];
+	obj.setSize(758,250);
+	//obj.setCellText(myColumns);
+	obj.setHeaderText(myColumns);
+// desactivar orden en columnas
+    obj.onHeaderClicked = function(event,index){if (index==1) return 'disabled'};
+	obj.setColumnCount(7);
+	obj.setRowCount(1);
+// Ancho de Columnas
+/*	obj.setColumnWidth(22, 1);
+	obj.setColumnWidth(200, 2);
+	obj.setColumnWidth(22, 6);
+	obj.setColumnWidth(300, 7);
+*/
+	obj.setCellEditable(true,0);
+	
+// numeros de filas
+	obj.setSelectorVisible(true);
+	obj.setSelectorText(function(i){return this.getRowPosition(i)+1});
+	
+// imagen de lupa
+	obj.setCellImage("search", 1);
+	obj.setCellTemplate(new AW.Templates.ImageText,1 );
+	
+	obj.setVirtualMode(false); 
+	//obj.setSelectionMode("single-row"); 
+	document.write(obj);
+
+	obj.onCellClik = function(text, column, row){
+		alert("fila clickeada"+row);
+		if (column == 1)
+			valor = popUpWindowModal('busqueda_avanzada.htm', 100, 100, 780, 400);
+	}
+	
+	obj.onCellValidated = function(text, column, row){
+		alert("fila enviada"+row);
+		exec_AJAXRPC('GET','http://localhost/grilla/cgi.php?cell='+text+'&row='+row,'escribe');
+    }
+
+	
+
+
+/*
+	obj.onRowAdded = function(row){
+		window.status = "Row added: " + row;
+		this.setCellText("new", 0, row);
+	}
+*/
+	obj.onRowDeleting = function(row){
+		return !confirm("Delete row " + row + "?");
+	}
+
+/*	obj.onRowDeleted = function(row){
+		window.status = "Row deleted: " + row;
+	}
+*/
+
+	
+	// row index
+	var serial = 1;
+
+	function add(){
+		//alert(serial);
+		obj.addRow(serial++);
+		//alert(serial);
+	}
+
+	function del(){
+		var i = obj.getCurrentRow();
+		obj.deleteRow(i);
+	}
+	
+	function escribe(text){
+		text= text.split("|");
+		alert("fila a insertar "+text[1]);
+		if (text[0] == "no"){
+			alert("codigo no existe")
+		}else{
+			obj.setCellText(text[0],2,text[1])
+			add()
+		}
+	} 
+
+
+	  /**********************/ 
+    function DeleteSelectedRow(){ 
+      var insertindex=obj.getSelectedRows([0]); 
+      CellText.splice(insertindex,1); 
+      obj.setRowCount(obj.getRowCount()-1); 
+      obj.refresh(); 
+    } 
+
+    /**********************/ 
+    function AddNewRowBelowSelectedRow(){ 
+      obj.setRowCount(obj.getRowCount()+1); 
+      obj.refresh(); 
+    } 
+
+</script>
+</body>
+</html>

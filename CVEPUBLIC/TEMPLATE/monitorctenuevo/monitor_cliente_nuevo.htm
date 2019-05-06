@@ -1,0 +1,147 @@
+<body>
+<script language="javascript" src="../../TEMPLATE/general/checkfield.js"></script>
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/popup.js"></script>
+<SCRIPT LANGUAGE="JavaScript" type="text/JavaScript" SRC="../../TEMPLATE/general/CalendarPopup.js"></SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript">
+
+function editar_vendedor(elem){
+	var vende = popUpWindowModal('monitor_cliente_nuevo_popup.php?popup=1&rut='+elem.id+'&codigovendedor='+elem.id2,350, 350, 750, 300);
+	if (vende == 'reload')
+		document.location='monitor_cliente_nuevo.php';
+	
+}
+
+function editar_registro(elem){
+	var registro = document.location='monitor_cliente_nuevo_01.php?rut='+elem.id;
+	if (registro == 'reload')
+		document.location='monitor_cliente_nuevo.php';
+}
+
+	
+function submitForm(){
+
+	formulario = document.filtro;
+	if (formulario.tipo_cliente.value=='' && formulario.nombre.value=='' && formulario.rutingresado.value=='' && formulario.select_vendedores.value==''){
+			alert('Debe ingresar un criterio para la busqueda');
+			return false;
+	}
+	
+	
+	if (formulario.rutingresado.value)
+  	{
+   	var checkOK = "1234567890";
+ 	var checkStr = formulario.rutingresado.value;
+  	var allValid = true;
+  	for (i = 0;  i < checkStr.length;  i++)
+  	{
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+  	}
+  	if (!allValid)
+  	{
+    alert("No debe ingresar caracteres diferentes a números");
+    formulario.rutingresado.focus();
+    return (false);
+    exit;	
+  	}
+}
+	
+	formulario.submit();
+}
+
+</script>
+		
+<link href="../nuevacotizacion/estilos.css" rel="stylesheet" type="text/css">
+
+<table width="760" height="15" border="0" cellpadding="0"cellspacing="0">
+	<tr>
+    <td width="50%"  height="30" class="titulonormal">Monitor Cliente Nuevo </td>
+</table>
+    
+<table width="778" height="350" border="0" cellpadding="0" cellspacing="0">	 
+	<tr>
+		<td width=768>
+			<form NAME="filtro" METHOD="POST" onSubmit="return false;">
+			<input type="hidden" name="nomvendedor" value="{nomvendedor}">
+			<input type="hidden" name="accion" value="sendrut">
+				<fieldset>
+				<table align=center>
+					<tr>
+						<td class="textonormal" align="center">Tipo Cliente</td>
+					  	<td class="textonormal" align=center>Nombre/ Razon Social</td>
+						<td class="textonormal" align=center>NIT/RUT/CC </td>
+						<td class="textonormal" align=center>Vendedores</td>
+					</tr>
+					<tr>
+										
+					<td align="center"><select name="tipo_cliente" class="TextoNormal" >
+
+							<option value="" class="Textonormal">TODOS</option>
+
+							<!-- BEGIN contri -->
+
+								<option value="{id}" {selectedcontri}>{nombrecontri}</option>
+
+							<!-- END contri -->
+
+						</select>
+						</td>
+					  	<td class="textonormal" align=center>
+						<input type="text" name="nombre" size="25" maxlength="25" class="textonormal" value="{nombreing}">	
+						</td>
+						<td class="textonormal" align=center>
+						<input type="text" name="rutingresado" size="25" maxlength="25" class="textonormal" value="{ruting}">	
+						</td>
+						<td class="textonormal" align=center>
+							<select name="select_vendedores" class="TextoNormal" >
+								<option value="" class="Textonormal">TODOS</option>
+								<!-- BEGIN vendedores -->
+									<option value="{codigovendedor}" {selected}>{nomvendedor}</option>
+								<!-- END vendedores -->
+							</select>
+						</td>
+						
+						<td class="textonormal" align=center><input type="submit" class="Textonormal" value="Filtrar" onClick="submitForm()"></td>
+					</tr>
+						</form>
+				</table>
+				</fieldset>
+		<table  width="768" border="0" cellpadding="2" cellspacing="0" class="tituloadvertencia"><td align="center"></td></table>
+			<table width="778" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+				<tr>
+					<th width="15%" align="center">CC/NIT/RUT&nbsp;</th>
+					<th width="20%" align="center">Tipo Cliente&nbsp;</th>
+					<th width="30%" align="center">Raz&oacute;n Social </th>
+					<th width="25%" align="center">Vendedor</th>
+					<th width="10%" align="center">Acciones</th>
+				</tr>
+			</table><div style="height:'348'; width:768; overflow:auto;">
+			<table width="100%" border="1" class="tabla2" cellspacing="0">
+	            <!-- BEGIN infocliente -->
+				<tr>
+					
+					<td width="15%" align="center">{rutdv}</td>
+					<td width="20%" align="center">{tipocliente}</td>
+					<td width="30%" align="left">{razonsoc}</td>
+					<td width="25%"  align="center">{vendedor}</td>
+					<td width="10%"  align="center">{acciones}</td>
+				</tr>
+	          	<!-- END infocliente -->
+	        </form>
+		</table>
+	</div>
+</table>
+<script>
+	window.document.filtro.nombre.onkeypress = KeyIsLetra;
+	window.document.filtro.rutingresado.onkeypress = KeyIsNumber; 
+	
+</script>

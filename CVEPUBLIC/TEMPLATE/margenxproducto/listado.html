@@ -1,0 +1,82 @@
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/funciones.js"></script>
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<script language="javascript" src="../../TEMPLATE/general/checkfield.js"></script>
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+<table width="700" height="15" border="0" cellpadding="0"cellspacing="0">
+	<tr>
+		<td width="50%"  height="30" class="titulonormal">{TEXT_TITULO}</td>
+	</tr>
+	<tr>
+		<td width="60%"  class="titulonormal">{OUT_BARRA}</td>
+	</tr>
+	<tr>
+		<td width="60%"><p>{TEXT_1}</p></td>
+	</tr>    
+</table>
+<table width="750" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+	<form action="adm_margen_01.php" method="get" name="form_buscar">
+		<td><INPUT TYPE="hidden" NAME="action" VALUE="search"></td>
+		<td><table border="0" align=center class="textonormal">
+			<tr valign=middle>
+			    <td align=right>{TEXT_BUSCAR_CAMPO_SKU}</td>
+			    <td width=3> : </td>
+			    <td><INPUT TYPE="text" NAME="producto" VALUE="{productofield}" SIZE="30" MAXLENGTH="200"></td>
+                            <td rowspan="2" ><input name="imageField" type="image" src="../../IMAGES/checkin.jpg" alt="{BOTON_BUSCAR_RUBRO}" width="25" height="25" border="0"></td>
+			
+	        </tr>
+			<tr valign=middle>
+			    <td align=right>{TEXT_BUSCAR_CAMPO_}</td>
+			    <td width=3> : </td>
+                            <td>
+                                <table width="100%" class="textonormal"> <tr> <td align="right" width="45%">
+                                <INPUT TYPE="radio" NAME="tipoB" VALUE="sku" {selectedSKU}>C&oacute;digo 
+                                        </td><td width="10%">&nbsp;</td><td align="left" width="45%">
+                                <INPUT TYPE="radio" NAME="tipoB" VALUE="descrip" {selectedDescrip}>Descripci&oacute;n &nbsp;
+                                        </td></tr>
+                                    <tr><td colspan="3" align="center"><font color="#cc0000"><strong>{MSGERROR}</strong><font></td></tr></table>
+                            </td>
+					<td >  </td>
+			</tr>
+			
+			 
+		</table></td>
+	</tr>
+</table>
+<table width="780" border="5" bordercolor="white" cellpadding="0"cellspacing="2">
+<tr>
+<td>
+    <div style="width:750; overflow:none;">
+	<table width="750" border="0" align="right" cellpadding="0" cellspacing="0" class="tabla2">
+	<tr>
+		<th align="left" width="220">SKU</th>
+		<th align="left" width="520">Descripci&oacute;n</th>
+		<th align="left" width="60">Margen</th>
+		<th align="left" width="50">Acciones</th>	
+	</tr>
+	</table>
+    </div>
+</td>
+</tr>
+<tr>
+	<td>
+		<div style="width:770; height:320; overflow:auto;">			
+		<table width="750" border="0" align="rigth" cellpadding="0" cellspacing="0" class="tabla2">
+		
+		<!-- BEGIN listadomargenes -->
+		<tr >
+			<th align="left" width="220">{producto}</th>
+			<th align="left" width="520">{descripcion}</th>
+			<th align="center" width="60">{margen}</th>
+			<th align="center" width="50">{ACCIONES}</th>	
+		</tr>
+		<!-- END listadomargenes -->
+		</table>
+		<script language="javascript">
+		window.document.form_buscar.producto.onkeypress = KeyIsTexto;
+		</script>
+		</div>
+	</td>
+</tr>
+</table>

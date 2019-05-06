@@ -1,0 +1,127 @@
+<script language="javascript" src="../../TEMPLATE/general/checkfield.js"></script>
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+<script Language="JavaScript"><!--
+function validar(nitcli)
+{
+  if (nueva_cotizacion_00.rut.value.length < 1)
+  {
+    alert("Ingrese el número de NIT/RUT/CC");
+    document.nueva_cotizacion_00.rut.focus();
+    return (false);
+  } 
+ 
+  if (!document.nueva_cotizacion_00.tipocliente[0].checked && !document.nueva_cotizacion_00.tipocliente[1].checked && !document.nueva_cotizacion_00.tipocliente[2].checked )
+  {
+  	alert("Seleccione el tipo de cliente");
+    return (false);
+  }
+  
+  if (document.nueva_cotizacion_00.tipocliente[1].checked)
+  {
+    var checkOK = "1234567890";
+    var texto_mensaje= "";
+  }
+  else{
+  	var checkOK = "1234567890.-";
+  	var texto_mensaje= " o (.-)";
+  }
+  var checkStr = document.nueva_cotizacion_00.rut.value;
+  var allValid = true;
+  for (i = 0;  i < checkStr.length;  i++)
+  {
+    ch = checkStr.charAt(i);
+    for (j = 0;  j < checkOK.length;  j++)
+      if (ch == checkOK.charAt(j))
+        break;
+    if (j == checkOK.length)
+    {
+      allValid = false;
+      break;
+    }
+  }
+  if (!allValid)
+  {
+    alert("No debe ingresar caracteres diferentes a números"+texto_mensaje);
+    document.nueva_cotizacion_00.rut.focus();
+    return (false);
+    exit;	
+  }
+  
+  document.nueva_cotizacion_00.submit();
+  return (true); 
+}
+{error}
+//--></script>
+
+
+<script language="JavaScript" src="../../TEMPLATE/general/checkfield.js"></script>
+
+
+<table width="760" height="15" border="0" cellpadding="0"cellspacing="0">
+  <tr>
+    <td width="50%"  height="30" class="titulonormal">Nueva Cotizaci&oacute;n - Paso 1 - Ingreso de Cliente</td>
+    <td width="414" class="titulonormal">
+      <table  border="0" align="right" cellpadding="0" cellspacing="0">
+        <td><img src="../../IMAGES/1b.gif" width="40" height="40"></td>
+            <td><img src="../../IMAGES/redarrow.gif" width="24" height="20"></td>
+            <td><img src="../../IMAGES/2a.gif" width="40" height="40"></td>
+            <td><img src="../../IMAGES/redarrow.gif" width="24" height="20"></td>
+            <td><img src="../../IMAGES/3a.gif" width="40" height="40"></td>
+            <td><img src="../../IMAGES/redarrow.gif" width="24" height="20"></td>
+            <td><img src="../../IMAGES/4a.gif" width="40" height="40"></td>
+            <td><img src="../../IMAGES/redarrow.gif" width="24" height="20"></td>
+            <td><img src="../../IMAGES/5a.gif" width="40" height="40"></td>
+    </table></td>
+</table>
+<FORM NAME="nueva_cotizacion_00" METHOD="POST" ACTION="../../COMMAND/nuevacotizacion/nueva_cotizacion_00.php" onSubmit="return validar(this)">
+<INPUT TYPE="hidden" NAME="accion4" VALUE="sendrut">
+<!--<input type="hidden" name="tipocliente" value="{opcion1}"> -->
+<table width="778" height="69%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td valign="top">
+      <table width="100%"  border="0" cellspacing="2" cellpadding="2">
+        <tr>
+          <td width="31%" valign="top"> 
+		  <br><br>
+              <table border="0" align="center" cellpadding="2" cellspacing="2" class="textonormal">
+                <tr>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td align="center">NIT/RUT/CC Cliente: </td>
+                  <td align="center"> <span class="select1"><input name="rut" type="text" value="" class="textonormal" size="15" maxlength="14" border="0"></span>
+              &nbsp;&nbsp;</td>
+                  <td>{ejemplo}</td>  
+                </tr>
+              </table>
+              <table border="0" align="center" cellpadding="2" cellspacing="2" class="textonormal">
+              	<tr>
+                  {radio}
+                </tr>
+              </table>
+              </td>
+        </tr>
+        <tr>
+          <td><table width="115"  border="0" align="center" cellpadding="2" cellspacing="2" class="textonormal">
+            <tr>
+              <td width="70">
+                <div align="right">Siguiente</div></td>
+              <td width="31"> <a href="#" onClick="return validar(this)"><img src="../../IMAGES/siguiente.gif" alt="prueba" width="23" height="23" border="0" title="Siguiente" ></a></td>
+            </tr>
+          </table></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</FORM> 
+
+<script>
+	
+	window.document.nueva_cotizacion_00.rut.onkeypress = KeyIsRut;
+	document.nueva_cotizacion_00.rut.focus();
+	
+</script>

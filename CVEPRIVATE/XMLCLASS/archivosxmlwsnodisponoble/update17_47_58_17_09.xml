@@ -1,0 +1,32 @@
+<request>
+	<customer>
+		<Source>22</Source>
+		<IdCustomer>830112417</IdCustomer>
+		<IdCategory>3</IdCategory>
+		<IdTypeContribuyente>3</IdTypeContribuyente>
+		<TypeCustomer>
+			<IdTypeCustomer>5</IdTypeCustomer>
+		</TypeCustomer>
+		<Location>11001000010051</Location>
+		<IdDoc>31</IdDoc>
+		<FirstName>TRANSPORTES PEGASO TOURS LTDA</FirstName>
+		<Surname1> </Surname1>
+		<Surname2> </Surname2>
+		<Address>AV. BOYACA N°.75A-03</Address>		
+		<Phone>2232083</Phone>
+		<Phone2></Phone2>
+		<Fax>3123041498</Fax>
+		<Email>INFO@PEGASOTOURSLTDA.COM</Email>
+		<AgeRange>0</AgeRange>
+		<Quota>0</Quota>
+		<Contact>PEÑUELA SUAREZ WILLIAM</Contact>
+		<Gender>NA</Gender>
+		<Occupation></Occupation>
+		<ReteIca>false</ReteIca>
+		<ReteFuente>true</ReteFuente>
+		<ReteIva>false</ReteIva>
+		<ExenIva>false</ExenIva>
+		<OtrIva>false</OtrIva>
+		<State>A</State>
+	</customer>	
+</request>

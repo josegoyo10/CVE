@@ -1,0 +1,32 @@
+<request>
+	<customer>
+		<Source>22</Source>
+		<IdCustomer>830042398</IdCustomer>
+		<IdCategory>3</IdCategory>
+		<IdTypeContribuyente>3</IdTypeContribuyente>
+		<TypeCustomer>
+			<IdTypeCustomer>5</IdTypeCustomer>
+		</TypeCustomer>
+		<Location>11001000007306</Location>
+		<IdDoc>31</IdDoc>
+		<FirstName>ENVIRONMENTAL INGENIEROS</FirstName>
+		<Surname1> </Surname1>
+		<Surname2> </Surname2>
+		<Address>CASLLE 121 N° 15 A 13</Address>		
+		<Phone>6291363</Phone>
+		<Phone2></Phone2>
+		<Fax></Fax>
+		<Email>FMENA@ENINCO.NET</Email>
+		<AgeRange>0</AgeRange>
+		<Quota>0</Quota>
+		<Contact>MENA PARRA FRANCISCO</Contact>
+		<Gender>NA</Gender>
+		<Occupation></Occupation>
+		<ReteIca>false</ReteIca>
+		<ReteFuente>true</ReteFuente>
+		<ReteIva>false</ReteIva>
+		<ExenIva>false</ExenIva>
+		<OtrIva>false</OtrIva>
+		<State>A</State>
+	</customer>	
+</request>

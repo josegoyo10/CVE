@@ -1,0 +1,229 @@
+<link href="../nuevacotizacion/estilos.css" rel="stylesheet" type="text/css">
+
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript" src="../../TEMPLATE/general/checkfield.js"></script>
+
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/popup.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript" type="text/JavaScript" SRC="../../TEMPLATE/general/CalendarPopup.js"></SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript">document.write(getCalendarStyles());</SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript">
+
+	function EvaluaFechas(fi,ft){
+
+		var fecha1=new Date()
+
+		var fecha2=new Date()
+
+		var str1 = fi;
+
+		var str2 = ft;
+
+		
+
+		fechaArr1 = new Array;
+
+		fechaArr2 = new Array;
+
+		 
+
+		fechaArr1 = str1.split("/");
+
+		fechaArr2 = str2.split("/");
+
+		/* convierte la fecha a número comparable*/
+
+		fecha1.setFullYear(fechaArr1[2],fechaArr1[1]-1,fechaArr1[0])
+
+		fecha2.setFullYear(fechaArr2[2],fechaArr2[1]-1,fechaArr2[0])
+
+		 
+
+		if (fecha1>fecha2) {
+
+			return false;
+
+		}
+
+		else {
+
+			return true;
+
+		}
+
+	}
+
+	
+
+	function Ver_Reporte(accion){
+
+		if(!EvaluaFechas(document.mreporte.fec_valid.value,document.mreporte.fec_valid2.value)){
+
+			alert('La fecha de término debe ser mayor o igual a la fecha de inicio');
+
+			document.mreporte.fec_valid.select();
+
+			return false;
+
+		}
+
+		
+
+		document.mreporte.accion.value = 'ver';
+
+		document.mreporte.submit();
+
+	}	
+
+</SCRIPT> 
+
+
+
+<SCRIPT LANGUAGE="JavaScript" ID="js17">
+
+	var ayer = new Date();
+
+	ayer.setDate(ayer.getDate()-1);
+
+	var cal1 = new CalendarPopup("testdiv1");
+
+	cal1.offsetX = -100;
+
+	cal1.offsetY =  30;
+
+</SCRIPT>  
+
+
+
+<table width="760" border="0" cellpadding="0"cellspacing="0">
+
+	<tr>
+
+    	<td width="50%" height="30" class="titulonormal">Reporte Detalle ventas</td>
+
+    </tr>
+
+</table>
+
+
+
+<table width="900" height="450" border="0" cellpadding="0" cellspacing="0">
+
+	<form NAME="mreporte" METHOD="POST">
+
+	<input type=hidden name=accion>
+
+	<tr>
+
+		<td valign=top height="50" >
+
+			<fieldset>
+
+			<legend class="Textonormal">Parámetros de B&uacute;squeda</legend>
+
+			<table>
+
+				<tr>
+
+					<td class="textonormal">Local Emisor</td>
+
+					<td class="textonormal">Fecha Inicio </td>
+
+					<td class="textonormal">Fecha T&eacute;rmino </td>
+
+					<td class="textonormal">Tipo Cliente </td>
+
+					<td class="textonormal">&nbsp;</td>
+
+				</tr>
+
+				<tr>
+
+					<td class="textonormal">
+
+						<select name="local" {disabled_local} class="Textonormal" >
+
+							<option value="-3" class="Textonormal">TODOS</option>
+
+							<!-- BEGIN local -->
+
+							<option value="{codigo_local}" {selected}>{nombre_local}</option>
+
+							<!-- END local -->
+
+						</select>
+
+					</td>
+
+					<td class="userinput">
+
+						<input name="fec_valid" readonly id="fec_valid" class="Textonormal" type="text" size=10 maxlength=10 value="{fec_valid}" onClick="cal1.select(document.mreporte.fec_valid,'anchor1','dd/MM/yyyy'); return false;">
+
+						<a href="" onClick="cal1.select(document.mreporte.fec_valid,'anchor1','dd/MM/yyyy'); return false;" name="anchor1" id="anchor1"> <img src="../../IMAGES/cal.gif" width="16" height="16" border="0" title="Fecha Desde"> </a>
+
+						<DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>
+
+					</td>
+
+					<td class="userinput"> 
+
+						<input name="fec_valid2"  readonly id="fec_valid2" class="Textonormal" type="text" size=10 maxlength=10 value="{fec_valid2}" onClick="cal1.select(document.mreporte.fec_valid2,'anchor2','dd/MM/yyyy'); return false;">
+
+						<a href="#" onClick="cal1.select(document.mreporte.fec_valid2,'anchor2','dd/MM/yyyy'); return false;" name="anchor2" id="anchor2"> <img src="../../IMAGES/cal.gif" width="16" height="16" border="0" title="Fecha Hasta"></a>
+
+						<DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>
+
+					</td>
+
+					<td class="textonormal">
+
+						<select name="select_tipo_cliente" class="TextoNormal" >
+
+							<option value="0" class="Textonormal">TODOS</option>
+
+							<!-- BEGIN tipo_cliente -->
+
+								<option value="{id}" {selecteda}>{nombre}</option>
+
+							<!-- END tipo_cliente -->
+
+						</select>
+
+					</td>
+
+
+
+					<td>
+
+						<input type="button" name="button" value="Ver Reporte" class="Textonormal" onClick="Ver_Reporte(1)">
+
+					</td>
+
+				</tr>
+
+			</table>
+
+			</fieldset>
+
+		</td>
+
+	</tr>
+
+	</form>
+
+	<tr>
+
+		<td valign=top>
+
+			<table  width="768" border="0" cellpadding="2" cellspacing="0" class="tituloadvertencia"><td height="2" align="center">{mensajelimite}</td></table>
+
+			{reportedetalle}
+
+		</td>
+
+	</tr>
+
+</table>

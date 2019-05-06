@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>DHTML Grid samples. dhtmlXGrid - Save Data dynamicaly</title>
+	<meta name="KEYWORDS" content="dhtmlxgrid, dhtml grid, javascript grid, javascript, DHTML, grid, grid control, dynamical scrolling, xml, AJAX, API, cross-browser, checkbox, XHTML, compatible, gridview, navigation, script, javascript navigation, web-site, dynamic, javascript grid, dhtml grid, dynamic grid, item, row, cell, asp, .net, jsp, cold fusion, custom tag, loading, widget, checkbox, drag, drop, drag and drop, component, html, scand">
+
+<meta name="DESCRIPTION" content="Cross-browser DHTML grid with XML support and powerful API. This DHTML JavaScript grid can load its content dynamically from server using AJAX technology.">
+
+</head>
+<style>
+	body {font-size:12px}
+	.{font-family:arial;font-size:12px}
+	h1 {cursor:pointer;font-size:16px;margin-left:10px;line-height:10px}
+	xmp {color:green;font-size:12px;margin:0px;font-family:courier;background-color:#e6e6fa;padding:2px}
+	div.hdr{
+		background-color:lightgrey;
+		margin-bottom:10px;
+		padding-left:10px;
+	}
+</style>
+<body>
+	<div class="hdr">DHTML JavaScript Grid samples</div>
+	<h1>Save Data dynamicaly</h1>
+	<p>
+	Editable Grid means also the ability to save updated values to some server data storage.
+	Here is an example of the functionlity in question<br>
+	</p>
+	<link rel="STYLESHEET" type="text/css" href="../css/dhtmlXGrid.css">
+	<script  src="../js/dhtmlXCommon.js"></script>
+	<script  src="../js/dhtmlXGrid.js"></script>		
+	<script  src="../js/dhtmlXGridCell.js"></script>
+	<script  src="../js/dhtmlXDataProcessor.js"></script>
+	<table width="600">
+		<tr>
+			<td>
+				<div id="gridbox" width="100%" height="250px" style="background-color:white;overflow:hidden"></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div id="messanger">&nbsp;</div>
+				<a href="javascript:void(0)" onclick="mygrid.addRow((new Date()).valueOf(),[0,'','','',false,'na',false,''],mygrid.getRowIndex(mygrid.getSelectedId()))">Add row</a><br>
+				<a href="javascript:void(0)" onclick="mygrid.deleteSelectedItem()">Remove Selected Row</a>
+				<br><br>
+				<input type="Checkbox" onclick="doOnAutoupdateChecked(this.checked)"> Enable Auto Update	
+				<div id="updatemodes" style="display:none;">
+					<input type="radio" name="updm" id="updmdflt" value="cell" style="margin-left:20px;" onclick="myDataProcessor.setUpdateMode(this.value)" checked>Cell based<br>
+					<input type="radio" name="updm"  value="row" style="margin-left:20px;" onclick="myDataProcessor.setUpdateMode(this.value)">Row based
+				</div>
+				<input type="Button" onclick="myDataProcessor.sendData()" id="updatebutton" value="Update" style="display:inline;">
+			</td>
+		</tr>
+	</table>
+	
+<hr>
+<script>
+	//init grid and set its parameters (this part as always)
+	mygrid = new dhtmlXGridObject('gridbox');
+	mygrid.setImagePath("../imgs/");
+	var flds = "Sales,Book Title,Author,Price";
+		flds += ",In Store,Shipping,Bestseller,Date of Publication";
+		mygrid.setHeader(flds);
+		mygrid.setInitWidths("50,150,120,80,80,80,80,200")
+		mygrid.setColAlign("right,left,left,right,center,left,center,center")
+		mygrid.setColTypes("dyn,ed,ed,price,ch,coro,ra,ro");
+		mygrid.setColSorting("int,str,str,int,str,str,str,date")
+		mygrid.setColumnColor("white,#d5f1ff,#d5f1ff");
+		var combobox = mygrid.getCombo(5);
+		combobox.put("1","1 Hour")
+		combobox.put("12","12 Hours")
+		combobox.put("24","24 Hours")
+		combobox.put("48","2 days")
+		combobox.put("168","1 week")
+		combobox.put("pick","pick up")
+		combobox.put("na","na")
+	mygrid.init();
+//============================================================================================
+	//To use our automated methods you should always point your grid to same file - member of dhtmlxGridDataProcessor library (just check the path)
+	mygrid.loadXML("dataLink/get.php");
+	
+	//init dataprocessor and assign verification function
+	//specify server update processor - member of dhtmlxGridDataProcessor library (just check the path) or your own
+	myDataProcessor = new dataProcessor("dataLink/updatePost.php");
+	//verify if the value of 2nd column (zero-based numbering is 1) is not empty
+	myDataProcessor.setVerificator(1)
+	//verify value of 4th column (zero-based numbering is 3) against checkIfNotZero verification function (see it below)
+	myDataProcessor.setVerificator(3,checkIfNotZero)
+	//you can also specify update mode. Availabel modes are: update automaticaly (cell based, row based) and manual update
+	//cell ("cell") based mode means that grid will attempt to update data on server after each editing of cell (on editor closed). 
+	//row ("row") based mode means that grid will attempt to update data on server when row selection changed or Enter key pressed
+	//manual ("off") means that you need to run myDataProcessor.sendData() to begin update process (automatic update off).
+	myDataProcessor.setUpdateMode("off");//available values: cell (default), row, off
+	myDataProcessor.setTransactionMode("POST");
+	//initialize data processor for the grid object (in our case - mygrid)
+	myDataProcessor.init(mygrid);
+//============================================================================================
+	
+	//Example of verification function. It verifies that value is not 0 (zero).
+	//If verification failed it should return false otherwise true.
+	//Verification fucntion specified in setVerificator method will always get two argumentrs: value to verify and column name (use it for message)
+	function checkIfNotZero(value,colName){
+		if(value.toString()._dhx_trim()=="0"){
+			showMessage(colName+ " should not be 0")
+			return false
+		}else
+			return true;
+	}
+	
+	
+	
+	
+	
+	
+	//we use this function instead of alert to show messages on page (it is used in checkIfNotZero verification function).
+	function showMessage(msg){
+		var msger = document.getElementById("messanger");
+		msger.innerHTML = msg;
+		clearTimeout(toRef) 
+		toRef = setTimeout("showMessage('&nbsp;')",5000)
+	}
+	
+	
+	
+	
+	
+	
+	
+	//these functions doesn't have direct relation to data processor. It related to this example interface only.
+	function doOnAutoupdateChecked(state){
+		if(state){
+			document.getElementById("updmdflt").click()
+			//myDataProcessor.setUpdateMode('cell')
+		}else
+			myDataProcessor.setUpdateMode('off')
+		document.getElementById('updatebutton').style.display=state?'none':'inline';
+		document.getElementById('updatemodes').style.display=state?'':'none'
+	}
+	var toRef;
+	
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<XMP>
+<script  src="../js/dhtmlXDataProcessor.js"></script>
+<div id="gridbox" width="100%" height="250px" style="background-color:white;overflow:hidden"></div>
+<script>
+	mygrid = new dhtmlXGridObject('gridbox');
+	...
+	mygrid.init();
+//============================================================================================
+//To use our automated methods you should always point your grid to same file - member of dhtmlxGridDataProcessor library (just check the path)
+	mygrid.loadXML("dataLink/get.php");
+//init dataprocessor and assign verification function
+	myDataProcessor = new dataProcessor();
+//server update processor - member of dhtmlxGridDataProcessor library (just check the path)
+	myDataProcessor.serverAjax = "dataLink/updatePost.php";
+//set POST type
+	myDataProcessor.setTransactionMode("POST");
+//initialize data processor for the grid object (in our case - mygrid)
+	myDataProcessor.init(mygrid);
+
+</script>
+</XMP>
+		
+
+<p><a href="http://www.scbr.com/docs/products/dhtmlxGrid/index.shtml" style="font-weight:bold;">Go to the dhtmlxGrid main page</a> or <a href="javascript:self.close()">Close this page</a></p><hr>
+&copy; Scand LLC
+</body>
+</html>
+
+

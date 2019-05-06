@@ -1,0 +1,44 @@
+<big><span style="font-weight: bold;">TinyMCE-EXP 1.25 beta 4</span></big><br>
+    TinyMCE 1.43 for Mambo with expanded features.<br>
+    <br>
+    <span style="font-weight: bold;">Features:<br>
+    </span>
+    <ul>
+    <li>All the features of TinyMCE 1.43 by Moxiecode <a href="http://tinymce.moxiecode.com">http://tinymce.moxiecode.com</a></li>
+    <li>Image Manager with upload, edit, delete, rollover images, popup images (based on mosThumb mambot).</li>
+    <li>File Manager with upload, delete, rename, move.</li>
+    <li>Flash Manager (similar to the File Manager).</li>
+        <li>Advanced Link with links to published content, Search function and popup functionality.</li>
+        </ul>
+    <br>
+
+    <span style="font-weight: bold;">Installation:<br>
+    </span><ul>
+        <li>You may need to chmod TinyMCE-EXP folders to 755 and files to 644 in mambots/editors/tinymce_exp<br>
+        if you receive internal server errors with the Image Manager.</li>
+        <li>Warning : exp.config.php must remain writable!</li>
+        <li>If you want to use a custom_css file for the editor, make a copy of your site template CSS,<br>
+        rename it to editor_content.css (or whatever you specify in the paramters) and place it in your<br>
+        template css folder. Activate the 'Overide Theme CSS' in paramters.</li>
+        <li> Add the following to your template stylesheet so as to be able to have viewable placeholder for Flash files :<br />
+        <strong>/* Custom class needed by the flash plugin */<br />
+.       mce_plugin_flash {<br />
+        border: 1px dotted #cc0000;<br />
+        background-image: url(../../../mambots/editors/tinymce_exp/jscripts/tiny_mce/plugins/flash/images/flash.gif);<br />
+        background-position: center;<br />
+        background-repeat: no-repeat;<br />
+        background-color: #ffffcc;<br />
+        }</strong></li>
+        </ul></span>
+      <br>
+        <span style="font-weight: bold;">Changelog:<br></span><ul>
+        <li>Merged Image Manager class files (Transform.php, Files.php, Resize.php & Thumbnails.php) into one file, Functions.php<br />
+        to facilitate use of absolute paths for all include and require statements.</li>
+        <li>Image Manager now only supports jpeg,png and gif files on upload and edit. This is to aid compatability with GD.</li>
+        <li>Removed Popup Link in Advanced Link, which was not working properly. Working on this! :) </li>
+        <li>File Manager and Flash Manager now also use absolute paths for include and require statements.</li>
+        <li>Popup Image now uses a relative path for the full sized image, which is converted to absolute in the Popup window.</li>
+        </ul><br /><br />
+        If you have any queries or problems, please visit the forums. Post bugs and feature<br>
+        requests at Mamboforge. To contact me : ryandemmer@gmail.com<br /><br />
+        <a href="http://tinymce.moxiecode.com?id=powered_by_tinymce"><img src="http://tinymce.sourceforge.net/buttons/powered_by_tinymce.png" border="0" width="88" height="32" alt="Powered by TinyMCE" /></a>

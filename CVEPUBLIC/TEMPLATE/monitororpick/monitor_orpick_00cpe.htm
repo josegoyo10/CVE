@@ -1,0 +1,203 @@
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+<SCRIPT LANGUAGE="JavaScript" src="../../TEMPLATE/general/checkfield.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/popup.js"></script>
+<script language="JavaScript">
+
+function verifica() {
+	var tupla = ''; 
+	var coma = '';
+	
+	for(i=0; i< document.picking.length; ++i) {
+		elem = document.picking[i];
+		if (elem.type=='checkbox' && elem.checked){
+			tupla += coma + elem.id;
+			coma = ',';
+		}
+	}
+	if(tupla!=''){
+		popUpWindowModal('../../COMMAND/monitororpick/printframe.php?popup=1&id_ordenpicking='+tupla,100, 100, 760, 500);
+	}
+	else
+	alert('Debe chequear una Orden de Picking para imprimir');
+}
+
+function verorpick(elem){
+	var registro2 = popUpWindowModalscroll('../../COMMAND/monitororpick/printframe2.php?popup=1&id_ordenpicking='+elem.id,100, 100, 750, 500);
+}
+
+function editar_orpick(elem){
+	var registro = document.location='monitor_orpick_01cpe.php?id_ordenpicking='+elem.id;
+	
+}	
+
+function chequea(campo){
+
+	if(document.picking.check_op==null){
+		alert ('Ud. No posee ordenes para pickear');
+	}						
+	else{
+		if(check.checked==true){
+			for (i = 0; i < campo.length; i++){
+				campo[i].checked = true ;
+			}
+		}//Fin If
+		else{
+			for (i = 0; i < campo.length; i++){
+				campo[i].checked = false ;
+			}
+		}//Fin else anidado
+	}//FIN ELSE PRINCIPAL
+}
+
+function submitForm(){
+
+	formulario = document.formulario_busqueda;
+
+	if(formulario.buscar.value != ''){
+		if (formulario.filtro[0].checked && !checkDV(formulario.buscar)){
+			return false;
+		}
+	
+		if (formulario.filtro[2].checked && validar_numero( formulario.buscar, 'Debe ingresar número de cotización' )) {
+			return false;
+		}
+
+		if (formulario.filtro[3].checked && validar_numero( formulario.buscar, 'Debe ingresar número de Orden de Entrega' )) {
+			return false;
+		}
+	}
+
+	formulario.submit();
+}
+
+</script>
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<script type="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<table width="760" height="15" border="0" cellpadding="0"cellspacing="0">
+	<tr>
+    <td width="50%"  height="30" class="titulonormal">Monitor Ordenes de Picking </td>
+    <td width="50%"  align=right><img src="../../IMAGES/head4.JPG"></td>
+	</tr>
+</table>
+<table width="768"border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="textonormal">
+			<form name="formulario_busqueda" method="post" onSubmit="return false;">
+				<input type="hidden" name="accion" value="">
+				<tr>
+					<td width=768> 
+						<fieldset>
+							<legend class="Textonormal">Datos de B&uacute;squeda</legend>
+								<table border="0" height="auto" align="left" class="textonormal">
+									<tr>
+											<td width="2" scope="col">&nbsp;</td>
+											<td scope="col" colspan="4" align="left">
+											  <input name="filtro" id="radio1" type="radio" value="1" align="left" {checkr1}>CC/NIT/RUT&nbsp;&nbsp;
+											  <input name="filtro" id="radio2" type="radio" value="2" {checkr2}>Raz&oacute;n Social
+											  <input name="filtro" id="radio3" type="radio" value="3" {checkr3}>N&ordm;&nbsp;Orden Entrega &nbsp;
+											  <input name="filtro" type="radio" id="radio4" value="4" {checkr4}>N&ordm;&nbsp;Orden&nbsp;Picking&nbsp;&nbsp;
+											  <input type="text" size="18" name="buscar" class="Textonormal" value="{buscar}">
+											  <input type="button" align="left" name="busqueda" onClick="submitForm();" value="Buscar">
+											</td>
+											<td align="left" scope="col" width="54">
+											</td>
+								  </tr>
+									<tr>
+								<td align="right"></td>
+							<td width="212"  align="left">
+								Tipo Entrega
+								<select name="select_tipoentrega" onChange="submitForm()"  class="TextoNormal">
+									<option value="0" class="Textonormal">TODOS</option>
+									<!-- BEGIN tipoentrega -->
+									<option value="{identrega}" {selected}>{nomtipoentrega}</option>
+									<!-- END tipoentrega -->
+								</select>
+							</td>
+							<td width="264">
+							 
+								Centro&nbsp;Suministro
+								<select name="select_suministro" onChange="submitForm()" class="TextoNormal" {deshabilitar_select}>
+									<option value="0" class="Textonormal">TODOS</option>
+									<!-- BEGIN suministro -->
+									<option value="{codigo_local}" {selected}>{nom_local}</option>
+									<!-- END suministro -->
+								</select>							</td>
+                            <td colspan="3">
+								Estado
+								<select name="select_estado" onChange="submitForm()" class="TextoNormal" >
+									<option value="0" class="Textonormal">TODOS</option>
+									<!-- BEGIN estado -->
+									<option value="{id_estado}" {selected}>{descripcion}</option>
+									<!-- END estado -->
+								</select>
+							</td>
+						</tr>
+					</table>
+				</fieldset>                 
+			</form>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<table width="100%" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+				<tr>
+					<th width="10" align="left"><input name="check" id="ALL" alt="Seleccionar Todas las órdenes de picking" type="checkbox" onClick="chequea(document.picking.check_op)" value="CheckAll"></th>
+					<th width="35" >N&ordm; OP</th>
+					<th width="35" >N&ordm; OE&nbsp;</th>
+					<th width="120" >Estado &nbsp;</th>
+					<th width="80">Tipo Entrega </th>
+					<th width="50">&nbsp;</th>
+					<th width="100">Tienda</th>
+					<th width="125">CC/NIT/RUT</th>
+					<th width="65">Raz&oacute;n Social</th>
+					<th width="auto">Acciones</th>
+				</tr>
+			</table>
+		  <div style="height:'283'; width:768; overflow:auto; ">
+				<table width="100%" border="1" class="tabla2" cellspacing="0">
+				<form name=picking method=post  onSubmit="return false;">
+				<input type=hidden name="accion" value="">
+				<input type=hidden name="ideli" value="">
+				<input type=hidden name="rut" value="{rut}">
+				<INPUT TYPE=hidden NAME="sendrut" VALUE="">
+				<INPUT TYPE=hidden NAME="tupla" VALUE="">
+				<!-- BEGIN infopicking -->
+				<tr>
+					<td width="25"  align="left"><input type="checkbox" id="{OP}" name="check_op" value="checkbox">&nbsp;</td>
+					<td width="40"  align="left">{OP}&nbsp;</td>
+					<td width="35"  align="left">{OE}&nbsp;</td>
+					<td width="10"  align="right">&nbsp;</td>
+					<td width="120"  align="left">{nomestadopick}&nbsp;</td>
+					<td width="120" align="left" >{nomtipoentrega}&nbsp;</td>
+					<td width="150" align="left">{nom_localcsum}&nbsp;</td>
+					<td width="60" align="right">{rutdv}&nbsp;</td>
+					<td width="20" align="right">&nbsp;</td>
+					<td width="100"  align="left">{razonsoc}&nbsp;</td>
+					<td width="50">{accver}&nbsp;{accmodificar}&nbsp;</td>
+				</tr>
+				<!-- END infopicking -->
+			</form>
+			
+		</table>
+ </div>
+	            <table width="376" border="0" align="center" cellpadding="0" cellspacing="0" class="subtitulonormal">
+                  <tr>
+                    <td colspan=8>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td width="131" align="right"><a href="#"><img src="../../IMAGES/print2.gif" alt="Imprimir Hoja de Pickeo" width="23" height="23" name="Imprimir Hoja de Pickeo" onClick="verifica()" " border="0"></a></td>
+                    <td width="245" align="left">Imprimir Hoja de Pickeo</td>
+                  </tr>
+                </table>
+		 
+
+</td>
+
+</tr>
+
+</table>
+<script>
+document.formulario_busqueda.buscar.focus();
+</script>

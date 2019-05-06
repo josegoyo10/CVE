@@ -1,0 +1,431 @@
+<script language="javascript" src="../general/funciones.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript" src="../general/checkfield.js"></script>
+
+<script language="JavaScript" type="text/JavaScript" src="../general/popup.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript" type="text/JavaScript" SRC="../general/CalendarPopup.js"></SCRIPT>
+
+<script language="JavaScript"> 
+function ventanaSecundaria (URL){ 
+window.open(URL,"http://localhost/CVEPUBLIC/p/","width=500, height=350, scrollbars=no, menubar=no, location=no, resizable=no") 
+} 
+</script> 
+
+
+
+<script language="JavaScript">
+
+	function pop2(){
+//		document.formulario_buscar.ideli.value=' ';
+		document.getElementById('po').style.visibility = 'hidden'; 
+		return false;
+	}
+
+
+	function pop1(elem){
+		document.formulario_buscar.ideli.value=elem.id;
+		document.getElementById('po').style.visibility = 'visible'; 
+	}
+	
+	
+/*	function modificargrupo(elem) {
+
+		document.formulario_buscar.accion.value='modi';
+		document.formulario_buscar.ideli.value=elem.id;
+		document.formulario_buscar.submit();
+}*/
+
+    function eliminargrupo(elem){
+
+        if (confirm('¿Está seguro que desea eliminar el Grupo (' + elem.id+')?')){
+
+            document.formulario_buscar.accion.value='eli';
+
+            document.formulario_buscar.ideli.value=elem.id;
+
+            document.formulario_buscar.submit();
+
+        }
+
+    }
+
+
+
+	function buscargrupo(){
+
+		formulario = document.formulario_buscar;
+		formulario.submit();
+
+}
+
+
+	function actualizargrupo(elem){
+
+		formulario = document.formulario_buscar;
+
+		var texto,agre,elim
+		texto = document.getElementById('ac').value
+
+		agre = document.getElementById('radio1').checked
+		
+		elim = document.getElementById('radio2').checked
+		
+			if ((texto == '') || (agre == '' && elim == '')) {
+				formulario.accion.value = ' ';
+		        alert('No se Permite Datos Vacios. ');
+				return false;			
+			}
+	
+			if ((texto != '') && (agre != '' || elim != '')) {
+				//aqui llamo el procesar archivo
+//				document.formulario_buscar.ideli.value=;
+				formulario.accion.value = 'modi';
+				pop2()
+			  alert('Estamos procesando el archivo... ');			
+				formulario.submit();
+			}
+
+		
+
+}
+
+
+function grabargrupo(){
+
+    formulario = document.formulario_buscar;
+
+	var ngru;
+
+    ngru =document.formulario_buscar.ngrupo.value;
+
+   if (ngru ==''){
+	formulario.accion.value = ' ';
+	alert('No se Permite Datos Vacios. ' + formulario.accion.value);
+   }
+   
+   if (ngru !=''){
+	formulario.accion.value = 'add';
+    	formulario.submit();
+	}
+}
+
+
+
+
+
+
+
+
+
+//-->
+
+</script>
+
+
+<link href="../monitorpromo/estilos.css" rel="stylesheet" type="text/css">
+
+<script type="javascript" src="../general/funciones.js"></script>
+
+
+<table width="760" height="auto" border="0" cellpadding="0"cellspacing="0">
+
+  <tr>
+
+    <td width="50%"  height="auto" class="titulonormal">Monitor de Grupo </td>
+ 
+
+
+</table>
+
+<table width="768" height="auto" border="0" cellpadding="0" cellspacing="0">
+
+	<tr>
+
+	
+
+		<td class="textonormal">
+
+		<form name="formulario_buscar" method="post" onSubmit="return false;">
+
+		<input type=hidden name="accion" value=" ">
+		<div  align="center" id="po" style=" left:30%; top:40%;background-color:#FFFFFF; border-style:solid; border-color:#CCCCCC; position:absolute;  visibility:hidden " >
+		   <h1>  Busque el archivo con los Ruts, para Eliminar o Agregar </h1><br><br>
+		    <input type= file  name="ac" value=" "> <br><br>
+			<input name="filtro" id="radio1" type="radio" value="1" {checkr1}> Agregar
+			<input name="filtro" id="radio2" type="radio" value="2" {checkr2}> Eliminar<br>
+		    <input type="button" class="Textonormal" align="left" name="actuar" onClick="actualizargrupo(ideli.value)" value="Comenzar">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="button" class="Textonormal" align="left" name="cancel" onClick="pop2()" value="Cancelar">
+		</div>
+		<input type=hidden name="ideli" value=" ">
+
+
+
+				<tr>
+
+				  <td width=768> 
+
+				  <fieldset>
+
+				  <legend class="Textonormal">Datos de B&uacute;squeda</legend>
+
+				  <table border="0" height="auto" width="100%"align="left" class="textonormal">
+
+					
+
+                  		<tr>
+
+                        <tr>
+
+                         
+
+						  
+
+                    </tr>
+
+                    <tr>    <td align="right">&nbsp;</td>
+
+    <td align="left">&nbsp;</td>
+
+
+
+    <td scope="col" colspan="6" width="auto" >				  &nbsp;Grupo Clientes
+      <select name="select_grupo" onChange="buscargrupo()" class="TextoNormal" {deshabilitar_select} >
+        <option value="0" class="Textonormal">SELECCIONE</option>
+        <!-- BEGIN grupo -->
+        <option value="{id_grupo}" {selected_grupo}>{nomgrupo}</option>
+        <!-- END grupo -->
+      </select>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Nombre Nuevo grupo &nbsp; 
+	   <input type="text" size="18" name="ngrupo" class="Textonormal" value="{nuevogrupo}"> 
+    <td>      <input type="button" class="Textonormal" align="left" name="Crear" onClick="grabargrupo()" value="Crear"></td>
+  </tr>
+  
+  </form>
+
+            	</table>
+
+				  </fieldset>
+
+				  <table  width="768" border="0" cellpadding="2" cellspacing="0" class="tituloadvertencia"><td align="center">{text_maximo}</td></table>
+
+			<table width="768" border="0" cellpadding="2" cellspacing="0" class="tabla2">
+
+				<tr>
+
+					<th width="52" >ID Grupo &nbsp;</th>
+
+					<th width="50" >Nom Grupo&nbsp;</th>
+				
+					<th width="70" >Usuario &nbsp;</th>
+					
+					<th width="100" >Fecha Creaci&oacute;n &nbsp;</th>
+					
+					<th width="100" >Cantidad Cliente &nbsp;</th>
+
+					<th width="128">Acciones</th>
+
+				</tr>
+
+			</table>
+
+			<div style="height:'326'; width:768; overflow:auto; ">
+
+			<table width="100%" border="1" class="tabla2" cellspacing="0">
+
+              <!-- BEGIN infopromo -->
+
+                <tr>
+
+                  <td width="2"  align="center">&nbsp;</td>
+
+                  <td width="30" align="right">{id_grupo}&nbsp;&nbsp;&nbsp;</td>
+
+                  <td width="30"  align="center">&nbsp;</td>
+
+                  <td width="50" align="left">{nombre}&nbsp;&nbsp;</td>                  
+				  
+				  <td width="50" align="left">{usuario}&nbsp;</td>                  
+				  
+				  <td width="2" align="left">{usuariocrea}&nbsp;</td>                  
+
+                  <td width="5"  align="center">&nbsp;</td>
+
+				  <td width="200" align="left">{feccrea}&nbsp;</td>
+				  
+ 				  <td width="200" align="left">{cantidad}&nbsp;</td>
+
+				  <td width="6"  align="center">&nbsp;</td>
+
+                  <td width="6"  align="center">&nbsp;</td>
+
+                  <td width="1"  align="center">&nbsp;</td>
+
+                  <td width="70"  align="left">{accver}&nbsp;{accmodificar}&nbsp;{acceliminar}</td>
+
+                </tr>
+
+                <!-- END infopromo -->
+
+           </table>
+
+			<p>&nbsp;</p>
+
+			</div>
+
+		</td>
+
+	</tr>
+
+</table>
+
+
+<script type="text/javascript">
+
+<!--
+
+/*	
+
+function checkDV( elem ){
+
+
+
+	if( validar_obligatorio( elem, "Rut es obligatorio" ))
+
+		return false;
+
+		crut = '';
+
+		mcrut= elem.value;
+
+		
+
+		for(i=0; i<mcrut.length; ++i)
+
+		if (mcrut.charAt(i) != '.' && mcrut.charAt(i) != '-'){
+
+		crut = crut + mcrut.charAt(i);
+
+	
+
+	}
+
+	largo = crut.length;
+
+	
+
+	if ( largo < 2 ){
+
+		alert("Debe ingresar el rut completo.");
+
+		elem.focus();
+
+		elem.select();
+
+		
+
+		return false;
+
+	}
+
+
+
+	if ( largo > 2 )
+
+	rut = crut.substring(0, largo - 1);
+
+	else
+
+	rut = crut.charAt(0);
+
+	dv = crut.charAt(largo-1);
+
+
+
+	if ( rut == null || dv == null )
+
+	return "";
+
+	var dvr = '0';
+
+	suma = 0;
+
+	mul  = 2;
+
+
+
+	for (i= rut.length -1 ; i >= 0; i--){
+
+	suma = suma + rut.charAt(i) * mul;
+
+	if (mul == 7)
+
+	mul = 2;
+
+	else
+
+	mul++;
+
+	}
+
+	
+
+	res = suma % 11;
+
+	if (res==1)
+
+	dvr = 'k';
+
+	
+
+	else if (res==0)
+
+	dvr = '0';
+
+	
+
+	else{
+
+	dvi = 11-res;
+
+	dvr = dvi + "";
+
+	}
+
+	
+
+	if ( dvr != dv.toLowerCase() ){
+
+		alert("El rut ingresado es incorrecto.");
+
+		elem.focus();
+
+		elem.select();
+
+		
+
+		return false;
+
+	}
+
+	
+
+	elem.value = crut.substr(0, crut.length-1); 
+
+	digito=crut.substr(crut.length-1, 1).toUpperCase();
+
+	return true;
+
+
+
+}
+
+document.formulario_buscar.buscar.focus();
+
+//-->
+*/
+</script>
+
+
+
+

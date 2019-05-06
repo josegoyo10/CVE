@@ -1,0 +1,378 @@
+<link href="../nuevacotizacion/estilos.css" rel="stylesheet" type="text/css">
+
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript" src="../../TEMPLATE/general/checkfield.js"></script>
+
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/popup.js"></script>
+
+<script type="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<script>
+function reiniciar_server(){
+	if(confirm('Esta accion reiniciara el servidor de CENTRO VENTA EMPRESAS. ¿Desea continuar?')){
+		formulario = window.document.operaciones;
+		formulario.accion.value='reiniciar_server';
+		formulario.submit();
+	}else{
+		return false;
+	}
+}
+
+function reload(){
+	formulario = window.document.operaciones;
+	formulario.accion.value='revisar_servicios';
+	formulario.submit();
+}
+//setTimeout("document.location.reload();",{var_tiempo}) 
+
+function reiniciar_apache(){
+	if (confirm('Esta accion reiniciara el servidor Apache. ¿Desea Continuar?.')){
+		formulario = window.document.operaciones;
+		formulario.accion.value='reiniciar_apache';
+		formulario.submit();
+	}
+}
+function reiniciar_mysql(){
+	if (confirm('Esta accion reiniciara el servidor Mysql. ¿Desea Continuar?.')){
+		formulario = window.document.operaciones;
+		formulario.accion.value='reiniciar_mysql';
+		formulario.submit();
+	}
+}
+function reiniciar_ftp(){
+	if (confirm('Esta accion reiniciara el servidor FTP. ¿Desea Continuar?.')){
+		formulario = window.document.operaciones;
+		formulario.accion.value='reiniciar_ftp';
+		formulario.submit();
+	}
+}
+function reiniciar_cups(){
+	if (confirm('Esta accion reiniciara el servidor de impresion CUPS. ¿Desea Continuar?.')){
+		formulario = window.document.operaciones;
+		formulario.accion.value='reiniciar_cups';
+		formulario.submit();
+	}
+}
+function check_table(){
+	formulario = window.document.operaciones;
+	formulario.accion.value='check_table';
+	formulario.submit();
+}
+</script>
+
+<table  height="auto" border="0" cellpadding="0" cellspacing="0" width = "780">
+<form name="operaciones" method="post">
+<input type="hidden" name="accion" value="">
+<tr>
+	<td width="49%"  height="auto" class="titulonormal">Monitor de Operaciones CVE</td>
+	<td width="50%">&nbsp;</td>
+<tr>
+    <td  height="auto" class="fondoregistro" colspan="2" align="center">Hardware&nbsp;</td>
+      <td width="1%" class="titulonormal">&nbsp;</td>
+<tr>
+    <td  height="auto" colspan="2" align="center" class="textodisponible">&nbsp;</td>
+<tr>
+
+	  <td>
+		<table border="0" cellpadding="2" cellspacing="2" class="tabla1" width="350">
+		{icon}
+			  <tr>
+				  <th width="165" align="left" colspan="2">CPU</th>
+			      <th width="171" align="left">Recomendaciones</th>
+			  </tr>
+
+			  <tr>
+
+				  <td align="left" class="tabla2">Carga: </td>
+
+			      <td align="right" class="{estilo_cpu}">{carga_cpu}%</td>
+			      <td align="left" class="{estilo_recomendaciones_cpu}">{recomendaciones_cpu}&nbsp;</td>
+			  </tr>
+			  <tr>
+			    <td align="left" class="{estilo_cpu}" colspan="3">{barra_cpu}&nbsp;</td>
+		    </tr>
+
+			  <tr>
+		    </tr>
+		{icon}
+	    </table>
+		
+		<table border="0" cellpadding="2" cellspacing="2" class="tabla1" width="350">
+		{icon}
+			  <tr>
+				  <th width="165" align="left" colspan="2">Disco Duro (Sistema)</th>
+			      <th width="171" align="left">Recomendaciones</th>
+			  </tr>
+
+			  <tr>
+
+				  <td align="left" class="tabla2">Carga: </td>
+
+			      <td align="right" class="{estilo_disco_log}"><span class="{estilo_disco_log">{carga_disco_log}%</span></td>
+			      <td align="left" class="{estilo_recomendaciones_disco_log}">{recomendaciones_disco_log}</td>
+			  </tr>
+			  <tr>
+			    <td align="left" class="{estilo_disco_log}" colspan="3"><span class="{estilo_barra_disco_log}">{barra_disco_log}</span></td>
+		    </tr>
+
+			  <tr>
+		    </tr>
+		{icon}
+	    </table>
+
+		  <table border="0" cellpadding="2" cellspacing="2" class="tabla1" width="350">
+		{icon}
+			  <tr>
+				  <th width="165" align="left" colspan="2">Disco Duro (Base de datos)</th>
+			      <th width="171" align="left">Recomendaciones</th>
+			  </tr>
+
+			  <tr>
+
+				  <td align="left" class="tabla2">Carga: </td>
+
+			      <td align="right" class="{estilo_disco_bd}"><span class="{estilo_disco_bd">{carga_disco_bd}%</span></td>
+			      <td align="left" class="{estilo_recomendaciones_disco_bd}">{recomendaciones_disco_bd}</td>
+			  </tr>
+			  <tr>
+			    <td align="left" class="{estilo_disco_bd}" colspan="3"><span class="{estilo_barra_disco_bd}">{barra_disco_bd}</span></td>
+		    </tr>
+
+			  <tr>
+		    </tr>
+		{icon}
+	    </table>
+	  </td>
+
+	  <td >
+		  		  	  <table border="0" cellpadding="2" cellspacing="2" class="tabla1" width="350">
+		{icon}
+			  <tr>
+				  <th width="165" align="left" colspan="2">Memoria</th>
+			      <th width="171" align="left">Recomendaciones&nbsp;</th>
+			  </tr>
+
+			  <tr>
+
+				  <td align="left" class="tabla2">Carga: </td>
+
+			      <td align="right" class="{estilo_memoria}">{carga_memoria}%</td>
+			      <td align="left" class="{estilo_recomendaciones}">{recomendaciones_memoria}&nbsp;</td>
+			  </tr>
+			  <tr>
+			    <td align="left" class="{estilo_memoria}" colspan="3">{barra_memoria}&nbsp;</td>
+		    </tr>
+
+			  <tr>
+		    </tr>
+			  <tr>
+			    <td align="left" colspan="3" bordercolor="">&nbsp;</td>
+		    </tr>
+	    </table>
+	  	<table border="0" cellpadding="2" cellspacing="2" align="left" class="tabla1" width="350">
+
+			  <tr>
+				  <th>Acciones Servidor</th>
+			  </tr>
+
+			  <tr>
+
+				  <td align="center" class="{estilo_boton_apache}">
+					  <input type="button" class="textonormal" name="restart_apache" value="Reiniciar Servidor Apache" onClick="reiniciar_apache()">
+				  </td>
+
+			  </tr>
+			  <tr>
+			    <td align="center" class="{estilo_boton_mysql}">
+                  <input type="button" class="textonormal" name="restart_apache" value="Reiniciar Servidor Mysql&nbsp;&nbsp;" onClick="reiniciar_mysql()">
+				</td>
+		    </tr>
+			<tr>
+			    <td align="center" class="{estilo_boton_ftp}">
+				<input type="button" class="textonormal" name="restart_FTP" value="Reiniciar Servidor FTP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" onClick="reiniciar_ftp()">
+			</td>
+		    </tr>
+			<tr>
+			    <td align="center" class="{estilo_boton_ftp}">
+				<input type="button" class="textonormal" name="restart_CUPS" value="Reiniciar Servidor CUPS&nbsp;&nbsp;&nbsp;" onClick="reiniciar_cups()">
+			</td>
+		    </tr>
+			<tr>
+			    <td align="center" class="{estilo_boton_servidor}">
+				  <input type="button" class="titulonormal" name="restart_apache" value="Reiniciar Servidor&nbsp;&nbsp;&nbsp;" onClick="reiniciar_server()">
+				</td>
+		    </tr>
+	    </table> 
+	</td>
+</tr>	
+      <td  height="auto" class="fondoregistro" colspan="2" align="center">Servicios&nbsp;</td>
+        <td class="titulonormal">&nbsp;</td>
+	  	<tr>
+		<td width="49%"><table border="0" cellpadding="2" cellspacing="2" class="tabla1" width="350">
+
+			  <tr>
+				  <th width="193" align="left" colspan="2" >APACHE</th>
+			      <th width="121" align="left" colspan="2">Recomendaciones</th>
+			  </tr>
+
+			  <tr>
+
+				  <td align="left" class="tabla1">Estado Servicio: &nbsp;</td>
+
+			      <td align="left" class="{estilo_apache}">{status_apache}</td>
+			      <td  align="left" class="{estilo_recomendacion_apache}">{recomendaciones_apache}&nbsp;</td>
+			  </tr>
+	</table>
+		  <br>
+			<table border="0" cellpadding="2" cellspacing="2" class="tabla1" width="350">
+
+			  <tr>
+				  <th width="200" align="left" colspan="2">MYSQL</th>
+			      <th width="136" align="left">Recomendaciones</th>
+			  </tr>
+
+			  <tr>
+
+				  <td align="left" class="tabla1">Estado Servicio: &nbsp;</td>
+
+			      <td align="left" class="{estilo_mysql}" >{status_mysql}&nbsp;</td>
+			      <td align="left" class="{estilo_recomendacion_mysql}">{recomendaciones_mysql}&nbsp;</td>
+			  </tr>
+			  <tr>
+			    <td align="left" class="tabla1">Estado Tablas:&nbsp;</td>
+		        <td align="left" class="{estilo_tablas}">{status_tablas}&nbsp;</td>
+		        <td align="left" class="{estilo_recomendacion_tablas}">{recomendaciones_tablas}&nbsp;</td>
+			  </tr>
+			<tr>
+			    <td align="center" colspan="3"><input type="button" class="textonormal" name="&nbsp;&nbsp;&nbsp;check_tablas&nbsp;&nbsp;&nbsp;" value="Revisar Tablas" onClick="check_table()"></td>
+			</tr>
+		  </table>
+		  </td>
+		<td>
+		 <table border="0" cellpadding="2" align="center" cellspacing="2" class="tabla1" width="350">
+
+			  <tr>
+				  <th width="198" align="left">SERVICIOS GENERALES </th>
+			      <th width="138" align="left">&nbsp;</th>
+			  </tr>
+
+			  <tr>
+
+				  <td align="left" class="tabla1">Nombre Servicio:</td>
+
+			      <td align="left" class="tabla1">FTP</td>
+			  </tr>
+			  <tr>
+			    <td align="left" class="tabla1">Estado Servicio:</td>
+		        <td align="left" class="{estilo_ftp}">{status_ftp}</td>
+		    </tr>
+			  <tr>
+			    <td align="left" class="tabla1">Recomendaciones</td>
+			    <td align="left" class="{estilo_recomendacion_ftp}">{recomendaciones_ftp}<br></td>
+		   </tr>
+			  <tr>
+			    <td align="left" class="tabla1" colspan="2">&nbsp;</td>
+	       </tr>
+			  <tr>
+			    <td align="left" class="tabla1">Nombre  Servicio: </td>
+	            <td align="left" class="tabla1">CUPS</td>
+		   </tr>
+			  <tr>
+			    <td align="left" class="tabla1">Estado Servicio: </td>
+	            <td align="left" class="{estilo_cups}">{status_cups}</td>
+		   </tr>
+		   <tr>
+			    <td align="left" class="tabla1">Recomendaciones</td>
+			    <td align="left" class="{estilo_recomendacion_cups}">{recomendaciones_cups}<br></td>
+		   </tr>
+			<tr>
+			    <td align="center"><input type="button" class="textonormal" name="check_tablas" value="Revisar Servicios" onClick="reload()"></td>
+		        <td align="center">&nbsp;</td>
+			</tr>
+		  </table>
+		</td>
+	</tr>
+	  	<tr>
+	  	  <td  height="auto" class="fondoregistro" colspan="2" align="center">Interfases&nbsp;</td>
+	  	  <td  height="auto" colspan="2" align="center" class="textodisponible">&nbsp;</td>
+  </tr>
+	  	<tr>
+	  	  <td colspan="2">
+		  	<table border="0" cellpadding="2" cellspacing="2" class="tabla1" width="750">
+
+			  <tr>
+				  <th width="221" align="left">Mensajer&iacute;a SAP (Documentos creados) </th>
+			      <th width="174" align="center">Facturas&nbsp;&nbsp;&nbsp;<img src="../../IMAGES/{indicador_fct}" width="12" height="12"></th>
+			      <th width="160" align="center" class="{estilo_semaforo_gde}">Guias de Despacho&nbsp;&nbsp;&nbsp;<img src="../../IMAGES/{indicador_gde}" width="12" height="12"></th>
+			      <th width="169" align="center" class="{estilo_semaforo_ncr}">Notas de credito&nbsp;&nbsp;&nbsp;<img src="../../IMAGES/{indicador_ncr}" width="12" height="12"></th>
+			  </tr>
+
+			  <tr>
+
+				  <td align="left" class="tabla1">Base de datos </td>
+			      <td align="center" class="{estilo_sap_fct}">{fct_bd}&nbsp;</td>
+			      <td align="center" class="{estilo_sap_gde}">{gde_bd}&nbsp;</td>
+			      <td align="center" class="{estilo_sap_ncr}">{ncr_bd}&nbsp;</td>
+			  </tr>
+			  <tr>
+			    <td align="left" class="tabla1">File System </td>
+		        <td align="center" class="{estilo_sap_fct}">{fct_fs}&nbsp;</td>
+			    <td align="center" class="{estilo_sap_gde}">{gde_fs}&nbsp;</td>
+			    <td align="center" class="tabla1">{ncr_fs}&nbsp;</td>
+			  </tr>
+			  <tr>
+			    <td align="left" class="tabla1">FTP</td>
+			    <td align="center" class="{estilo_sap_fct}">{fct_ftp}&nbsp;</td>
+		        <td align="center" class="{estilo_sap_gde}">{gde_ftp}&nbsp;</td>
+		        <td align="center" class="tabla1">{ncr_ftp}&nbsp;</td>
+			  </tr>
+		  </table>
+		  </td>
+  </tr>
+	  	<tr>
+	  	  <td colspan="2" height="auto" class="fondoprioridad">{falla_fct}</td>
+  </tr>
+  	  	<tr>
+	  	  <td colspan="2" height="auto" class="fondoprioridad">{falla_gde}</td>
+  </tr>
+  	  	<tr>
+	  	  <td colspan="2" height="auto" class="fondoprioridad">{falla_ncr}</td>
+  </tr>
+	  	<tr>
+	  	  <td  height="auto" class="fondoregistro" colspan="2" align="center">Comunicaciones&nbsp;</td>
+  </tr>
+	  	<tr>
+	  	  <td>
+		  <table border="0" cellpadding="2" cellspacing="2" class="tabla1" width="350">
+
+			  <tr>
+				  <th width="200" align="left">Conectividad</th>
+			      <th width="136" align="left">Recomendaciones</th>
+			  </tr>
+
+			  <tr>
+
+				  <td align="left" class="tabla1"> Servicio: &nbsp;</td>
+
+			      <td align="left" class="tabla1">&nbsp;</td>
+			  </tr>
+			  <tr>
+			    <td align="left" class="tabla1">Estado Servicio: {status_servicio} </td>
+			    <td align="left" class="tabla1">&nbsp;</td>
+		    </tr>
+			<tr>
+			    <td align="center"><input type="button" class="textonormal" name="check_connections" value="Rechequear conecciones"></td>
+		        <td align="center">&nbsp;</td>
+			</tr>
+		  </table>
+		 </td>
+	  	  <td>&nbsp;</td>
+  </tr>
+	
+		  
+</form>
+</table>
+
+
+

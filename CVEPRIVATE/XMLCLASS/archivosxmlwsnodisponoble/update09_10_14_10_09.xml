@@ -1,0 +1,32 @@
+<request>
+	<customer>
+		<Source>22</Source>
+		<IdCustomer>860059528</IdCustomer>
+		<IdCategory>3</IdCategory>
+		<IdTypeContribuyente>3</IdTypeContribuyente>
+		<TypeCustomer>
+			<IdTypeCustomer>5</IdTypeCustomer>
+		</TypeCustomer>
+		<Location>11001000009019</Location>
+		<IdDoc>31</IdDoc>
+		<FirstName>EXPORDORADO</FirstName>
+		<Surname1> </Surname1>
+		<Surname2> </Surname2>
+		<Address>CARRERA 100 N°.25-F -21</Address>		
+		<Phone>2825066</Phone>
+		<Phone2></Phone2>
+		<Fax>2825066</Fax>
+		<Email>CAFIRO8@HOTMAIL.COM</Email>
+		<AgeRange>0</AgeRange>
+		<Quota>0</Quota>
+		<Contact>FIGUEROA RODRIGUEZ CAMILO</Contact>
+		<Gender>NA</Gender>
+		<Occupation></Occupation>
+		<ReteIca>false</ReteIca>
+		<ReteFuente>true</ReteFuente>
+		<ReteIva>false</ReteIva>
+		<ExenIva>false</ExenIva>
+		<OtrIva>false</OtrIva>
+		<State>A</State>
+	</customer>	
+</request>

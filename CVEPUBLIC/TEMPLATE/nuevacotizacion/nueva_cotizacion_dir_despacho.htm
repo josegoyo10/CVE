@@ -1,0 +1,43 @@
+<link rel="stylesheet" type="text/css" href="../../TEMPLATE/general/estilos.css">
+<form id="editor%%" method="post" action="nueva_cotizacion_01.php?paso2&rut=%rut%">
+
+  <table width="760"  border="0" align="" cellpadding="2"
+							cellspacing="0" class="textonormal">
+    <tr>
+      <td height="40" valign="top" class="select1"><fieldset>
+        <legend><span class="userinput">Despacho</span></legend>
+        <table width="100%"  border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><span class="userinput"> </span> <span class="tab"> </span>
+                <p class="select1">Nombre Despacho
+                    <input name="descripcion" type="text" value="{descripcion}">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Direcci&oacute;n
+              <input name="direccion" type="text" value="{direccion}">
+              Barrio <span class="userinput">
+              <select id="id_comuna%%" name="id_comuna"></select>
+              </span> <br>
+              <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ciudad <span class="userinput">
+              <select id="id_ciudad%%" name=id_ciudad></select>
+              </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contacto
+              <input id=contacto name="contacto" type="text" value="{contacto}">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tel&eacute;fono
+              <input id=fonocontacto name="fonocontacto" type="text" value="{fonocontacto}">
+              <br>
+              <br>
+              <input id=submit%% name=submit type="radio" checked value="Grabar"> Grabar
+              &nbsp;
+              <input id=submit%% name=submit type="radio" value="Borrar"> Borrar
+              &nbsp;
+              <input type=submit value='Aceptar'>
+              <img src="../../IMAGES/add.gif" width="15"  align="right"height="15"> <img src="../../IMAGES/del.gif"  align="right"width="15" height="15"> </p></td>
+          </tr>
+          <tr>
+            <td><span class="userinput"><br>
+            </span></td>
+          </tr>
+        </table>
+      </fieldset></td>
+    </tr>
+  </table>
+</form>

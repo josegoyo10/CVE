@@ -1,0 +1,77 @@
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+<SCRIPT LANGUAGE="JavaScript" src="../../TEMPLATE/general/checkfield.js"></script>
+<script language="JavaScript">
+    function submitForm(choice){
+
+        formulario = document.formulario_busqueda;
+
+        formulario.enviarvalor.value = choice;
+        formulario.submit();
+    }
+
+</script>
+<link href="estilos.css" rel="stylesheet" type="text/css">
+
+<table width="760" height="15" border="0" cellpadding="0"cellspacing="0">
+    <tr>
+        <td width="50%"  height="30" class="titulonormal">Reporte de Perfiles</td>
+    </tr>
+</table>
+<table width="768" border="0" cellpadding="0" cellspacing="0">					
+    <tr><td>		<div align="left" class="Textonormal" style="border:solid grey 1px;">
+
+
+
+                <!-- BEGIN formulario -->
+                <form name="formulario_busqueda" method="post" onSubmit="return false;">
+                    <table>
+                        <tr>
+                            <td>
+                                <input style="width:100px;" type="button"  class="Textonormal" name="boton" onClick="submitForm('buscar');" value="Ver Reporte">
+
+                            </td>
+                            <td>
+                                <input style="width:100px;" type="button"  class="Textonormal" name="boton" onClick="submitForm('exportar');" value="Exportar EXCEL">
+                                <input type="hidden" name="enviarvalor">
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                <!-- END formulario -->
+
+            </div>
+        </td></tr>		
+</table>
+<table  width="768" border="0" cellpadding="2" cellspacing="0" class="tituloadvertencia"><td height="2" align="center"></td></table>
+<div style="height:'70%'; width:768; overflow:auto;">
+    <table width="100%" border="0" cellpadding="2" cellspacing="0" class="tabla2">
+        <tr>
+            <th width="3%" align="center">ID Perfil</th>
+            <th width="3%" align="center">Nombre</th>
+            <th width="22%" align="center">Descripci&oacute;n</th>
+            <th width="3%" align="center">id Padre</th>
+            <th width="15%" align="center">Creado por</th>
+            <th width="13%" align="center">Fecha Creaci&oacute;n</th>
+            <th width="15%" align="center">Modificado por</th>
+            <th width="13%" align="center">Fecha Modificaci&oacute;n</th>
+            <th width="5%" align="center">S&oacute;lo lectura</th>
+        </tr>
+
+
+
+        <!-- BEGIN reporteS -->
+        <tr>
+            <td width="3%"  align="center">{ID}&nbsp;</td>
+            <td width="3%"  align="center">{nombre}&nbsp;</td>
+            <td width="22%"  align="left">{descripcion}&nbsp;</td>
+            <td width="3%"  align="center">{padre_id}&nbsp;</td>
+            <td width="15%" align="center">{usr_crea}&nbsp;</td>
+            <td width="13%"  align="center">{fec_crea}&nbsp;</td>
+            <td width="15%" align="center">{usr_mod}&nbsp;</td>
+            <td width="13%" align="center">{fec_mod}&nbsp;</td>
+            <td width="5%" align="center">{solo_lectura}&nbsp;</td>
+        </tr>
+        <!-- END reporteS -->
+
+    </table>
+</div>

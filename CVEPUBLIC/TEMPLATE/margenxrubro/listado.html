@@ -1,0 +1,91 @@
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/funciones.js"></script>
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<script language="javascript" src="../../TEMPLATE/general/checkfield.js"></script>
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+<table width="700" height="15" border="0" cellpadding="0"cellspacing="0">
+    <tr>
+        <td width="50%"  height="30" class="titulonormal">{TEXT_TITULO}</td>
+    </tr>
+    <tr>
+        <td width="60%"  class="titulonormal">{OUT_BARRA}</td>
+    </tr>
+    <tr>
+        <td width="60%"><p>{TEXT_1}</p></td>
+    </tr>    
+</table>
+<table width="750" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+    <form action="adm_margen_01.php" method="get" name="form_buscar">
+        <td><INPUT TYPE="hidden" NAME="action" VALUE="search"></td>
+        <td><table border="0" align=center class="textonormal">
+                <tr valign=middle>
+                    <td align=right>{TEXT_BUSCAR_CAMPO_SECCION}</td>
+                    <td width=3> : </td>
+                    <td><INPUT TYPE="text" NAME="patron" VALUE="{patron}" SIZE="30" MAXLENGTH="200"></td>
+                    <td rowspan="2" ><input name="imageField" type="image" src="../../IMAGES/checkin.jpg" alt="{BOTON_BUSCAR_RUBRO}" width="25" height="25" border="0"></td>
+
+                </tr>
+                <tr valign=middle>
+                    <td align=right>{TEXT_BUSCAR_CAMPO_RUBRO}</td>
+                    <td width=3> : </td>
+                    <td><INPUT TYPE="text" NAME="patron2" VALUE="{patron2}" SIZE="30" MAXLENGTH="200"></td>
+                    <td >  </td>
+                </tr>
+
+
+            </table></td>
+        </tr>
+</table>
+<table width="780" border="5" bordercolor="white" cellpadding="0"cellspacing="2">
+    <tr>
+        <td>
+            <table width="750" border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+                <tr>
+                    <th align="left" width="220">Seccion</th>
+                    <th align="left" width="220">Rubro</th>
+                    <th align="left" width="60">Margen</th>
+                    <th align="left" width="50">Acciones</th>	
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div style="width:770; height:320; overflow:auto;">			
+                <table width="750" border="0" align="rigth" cellpadding="0" cellspacing="0" class="tabla2">
+
+                    <!-- BEGIN listadomargenes -->
+                    <tr >
+                        <th align="left" width="220">{seccion}</th>
+                        <th align="left" width="220">{rubro}</th>
+                        <th align="center" width="60">{margen}</th>
+                        <th align="center" width="50">{ACCIONES}</th>	
+                    </tr>
+                    <!-- END listadomargenes -->
+                </table>
+                <script language="javascript">
+                    window.document.form_buscar.patron.onkeypress = KeyIsTexto;
+                    window.document.form_buscar.patron2.onkeypress = KeyIsTexto;
+                </script>
+            </div>
+            <BR>
+            <div style="width:770; height:120; overflow:none;">			
+                <table width="750" border="0" align="rigth" cellpadding="0" cellspacing="0" class="tabla2">
+                    <tr >
+                        <th align="right" width="450">
+                    <big>MARGEN GENERAL:</big>
+                    </th>
+                    <th align="left" width="45">
+                    <big>{mgeneral}</big>
+                    </th>
+                    <th width="45">
+                        {mgeneralboton}
+                    </th>
+
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </tr>
+</table>

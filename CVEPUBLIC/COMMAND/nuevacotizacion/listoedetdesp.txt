@@ -1,0 +1,232 @@
+connlist Object
+(
+    [first:private] => elementconnlist Object
+        (
+            [prev] => 
+            [next] => elementconnlist Object
+                (
+                    [prev] => elementconnlist Object
+ *RECURSION*
+                    [next] => 
+                    [elem] => dtodetordenent Object
+                        (
+                            [arreglo:private] => Array
+                                (
+                                    [id_linea] => 
+                                    [id_ordenent] => 
+                                    [id_tiporetiro] => 2
+                                    [id_tipoentrega] => 
+                                    [numlinea] => 2
+                                    [descripcion] => SILLA PC WORK NEGRO
+                                    [codprod] => 1131310
+                                    [barra] => 2082003279834
+                                    [nomproveedor] => No corresponde
+                                    [rutproveedor] => 0
+                                    [pcosto] => 87877
+                                    [pventaneto] => 173390
+                                    [pventaiva] => 619002.00
+                                    [totallinea] => 520170
+                                    [cantidade] => 3
+                                    [cantidadp] => 
+                                    [cantidadd] => 
+                                    [id_lineadoc] => 4201462
+                                    [id_documento] => 
+                                    [id_documentof] => 
+                                    [id_documentog] => 
+                                    [unimed] => un
+                                    [codtipo] => PS
+                                    [codsubtipo] => PS
+                                    [paginaf] => 
+                                    [paginag] => 
+                                    [marcaflete] => 
+                                    [instalacion] => NO
+                                    [peso] => 0.01
+                                    [ret_ica] => 
+                                    [ret_iva] => 
+                                    [ret_renta] => 
+                                    [rete_ica] => 0.0000
+                                    [rete_renta] => 0.0000
+                                    [coti_iva] => 
+                                    [sumiva] => 
+                                    [sumtotaliva] => 
+                                    [descuento] => 0
+                                    [codlocalventa] => 
+                                    [iva] => 19.00
+                                    [margenlinea] => 49.32
+                                    [obspos] => 
+                                )
+
+                        )
+
+                    [elemName] => 
+                )
+
+            [elem] => dtodetordenent Object
+                (
+                    [arreglo:private] => Array
+                        (
+                            [id_linea] => 
+                            [id_ordenent] => 
+                            [id_tiporetiro] => 2
+                            [id_tipoentrega] => 
+                            [numlinea] => 1
+                            [descripcion] => SV FLETE BASICO ZONA 1 HASTA 750 KG
+                            [codprod] => 9525
+                            [barra] => 2090000110142
+                            [nomproveedor] => No corresponde
+                            [rutproveedor] => 0
+                            [pcosto] => 19500
+                            [pventaneto] => 19500
+                            [pventaiva] => 0.00
+                            [totallinea] => 19500
+                            [cantidade] => 1
+                            [cantidadp] => 
+                            [cantidadd] => 
+                            [id_lineadoc] => 4201463
+                            [id_documento] => 
+                            [id_documentof] => 
+                            [id_documentog] => 
+                            [unimed] => un
+                            [codtipo] => SV
+                            [codsubtipo] => DE
+                            [paginaf] => 
+                            [paginag] => 
+                            [marcaflete] => 
+                            [instalacion] => 
+                            [peso] => 0.00
+                            [ret_ica] => 
+                            [ret_iva] => 
+                            [ret_renta] => 
+                            [rete_ica] => 0.0000
+                            [rete_renta] => 0.0000
+                            [coti_iva] => 
+                            [sumiva] => 
+                            [sumtotaliva] => 
+                            [descuento] => 0
+                            [codlocalventa] => 
+                            [iva] => 19.00
+                            [margenlinea] => 0.00
+                            [obspos] => 
+                        )
+
+                )
+
+            [elemName] => 
+        )
+
+    [last:private] => elementconnlist Object
+        (
+            [prev] => elementconnlist Object
+                (
+                    [prev] => 
+                    [next] => elementconnlist Object
+ *RECURSION*
+                    [elem] => dtodetordenent Object
+                        (
+                            [arreglo:private] => Array
+                                (
+                                    [id_linea] => 
+                                    [id_ordenent] => 
+                                    [id_tiporetiro] => 2
+                                    [id_tipoentrega] => 
+                                    [numlinea] => 1
+                                    [descripcion] => SV FLETE BASICO ZONA 1 HASTA 750 KG
+                                    [codprod] => 9525
+                                    [barra] => 2090000110142
+                                    [nomproveedor] => No corresponde
+                                    [rutproveedor] => 0
+                                    [pcosto] => 19500
+                                    [pventaneto] => 19500
+                                    [pventaiva] => 0.00
+                                    [totallinea] => 19500
+                                    [cantidade] => 1
+                                    [cantidadp] => 
+                                    [cantidadd] => 
+                                    [id_lineadoc] => 4201463
+                                    [id_documento] => 
+                                    [id_documentof] => 
+                                    [id_documentog] => 
+                                    [unimed] => un
+                                    [codtipo] => SV
+                                    [codsubtipo] => DE
+                                    [paginaf] => 
+                                    [paginag] => 
+                                    [marcaflete] => 
+                                    [instalacion] => 
+                                    [peso] => 0.00
+                                    [ret_ica] => 
+                                    [ret_iva] => 
+                                    [ret_renta] => 
+                                    [rete_ica] => 0.0000
+                                    [rete_renta] => 0.0000
+                                    [coti_iva] => 
+                                    [sumiva] => 
+                                    [sumtotaliva] => 
+                                    [descuento] => 0
+                                    [codlocalventa] => 
+                                    [iva] => 19.00
+                                    [margenlinea] => 0.00
+                                    [obspos] => 
+                                )
+
+                        )
+
+                    [elemName] => 
+                )
+
+            [next] => 
+            [elem] => dtodetordenent Object
+                (
+                    [arreglo:private] => Array
+                        (
+                            [id_linea] => 
+                            [id_ordenent] => 
+                            [id_tiporetiro] => 2
+                            [id_tipoentrega] => 
+                            [numlinea] => 2
+                            [descripcion] => SILLA PC WORK NEGRO
+                            [codprod] => 1131310
+                            [barra] => 2082003279834
+                            [nomproveedor] => No corresponde
+                            [rutproveedor] => 0
+                            [pcosto] => 87877
+                            [pventaneto] => 173390
+                            [pventaiva] => 619002.00
+                            [totallinea] => 520170
+                            [cantidade] => 3
+                            [cantidadp] => 
+                            [cantidadd] => 
+                            [id_lineadoc] => 4201462
+                            [id_documento] => 
+                            [id_documentof] => 
+                            [id_documentog] => 
+                            [unimed] => un
+                            [codtipo] => PS
+                            [codsubtipo] => PS
+                            [paginaf] => 
+                            [paginag] => 
+                            [marcaflete] => 
+                            [instalacion] => NO
+                            [peso] => 0.01
+                            [ret_ica] => 
+                            [ret_iva] => 
+                            [ret_renta] => 
+                            [rete_ica] => 0.0000
+                            [rete_renta] => 0.0000
+                            [coti_iva] => 
+                            [sumiva] => 
+                            [sumtotaliva] => 
+                            [descuento] => 0
+                            [codlocalventa] => 
+                            [iva] => 19.00
+                            [margenlinea] => 49.32
+                            [obspos] => 
+                        )
+
+                )
+
+            [elemName] => 
+        )
+
+    [act:private] => 
+)

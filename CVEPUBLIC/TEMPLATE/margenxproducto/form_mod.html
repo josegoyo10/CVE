@@ -1,0 +1,86 @@
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/funciones.js"></script>
+<script language="javascript" src="../../TEMPLATE/general/checkfield.js"></script>
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+<script>
+    function validar_form(form) {
+
+        if (document.form_agregar.margen.value.length < 0) {
+            alert('El margen debe ser mayor a 0.');
+            return false;
+        }
+
+        if (document.form_agregar.margen.value.length == '') {
+            alert('El margen debe ser mayor a 0.');
+            return false;
+        }
+        return true;
+    }
+
+</script>
+<table width="650" border="5" bordercolor="white" cellpadding="0" cellspacing="">
+    <tr>
+        <td>
+            <table width="700"  height="15" border="0" cellpadding="0"cellspacing="0">
+                <tr>
+                    <td width="100%" class="titulonormal">{TEXT_TITULO}</td>
+                </tr>
+                <tr>
+                    <td width="60%"  class="titulonormal">{OUT_BARRA}</td>
+                </tr>
+                <tr>
+                    <td width="60%"><p>{TEXT}</p></td>
+                </tr>    
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <table width="300" border="0"  align="center" cellpadding="0" cellspacing="0"  class="textonormal" style='white-space: nowrap;'>
+                <form action="adm_margen_01.php" method="post" name="form_agregar" onSubmit="return validar_form(this);">
+                    <INPUT TYPE="hidden" NAME="action" VALUE="upd1">
+                    <INPUT TYPE="hidden" NAME="margen_id" VALUE="{SKU}">	
+                    <tr>
+                        <td ><div style="white-space: nowrap;" >SKU</div></td>
+                        <td align=center>:</td>
+                        <td>
+                            <INPUT TYPE="text" NAME="desc_rubro" VALUE="{SKU}" disabled=TRUE SIZE="60" MAXLENGTH="200">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td ><div style="white-space: nowrap;" >Descripci&oacute;n</div></td>
+                        <td align=center>:</td>
+                        <td>
+                            <INPUT TYPE="text" NAME="desc_seccion" VALUE="{descr}" disabled=TRUE SIZE="60" MAXLENGTH="200">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><div style="white-space: nowrap;" >Rubro/Sección(Margen Cat.)</div></td>
+                        <td  align=center>:</td>
+                        <td>
+                            <INPUT TYPE="text" NAME="margen" VALUE="{datosCat}"SIZE="60" MAXLENGTH="200"  DISABLED='TRUE'> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><div style="white-space: nowrap;" >Margen Minimo Producto</div></td>
+                        <td  align=center>:</td>
+                        <td>
+                            <INPUT TYPE="text" NAME="margen" VALUE="{margen}"SIZE="60" MAXLENGTH="200" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);"> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan=4 align=center><br>
+                            <input name="imageField" type="image" src="../../IMAGES/checkin.jpg" alt="{BOTON}" width="25" height="25" border="0">
+
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            {BOTONCAT}</td>
+                    </tr>
+
+                </form>
+            </table>
+        </td>
+    </tr>
+</table>
+<script language="javascript">
+    window.document.form_agregar.margen.onkeypress = IsNumeric;
+
+</script>

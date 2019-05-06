@@ -1,0 +1,197 @@
+<html>
+<head>
+<SCRIPT LANGUAGE="JavaScript">
+function imprimir() {
+this.focus();
+this.print();
+}
+</SCRIPT>
+<style type="text/css">
+<!--
+.style1 {color: #FF0000}
+-->
+</style>
+<body topmargin="0" leftmargin="0" marginheight="0" marginwidth="0">
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+<table width="300" height="403" border="0" bordercolor="black" cellpadding="0" cellspacing="0" style="border: 2px solid #ffffff;">
+	<tr>
+		<td height="69" valign="top">
+			<table width="100%"  border="0" cellspacing="2" cellpadding="2">
+			<tr>
+				<td width="15%" height="49"><img src="../../IMAGES/logotipo_negro.gif"></td>
+				<td width="79%" class="titulonormal"> {titulo}&nbsp;-&nbsp;{titulo_pagina} N&ordm; {id_cotizacion}</td>
+				<!-- td width="6%">{cod_barra_os}</td-->
+			</tr>
+			<tr>
+				<td height="11" colspan="3" background="../../IMAGES/barra.gif"></td>
+			</tr>   
+			</table>
+		</td>
+	</tr>  
+	<tr>
+	<td valign="top">
+	<table width="100%"  border="0" cellspacing="2" cellpadding="2" class="textonormal">
+	<tr>
+	<td width="31%" valign="top">
+	<table width="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="textonormal">
+		<tr>
+			<td><fieldset>
+			<legend><strong>Datos {titulo}</strong></legend>
+			<table width="600" border="0" align="center" cellpadding="2" cellspacing="1" class="textonormal">
+				<tr>
+					<td width="25%">Nº&nbsp;{titulo}</td>
+					<td width="25%">{id_cotizacion}</td>
+					<td width="25%">Nota</td>
+					<td width="25%">{nota}</td>   
+				</tr>
+				<tr>
+					<td>Local Venta</td>
+					<td>{nom_local}</td>
+					<td>Dirección Local</td>
+					<td>{dir_local}</td>   
+				</tr>
+				<tr>
+					<!-- td>Margen</td>
+					<td>{margentotal}%</td!-->
+					<td>Vendedor</td>
+					<td>{nombrevendedor}</td>
+					{margentotal}					
+					</tr>
+				<tr>
+					<td>Válido Desde</td>
+					<td>{validdesde}</td>	
+					<td>Válido Hasta</td>
+					<td>{validhasta} </td>
+				</tr>				
+			</table>
+			</fieldset></td>
+		</tr>
+		<tr>
+			<td><fieldset>
+			<legend>Datos Cliente</legend>
+				<table width="600" border="0"   align="center" cellpadding="2" cellspacing="1" class="textonormal">
+					<tr>
+						<td width="25%">Raz&#243;n Social</td>
+						<td width="25%">{razonsoc}</td>
+						<td width="25%">CC/NIT/RUT</td>
+						<td width="25%">{rutcliente}</td>
+					</tr>
+					<tr>
+						<td>Actividad Econ&oacute;</td>
+						<td>{giro}</td>
+						<td>Direcci&oacute;n</td>
+						<td>{direccion},&nbsp;{comuna}</td>
+					</tr>
+					<tr>
+						<td width="103">Tel&eacute;fono Contacto</td>
+						<td width="241">{fonocontacto}</td>
+						<!--  td width="25%">Comentario</td>
+						<td width="25%">{comentario}</td>-->  						
+					</tr>
+				</table>
+			</fieldset></td>
+		</tr>
+	</table>
+	<br>
+	<!---include de os-detalle!-->
+	<table width="600" border="0" align="center" cellpadding="0" cellspacing="0" class="textonormal">
+	<tr>
+		<td>
+			<table width="600" border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2">	
+				<tr>
+				<th width="40"  align="center">Art&#237;culo</th>
+				<th width="260" align="center">Descripci&oacute;n</th>
+				<th width="40"  align="center">Cantidad</th>
+				<th width="40"  align="center">Unimed</th>                
+				<th width="80"  align="center">Precio</th>
+				<th width="80"  align="center">Total</th>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+	<td>
+		<table width="600" border="0"  cellpadding="0" cellspacing="0" class="tabla2">          
+		<!-- BEGIN detalleproductos -->              
+		<tr>
+			<td width="40" align="right">{codprod}&nbsp;</td>
+			<td width="260" align="left">&nbsp;{descripcion}&nbsp;</td>
+			<td width="40" align="right">{cantidad}&nbsp;</td>
+			<td width="40" align="center">&nbsp;{unimed}&nbsp;</td>  
+			<td width="80" align="right">{precio}&nbsp;</td>              
+			<td width="80" align="right">{totallinea}&nbsp;</td>
+		</tr>
+		<!-- END detalleproductos -->  
+		</table>
+	</td>
+	</tr>
+	<tr>
+	<td>		
+		<table width="600" border="0" align="left" cellpadding="0" cellspacing="0" class="tabla3" >	
+			<tr>
+				<td width="40" ></td>
+				<td width="80" ></td>
+				<td width="200" ></td>                
+				<td width="100" align="left">Total Neto</td>
+				<td width="50"  ></td>								
+				<td width="90"  align="right">{valortotal}&nbsp;</td>  
+			</tr>
+			<tr>
+				<td width="40" ></td>
+				<td width="80" ></td>
+				<td width="200" ></td> 
+				<td align="left"  width="100">IVA {iva}%</td>
+				<td width="50"  ></td>						
+				<td align="right" width="90" >{valoriva}&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="40" ></td>
+				<td width="80" ></td>
+				<td width="200" ></td> 
+				<td align="left"  width="100">Total</td>
+				<td width="50"></td>						
+				<td align="right" width="90">{sumtotal}&nbsp;</td>
+			</tr>	
+			
+		</table>   
+	</td>
+	</tr>		
+		<tr>
+			<table width="600" border="0" align="center" cellpadding="2" cellspacing="2" class="textonormal">
+				<td><fieldset>
+				<legend></legend>
+					<table width="600" border="0" align="center" cellpadding="2" cellspacing="1" class="textonormal">
+					<tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>						
+						<td>&nbsp;</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>						
+						<td align="center">_______________________________________________________________________________</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>						
+						<td align="right">Firma Responsable&nbsp;</td>
+					</tr>
+					</table>
+				</fieldset></td>
+			</table> 
+		</tr>
+	 </table>
+	</td>
+  </tr>
+</table>
+</body>
+</html>

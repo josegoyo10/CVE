@@ -1,0 +1,2833 @@
+<link rel="STYLESHEET" type="text/css" href="../../TEMPLATE/general/dhtmlxGrid_1.1/css/dhtmlXGrid.css">
+
+<script  src="../../TEMPLATE/general/dhtmlxGrid_1.1/js/dhtmlXCommon.js"></script>
+
+<script  src="../../TEMPLATE/general/dhtmlxGrid_1.1/js/dhtmlXGrid.js"></script>		
+
+<script  src="../../TEMPLATE/general/dhtmlxGrid_1.1/js/dhtmlXGridCell.js"></script>
+
+
+
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/popup.js"></script>
+
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/ajax.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript" type="text/JavaScript" SRC="../../TEMPLATE/general/CalendarPopup.js"></SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript" type="text/JavaScript" SRC="../../TEMPLATE/general/checkfield.js"></SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript" type="text/JavaScript" SRC="../../TEMPLATE/general/funciones.js"></SCRIPT>
+
+
+
+
+
+<!-- incluir la grilla -->
+
+<script type="text/javascript">
+
+<!--
+
+	//Mas en: http://javascript.espaciolatino.com/
+
+	//Objeto oNumero
+
+	function oNumero(numero){
+
+		//Propiedades 
+
+		this.valor = numero || 0
+
+		this.dec = -1;
+
+		//Métodos 
+
+		this.formato = numFormat;
+
+		this.ponValor = ponValor;
+
+		//Definición de los métodos 
+
+		function ponValor(cad){
+
+			if (cad =='-' || cad=='+') return
+
+			if (cad.length ==0) return
+
+			if (cad.indexOf('.') >=0)
+
+			    this.valor = parseFloat(cad);
+
+			else 
+
+			    this.valor = parseInt(cad);
+
+		} 
+
+		
+
+		function numFormat(dec, miles){
+
+			var num = this.valor, signo=3, expr;
+
+			var cad = ""+this.valor;
+
+			var ceros = "", pos, pdec, i;
+
+			for (i=0; i < dec; i++)
+
+			ceros += '0';
+
+			pos = cad.indexOf('.')
+
+			if (pos < 0)
+
+			    cad = cad+"."+ceros;
+
+			else
+
+			    {
+
+			    pdec = cad.length - pos -1;
+
+			    if (pdec <= dec)
+
+			        {
+
+			        for (i=0; i< (dec-pdec); i++)
+
+			            cad += '0';
+
+			        }
+
+			    else
+
+			        {
+
+			        num = num*Math.pow(10, dec);
+
+			        num = Math.round(num);
+
+			        num = num/Math.pow(10, dec);
+
+			        cad = new String(num);
+
+			        }
+
+			    }
+
+			pos = cad.indexOf('.')
+
+			if (pos < 0) pos = cad.lentgh
+
+			if (cad.substr(0,1)=='-' || cad.substr(0,1) == '+') 
+
+			       signo = 4;
+
+			if (miles && pos > signo)
+
+			    do{
+
+			        expr = /([+-]?\d)(\d{3}[\.\,]\d*)/
+
+			        cad.match(expr)
+
+			        cad=cad.replace(expr, RegExp.$1+','+RegExp.$2)
+
+			        }
+
+			while (cad.indexOf(',') > signo)
+
+			    if (dec<0) cad = cad.replace(/\./,'')
+
+			        return cad;
+
+			}
+
+	}//Fin del objeto oNumero:
+
+	
+
+	function valida_fecha(){
+
+		String1 = document.nueva_cotizacion_03.validdesde.value;
+
+		String2 = document.nueva_cotizacion_03.validhasta.value;
+
+		
+
+		dia1=String1.substring(0,2);
+
+		mes1=String1.substring(3,5);
+
+		anyo1=String1.substring(6,10);
+
+		dia2=String2.substring(0,2);
+
+		mes2=String2.substring(3,5);
+
+		anyo2=String2.substring(6,10);
+
+		
+
+		
+
+		var myDate1=new Date();
+
+		var myDate2=new Date();
+
+	
+
+		myDate1.setFullYear(anyo1,mes1-1,dia1);
+
+		myDate2.setFullYear(anyo2,mes2-1,dia2);
+
+		return (myDate1 <= myDate2);
+
+	}
+
+	
+
+	function valida_fecha_max(){
+
+		String1 = document.nueva_cotizacion_03.validhasta.value;
+
+		String2 = '{hoy}';
+
+		dia1=String1.substring(0,2);
+
+		mes1=String1.substring(3,5);
+
+		anyo1=String1.substring(6,10);
+
+		dia2=parseFloat(String2.substring(0,2))+parseFloat('{DIAS_VALID_COT_MAX}');
+
+		mes2=String2.substring(3,5);
+
+		anyo2=String2.substring(6,10);
+
+		
+
+		
+
+		var myDate1=new Date();
+
+		var myDate2=new Date();
+
+	
+
+		myDate1.setFullYear(anyo1,mes1-1,dia1);
+
+		myDate2.setFullYear(anyo2,mes2-1,dia2);
+
+		return (myDate1 <= myDate2);
+
+	}
+
+	
+
+	function necesita_flete(fila){
+
+		despacho = new Array();
+
+		var y = 0;
+
+		var devolver = false;
+
+		for(s=1;s<fila;s++){
+
+			if (mygrid.isItemExists(s)){
+
+				if (mygrid.cells(s,11).isChecked() && mygrid.cells(s,16).getValue() != 'SV' && mygrid.cells(s,17).getValue() != 'DE'){
+
+					despacho[y] = s;
+
+					y++;
+
+					devolver = true;
+
+				}
+
+			}
+
+		}
+
+		return devolver;
+
+	}
+
+	function hay_despacho(fila){
+
+		for(s=1;s<fila;s++){
+
+			if (mygrid.isItemExists(s)){
+
+				if (mygrid.cells(s,16).getValue() == 'SV' && mygrid.cells(s,17).getValue() == 'DE'){
+
+					return true;
+
+				}
+
+			}
+
+		}
+
+	}
+
+function prorrateo(fila){
+/****** MODIFICACION GOA 27-12-2007. Desde ahora el prorrateo de flete es obligatorio*****/		
+		//if (confirm("¿Desea prorratear el flete entre los productos que requieren despacho?")){
+		alert('El flete será Prorrateado entre los productos que requieren despacho');
+			var mar = nueva_cotizacion_03.margen.value;
+			necesita_flete(filas);
+			var valor_flete= 0;
+			
+			for (k=1;k<fila;k++){
+				if (mygrid.isItemExists(k)){
+					if (mygrid.cells(k,16).getValue() == 'SV' && mygrid.cells(k,17).getValue() == 'DE'){ 
+						var flete = parseFloat(mygrid.cells(k,10).getValue());
+						valor_flete += flete;
+						mygrid.deleteRow(k);
+					}
+				}
+			}
+			
+			calculatotal(filas-1);
+			totaltotal = 0;
+			for(e=1;e<fila;e++){
+				if(mygrid.isItemExists(e)){
+					if (mygrid.cells(e,11).isChecked()){
+						totaltotal +=parseFloat(mygrid.cells(e,14).getValue()); 
+					}
+				}
+			}
+			
+
+			for(s=0;s<despacho.length;s++){
+				var pventa = parseFloat(mygrid.cells(despacho[s],10).getValue());
+				var prorrateo = pventa*(1+(valor_flete/totaltotal));
+				//var recargo = prorrateo-pventa;
+				var recargo = Math.round(prorrateo-pventa);
+				
+
+				mygrid.cells(despacho[s],13).setValue(recargo);
+				cantidadxpventa(despacho[s]);
+				//alert('necesita despacho '+ despacho[s] + ' pventa ' +pventa + ' totalcoti '+totaltotal+ ' prorra ' + prorrateo+ ' recargo' + recargo);
+			}
+			calculatotal(filas-1);
+			
+			nueva_cotizacion_03.margenvalor.value = mar;
+//		}
+	}
+
+
+
+
+/*
+	function prorrateo(fila){
+
+		if (confirm("¿Desea prorratear el flete entre los productos que requieren despacho?")){
+
+			var mar = nueva_cotizacion_03.margen.value;
+
+			
+
+			nueva_cotizacion_03.margenvalor.value = mar;
+
+			nueva_cotizacion_03.prorrateoflete.value =1;			
+
+		}else{
+
+			nueva_cotizacion_03.prorrateoflete.value =2;	
+
+		}
+
+		
+
+		
+
+	}
+*/
+
+
+	function guarda_valor_flete(){
+
+		for (k=1;k<filas;k++){
+
+			if (mygrid.isItemExists(k)){
+
+				if (mygrid.cells(k,16).getValue() == 'SV' && mygrid.cells(k,17).getValue() == 'DE'){ 
+
+					var flete1 = parseFloat(mygrid.cells(k,10).getValue());
+
+					valor_flete_cell[k] = flete1;
+
+				}
+
+			}
+
+		}
+
+	}
+
+	function valida_stock(){
+
+		falta_stock = 'Los siguientes Artículos exceden el stock disponible: \n';  
+
+		var devolver = false;
+
+		for (k=1;k<filas;k++){
+
+			if (mygrid.isItemExists(k)){
+
+				var stock 	 = parseFloat(mygrid.cells(k,6).getValue());
+
+				var cantidad = parseFloat(mygrid.cells(k,7).getValue());
+
+				if ( stock < cantidad ){
+
+					falta_stock += '\n '+ mygrid.cells(k,4).getValue();
+
+				 	devolver = true;
+
+				}
+
+				
+
+			}
+
+		}
+
+		falta_stock += '\n';
+
+		return devolver;
+
+	}
+
+	
+
+	function hayarticulos(){
+
+		var articulos = mygrid.getAllItemIds();
+
+		
+
+		if(articulos.length == 1){
+
+			
+
+			return false;
+
+		}else{
+
+			
+
+			return true;
+
+		}
+
+		
+
+	}
+
+	
+
+	function hay_errores_grilla(){
+
+		for (w=1;w<filas;w++){
+
+			if (mygrid.isItemExists(w)){
+
+				var articulo = mygrid.cells(w,2).getValue();
+
+				var cantidad = mygrid.cells(w,7).getValue();
+
+				var pventa   = mygrid.cells(w,10).getValue();
+
+				var pcosto   = mygrid.cells(w,8).getValue();
+
+				var rutprov   = mygrid.cells(w,22).getValue();
+
+				var nomprov   = mygrid.cells(w,23).getValue();
+				
+				var tipoventa = {id_tipoventa}
+
+				{validaflete}
+
+				
+
+				if (!escantidad(cantidad)){
+
+					alert('La cantidad '+cantidad+' NO es valida para el Articulo '+ articulo);
+
+					return true;
+
+				}
+
+				if (!esarticulo(articulo)){
+
+					alert('El Articulo '+articulo+' NO es valido');
+
+					return true;
+
+				}
+
+				if (!escantidad(pventa)){
+
+					alert('El precio '+pventa+' NO es valido para el Articulo '+articulo);
+
+					return true;
+
+				}
+
+				if(tipoventa==1){
+
+					if (rutprov==0 && nomprov == 'Seleccione...'){
+
+						alert('Debe seleccionar proveedor para el Articulo ' +articulo);
+
+						return true;
+
+					}
+
+					if (rutprov==0 && nomprov != 'Seleccione...'){
+
+						alert('El proveedor ' + nomprov + ' para el artículo ' + articulo + ' NO tiene RUT asignado.\nPor favor contactese con su administrador comercial.');
+
+						return true;
+
+					}
+
+				}
+
+				if (!escantidad(pcosto)){
+
+					alert('El costo '+pcosto+' NO es valido para el Articulo '+articulo);
+
+					return true;
+
+				}
+
+			}
+
+		}
+
+	}
+
+	
+
+	function valida_formulario(){
+
+		mygrid.editStop();
+
+		var linea = mygrid.getSelectedId();
+
+		var codpro= mygrid.cells(linea,2).getValue();
+
+		var sap =	mygrid.cells(linea,18).getValue();
+
+
+
+		if ( codpro != sap ){
+
+			mygrid.cells(linea,2).setValue(sap);  
+
+		 }
+
+		
+
+		if (!valida_fecha()){
+
+			alert('La fecha de vencimiento debe ser mayor a la fecha de inicio de la cotizacion');
+
+			return;
+
+		}
+
+		if (!valida_fecha_max()){
+
+			alert('La fecha de vencimiento no puede exceder los {DIAS_VALID_COT_MAX} días a partir de la fecha actual');
+
+			return;
+
+		}
+
+		if (!hayarticulos()){
+
+			alert('La cotizacion no tiene productos. No puede grabar una cotizacion vacia')
+
+			return;
+
+		} 
+
+		
+
+		if (hay_errores_grilla()){
+
+			return;
+
+		}
+
+		
+
+		if (necesita_flete(filas) && !hay_despacho(filas)){
+
+			alert('La cotizacion contiene productos que necesitan despacho. Para continuar debe agregar el producto FLETE');
+
+			return;
+
+		}
+
+		if (hay_despacho(filas) && !necesita_flete(filas)){
+
+			alert('La cotizacion NO contiene productos que necesiten despacho. Para continuar debe eliminar el producto FLETE');
+
+			return;
+
+		}
+
+		
+
+		if ('{id_tipoventa}' == 2 && valida_stock()){
+
+			if (!confirm(falta_stock+'\n ¿ Desea continuar de todas maneras ?')){
+
+				return;
+
+			}
+
+		}
+
+		
+
+		if (window.document.nueva_cotizacion_03.total_cotizacion.value > {saldo} && {id_tipocliente} == 1){
+
+			if (!confirm('El total de la cotizacion excede el disponible del cliente. ¿ Desea continuar ?')){
+
+				return;
+
+			} 
+
+		}
+
+		if (window.document.nueva_cotizacion_03.margen.value < {MARGEN_COTIZADOR}){
+
+			if (!confirm('El margen de la cotizacion es MENOR al el margen minimo definido. Si continua, la cotizacion quedara en estado bloqueado.\n¿ Desea continuar ?')){
+
+				return;		
+
+			}
+
+		}
+
+		if (parseFloat(window.document.nueva_cotizacion_03.total_cotizacion.value) > 9999999999){
+
+			alert('El total de la cotizacion NO puede exceder el valor 9,999,999,999');
+
+			return;
+
+		}
+
+
+
+		var suministro ={suministro};
+
+
+
+/****** MODIFICACION RGO 16-05-2007. Desde ahora se puede vender con retira cliente desde un CSUM distinto al actual *****/
+
+//		if (!suministro){
+
+//			for (k=1;k<filas;k++){
+
+//				if (mygrid.isItemExists(k)){
+
+//					if (!mygrid.cells(k,11).isChecked()){
+
+//						alert('La cotizacion pertenece a un centro de suministro distinto al actual. Si desea continuar debera marcar TODOS los Articulos con despacho.');
+
+//						return;
+
+//					}
+
+//				}
+
+//			}
+
+//		}
+
+		if (!suministro){
+
+			for (k=1;k<filas;k++){
+
+				if (mygrid.isItemExists(k)){
+
+					if (!mygrid.cells(k,11).isChecked() && !mygrid.cells(k,12).isChecked()){
+
+						alert('La cotizacion pertenece a un centro de suministro distinto al actual. Si desea continuar debera marcar todos los Articulos con Despacho o Retira cliente.');
+
+						return;
+
+					}
+
+				}
+
+			}
+
+		}
+
+
+
+
+
+
+
+		if (necesita_flete(filas) && hay_despacho(filas)){
+
+				guarda_valor_flete();
+
+				prorrateo(filas);
+
+		}
+
+		
+
+		graba_cotizacion();	
+
+	}
+
+	
+
+	function graba_cotizacion(){
+
+		var strCell= "";
+
+		
+
+		for(v=1;v<filas;v++){
+
+			if (mygrid.isItemExists(v)){
+
+				if (strCell!= ""){
+
+					strCell += "#";
+
+				}
+
+				var numero 		= mygrid.cells(v,0).getValue();
+
+				var articulo	= mygrid.cells(v,18).getValue();
+
+				var descripcion = mygrid.cells(v,4).getValue();
+
+				
+
+				
+
+				var cantidad 	= mygrid.cells(v,7).getValue();
+
+				var costo 		= mygrid.cells(v,8).getValue();
+
+				var precio   	= mygrid.cells(v,10).getValue();
+
+				if (mygrid.cells(v,11).isChecked()){
+
+					var D		= 2;
+
+				}else{
+
+					var D		= 1;
+
+				}
+
+				
+
+				if (mygrid.cells(v,12).isChecked()){
+
+					var R		= 2;
+
+				}else{
+
+					var R		= 1;
+
+				}	
+
+				var recargo  	= mygrid.cells(v,13).getValue();
+
+
+
+				var valor    	= parseFloat(mygrid.cells(v,14).getValue());
+
+				var margen	 	= mygrid.cells(v,15).getValue();
+
+				var tipo		= mygrid.cells(v,16).getValue();
+
+				var subtipo		= mygrid.cells(v,17).getValue();
+
+				var unidad1 	= mygrid.cells(v,5).getValue();
+
+				var barra 	= mygrid.cells(v,20).getValue();
+
+				var nomprov 	= mygrid.cells(v,21).getValue();
+
+				var rutprov 	= mygrid.cells(v,22).getValue();
+
+
+
+				if (tipo == 'SV' && subtipo == 'DE'){
+
+					var valorfleteh	= valor_flete_cell[v];
+
+					var um 	= unidad1;
+
+				}else{ 					
+
+					if (isNaN(unidad1)){
+
+						var um 	= unidad1;
+
+					}else{
+
+						var um  = registrofilas[v][unidad1][4];
+
+					}		
+
+					if (isNaN(nomprov)){
+
+						var pvd 	= nomprov;
+
+					}else{
+
+						var pvd  = registrofilasprov[v][nomprov][0];
+
+					}		
+
+				}
+
+/****** MODIFICACION GOA 27-12-2007. Desde ahora el pventa+iva será guardo en la base de datos*****/						
+				var pventaiva = mygrid.cells(v,24).getValue();				
+				//alert(pventaiva);
+				strCell += numero +"|"+ articulo +"|"+ descripcion +"|"+ um +"|"+ cantidad +"|"+ costo +"|"+ precio +"|"+ D +"|"+ R +"|"+ recargo +"|"+ valor +"|"+ margen +"|"+ tipo +"|"+ subtipo +"|"+ valorfleteh +"|"+ barra +"|"+ pvd +"|"+ rutprov +"|"+ pventaiva;
+
+			}
+
+		}		
+
+		document.nueva_cotizacion_03.accion.value='grabar'; 
+
+		document.nueva_cotizacion_03.celdas.value =strCell;
+
+		document.nueva_cotizacion_03.submit();
+
+	}
+
+//-->
+
+</script>
+
+<script>
+
+	{redirecciona}
+
+	var saps = "";
+
+	var mygrid;
+
+	var combobox;
+
+	
+
+	var comboboxproveedor;
+
+	var filas = {filas};
+
+	var filass = {filas};
+
+	var registrofilas = new Array();
+
+	var registrofilasprov = new Array();
+
+	var valor_flete_cell = new Array();
+
+	var falta_stock;
+
+	
+
+	function doOnLoad(){
+
+		mygrid = new dhtmlXGridObject('gridbox');
+
+		buildGrid();
+
+	}
+
+	function buildGrid(){
+
+		mygrid.imgURL = "../../TEMPLATE/general/dhtmlxGrid_1.1/imgs/";
+//	GOA. 20-12-2007. DESDE ahora aparece columna BRuto c/iva
+		mygrid.setHeader("img:[../../IMAGES/eliminar.png],Nº,Artículo,img:[../../IMAGES/buscar.png],Descripción,Um,St,Cant,Costo $,Lista $,Precio $,D,R,Rc,Valor $,Mg %,tipo,subtipo,sap,um,barra,Proveedor, Rut,prov2, Bruto+iva $");
+
+		mygrid.setInitWidths("21,20,79,23,{largo_des},25,{lstock},40,50,45,50,{despacho},{retira},0,55,38,0,0,0,0,0,{mostrar_proveedor},0,0,0");
+
+		mygrid.setColAlign("center,center,right,left,left,center,right,right,right,right,right,center,center,right,right,right,center,center,center,center,center,left,center,left,right");
+
+		//mygrid.setColTypes("ch,ro,ed,ro,ro,co,ro,ed,{editablecalzada},ed,ed,ch,ch,price,ro,ed,ro,ro,ro,ro,ro,co,ro,ro,ro,price");
+		
+		mygrid.setColTypes("ch,ro,ed,ro,ro,co,ro,ed,{editablecalzada},ed,ed,ch,ch,price,ro,ro,ro,ro,ro,ro,ro,co,ro,ro,ro,price");
+		
+		mygrid.setColSorting("int,int,str,na,str,str,int,int,int,int,int,int,int,int,int,int,int,int,int,str,int,str,int");
+
+		mygrid.setColumnColor("white,#F8F3ED,,,#F8F3ED,,#F8F3ED,,#F8F3ED,,,,,,");
+
+		mygrid.setColumnColor("white,white,,,white,,white,,white,,,,,,,,,,");
+
+
+
+		
+
+		mygrid.enableMultiline(true);
+
+		mygrid.enableLightMouseNavigation(true);
+
+	
+
+		mygrid.setEditable(true);
+
+		
+
+	    combobox = mygrid.getCombo(5);
+
+	    comboboxproveedor = mygrid.getCombo(21);
+
+
+
+		mygrid.setOnEditCellHandler(onEditCell);
+
+		mygrid.setOnEnterPressedHandler(onEnterPressed);
+
+		mygrid.setOnCheckHandler(doOnCheked);
+
+		
+
+		mygrid.setSkin("xp");
+
+		mygrid.init();
+
+		
+
+	<!-- BEGIN detalle -->
+
+		{proveedores}
+
+		{unidades}
+
+		var descrip = "{descripcion}";
+
+		mygrid.addRow({numlinea},",,{codprod},...,,{unimed},{stock},{cantidad},{pcosto},{plista},{pventa},,,{cargoflete},{totallinea},{margenlinea},{prod_tipo},{prod_subtipo},{codprod},{unimed},{barra},{nomprov},{rutproveedor},{nomprov},",0);
+
+		mygrid.cells({numlinea},4).setValue(descrip);
+
+		mygrid.cells({numlinea},11).setChecked({id_tipoentrega});
+
+		mygrid.cells({numlinea},12).setChecked({id_tiporetiro});
+
+		mygrid.setCellTextStyle({numlinea},2,"font-weight:bold;");
+
+		mygrid.setCellTextStyle({numlinea},5,"font-weight:bold;");
+
+		mygrid.setCellTextStyle({numlinea},7,"font-weight:bold;");
+
+		mygrid.setCellTextStyle({numlinea},8,"font-weight:{fuentecalzada};");
+
+		mygrid.setCellTextStyle({numlinea},10,"font-weight:bold;");	
+
+		mygrid.setCellTextStyle({numlinea},21,"font-weight:bold;");	
+
+		mygrid.setCellTextStyle({numlinea},{lineamayorista},"font-size:1px;");	
+
+		mygrid.setCellTextStyle({numlinea},23,"font-size:1px;");	
+
+		{calcula}
+
+		{pintar}
+
+
+
+	<!-- END detalle -->
+
+	<!-- BEGIN detalle_flete -->
+
+		{addline}
+
+		{addline2}
+
+		{addline3}
+
+		{addline4}
+
+		{addline5}
+
+		{calcula}
+
+		{pintar}
+
+
+
+	<!-- END detalle_flete -->
+
+		
+
+		if (filas){
+
+			calculatotal(filas);	
+
+		}	
+
+
+
+		filas++;
+
+		
+
+		if (filass!=0){
+
+			mygrid.addRow(filas,",,,..., , , , , , ,,,,,,,,",0);
+
+			for(y=1;y<filas;y++){
+
+				if (mygrid.isItemExists(y)){
+
+					if (mygrid.cells(y,16).getValue() != 'SV' && mygrid.cells(y,17).getValue() != 'DE'){ 
+
+						var um = mygrid.cells(y,5).getValue();
+
+						for(j=0;j<registrofilas[y].length;j++){
+
+							if (registrofilas[y][j][4] == um){
+
+								mygrid.cells(y,9).setValue(registrofilas[y][j][6]);
+
+							}
+
+						}
+
+					}
+
+				}
+
+			}
+
+		}
+
+	numerar(filas);
+
+	mygrid.selectCell(0,2,false,false,true);
+
+	mygrid.setCellTextStyle(1,2,"font-weight:bold;");
+
+	mygrid.setCellTextStyle(1,5,"font-weight:bold;");
+
+	mygrid.setCellTextStyle(1,7,"font-weight:bold;");
+
+	mygrid.setCellTextStyle(1,10,"font-weight:bold;");	
+
+	mygrid.setCellTextStyle(1,21,"font-weight:bold;");	
+
+	mygrid.setCellTextStyle(1,23,"font-size:1px;");	
+
+	mygrid.setCellTextStyle(1,{lineamayorista},"font-size:1px;");	
+
+
+
+	}	
+
+		
+
+	function doOnCheked(rowId,cellInd,state){
+
+		if (mygrid.cells(rowId,16).getValue() == 'SV' && mygrid.cells(rowId,17).getValue() == 'DE'){ 
+
+			
+
+			mygrid.cells(rowId,11).setChecked(true);
+
+			mygrid.cells(rowId,12).setChecked(false);
+
+			mygrid.cells(rowId,11).setDisabled(false);
+
+			mygrid.cells(rowId,12).setDisabled(false);
+
+
+
+			
+
+		}else{
+
+			if (rowId == filas && state){
+
+				mygrid.cells(rowId,0).setChecked(false);
+
+				mygrid.cells(rowId,12).setChecked(false);
+
+				mygrid.cells(rowId,11).setChecked(false);
+
+			}
+
+			if (cellInd == 11 && state){
+
+					mygrid.cells(rowId,12).setChecked(false);
+
+					mygrid.cells(rowId,12).setDisabled(false);
+
+			}
+
+			if (cellInd == 12 && state){
+
+					mygrid.cells(rowId,11).setChecked(false);
+
+					mygrid.cells(rowId,11).setDisabled(false);
+
+			}
+
+		}	
+
+	}
+
+	function getsaps(rowId){
+
+		codigos = saps.split('#');
+
+		if (saps ==""){
+
+			return false;	
+
+		}		
+
+
+
+		saps = saps.substr(codigos[0].length+1,saps.length);
+
+		exec_AJAXRPC('POST','./nueva_cotizacion_03_cgi.php?textobus='+codigos[0]+'&row='+rowId+'&codlocal={codlocalcsum}','escribe');
+
+		return true;
+
+		
+
+	}
+
+	function onEditCell(stage,rowId,cellInd){
+
+	
+
+		if(stage==0){
+
+			
+
+			var n= 1;
+
+			while(n<=filas){
+
+				if (mygrid.isItemExists(n)){
+
+					var sap = mygrid.cells(n,18).getValue();
+
+					mygrid.cells(n,2).setValue(sap);
+
+					var um =  mygrid.cells(n,19).getValue();
+
+					mygrid.cells(n,5).setValue(um);
+
+					var pv =  mygrid.cells(n,23).getValue();
+
+					mygrid.cells(n,21).setValue(pv);
+
+				}
+
+				n++;
+
+			}
+
+			
+
+			
+
+			if (cellInd == 3){ 
+
+				saps = popUpWindowModal('./nueva_cotizacion_03_popup.php?popup=1&codlocal={codlocalcsum}', 100, 100, 750, 400);
+
+				if (saps !=null ){
+
+					getsaps(rowId);
+
+				}				
+
+			}
+
+			
+
+			if (cellInd == 5 && filas != rowId && mygrid.cells(rowId,16).getValue() != 'SV' && mygrid.cells(rowId,17).getValue() != 'DE' ){ 
+
+				var unidad = mygrid.cells(rowId,5).getValue();
+
+				combobox.clear();
+
+				mygrid.cells(rowId,5).setValue('');
+
+				
+
+				
+
+				
+
+				for (i=0;i < registrofilas[rowId].length;i++){	
+
+					
+
+					combobox.put(i,registrofilas[rowId][i][4]);
+
+				}
+
+
+
+				return true;
+
+			}
+
+			
+
+			if (cellInd == 21 && filas != rowId && mygrid.cells(rowId,16).getValue() != 'SV' && mygrid.cells(rowId,17).getValue() != 'DE' ){ 				
+
+
+
+				comboboxproveedor.clear();
+
+				mygrid.cells(rowId,21).setValue('');
+	
+
+				for (i=0;i < registrofilasprov[rowId].length;i++){	
+
+					var bandera = 1;
+
+					for(j=i-1; j>=0; j--){
+
+						if(registrofilasprov[rowId][i][0]==registrofilasprov[rowId][j][0]){
+
+							bandera = 0;
+
+						}
+
+					}
+
+					if(bandera==1){
+
+						comboboxproveedor.put(i,registrofilasprov[rowId][i][0]);
+
+					}
+
+				}
+
+
+
+				return true;
+
+			}
+
+			
+
+			var tipo = mygrid.cells(rowId,16).getValue();
+
+			var subtipo = mygrid.cells(rowId,17).getValue();
+
+			if (tipo== 'SV' && subtipo =='DE' && (cellInd ==7 || cellInd ==5) ){
+
+				return false;
+
+			}
+
+			
+			
+					
+
+			if (cellInd == 2 && filas==rowId){
+
+				return true;
+
+			}else{
+
+				if ((cellInd == 0 || cellInd == 2 ||cellInd == 7 {mayorista} {costocalzada} || cellInd == 10 || cellInd == 11 || cellInd == 12 || cellInd == 15 || cellInd == 21) && filas!=rowId){
+
+					return true;
+
+				}else{
+
+					return false;
+
+				}
+
+			}
+
+			
+
+		}else if(stage==1){
+
+		}else if(stage==2){
+
+			verifico(rowId,cellInd);
+
+			
+
+			if (rowId != filas){
+
+				cantidadxpventa(rowId);
+
+				pintar(rowId);
+
+			}
+
+			if (filas >1){ 
+
+				
+
+				calculatotal(filas-1);
+
+			}
+
+			
+
+		}
+
+	}
+
+	
+
+	function onEnterPressed(rowId,cellInd){
+
+		if (cellInd ==2){
+
+			var text = mygrid.cells(rowId,cellInd).getValue();
+
+			if (esarticulo(text)){
+
+				exec_AJAXRPC('POST','./nueva_cotizacion_03_cgi.php?textobus='+text+'&row='+rowId+'&codlocal={codlocalcsum}','escribe');
+
+			}else{
+
+				if (filas != rowId){
+
+					alert('El Articulo ingresado NO es valido');
+
+					mygrid.editCell();
+
+				}
+
+			}
+
+			
+
+		}
+
+		if (cellInd == 7) {
+
+			
+
+			if (escantidad(mygrid.cells(rowId,cellInd).getValue())) {
+
+				mygrid.selectCell(0,2,false,false,true);
+
+				
+
+			}
+
+			else {
+
+				alert('La Cantidad ingresada NO es valida');
+
+				mygrid.cells(rowId,cellInd).setValue('');
+				mygrid.editCell();
+			}
+
+		}
+
+		if (cellInd == 10) {
+
+			if (mygrid.cells(rowId,cellInd).getValue()<=0){
+
+					alert('El precio debe ser MAYOR o IGUAL a cero');
+
+					mygrid.editCell();
+
+			}else{
+
+				mygrid.selectCell(0,2,false,false,true);
+
+			}
+
+				
+
+		}
+
+		
+
+	}
+
+
+
+	function escantidad(cantidad){
+
+		
+
+		var sw="S"; 
+
+		if (!cantidad.length){
+
+			sw= "N";
+
+		}
+
+		for (x=0; x<cantidad.length; x++){
+
+			v1=cantidad.substr(x,1); 
+
+			if (isNaN(v1) && v1!='.'){ 
+
+				sw= "N";
+
+			} 
+
+		} 
+
+		if (sw=="S"){
+
+			if (parseFloat(cantidad)>0){
+
+				return true;
+
+			}else{
+
+				return false;
+
+			}	
+
+		}else{
+
+			return false;
+
+		} 
+
+	}
+
+	
+
+	function esarticulo(articulo){
+
+		var sw="S"; 
+
+		if (!articulo.length){
+
+			sw= "N";
+
+		}
+
+		for (x=0; x<articulo.length; x++){
+
+			v1=articulo.substr(x,1); 
+
+			if (isNaN(v1)){ 
+
+				sw= "N";
+
+			} 
+
+		} 
+
+		
+
+		if (sw=="S"){
+
+			if (parseFloat(articulo)>0){
+
+				return true;
+
+			}else{
+
+				return false;
+
+			}
+
+		}else{
+
+			return false;
+
+		} 
+
+	}
+
+	
+
+	function verifico(rowId,cellInd){
+
+		
+
+		
+
+		if(cellInd == 5){ 
+
+			
+
+			var unidad = parseFloat(mygrid.cells(rowId,5).getValue());
+
+			
+
+			if (isNaN(unidad)){
+
+				
+
+				var um =  mygrid.cells(rowId,19).getValue();
+
+				mygrid.cells(rowId,5).setValue(um);
+
+				
+
+
+
+			}else{
+
+					if (unidad < registrofilas[rowId].length){
+
+						
+
+						mygrid.cells(rowId,6).setValue(registrofilas[rowId][unidad][5]);
+
+						mygrid.cells(rowId,8).setValue(registrofilas[rowId][unidad][7]);
+
+						mygrid.cells(rowId,9).setValue(registrofilas[rowId][unidad][6]);
+
+						mygrid.cells(rowId,10).setValue(registrofilas[rowId][unidad][6]);
+
+						mygrid.cells(rowId,16).setValue(registrofilas[rowId][unidad][9]);
+
+						mygrid.cells(rowId,17).setValue(registrofilas[rowId][unidad][10]);
+
+						mygrid.cells(rowId,19).setValue(registrofilas[rowId][unidad][4]);
+
+						cantidadxpventa(rowId);
+
+					}else{
+
+						
+
+						var um =  mygrid.cells(rowId,19).getValue();
+
+						mygrid.cells(rowId,5).setValue(um);
+
+						
+
+					}
+
+			}
+
+
+
+		}
+
+		if(cellInd == 15){
+			
+			//margenxutilidad(rowId);	
+		}
+		if(cellInd == 21){ 
+
+		
+
+			var proveedor = parseFloat(mygrid.cells(rowId,21).getValue());
+
+			if (isNaN(proveedor)){
+
+				
+
+				var pv =  mygrid.cells(rowId,23).getValue();
+
+				mygrid.cells(rowId,21).setValue(pv);
+
+				
+
+	
+
+			}else{
+
+					if (proveedor <= registrofilas[rowId].length){
+
+						mygrid.cells(rowId,21).setValue(registrofilasprov[rowId][proveedor][0]);
+
+						mygrid.cells(rowId,23).setValue(registrofilasprov[rowId][proveedor][0]);
+
+						mygrid.cells(rowId,22).setValue(registrofilasprov[rowId][proveedor][1]);
+
+	
+
+									
+
+					}else{
+
+						
+
+						var pv =  mygrid.cells(rowId,23).getValue();
+
+						mygrid.cells(rowId,21).setValue(pv);
+
+						
+
+					}
+
+			}
+
+
+
+		}
+
+		
+
+	}
+
+
+
+	function cantidadxpventa(fila){
+
+		
+
+		var cantidad = parseFloat(mygrid.cells(fila,7).getValue());
+
+		var pcosto	 = parseFloat(mygrid.cells(fila,8).getValue());
+
+		var pventa   = parseFloat(mygrid.cells(fila,10).getValue());
+
+		var precargo = parseFloat(mygrid.cells(fila,13).getValue());
+
+		
+
+		if (isNaN(cantidad)){
+
+			cantidad = 0;
+
+		}
+
+		if (isNaN(pventa)){
+
+			pventa = 0;
+
+		} 
+
+		if (isNaN(pcosto)){
+
+			pcosto = 0;
+
+		}
+
+		var resul = Math.round((pventa + precargo) * cantidad);
+		//var resul = (pventa + precargo) * cantidad;
+//	GOA. 20-12-2007. Cálculo de bruto + iva
+		var brutoCiva = Math.round(resul + (resul * ({iva}/100)));
+ 		//var brutoCiva = resul + (resul * ({iva}/100));
+			
+		mygrid.cells(fila,24).setValue(brutoCiva);
+		
+		mygrid.cells(fila,14).setValue(resul);
+
+		if (pventa > 0) {
+
+			var numero = new oNumero(eval((Math.round((((pventa - pcosto)*100)/pventa)*100))/100));
+			//var numero = new oNumero(eval(((((pventa - pcosto)*100)/pventa)*100)/100));
+			//if ( eval(((((pventa - pcosto)*100)/pventa)*100)/100) <= -10000) {
+			if ( eval((Math.round((((pventa - pcosto)*100)/pventa)*100))/100) <= -10000) {
+			
+
+				 numero = new oNumero(-9999.99);
+
+			}
+
+		}
+
+		else {
+
+			var numero = new oNumero(-9999.99);
+
+		}
+
+			
+
+		mygrid.cells(fila,15).setValue(numero.formato(2, true));
+
+	
+
+		
+
+	
+
+	}
+	function margenxutilidad(fila){
+	
+		var cantidad = parseFloat(mygrid.cells(fila,7).getValue());
+
+		var pcosto	 = parseFloat(mygrid.cells(fila,8).getValue());
+		
+		var margen	 = parseFloat(mygrid.cells(fila,15).getValue());
+
+		//alert(' canti '+cantidad+' pcosto '+ pcosto+' margen '+margen);
+		
+		if (isNaN(cantidad)){
+
+			cantidad = 0;
+
+		}
+		if (isNaN(pcosto)){
+
+			pcosto = 0;
+
+		}
+		if (isNaN(margen)){
+
+			margen = 0;
+
+		}
+	
+		
+		
+		var pventa = (pcosto*((margen/100)+1))*cantidad;
+		
+		mygrid.cells(fila,10).setValue(parseFloat(pventa));
+		
+		//alert('pventa ' + pventa + ' canti '+cantidad+' pcosto '+ pcosto+' margen '+margen);
+	}
+	
+
+	function pintar(fila){
+
+			
+
+		var maximo = {maximo};// maximo margen para pintar yellow
+
+		var minimo = {minimo};// minimo margen para pintar yellow
+
+		if (mygrid.cells(fila,15).getValue() != ''){
+
+			
+
+			if ((mygrid.cells(fila,15).getValue()<= maximo)&&(mygrid.cells(fila,15).getValue()> minimo)){
+
+				
+
+				//mygrid.setRowTextStyle(fila,"background-color : #FFFF99;"); //aamrillo
+
+				mygrid.cells(fila,0).setBgColor('#FFFF99');
+
+				mygrid.cells(fila,1).setBgColor('#FFFF99');
+
+				mygrid.cells(fila,2).setBgColor('#FFFF99');
+
+				mygrid.cells(fila,3).setBgColor('#FFFF99');
+
+				mygrid.cells(fila,4).setBgColor('#FFFF99');
+
+				mygrid.cells(fila,5).setBgColor('#FFFF99');
+
+     			mygrid.cells(fila,6).setBgColor('#FFFF99');
+
+     			mygrid.cells(fila,7).setBgColor('#FFFF99');
+
+     			mygrid.cells(fila,8).setBgColor('#FFFF99');
+
+     			mygrid.cells(fila,9).setBgColor('#FFFF99');
+
+     			mygrid.cells(fila,10).setBgColor('#FFFF99');
+
+     			mygrid.cells(fila,11).setBgColor('#FFFF99');
+
+     			mygrid.cells(fila,12).setBgColor('#FFFF99');
+
+    			mygrid.cells(fila,14).setBgColor('#FFFF99');
+
+    			mygrid.cells(fila,15).setBgColor('#FFFF99');
+
+    			mygrid.cells(fila,21).setBgColor('#FFFF99');    			
+
+			}else{ 
+
+				if (mygrid.cells(fila,15).getValue()<= minimo){
+
+				
+
+					//mygrid.setRowTextStyle(fila,"background-color : #FFD5D6;"); //rojo
+
+					mygrid.cells(fila,0).setBgColor('#FF4040');
+
+					mygrid.cells(fila,1).setBgColor('#FF4040');
+
+					mygrid.cells(fila,2).setBgColor('#FF4040');
+
+					mygrid.cells(fila,3).setBgColor('#FF4040');
+
+					mygrid.cells(fila,4).setBgColor('#FF4040');
+
+					mygrid.cells(fila,5).setBgColor('#FF4040');
+
+	     			mygrid.cells(fila,6).setBgColor('#FF4040');
+
+	     			mygrid.cells(fila,7).setBgColor('#FF4040');
+
+	     			mygrid.cells(fila,8).setBgColor('#FF4040');
+
+	     			mygrid.cells(fila,9).setBgColor('#FF4040');
+
+	     			mygrid.cells(fila,10).setBgColor('#FF4040');
+
+	     			mygrid.cells(fila,11).setBgColor('#FF4040');
+
+	     			mygrid.cells(fila,12).setBgColor('#FF4040');
+
+ 					mygrid.cells(fila,14).setBgColor('#FF4040');
+
+ 					mygrid.cells(fila,15).setBgColor('#FF4040');
+
+ 					mygrid.cells(fila,21).setBgColor('#FF4040');					
+
+				}else{
+
+				
+
+					//mygrid.setRowTextStyle(fila,"background-color : white;"); //blanco
+
+					mygrid.cells(fila,0).setBgColor('white');
+
+					//mygrid.cells(fila,1).setBgColor('#F8F3ED');
+
+					mygrid.cells(fila,1).setBgColor('white');
+
+					mygrid.cells(fila,2).setBgColor('white');
+
+					mygrid.cells(fila,3).setBgColor('white');
+
+					//mygrid.cells(fila,4).setBgColor('#F8F3ED');
+
+					mygrid.cells(fila,4).setBgColor('white');
+
+					mygrid.cells(fila,5).setBgColor('white');
+
+     				//mygrid.cells(fila,6).setBgColor('#F8F3ED');
+
+     				mygrid.cells(fila,6).setBgColor('white');
+
+     				mygrid.cells(fila,7).setBgColor('white');
+
+     				//mygrid.cells(fila,8).setBgColor('#F8F3ED');
+
+     				mygrid.cells(fila,8).setBgColor('white');
+
+     				mygrid.cells(fila,9).setBgColor('white');
+
+     				mygrid.cells(fila,10).setBgColor('white');
+
+     				mygrid.cells(fila,11).setBgColor('white');
+
+     				mygrid.cells(fila,12).setBgColor('white');
+
+     				mygrid.cells(fila,14).setBgColor('white');
+
+     				mygrid.cells(fila,15).setBgColor('white');
+
+     				mygrid.cells(fila,21).setBgColor('white');     				
+
+					
+
+				}
+
+			}
+
+		}
+
+	}
+
+	
+
+	function calculatotal(fila){
+
+			
+
+			var total = 0;
+
+			var sumpc = 0;
+
+			var sumcc = 0;
+
+			var existefilavalida = false;
+
+			
+
+			for(s=1;s<=fila;s++){
+
+				
+
+				if (mygrid.isItemExists(s)){
+
+					existefilavalida = true;
+
+					var valor = parseFloat(mygrid.cells(s,14).getValue());
+
+			        total += valor;
+
+					
+
+					var cantidad = parseFloat(mygrid.cells(s,7).getValue());
+
+					var pventa   = parseFloat(mygrid.cells(s,10).getValue());
+
+					var pcosto	 = parseFloat(mygrid.cells(s,8).getValue());
+
+					if (!isNaN(cantidad)){
+
+						if (!isNaN(pventa)){
+
+							if (!isNaN(pcosto)){
+
+								sumpc += cantidad * pventa;		
+
+								sumcc += pcosto * cantidad;
+
+							}
+
+						}			
+
+					}
+
+				}	
+
+		    }
+
+			
+
+			if (sumpc > 0) {
+
+		    	margen = (Math.round((((sumpc)-sumcc) * 100/ sumpc)*100))/100;
+
+				if (margen <= -10000) {			
+
+					 margen = -9999.99;
+
+				}
+
+			}
+
+		    else {
+
+		    	if (existefilavalida)
+
+		    		margen = -9999.99;
+
+		    	else
+
+		    		margen = 0;
+
+		    }
+
+
+
+			window.document.nueva_cotizacion_03.total_cotizacion.value = total;
+
+			var ivatotal = total*({iva}/100);
+
+			
+
+			window.document.nueva_cotizacion_03.iva.value = addCommas(Math.round(ivatotal));
+			//window.document.nueva_cotizacion_03.iva.value = addCommas(ivatotal);
+			
+			window.document.nueva_cotizacion_03.totalneto.value = addCommas(total);
+
+			total += ivatotal;
+
+			window.document.nueva_cotizacion_03.total.value = addCommas(Math.round(total));
+			//window.document.nueva_cotizacion_03.total.value = addCommas(total);
+			
+			window.document.nueva_cotizacion_03.total_cotizacion.value = total;
+
+
+
+ 			
+
+			window.document.nueva_cotizacion_03.margen.value = margen;
+
+			nueva_cotizacion_03.margenvalor.value = nueva_cotizacion_03.margen.value;
+
+			/*
+
+			var maximo = {maximo};// maximo margen para pintar yellow
+
+			var minimo = {minimo};// minimo margen para pintar yellow
+
+			 if ((margen <= maximo) && (margen > minimo)){
+
+			 	window.document.nueva_cotizacion_03.margen.style.backgroundColor='#FFFF99';
+
+			 }else{
+
+			 	if (margen <= minimo){
+
+			 		window.document.nueva_cotizacion_03.margen.style.backgroundColor='#FF4040';
+
+			 	}else{
+
+ 					window.document.nueva_cotizacion_03.margen.style.backgroundColor='#ECE9D8';
+
+			 	}
+
+			 }
+
+			 */
+
+			 
+
+			 var maximo = {MARGEN_COTIZADOR}
+
+			 if (margen <= maximo){
+
+				 window.document.nueva_cotizacion_03.margen.style.backgroundColor='#FF4040';
+
+			 }else{
+
+			 	window.document.nueva_cotizacion_03.margen.style.backgroundColor='#ECE9D8';
+
+			 }
+
+		
+
+	}
+
+	
+
+	function escribe(text){
+
+
+		//alert(  filas+' esto viene en el string: '+text);
+		text1 = text.split("|");
+
+		text2= text.split("<#>");		 
+
+		text3= text.split("~");
+
+		var x = text2.length;
+
+		x--;
+
+		var xx = text3.length;
+
+		var registro = new Array();
+
+		var registroprov = new Array();
+
+		for(i=0;i<x;i++){
+
+			datos=text2[i].split("|");
+
+			registro[i] = datos;
+
+		} 
+
+
+
+		
+
+		var sel_prov = new Array();
+
+		var datosprov = new Array();
+
+		datosprov[0] = 'Seleccione...';
+
+		datosprov[1] = '0';		
+
+		registroprov[0] = datosprov;
+
+		reg=1;
+
+		
+
+		for (i=1;i<xx;i++){ 
+
+			datosprov=text3[i].split("|");
+
+			registroprov[reg] = datosprov;
+
+			reg++;
+
+		}
+
+		
+
+		var tt = filas;
+
+		//registrofilas[tt]= registro;
+
+		//registrofilasprov[tt]= registroprov;
+
+		registrofilas[text1[0]]= registro;
+		registrofilasprov[text1[0]]= registroprov;
+
+
+
+
+		if(document.nueva_cotizacion_03.tipoventa.value==1){
+
+			if(text1[9]=='SV' && text1[10]=='DE'){
+
+				alert("El producto flete no puede ser agregado en este tipo de venta");
+
+				mygrid.cells(text1[0],2).setValue(' ');
+
+				mygrid.editCell();
+
+				return false;
+
+			}
+
+		}		
+
+		if (text1[0] == "no"){
+
+			//alert('Esto esta validando'+text1[0]);
+			var muestra = mygrid.cells(text1[1],1).getValue();
+
+			alert("El Artículo "+ muestra +" NO existe");
+
+			mygrid.editCell();
+
+		}else{
+
+			var m = 1;
+
+			var noesta = true;
+
+			
+
+			while(m<=filas){
+
+				if (mygrid.isItemExists(m) && m != text1[0]){
+
+					var tengo = mygrid.cells(m,2).getValue();
+
+					
+
+					if (tengo == text1[1]){
+
+						noesta = false;
+
+					}
+
+				}
+
+				m++;
+
+			}
+
+			
+
+//	RGM. 25-08-2007. Ahora no será posible agregar el mismo SAP más de una vez en la CO		
+
+     		if (!noesta && !confirm('El Articulo que intenta Agregar ya existe en el Cotizador. ¿ Desea continuar ?')){
+//	GOA. 20-12-2007. Ahora SI será posible agregar el mismo SAP más de una vez en la CO
+
+//			if (!noesta && !alert('El Articulo que intenta Agregar ' + text1[3] + '(' + text1[1] + ') ya existe en el Cotizador')){
+
+				if (!getsaps(filas)){
+
+					var sap = mygrid.cells(text1[0],18).getValue();
+
+					mygrid.cells(text1[0],2).setValue(sap);
+
+					mygrid.selectCell(0,2,false,false,true);
+
+				}
+
+				
+
+			}else{	
+
+				var tipoventa={id_tipoventa};
+
+				if ((text1[7] > 0) || (tipoventa==1)){
+//	GOA. 12-12-2007. Ahora será posible agregar productos con precio = 0	
+					//if (text1[6] > 0){
+
+						if (filas == text1[0]){
+
+							filas++;
+
+							mygrid.addRow(filas,",,,...,,,,,,,,,,,,,,,,,,,,",0);	
+
+						}
+
+			//ESTO ES PARA CONTROLAR ESTILOS Y VALORES AL MOMENTO DE IR CARGANDO LOS PRODUCTOS DE LA GRILLA
+
+						mygrid.setCellTextStyle(text1[0],2,"font-weight:bold;");
+
+						mygrid.setCellTextStyle(text1[0],5,"font-weight:bold;");
+
+						mygrid.setCellTextStyle(text1[0],7,"font-weight:bold;");
+
+						mygrid.setCellTextStyle(text1[0],8,"font-weight:{fuentecalzada};");
+
+						mygrid.setCellTextStyle(text1[0],10,"font-weight:bold;");	
+
+						mygrid.setCellTextStyle(text1[0],21,"font-weight:bold;");	
+
+						mygrid.setCellTextStyle(text1[0],23,"font-size:1px;");	
+
+						mygrid.setCellTextStyle(text1[0],{lineamayorista},"font-size:1px;");	
+
+						// Artículo 
+						mygrid.cells(text1[0],2).setValue(text1[1]);
+					
+						mygrid.cells(text1[0],18).setValue(text1[1]);
+
+						mygrid.cells(text1[0],3).setValue("...");
+						//Descripción
+						mygrid.cells(text1[0],4).setValue(text1[3]);
+						//stock
+						mygrid.cells(text1[0],6).setValue(text1[5]);
+//	GOA. 26-12-2007. Desde ahora la cantidad se inicia en blanco						
+						//mygrid.cells(text1[0],7).setValue(1);
+						//precio costo
+						mygrid.cells(text1[0],8).setValue(text1[7]);
+						//precio venta
+						mygrid.cells(text1[0],9).setValue(text1[6]);
+					
+						mygrid.cells(text1[0],10).setValue(text1[6]);
+						
+						mygrid.cells(text1[0],16).setValue(text1[9]);
+						
+						mygrid.cells(text1[0],17).setValue(text1[10]);
+
+						mygrid.cells(text1[0],20).setValue(text1[2]);
+
+
+
+						mygrid.cells(text1[0],22).setValue(0);
+
+
+
+						if (text1[9]== 'SV' && text1[10] =='DE'){
+
+							mygrid.cells(text1[0],5).setValue('');
+
+							mygrid.cells(text1[0],11).setChecked(true);
+
+							mygrid.cells(text1[0],19).setValue(text1[4]);
+							
+							mygrid.cells(text1[0],7).setValue(1);
+
+						}else{
+							
+							mygrid.cells(text1[0],12).setChecked(true);
+							
+							mygrid.cells(text1[0],5).setValue(text1[4]);
+
+							mygrid.cells(text1[0],19).setValue(text1[4]);
+							
+							//nombre proveedor
+							mygrid.cells(text1[0],21).setValue(registrofilasprov[text1[0]][0][0]);
+
+							mygrid.cells(text1[0],23).setValue(registrofilasprov[text1[0]][0][0]);							
+
+						}
+
+						cantidadxpventa(text1[0]);
+
+						calculatotal(filas-1);
+
+						pintar(text1[0]);
+
+						if (text1[9]== 'SV' && text1[10] =='DE'){
+
+							if (!getsaps(filas)){
+
+								mygrid.selectCell(1,10,false,false,true);
+
+							}
+
+							
+
+						}else{
+
+							if (!getsaps(filas)){
+
+								mygrid.selectCell(1,7,false,false,true);
+
+								
+
+							}
+
+						}					
+//	GOA. 12-12-2007. Ahora será posible agregar productos con precio = 0
+					//}
+					//else
+					//{
+					/*
+						alert('El Articulo '+text1[1]+' NO puede ser agregado ya que presenta un Precio MENOR o IGUAL a cero')
+
+						if (text1[0] == (filas-1)){
+
+							mygrid.deleteRow(text1[0]);
+
+						}else{
+
+							if (!getsaps(filas)){
+
+								var sap = mygrid.cells(text1[0],18).getValue();
+
+								mygrid.cells(text1[0],2).setValue(sap);
+
+								mygrid.selectCell(0,2,false,false,true);
+
+							}
+
+						}
+
+					
+					*/
+					//}
+
+					numerar(filas);
+					
+
+				}else{
+
+					alert('El Articulo '+text1[1]+' NO puede ser agregado ya que presenta un Precio de Costo  MENOR o IGUAL a cero')
+
+					if (text1[0] == (filas-1)){
+
+						mygrid.deleteRow(text1[0]);
+
+					}else{
+
+						if (!getsaps(filas)){
+
+							var sap = mygrid.cells(text1[0],18).getValue();
+
+							mygrid.cells(text1[0],2).setValue(sap);
+
+							mygrid.selectCell(0,2,false,false,true);
+
+						}
+
+					}
+
+
+
+				}
+
+			}
+
+		}
+
+	}
+
+	function eliminar(){
+
+		var s= 1;
+
+		while(s<=filas){
+
+			if (mygrid.isItemExists(s)){
+
+				if (mygrid.cells(s,0).isChecked()){
+
+					mygrid.deleteRow(s);
+
+					
+
+				}
+
+			}
+
+			s++;
+
+		}
+
+		calculatotal(filas-1);
+
+		numerar(filas);
+
+		mygrid.selectCell(0,2,false,false,true);
+
+		
+
+		window.document.nueva_cotizacion_03.eliminarchk.checked = false;
+
+		window.document.nueva_cotizacion_03.margen.style.backgroundColor='#ECE9D8';
+
+		
+
+	}
+
+	
+
+	function seleccionar_todos(){
+
+		if (window.document.nueva_cotizacion_03.eliminarchk.checked){
+
+			for(s=1;s<=filas;s++){
+
+				if (mygrid.isItemExists(s) && s!=filas){
+
+					mygrid.cells(s,0).setChecked(true);
+
+				}
+
+			}
+
+		}else{
+
+			for(s=1;s<=filas;s++){
+
+				if (mygrid.isItemExists(s) && s!=filas){
+
+					mygrid.cells(s,0).setChecked(false);
+
+				}
+
+			}
+
+		}
+
+	}
+
+	function seleccionar_todos_R(){
+
+		if (window.document.nueva_cotizacion_03.sel_r.checked){
+
+			for(s=1;s<=filas;s++){
+
+				if (mygrid.isItemExists(s) && s!=filas){
+				
+					if ( mygrid.cells(s,16).getValue() != 'SV' && mygrid.cells(s,17).getValue() != 'DE'){
+						mygrid.cells(s,12).setChecked(true);
+					}
+
+				}
+
+			}
+
+		}else{
+
+			for(s=1;s<=filas;s++){
+
+				if (mygrid.isItemExists(s) && s!=filas){
+
+					mygrid.cells(s,12).setChecked(false);
+
+				}
+
+			}
+
+		}
+		for(s=1;s<=filas;s++){
+
+				if (mygrid.isItemExists(s) && s!=filas ){
+					if ( mygrid.cells(s,16).getValue() != 'SV' && mygrid.cells(s,17).getValue() != 'DE'){
+						mygrid.cells(s,11).setChecked(false);
+					}
+				}
+
+		}
+		window.document.nueva_cotizacion_03.sel_d.checked = false;
+		
+		
+
+	}	
+
+	function seleccionar_todos_D(){
+
+		if (window.document.nueva_cotizacion_03.sel_d.checked){
+
+			for(s=1;s<=filas;s++){
+
+				if (mygrid.isItemExists(s) && s!=filas){
+
+					mygrid.cells(s,11).setChecked(true);
+
+				}
+
+			}
+
+		}else{
+
+			for(s=1;s<=filas;s++){
+
+				if (mygrid.isItemExists(s) && s!=filas){
+					
+					if ( mygrid.cells(s,16).getValue() != 'SV' && mygrid.cells(s,17).getValue() != 'DE'){
+						mygrid.cells(s,11).setChecked(false);
+					}
+				}
+
+			}
+
+		}
+		
+		for(s=1;s<=filas;s++){
+
+				if (mygrid.isItemExists(s) && s!=filas){
+
+					mygrid.cells(s,12).setChecked(false);
+
+				}
+
+		}
+		window.document.nueva_cotizacion_03.sel_r.checked = false;
+
+	}	
+	function numerar(filas){
+
+		var cont = 1;
+
+		for(y=1;y<= filas;y++){
+
+			if (mygrid.isItemExists(y)){
+
+				mygrid.cells(y,1).setValue(cont);
+
+				cont++;
+
+			}
+
+		}
+
+	}
+
+		
+
+</script>
+
+
+
+<link href="../../INCLUDE/estilos.css" rel="stylesheet" type="text/css">
+
+<link href="../general/estilos.css" rel="stylesheet" type="text/css">
+
+<body onLoad="doOnLoad()">
+
+<table width="780" border="0" cellpadding="2" cellspacing="2">
+
+  <tr>
+
+    <td width="390" height="44" class="titulonormal">
+
+    	Paso 4/5 Ingresar productos a Cotización</td>
+
+    <td width="290" class="titulonormal">
+
+    	<table  border="0" align="right" cellpadding="0" cellspacing="0">
+
+    		<tr>
+
+	        	<td><img src="../../IMAGES/1a.gif" width="40" height="40"></td>
+
+	            <td><img src="../../IMAGES/redarrow.gif" width="24" height="20"></td>
+
+	            <td><img src="../../IMAGES/2a.gif" width="40" height="40"></td>
+
+	            <td><img src="../../IMAGES/redarrow.gif" width="24" height="20"></td>
+
+	            <td><img src="../../IMAGES/3a.gif" width="40" height="40"></td>
+
+	            <td><img src="../../IMAGES/redarrow.gif" width="24" height="20"></td>
+
+	            <td><img src="../../IMAGES/4b.gif" width="40" height="40"></td>
+
+	            <td><img src="../../IMAGES/redarrow.gif" width="24" height="20"></td>
+
+	            <td><img src="../../IMAGES/5a.gif" width="40" height="40"></td>
+
+	        </tr>
+
+    	</table>
+
+    </td>
+
+  </tr>
+
+</table>
+
+
+
+
+
+		<SCRIPT LANGUAGE="JavaScript">
+
+			document.write(getCalendarStyles());
+
+		</SCRIPT>
+
+		
+
+		<SCRIPT LANGUAGE="JavaScript" ID="js17">
+
+			var ayer = new Date();
+
+			ayer.setDate(ayer.getDate()-1);
+
+			var cal1 = new CalendarPopup("testdiv1");
+
+			cal1.offsetX = -150;
+
+			cal1.offsetY = -100;
+
+			cal1.addDisabledDates(null,formatDate(ayer,"yyyy-MM-dd"));
+
+			
+
+			
+
+			var cal2 = new CalendarPopup("testdiv1");
+
+			cal2.offsetX = -150;
+
+			cal2.offsetY = -100;
+
+			cal2.addDisabledDates(null,formatDate(ayer,"yyyy-MM-dd"));
+
+	    </SCRIPT>  
+
+	<table width="780" border="0" cellspacing="2" cellpadding="2">
+
+    	<FORM NAME="nueva_cotizacion_03" METHOD="POST" >
+
+		<INPUT TYPE="hidden" NAME="accion" VALUE="grabar">
+
+		<INPUT TYPE="hidden" NAME="celdas" VALUE="">
+
+		<INPUT TYPE="hidden" NAME="tipoventa" VALUE="{id_tipoventa}">
+
+		<INPUT TYPE="hidden" NAME="id_cotizacion" VALUE="{id_cotizacion}">
+
+		<INPUT TYPE="hidden" NAME="total_cotizacion" VALUE="">
+
+		<INPUT TYPE="hidden" NAME="margenvalor" VALUE="">
+
+		<INPUT TYPE="hidden" NAME="prorrateoflete" VALUE="">
+
+		<tr>
+
+			<td class="textonormal">
+
+				<fieldset>
+
+					  <legend>Datos de cotizaci&oacute;n</legend>
+
+	    	  <table width="100%" height="10"  border="0" cellpadding="0" cellspacing="0" class="textonormal">
+
+			              <tr>
+
+							<th width="10%" height="19" align="left">Rut</th>
+
+			                <td class="textonormal" width="14%">{rutcliente}</td>
+
+			                <th width="9%" align="left" class="textonormal">Cliente</th>
+
+			                <td colspan ="2" class="textonormal">{razonsoc}</td>
+
+			                <th width="14%" align="left" class="textonormal">Nota</th>
+
+			                <td colspan ="2" class="textonormal"><input name="nota" type="text" size="45" maxlength="255" value="{nota}" class="textonormal"></td>
+
+			              </tr>
+
+			              <tr>
+
+							<th  width="10%" height="19" align="left">Nº CO</th>
+
+			                <td  width="14%">{id_cotizacion}</td>
+
+			                <th  width="9%" align="left">Tipo Cliente</th>
+
+			                <td  width="14%">{tipocliente}</td>
+
+			                <th  width="12%" align="left">Condición</th>
+
+			                <td  width="14%">{condicion}</td>
+
+			                <th  width="15%" align="left">Disponible</th>
+
+			                <td  width="12%" class="textodisponible">$ {saldof}</td>
+
+			              </tr>
+
+			              <tr>
+
+			                <th height="24" align="left">Almac&eacute;n</th>
+
+			                <td>{nom_localcsum}</td>
+
+			                <th align="left">Tipo Venta</th>
+
+			                <td>{nomtipoventa}</td>
+
+			                <th align="left">V&aacute;lido Desde</th>
+
+			                <td><input name ="validdesde" class="textonormal" readonly id="fec_valid" type="text" size=10 maxlength=10 value="{validdesde}" onClick="cal1.select(document.forms[0].fec_valid,'anchor1','dd/MM/yyyy'); return false;">
+
+                              <a href="#" onClick="cal1.select(document.forms[0].fec_valid,'anchor1','dd/MM/yyyy'); return false;" name="anchor1" id="anchor1"> <img src="../../IMAGES/cal.gif" width="16" height="16" border="0" title="Valida Desde"> </a></td>
+
+			                <th align="left">V&aacute;lido Hasta</th>
+
+		                    <td><span class="userinput">
+
+		                      <input name ="validhasta" class="textonormal" readonly id="fec_valid2" type="text" size=10 maxlength=10 value="{validhasta}" onClick="cal2.select(document.forms[0].fec_valid2,'anchor2','dd/MM/yyyy'); return false;">
+
+                              <a href="#" onClick="cal2.select(document.forms[0].fec_valid2,'anchor2','dd/MM/yyyy'); return false;" name="anchor2" id="anchor2"> <img src="../../IMAGES/cal.gif" width="16" height="16" border="0" title="Valida Hasta"> </a></span>
+
+                              <div id="testdiv1" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></div></td>
+
+			              </tr>
+
+	            </table>
+
+			  </fieldset>			</td>
+
+		</tr>
+
+        <tr>
+
+       		<td>
+
+<!-- ////////////////////////////////////GRILLA////////////////////////////////////// -->			
+
+				<div style="background-color:whitesmoke;width:100%;border:0px solid;border-color:lightgrey;padding:0px;">
+
+					<div id="gridbox" width="100%" height="250">					</div>	
+
+				</div>			</td>
+
+    	</tr>
+
+      	<tr>
+
+       	  <td>
+
+			
+
+<table width="100%" border="0" align="right" bordercolor="#FFFFCC" bgcolor="#ECE9D8">
+
+  <tr>
+
+    <th width="68%" scope="col"><table width="99%" border="0" align="left" cellpadding="0" cellspacing="0" bgcolor="#ECE9D8">
+
+               		<tr>
+
+						<td width="128" height="27">
+
+			    	  <input name="Eliminar" type="button" class="textonormal" value="Eliminar Seleccionados" onClick="eliminar()">					    </td>
+
+       					<td width="128" class="textonormal" >
+
+   						  <div align="left">
+
+					    <input type="checkbox" name="sel_r" value="checkbox" onClick="seleccionar_todos_R()">
+
+					    
+					    Todos	R			 	  </div></td>
+						<td width="20" align="right" class="textoespecial1"></td>
+     		            <td width="66" align="right" class="textoespecial1">Margen </td>
+
+         		        <td width="62" align="right" ><span class="textoespecial1">
+
+         		          <input name="margen" class="textoespecial1" type="text" readonly value="0" size="4">
+
+       		          </span></td>
+
+       		          <td width="102" align="right" class="textoespecial1"><div align="left">%</div></td>
+           		    </tr>
+
+               		<tr>
+
+               		  <td width="128" class="textonormal" ><div align="left">
+
+					    <input type="checkbox" name="eliminarchk" value="checkbox" onClick="seleccionar_todos()">
+
+					  Seleccionar Todos				 	  </div></td>
+					  <td width="128" class="textonormal" >
+					  	<div align="left">
+						<input type="checkbox" name="sel_d" value="checkbox" onClick="seleccionar_todos_D()">
+					  Todos D				 	  </div></td>
+               		  <td class="textonormal" ><div align="right"><a href="nueva_cotizacion_02.php?rut={rutcliente1}"><img src="../../IMAGES/anterior.gif"  alt="prueba" width="23" height="23" border="0" title="Anterior" ></a></div></td>
+
+               		  <td align="right"><div align="center"><span class="textonormal">Anterior</span></div></td>
+
+               		  <td align="right" ><div align="center"><span class="textonormal">Siguiente</span></div></td>
+
+               		  <td align="right" class="textoespecial1"><div align="left"><span class="textonormal"><a href="#" onClick="valida_formulario()"><img src="../../IMAGES/siguiente.gif" alt="prueba" width="23" height="23" border="0" title="Siguiente" ></a></span></div></td>
+           		  </tr>
+
+		    </table></th>
+
+    <th width="32%" scope="col"><table width="97%" border="0" align="right" cellpadding="0" cellspacing="0" class="textoespecial1">
+
+      <tr>
+
+        <th width="63%" scope="col">Total Neto $</th>
+
+        <th width="37%" scope="col">
+
+            <input name="totalneto" type="text" class="textoespecial1" id="totalneto" value="0" size="10" readonly>
+
+        </th>
+
+      </tr>
+
+      <tr>
+
+        <td>Iva {iva}%</td>
+
+        <td>
+
+            <input name="iva" type="text" class="textoespecial1" id="iva" value="0" size="10" readonly>
+
+        </td>
+
+      </tr>
+
+      <tr>
+
+        <td>Total $</td>
+
+        <td>
+
+            <input name="total" class="textoespecial1" readonly type="text" value="0" size="10" >
+
+        </td>
+
+      </tr>
+
+    </table></th>
+
+  </tr>
+
+</table></td>
+
+		</tr>
+
+		<tr>
+
+			<td colspan="50">			</td>
+
+    	</tr>
+
+	 </form>
+
+</table>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>Validacion de Usuario para Reimpresion</title>
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+<script language="javascript" src="../../TEMPLATE/general/checkfield.js"></script>
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+<script language="javascript" src="../../TEMPLATE/general/popup.js"></script>
+
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
+<table width="303"  border="0" align="left" cellpadding="0" cellspacing="0">
+	<tr>
+	    <td height="7" valign="top" background=""><table width="100%" border="0" cellspacing="0" cellpadding="0"
+	      <tr>
+			<form name="validacion" action=../../COMMAND/ordenent/validacion_usuario_ordenent.php method=post>
+			<INPUT TYPE="hidden" name="action" value="login">
+			<INPUT TYPE="hidden" name="id_ordenent" value={idor}>
+			<INPUT TYPE="hidden" name="cadenapo" value={cadenapo}>
+	        <td width="303" height="129" valign="bottom" background="../../IMAGES/login.png"><TABLE width="100%" border="0" cellpadding="0" cellspacing="1">
+	          <TR>
+	            <td width="15%"></td><TD width="25%" align="center" class="textoLog">Usuario: </TD>
+	            <TD width="70%"><input name="usuario" type="text" size="10" maxlength=8></TD>
+	            <TD width="5%">&nbsp;</TD>
+	          </TR>
+	          <TR>
+	            <td></td><TD align="center" class="textoLog">Clave: </TD>
+	            <TD><input name="clave" type="password" size="10" maxlength=8></TD>
+	            <TD>&nbsp;</TD>
+	          </TR>
+	          <TR>
+	            <TD height="8" align="right"><img src="../../IMAGES/spacer.gif" width="8" height="8"></TD>
+	            <TD height="8" align="left"><img src="../../IMAGES/spacer.gif" width="8" height="8"></TD>
+	            <TD height="8" align="right"><img src="../../IMAGES/spacer.gif" width="8" height="8"></TD>
+	          </TR>
+	          <TR>
+	            <TD height="8" align="right"><img src="../../IMAGES/spacer.gif" width="8" height="8"></TD>
+	            <TD height="8" align="left"><img src="../../IMAGES/spacer.gif" width="8" height="8"></TD>
+	            <TD height="8" align="right"><img src="../../IMAGES/spacer.gif" width="8" height="8"></TD>
+	          </TR>
+	          <TR>
+	            <TD align="right">&nbsp;</TD>
+	            <TD align="left"><input  name="autorizar" value="Autorizar" type="submit"></TD>
+	            <TD align="center"><input  name="cancelar" value="Cancelar" type="button" onClick='javascript:top.window.close();'></TD>
+	          </TR>
+	          <TR>
+	            <TD align="center" colspan=3>
+	              <span class="textoLog2">&nbsp;{TEXT_ERROR}</span>
+	            </TD>
+	            <TD align="left">&nbsp;</TD>
+	            <TD align="right">&nbsp;</TD>
+	          </TR>
+	        </TABLE></td>
+			</form>
+	        
+	      </tr>
+	    </table></td>
+	</tr>
+</table>
+
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<table border="0" cellpadding="0" cellspacing="0" width = "100%">
+	<tr>
+		<td>
+			<table border="0" cellpadding="2" cellspacing="2" class="tabla1" width="100%">
+				<tr>
+					<th>N° Folio</th>
+					<th width="25">Tipo Doc.</th>
+					<th>F. Documento</th>
+					<th width="25">Local Emisor</th>
+					<th width="25">Tienda</th>
+					<th width="60">CC/NIT/RUT</th>
+					<th>Razón Social</th>
+					<th>Via Pago </th>
+					<th>Medio Pago</th>
+					<th>Doc. Pago</th>
+					<th>Cond. Pago</th>
+					<th>Neto</th>
+					<th>IVA</th>
+					<th>Total</th>
+				    <th>Codigo Vendedor </th>
+				</tr>
+
+<!-- BEGIN reportedetalle_NOM -->            
+				<tr>
+					<td align="right">{valor1}</td>
+					<td align="center">{valor2}</td>
+					<td align="center">{valor3}</td>
+					<td>{valor4}</td>
+					<td>{valor5}</td>
+					<td align="right">{valor6}</td>
+					<td>{valor7}</td>
+					<td>{valor77}&nbsp;</td>
+					<td>{valor8}</td>
+					<td>{valor9}</td>
+					<td align="center">{valor10}</td>
+					<td align="right">$ {valor11}</td>
+					<td align="right">$ {valor12}</td>
+					<td align="right">$ {valor13}</td>
+				    <td align="right">{valor133}&nbsp;</td>
+				</tr>
+<!-- END reportedetalle_NOM --> 
+
+				<tr>
+					<td align="right" colspan = 8></td>
+					<th align="center" colspan = 4>TOTAL ({numdocumentos} documentos)</th>
+					<th align="right"><nobr>$ {totalvalor11}</nobr></th>
+					<th align="right"><nobr>$ {totalvalor12}</nobr></th>
+					<th align="right"><nobr>$ {totalvalor13}</nobr></th>
+				</tr>
+<!-- BEGIN mediopago -->
+				<tr>
+					<td align="right" colspan = 8></td>
+					<th align="left" colspan = 6>Subtotal {tipomediopago}</th>
+					<th align="right"><nobr>$ {valormediopago}</nobr></th>
+				</tr>
+<!-- END mediopago -->
+			</table>
+		</td>
+	</tr>	
+</table>

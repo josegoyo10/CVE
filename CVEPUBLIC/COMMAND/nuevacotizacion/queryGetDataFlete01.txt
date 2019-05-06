@@ -1,0 +1,10 @@
+Array
+(
+    [id] => 122
+    [id_zone] => 26
+    [id_location] => 11001000001076
+    [id_area] => 1
+    [description] => zona 1
+    [id_store] => 3
+    [id_company] => 0
+)

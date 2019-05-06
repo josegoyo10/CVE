@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Created-By: 1.4.2 (IBM Corporation)
+
+Name: printWeb.class
+SHA1-Digest: zXedU+ZScloWxmKLecqorfTrZjU=
+
+Name: Imprime.class
+SHA1-Digest: +rupnOGbqp2cCCNq3yTqqOKWuS0=
+
+Name: printWeb$1.class
+SHA1-Digest: lodCtc5Iksb2Ef6xn9FKvgP2Yfo=
+

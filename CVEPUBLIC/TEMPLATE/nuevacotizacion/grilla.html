@@ -1,0 +1,176 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+		    <link href="../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+			<script src="../../TEMPLATE/general/runtimegrid/lib/aw.js"></script>
+			<link href="../../TEMPLATE/general/runtimegrid/styles/xp/aw.css" rel="stylesheet"></link>
+</head>
+
+<body>
+			<script type="text/javascript">
+		
+				var obj = new AW.UI.Grid;
+				obj.setId("myGrid");
+				var myColumns = [
+				"Codigo", "","Descripción","UM","Cantidad","Costo","Precio Venta","Valor","Margen"
+				];
+				
+				 var CellData = [ 
+        ["aa","USPS","f","reconciled"], 
+        ["bb","Email","t","unreconciled"], 
+        ["cc","FedEX","t","reconciled"], 
+        ["cc","FedEX","f","hopeless"], 
+        ["dd","Phone","f","unreconciled"]
+    ]; 
+				obj.setSize(758,280);
+				obj.setHeaderText(myColumns);
+
+			obj.setCellText(function(c,r){return CellData[r][c]} ); 
+			
+			// desactivar orden en columnas
+			    obj.onHeaderClicked = function(event,index){if (index==1) return 'disabled'};
+				
+				obj.setColumnCount(8);
+				obj.setRowCount(5);
+				obj.setHeaderCount(1); 
+			// celdas editables
+			/*	obj.setCellEditable(true);
+	            obj.setCellEditable(false, 1);
+	            obj.setCellEditable(false, 2);
+                obj.setCellEditable(false, 7);
+                */
+			// numeros de filas
+				obj.setSelectorVisible(true);
+				obj.setSelectorText(function(i){return this.getRowPosition(i)+1});
+				
+			// imagen de lupa
+				obj.setCellImage("search", 1);
+				obj.setCellTemplate(new AW.Templates.ImageText,1 );
+				
+				
+				//obj.setSelectionMode("single-row"); 
+				
+		//ordena por numeros
+			 var number = new AW.Formats.Number;
+		     obj.setCellFormat(number, 4); 
+			 obj.setCellFormat(number, 5);
+		//combobox
+		  
+  //  Put the Combo "template" (as opposed to the "control") in to second col (c1) & forth (c3)
+      var popUpSelections_1 = ["Email","Phone","FedEX","USPS"];
+    var popUpSelections_2 = ["reconciled","unreconciled","hopeless"];
+    obj.setCellTemplate(new AW.Templates.Combo, 3);
+
+  //  Populate the list, set the onItemClicked to move selection to cell, then hide the list.
+    obj.setPopupTemplate(function(col, row){
+
+        var list = new AW.UI.List;
+
+        // one list for col 1, the other list for any other columns made.
+          if(col==1){     // if populating col==1 use this set of selections and this count        
+            list.setItemText(popUpSelections_1); // selection list
+            list.setItemCount(4);             // count
+          } else{        // all other cols of PopupTemplate use this set of selections
+            list.setItemText(popUpSelections_2); // different selection list
+            list.setItemCount(3);             // differnt count    
+          }
+
+          list.onItemClicked = function(event, i){
+            var selectedText = this.getItemText(i);
+            obj.setCellText(selectedText, col, row);
+            obj.setCellValue(selectedText, col, row); 
+            obj.getCellTemplate(col, row).hidePopup();
+          }
+          return list;
+    }); 
+		
+		    obj.onCellValueChanged = function(value, col, row){
+        this.setCellText("c"+col+" r"+row+ " v="+value, 3, row); // show last new value in first col (c0)
+      if(col == 3)alert("value:"+value+"  Column:"+col+"  Row:"+row); // alert for second col (c1) only
+    } 
+						
+				
+				
+				document.write(obj);				
+			
+				
+				
+				obj.onCellClicked = function(event, column, row){
+					//alert("fila clickeada"+row);
+					if (column == 1){
+						var valor =	popUpWindowModal('../../command/cotizaciones/busavanzada_01.php?popup=1&', 100, 100, 780, 400);
+						obj.setCellText(valor,0,row);
+						exec_AJAXRPC('GET','http://localhost/CVEPUBLIC/COMMAND/cotizaciones/cgi.php?textobus='+valor+'&row='+row,'escribe','hola');
+					}
+				}
+				
+				obj.onCellValidated = function(text, column, row){
+					alert("fila enviada"+row);
+					exec_AJAXRPC('GET','http://localhost/CVEPUBLIC/COMMAND/cotizaciones/cgi.php?textobus='+text+'&row='+row,'escribe');
+			    }
+			
+				
+			
+			
+			/*
+				obj.onRowAdded = function(row){
+					window.status = "Row added: " + row;
+					this.setCellText("new", 0, row);
+				}
+			*/
+				obj.onRowDeleting = function(row){
+					return !confirm("Delete row " + row + "?");
+				}
+			
+			/*	obj.onRowDeleted = function(row){
+					window.status = "Row deleted: " + row;
+				}
+			*/
+			
+				
+				// row index
+				var serial = 1;
+			
+				function add(){
+					//alert(serial);
+					obj.addRow(serial++);
+					//alert(serial);
+				}
+			
+				function del(){
+					var i = obj.getCurrentRow();
+					obj.deleteRow(i);
+				}
+				
+				function escribe(text){
+					text= text.split("|");
+					//alert("escribiendo"+text[0]);
+					if (text[0] == "no"){
+						alert("codigo no existe");
+					}else{
+						obj.setCellText(text[3],2,text[0]);
+						obj.setCellText(text[5],4,text[0]);						
+						add();
+					}
+				} 
+			
+			
+				  /**********************/ 
+			    function DeleteSelectedRow(){ 
+			      var insertindex=obj.getSelectedRows([0]); 
+			      CellText.splice(insertindex,1); 
+			      obj.setRowCount(obj.getRowCount()-1); 
+			      obj.refresh(); 
+			    } 
+			
+			    /**********************/ 
+			    function AddNewRowBelowSelectedRow(){ 
+			      obj.setRowCount(obj.getRowCount()+1); 
+			      obj.refresh(); 
+			    } 
+			 </script>
+
+
+</body>
+</html>

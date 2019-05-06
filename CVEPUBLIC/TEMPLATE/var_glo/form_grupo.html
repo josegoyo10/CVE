@@ -1,0 +1,54 @@
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/funciones.js"></script>
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+<script language="javascript" src="../../TEMPLATE/general/checkfield.js"></script>
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+<script>
+
+	function validar_form( form ) {
+		if( validar_obligatorio( form.c_1, "Debe ingresar Nombre Grupo" ) ) return false;
+		if( validar_obligatorio( form.c_2, "Debe ingresar Descripcion" ) ) return false;
+		return true;
+	}
+
+</script>
+	<table width="700" height="15" border="0" cellpadding="0"cellspacing="0">
+		<tr>
+			<td width="50%"  height="30" class="titulonormal">Administración de variables globales</td>
+		</tr>
+		<tr>
+			<td width="60%"  class="titulonormal">{OUT_BARRA}</td>
+		</tr>
+		<tr>
+			<td width="60%" ><p>{TEXT_TITULO_SUB}</p></td>
+		</tr>	
+	</table>
+
+<table width="80%" border="0"  align="center" cellpadding="0" cellspacing="0"  class="textonormal">
+<form action="glo_01.php" method="post" name="form_agregar" onSubmit="return validar_form(this);">
+<INPUT TYPE="hidden" NAME="action" VALUE="{ACTION}">
+<INPUT TYPE="hidden" NAME="glo_id" VALUE="{GLO_ID}">
+	<tr>
+		<td >Nombre grupo</td>
+		<td align=center>:</td>
+		<td>
+		<INPUT TYPE="text" NAME="glo_titulo" VALUE="{glo_titulo}" SIZE="50" MAXLENGTH="200" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);"></td>
+	</tr>
+	<tr>
+		<td >Descripción</td>
+		<td align=center>:</td>
+		<td>
+		<INPUT TYPE="text" NAME="glo_descripcion" VALUE="{glo_descripcion}" SIZE="50" MAXLENGTH="200" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+		</td>
+	</tr>
+	<tr align="center">
+		<td colspan="3" >
+		<input name="imageField" type="image" src="../../IMAGES/checkin.jpg" alt="{BOTON}" width="25" height="25" border="0">
+		</td>
+	</tr>
+</form>
+</table>
+<br>
+<script language="javascript">
+	window.document.form_agregar.glo_titulo.onkeypress = KeyIsTexto;
+	window.document.form_agregar.glo_descripcion.onkeypress = KeyIsTexto;
+</script>

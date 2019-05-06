@@ -1,0 +1,17 @@
+SELECT 	(round((((sum(od.totallinea)-(sum(od.pcosto* od.cantidade)))* 100)/sum(od.totallinea)) * 100)/100) as margen,
+					sum(od.descuento) as descuento
+					FROM ordenent_d od join ordenent_e o on (o.id_ordenent=od.id_ordenent and od.codtipo<>'SV') 
+						join cliente cli on(rut=rutcliente) 
+						join locales lo on (o.codlocalventa=cod_local) 
+						join estado on (o.id_estado=estado.id_estado) 
+						left join usuarios usu on (usu.codigovendedor=o.codigovendedor and usu.codigovendedor <> '')
+						left join documento_e de on(de.sigtipodoc='FCT' and o.id_ordenent=de.numorigen) 
+					where o.id_estado='OG' 
+						 
+						 and fechacompra >= '2018-02-14' 
+						 and fechacompra<= '2018-02-14' 
+						  
+						 
+						 
+						 
+						group by o.id_ordenent order by o.fechacompra,o.rutcliente

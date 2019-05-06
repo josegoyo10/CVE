@@ -1,0 +1,28 @@
+connlist Object
+(
+    [first:private] => elementconnlist Object
+        (
+            [prev] => 
+            [next] => 
+            [elem] => stdClass Object
+                (
+                    [id_localizacion] => 11001000001076
+                )
+
+            [elemName] => 
+        )
+
+    [last:private] => elementconnlist Object
+        (
+            [prev] => 
+            [next] => 
+            [elem] => stdClass Object
+                (
+                    [id_localizacion] => 11001000001076
+                )
+
+            [elemName] => 
+        )
+
+    [act:private] => 
+)

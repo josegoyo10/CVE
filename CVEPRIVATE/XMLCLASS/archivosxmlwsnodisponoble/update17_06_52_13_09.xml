@@ -1,0 +1,32 @@
+<request>
+	<customer>
+		<Source>22</Source>
+		<IdCustomer>830000139</IdCustomer>
+		<IdCategory>3</IdCategory>
+		<IdTypeContribuyente>3</IdTypeContribuyente>
+		<TypeCustomer>
+			<IdTypeCustomer>5</IdTypeCustomer>
+		</TypeCustomer>
+		<Location>11001000012020</Location>
+		<IdDoc>31</IdDoc>
+		<FirstName>ALFOMBRAS INFINITY</FirstName>
+		<Surname1> </Surname1>
+		<Surname2> </Surname2>
+		<Address>AV. CALLE 68 N° 56BB -44</Address>		
+		<Phone>5477772</Phone>
+		<Phone2></Phone2>
+		<Fax>3107719726</Fax>
+		<Email>ALFOMFINITY@TERRA.COM</Email>
+		<AgeRange>0</AgeRange>
+		<Quota>0</Quota>
+		<Contact>LEYVA L CARLOS</Contact>
+		<Gender>NA</Gender>
+		<Occupation></Occupation>
+		<ReteIca>false</ReteIca>
+		<ReteFuente>true</ReteFuente>
+		<ReteIva>false</ReteIva>
+		<ExenIva>false</ExenIva>
+		<OtrIva>false</OtrIva>
+		<State>A</State>
+	</customer>	
+</request>

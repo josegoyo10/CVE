@@ -1,0 +1,158 @@
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+<SCRIPT LANGUAGE="JavaScript" src="../../TEMPLATE/general/checkfield.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/popup.js"></script>
+<SCRIPT LANGUAGE="JavaScript" type="text/JavaScript" SRC="../../TEMPLATE/general/CalendarPopup.js"></SCRIPT>
+<script language="JavaScript">
+function submitForm(choice){
+	
+	formulario = document.formulario_busqueda;
+
+	var valor=true;
+    
+    if(choice == 'buscar' || choice == 'exportar'){
+        var feini = document.getElementById("feini").value;
+        var fefin = document.getElementById("fefin").value;
+
+        if (choice == 'buscar'){
+            formulario.enviarvalor.value = 2 ;
+            if (feini == ''){
+                // Si no se cumple la condicion...
+                alert('Debe seleccionar una fecha inicial');
+                return false;
+            }
+            if(fefin == ''){
+                // Si no se cumple la condicion...
+                alert('Debe seleccionar una fecha final');
+                return false;
+            }
+        }else{
+            //Enviar  a excel
+            formulario.enviarvalor.value = 1
+        }
+        
+        if(feini != '' && fefin != ''){
+            var fecha1 = new Date();
+            var fecha2 = new Date();
+            var f1a = feini.split('/');
+            var f2a = fefin.split('/');
+            fecha1.setFullYear(f1a[2],f1a[1],f1a[0]);
+            fecha2.setFullYear(f2a[2],f2a[1],f2a[0]);
+            if(fecha2 < fecha1){
+                alert('"Fecha Hasta" debe ser posterior a "Fecha Desde"');
+                return false;
+            }
+        }
+        
+        formulario.submit();
+    }
+}
+
+</script>
+<script type="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+<SCRIPT LANGUAGE="JavaScript">document.write(getCalendarStyles());</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" ID="js17">
+			var ayer = new Date();
+			ayer.setDate(ayer.getDate()-1);
+			var cal1 = new CalendarPopup("testdiv1");
+			cal1.offsetX = -110;
+			cal1.offsetY =  70;
+			var cal2 = new CalendarPopup("testdiv1");
+			cal2.offsetX = -90;
+			cal2.offsetY =  46;
+			
+			//cal1.addDisabledDates(null,formatDate(ayer,"yyyy-MM-dd"));
+	  	</SCRIPT>
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<script type="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<table width="760" height="15" border="0" cellpadding="0"cellspacing="0">
+	<tr>
+		<td width="50%"  height="30" class="titulonormal">Reporte de Eventos</td>
+	</tr>
+</table>
+<table width="768" border="0" cellpadding="0" cellspacing="0">					
+    <tr><td>		<div align="left" class="Textonormal" style="border:solid grey 1px;">
+                             <div 
+                                 style="text-align:left; position:relative; top:-0.75em; z-index: 10; background-color: #ffffff; width:122px"><label>-Par&aacute;metros de B&uacute;squeda</label>
+                             </div>	
+                
+                
+                
+                             <!-- BEGIN formulario -->
+                           	<form name="formulario_busqueda" method="post" onSubmit="return false;">
+                                    <table>
+                                        <tr class="textonormal"> 
+                                            <td>Fecha Desde</td><td>Fecha Hasta</td><td>Tipo de Evento</td><td> </td> <td> </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input name="feini" id="feini" class="Textonormal" readonly type="text" size=20 maxlength=10 value="{fechaucofini}" onClick="cal1.select(document.formulario_busqueda.feini,'anchor1','dd/MM/yyyy'); return false;">
+                                                <a href="" onClick="cal1.select(document.formulario_busqueda.feini,'anchor1','dd/MM/yyyy'); return false;" name="anchor1" id="anchor1"> <img src="../../IMAGES/cal.gif" width="16" height="16" border="0" title="Fecha Validez"></a>
+                                                <DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>
+                                            </td>
+                                            <td>
+                                                <input name="fefin" id="fefin"  readonly type="text" class="Textonormal" size=20 maxlength=10 value="{fechaucoffin}" onClick="cal1.select(document.formulario_busqueda.fefin,'anchor2','dd/MM/yyyy'); return false;">
+                                                <a href="#" onClick="cal1.select(document.formulario_busqueda.fefin,'anchor2','dd/MM/yyyy'); return false;" name="anchor2" id="anchor2"> <img src="../../IMAGES/cal.gif" width="16" height="16" border="0" title="Fecha Validez"></a>
+                                                <DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>
+                                            </td>
+                                            <td>
+                                                <select name="tipoEvento" class="TextoNormal">
+                                                                        <option value="todos" {selected0} >Todos</option>
+                                                                        <option value="eveLogin" {selected1} >Eventos de Login de Usuarios</option>
+                                                                        <option value="eveABMUsuario" {selected2}>Eventos de ABM de Usuarios</option>
+                                                                        <option value="eveABMPerfiles" {selected3}>Eventos de ABM de Perfiles/Roles</option>
+                                                                        <option value="eveDepuracion" {selected4}>Eventos de Procesos de Depuraci&oacute;n</option>
+                                                                        <option value="eveCriticas" {selected5}>Eventos de Transacciones Cr&iacute;ticas</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input style="width:100px;" type="button"  class="Textonormal" name="boton" onClick="submitForm('buscar');" value="Ver Reporte">
+                                           
+                                            </td>
+                                            <td>
+                                                <input style="width:100px;" type="button"  class="Textonormal" name="boton" onClick="submitForm('exportar');" value="Exportar EXCEL">
+                                               <input type="hidden" name="enviarvalor">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </form>
+                             <!-- END formulario -->
+                                    		  
+                        </div>
+        </td></tr>		
+</table>
+<table  width="768" border="0" cellpadding="2" cellspacing="0" class="tituloadvertencia"><td height="2" align="center"></td></table>
+			<div style="height:'200'; width:768; overflow:auto;">
+			<table width="100%" border="0" cellpadding="2" cellspacing="0" class="tabla2">
+				<tr width="100">
+					<th width="4%" align="center">ID Evento</th>
+					<th width="10%" align="center">Tipo de Evento</th>
+					<th width="4%" align="center">Fecha</th>
+					<th width="20%" align="center">tipoObjeto</th>
+					<th width="8%" align="center">IP Origen Cliente</th>
+					<th width="10%" align="center">Nombre Objeto</th>
+					<th width="40%" align="center">Descripción de la acción</th>
+					<th width="7%" align="center">Estado Anterior</th>
+					<th width="7%" align="center">Estado Posterior</th>
+					<th width="6%" align="center">Usuario</th>
+				</tr>
+			
+                {noResultsA}<tr width="100%"><td colspan="10">NO SE HAN ENCONTRADO RESULTADOS PARA LAS FECHAS SELECCIONADAS</td></tr>{noResultsB}
+			
+	            <!-- BEGIN reporteS -->
+				<tr width="100%">
+					<td width="4%"  align="center">{ID}&nbsp;</td>
+					<td width="10%"  align="center">{tipo}&nbsp;</td>
+					<td width="4%"  align="left">{fecha}&nbsp;</td>
+					<td width="20%"  align="center">{tipoObjeto}&nbsp;</td>
+					<td width="8%" align="center">{ip}&nbsp;</td>
+					<td width="10%"  align="center">{nombre}&nbsp;</td>
+					<td width="40%" align="center">{descripcion}&nbsp;</td>
+					<td width="7%" align="center">{estadoAnt}&nbsp;</td>
+					<td width="7%" align="center">{EstadoPos}&nbsp;</td>
+					<td width="6%" align="center">{Usuario}&nbsp;</td>
+				</tr>
+				<!-- END reporteS -->
+	            
+			</table>
+			</div>

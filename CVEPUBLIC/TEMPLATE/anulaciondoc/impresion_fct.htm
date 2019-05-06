@@ -1,0 +1,223 @@
+<style type="text/css">
+
+<!--
+
+body {
+
+	background-image: url(../../IMAGES/factura_easy.PNG);
+
+}
+
+.style2 {color: #E75941}
+
+.style8 {font-family: "Courier New", Courier, monospace}
+
+.style9 {font-family: "Courier New", Courier, monospace; font-size: 10px; }
+
+.style10 {font-family: "Courier New", Courier, monospace; font-size: 12px; }
+
+.style11 {color: #E75941; font-size: 12; }
+
+.style15 {font-size: 10px}
+
+-->
+
+</style>
+
+
+
+<table height="0" height="0" border="0" cellpadding="0" cellspacing="0">
+
+	<table width="696" height="92" border="0">
+
+		<tr>
+
+			<th width="49" height="47" class="style8" scope="col">&nbsp;			</th>
+
+			<th width="442" class="style8" scope="col">&nbsp;			</th>
+
+			<th width="150" align="center" class="style9" scope="col"><p class="style11">&nbsp;</p>
+
+		  </th>
+
+			<th width="37" class="style8" scope="col"><p class="style2">&nbsp;</p>                
+
+			</th>
+
+		</tr>
+
+		<tr>
+
+			<td height="39" class="style8"></td>
+
+			
+
+				<td class="style8">
+
+		  <th width="150" align="center" class="style9" scope="col"><p class="style10">&nbsp;&nbsp;&nbsp;{numfolio}</p></th>
+
+				</td>
+
+		</tr>
+
+	</table>
+
+	<table width="1025" height="0" border="0" cellpadding="0" cellspacing="0">
+
+		<tr>
+
+			<td width="80">			</td>
+
+			<td width="357" class="style10" scope="row">{nombre_cliente(39)(i)}<br />
+
+				<p>
+
+				{direccion_cliente(41)(i)}                  
+
+				</p>
+
+				{giro(39)(i)}
+
+				</p>                
+
+			</td>
+
+			
+
+			<td width="227" class="style10" scope="row"><br />
+
+			  {rut_cliente(17)(i)}
+
+				<br />
+
+				<p>{nombre_comuna(12)(i)}
+
+				</p>
+
+				<br />
+
+				<br />
+
+		  </td>
+
+			
+
+			<td width="361" class="style10" scope="row">
+
+				
+
+				<p>{fechaactual(11)(i)}</p>
+
+				<p>				  <br />
+
+			      <br />
+
+              </p></td>
+
+		</tr>
+
+	</table>
+
+
+
+             
+
+	<table width="983"  height="0" border="0" cellpadding="0" cellspacing="0"  >
+
+		<tr>
+
+			<td>
+
+				<!-- BEGIN Bloque_det_guias -->
+
+	  <tr>
+
+					<td width="46" height="0" nowrap="nowrap" class="style10 style15">                  </td>
+
+					<td width="85" height="0" nowrap="nowrap" align="right" class="style9" scope="row">{codigo(10)(d)}</td>
+
+					<td width="40" height="0" nowrap="nowrap" align="right" class="style9" scope="row">{cantidad(8)(d)}</td>
+
+					<td width="230" height="0" nowrap="nowrap" class="style9" scope="row">{descripcion(20)(i)}</td>
+
+					<td width="60" height="0" nowrap="nowrap" class="style9" scope="row">{preciounitariosd(8)(d)}</td>
+
+					<td width="50" height="0" nowrap="nowrap" class="style9" scope="row">{preciounitario(8)(d)}</td>
+
+					<td width="250" height="0" nowrap="nowrap" class="style9" scope="row">{totallinea(8)(d)}</td>
+
+	  </tr>
+
+				<!-- END Bloque_det_guias -->
+
+			</td>
+
+		</tr>
+
+	</table>
+
+	<br>{lineablanca}<br>
+
+	<table width="728" height="auto" border="0" cellpadding="0" cellspacing="0">
+
+	
+
+		<tr>
+
+			<td class="style10" scope="col" colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{totaldoctexto} pesos.</td>
+
+			<td width="9" class="style10" scope="col">&nbsp;</td>
+
+			<td width="14" class="style10" align="right" scope="col">&nbsp;</td>
+
+		</tr>
+
+		<tr>
+
+		  <td width="429" class="style10" scope="col">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Local: {codlocalventa}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Venta: {tipo_venta}</td>
+
+		  <td width="140" class="style10" scope="col">Valor Neto:</td>
+
+		  <td width="136" align="right" class="style10" scope="col">{totalneto(11)(d)}</td>
+
+	  </tr>
+
+		<tr>
+
+		  <td class="style10" scope="col">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Orden de Entrega asociada: {oe}&nbsp;&nbsp;&nbsp;Venc:{vencimiento}</td>
+
+
+
+			<td class="style10" scope="col">IVA ({iva}%):</td>
+
+			<td class="style10"  align="right" scope="col">{ivadoc(11)(d)}</td>
+
+		</tr>
+
+		<tr>
+
+		  <td class="style10" scope="col">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No autoriza retiro de mercader&iacute;a.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+
+
+			<td class="style10" scope="col">Valor Total:</td>
+
+			<td class="style10" align="right" scope="col">{totaldoc(11)(d)}</td>
+
+		</tr>
+
+		<tr>
+
+		  <td class="style10" scope="col">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+
+		  <td class="style10" align="right" scope="col">&nbsp;</td>
+
+
+
+			<td class="style10" align="right" scope="col">&nbsp;</td>
+
+		</tr>
+
+	</table>		
+
+</table>     

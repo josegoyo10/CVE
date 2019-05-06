@@ -1,0 +1,32 @@
+<request>
+	<customer>
+		<Source>22</Source>
+		<IdCustomer>800241641</IdCustomer>
+		<IdCategory>3</IdCategory>
+		<IdTypeContribuyente>3</IdTypeContribuyente>
+		<TypeCustomer>
+			<IdTypeCustomer>5</IdTypeCustomer>
+		</TypeCustomer>
+		<Location>11001000007026</Location>
+		<IdDoc>31</IdDoc>
+		<FirstName>HOTEL ANDINO ROYAL</FirstName>
+		<Surname1> </Surname1>
+		<Surname2> </Surname2>
+		<Address>CLL 85 N12 28</Address>		
+		<Phone>6513131</Phone>
+		<Phone2></Phone2>
+		<Fax>6513131</Fax>
+		<Email>APENALOZA@ANDINOROYAL.COM</Email>
+		<AgeRange>0</AgeRange>
+		<Quota>0</Quota>
+		<Contact>PEÑALOZA M ANDRES</Contact>
+		<Gender>NA</Gender>
+		<Occupation></Occupation>
+		<ReteIca>false</ReteIca>
+		<ReteFuente>false</ReteFuente>
+		<ReteIva>false</ReteIva>
+		<ExenIva>false</ExenIva>
+		<OtrIva>false</OtrIva>
+		<State>A</State>
+	</customer>	
+</request>

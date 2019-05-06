@@ -1,0 +1,21 @@
+Array
+(
+    [catprod] => 640201
+    [id_producto] => 120246
+    [peso] => 0.0010000
+    [reteica] => 1.1040
+    [iva] => 19.0000
+    [retefuente] => 3.5000
+    [sap] => 1086470
+    [cod_barra] => 7707369046030
+    [descripcion] => BOMBILLO LED VELA 4W BCA E27 30H ILUMAX
+    [prod_tipo] => PS
+    [prod_subtipo] => PS
+    [csum] => E813
+    [pcosto] => 13178
+    [pventa] => 19390.00
+    [stock] => 0
+    [unidmed] => un
+    [nomprov] => PROVEEDOR NO VALIDO
+    [id_catprod] => 640201001
+)

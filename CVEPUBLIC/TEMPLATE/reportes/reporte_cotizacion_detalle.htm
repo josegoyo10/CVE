@@ -1,0 +1,113 @@
+<SCRIPT LANGUAGE="JavaScript">
+	function Ver_Reportes(pag){
+		var page = 	document.getElementById('pagina').options[document.getElementById('pagina').selectedIndex].text;
+//		alert(page);
+		document.mreporte.accion.value = 'ver';
+		document.mreporte.page.value = page; 
+		document.mreporte.submit(); 
+	}	
+</SCRIPT> 
+<table border="0" cellpadding="0" cellspacing="0" width = "100%">
+
+	<tr>
+
+		<td>
+
+			<table border="0" cellpadding="2" cellspacing="2" class="tabla1" width="100%">
+                            
+				<tr>
+
+					<th>N� Cotizaci&oacute;n </th>
+
+					<th>Usuario</th>
+
+					<th>F. Creaci&oacute;n </th>
+
+					<th width="100">F. Vencimiento </th>
+
+					<th width="100">Estado</th>
+
+					<th width="60">CC/NIT/RUT </th>
+
+					<th>Raz&oacute;n Social </th>
+
+					<th>Tipo Venta </th>
+
+					<th>Local Emisor </th>
+
+					<th>Tienda</th>
+					
+					<th>Codigo Vendedor</th>
+					
+					<th>Nombre y Apellido</th>
+
+					<th>Total Neto </th>
+					
+					<th>Margen Total </th>
+                                        <!-- Mantis 27362 inicio-->
+                                        <th>Guia </th>
+                                        
+                                        <th>Nro_OP </th>
+                                        <!-- Mantis 27362 Fin-->
+				</tr>
+
+
+
+<!-- BEGIN reportedetalle_NOM -->            
+
+				<tr>
+
+					<td align="right">{valor1}</td>
+
+					<td align="center">{valor2}</td>
+
+					<td align="center"><nobr>{valor3}</nobr></td>
+
+					<td align="center"><nobr>{valor4}</nobr></td>
+
+					<td align="center">{valor5}</td>
+
+					<td align="right">{valor6}</td>
+
+					<td>{valor7}</td>
+
+					<td>{valor8}</td>
+
+					<td>{valor9}</td>
+
+					<td>{valor10}</td>
+					
+					<td align="center">{valor13}</td>
+					
+					<td align="center">{valor14}</td>
+
+					<td align="right">$ {valor11}</td>
+
+					<td align="right">{valor12}%</td>
+                                        <!-- Mantis 27362 inicio-->
+					<td>{valor15}</td>
+                                        
+                                        <td>{valor16}</td>
+                                        <!-- Mantis 27362 fin-->
+				</tr>
+<!-- END reportedetalle_NOM --> 
+
+				<tr>
+				  <td align="right" colspan="10">&nbsp;</td>
+				  <th align="right" colspan="3">Margen Total promedio </th>
+				  <th align="right"><nobr>{totalvalor12}%</nobr></th>
+			  </tr>
+
+			</table>
+			
+			<select id="pagina" name="pagina" align="right" onChange="Ver_Reportes(1)" >
+			<!-- BEGIN paginador_NOM -->
+				<option value ={codigo_pagina} {selectedPag}>{codigo_pagina}</option>
+			<!-- END paginador_NOM -->
+			</select>
+		</td>
+
+	</tr>	
+
+</table>
+

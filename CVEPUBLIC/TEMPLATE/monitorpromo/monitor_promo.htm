@@ -1,0 +1,456 @@
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript" src="../../TEMPLATE/general/checkfield.js"></script>
+
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/popup.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript" type="text/JavaScript" SRC="../../TEMPLATE/general/CalendarPopup.js"></SCRIPT>
+
+<script language="JavaScript">
+
+
+
+	function EvaluaFechas(fi,ft){
+
+		var fecha1=new Date()
+
+		var fecha2=new Date()
+
+		var str1 = fi;
+
+		var str2 = ft;
+
+		
+
+		fechaArr1 = new Array;
+
+		fechaArr2 = new Array;
+
+		 
+
+		fechaArr1 = str1.split("/");
+
+		fechaArr2 = str2.split("/");
+
+		/* convierte la fecha a número comparable*/
+
+		fecha1.setFullYear(fechaArr1[2],fechaArr1[1]-1,fechaArr1[0])
+
+		fecha2.setFullYear(fechaArr2[2],fechaArr2[1]-1,fechaArr2[0])
+
+		 
+
+		if (fecha1>fecha2){
+
+		  return false;
+
+		}
+
+		if (fecha1 == fecha2){
+
+		  return true;
+
+		}
+
+		if (fecha1 < fecha2){
+
+		  return true;
+
+		}
+
+	}
+
+	
+
+	/*function vercoti(elem){
+
+        document.location =
+
+'../nuevacotizacion/nueva_cotizacion_04.php?id_cotizacion=' + elem.id;
+
+    }
+
+    function editarcoti(elem){
+
+        document.location =
+
+'../nuevacotizacion/nueva_cotizacion_03.php?id_cotizacion=' + elem.id;
+
+    }
+*/
+
+    function eliminarpromo(elem){
+
+        if (confirm('¿Está seguro que desea eliminar la promoción (' + elem.id+')?')){
+
+            document.formulario_buscar.accion.value='eli';
+
+            document.formulario_buscar.ideli.value=elem.id;
+
+            document.formulario_buscar.submit();
+
+        }
+
+    }
+
+
+
+function buscarpromo(){
+
+	formulario = document.formulario_buscar;
+
+	var fecha_inicio,fecha_termino;
+
+	var valor=true;
+
+	fecha_inicio =document.formulario_buscar.feini.value;
+
+	fecha_termino=document.formulario_buscar.fefin.value;
+	
+//	grupo = document.formulario_buscar.select_grupo.value;
+
+	valor=EvaluaFechas(fecha_inicio,fecha_termino);
+
+	if(valor==false){
+
+		alert('Fecha de inicio mayor que fecha de termino en la busqueda de Promociones.');
+
+		document.formulario_buscar.feini.select();
+
+		return false;
+
+	}
+
+	/*
+	if(formulario.buscar.value != ''){
+
+		if (formulario.filtro[0].checked && !checkDV(formulario.buscar)){
+
+			return false;
+
+		}
+
+
+
+		if (formulario.filtro[2].checked && validar_numero( formulario.buscar, 'Debe ingresar numero de cotizacion' )) {
+
+			return false;
+
+		}
+
+	} 
+
+*/
+
+	
+
+	formulario.submit();
+
+}
+
+
+function grabarpromo(){
+
+    formulario = document.formulario_buscar;
+
+	var fecha_inicio,fecha_termino,descrip,descue;
+
+	var valor=true;
+
+	fecha_inicio =document.formulario_buscar.feini.value;
+
+	fecha_termino=document.formulario_buscar.fefin.value;
+	
+	descrip = document.formulario_buscar.descripcion.value;
+    
+	descue = document.formulario_buscar.descuento.value;
+
+	valor=EvaluaFechas(fecha_inicio,fecha_termino);
+
+	if(valor==false){
+		alert('Fecha de inicio mayor que fecha de termino en la busqueda de Promociones.');
+		document.formulario_buscar.feini.select();
+		return false;
+	}
+
+   if (descrip =='' || descue =='' || fecha_inicio == '' || fecha_termino =='' ){
+	formulario.accion.value = ' ';
+	alert('No se Permite Datos Vacios. ' + formulario.accion.value);
+   }
+   
+   if (descrip !='' && descue !='' && fecha_inicio != '' && fecha_termino !='' ){
+	formulario.accion.value = 'grabar';
+    	formulario.submit();
+	}
+
+}
+
+
+
+
+
+
+
+
+
+//-->
+
+</script>
+
+		<SCRIPT LANGUAGE="JavaScript">document.write(getCalendarStyles());</SCRIPT>
+
+		<SCRIPT LANGUAGE="JavaScript" ID="js17">
+
+			var ayer = new Date();
+
+			ayer.setDate(ayer.getDate()-1);
+
+			var cal1 = new CalendarPopup("testdiv1");
+
+			cal1.offsetX = -100;
+
+			cal1.offsetY = 45;
+
+			//cal1.addDisabledDates(null,formatDate(ayer,"yyyy-MM-dd"));
+
+	  	</SCRIPT>  
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+
+<script type="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+
+
+<table width="760" height="auto" border="0" cellpadding="0"cellspacing="0">
+
+  <tr>
+
+    <td width="50%"  height="auto" class="titulonormal">Monitor de Lista Precios 2</td>
+ 
+
+
+</table>
+
+<table width="768" height="auto" border="0" cellpadding="0" cellspacing="0">
+
+	<tr>
+
+	
+
+		<td class="textonormal">
+
+		<form name="formulario_buscar" method="post" onSubmit="return false;">
+
+		<input type=hidden name="accion" value=" ">
+		<input type=hidden name="ideli" value=" ">
+		<input type=hidden name="id_subrubro" value="{id_subrubro}">
+
+				<tr>
+
+				  <td width=768> 
+
+				  <fieldset>
+
+				  <legend class="Textonormal">Datos de B&uacute;squeda</legend>
+
+				  <table border="0" height="auto" width="100%"align="left" class="textonormal">
+
+					
+
+                  		<tr>
+
+                        <tr>
+
+                         
+
+						  
+
+                    </tr>
+
+                    <tr>    <td align="right">&nbsp;</td>
+
+    <td align="left">&nbsp;</td>
+
+
+
+    <td scope="col" colspan="6" width="auto" >
+
+    					Desde&nbsp;<input name="feini" id="feini" class="Textonormal" readonly type="text" size=10 maxlength=10 value="{fechaucofini}" onClick="cal1.select(document.formulario_buscar.feini,'anchor1','dd/MM/yyyy'); return false;">
+
+				<a href="" onClick="cal1.select(document.formulario_buscar.feini,'anchor1','dd/MM/yyyy'); return false;" name="anchor1" id="anchor1"> <img src="../../IMAGES/cal.gif" width="16" height="16" border="0" title="Fecha Validez"></a>
+
+				<DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>    Hasta&nbsp;
+				<input name="fefin" id="fefin"  readonly type="text" class="Textonormal" size=10 maxlength=10 value="{fechaucoffin}" onClick="cal1.select(document.formulario_buscar.fefin,'anchor2','dd/MM/yyyy'); return false;">
+
+				<a href="#" onClick="cal1.select(document.formulario_buscar.fefin,'anchor2','dd/MM/yyyy'); return false;" name="anchor2" id="anchor2"> <img src="../../IMAGES/cal.gif" width="16" height="16" border="0" title="Fecha Validez"></a>
+
+				 <div id="testdiv1" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></div>			      
+
+    &nbsp;Grupo Clientes
+      <select name="select_grupo"  class="TextoNormal">
+      <option value="0" class="Textonormal">SELECCIONE</option>
+        <!-- BEGIN grupo -->
+
+        <option value="{id_grupo}" {selected_grupo}>{nomgrupo}</option>
+
+        <!-- END grupo -->
+
+      </select>
+
+&nbsp;&nbsp;Local
+	      <select name="select_suministro"  class="TextoNormal" >
+          <option value="0" class="Textonormal">SELECCIONE</option>
+
+    
+      <!-- BEGIN suministro -->
+    
+      <option value="{codigo_local}" {selected}>{nom_local}</option>
+    
+      <!-- END suministro -->
+    
+      </select>
+
+<div align="left">	      </div>
+
+
+
+
+		</tr>
+
+  <tr>
+
+    <td align="left"></td>
+
+    <td align="left"></td>
+
+    <td></td>
+    <td></td>
+
+    
+
+    <td><input type="button" size="18" name="seleccione_subrubro" class="{clase_texto}" id="{id_subrubro}" value="{nom_subrubro}" onClick="selecciona_rubro()" {disabled_subrubro}>
+		
+      &nbsp;&nbsp;Descripci&oacute;n
+      
+      <input type="text" size="18" name="descripcion" class="Textonormal" value="{tdescripcion}">
+      &nbsp;&nbsp;%Descuento 
+      <input type="text" size="2" name="descuento" class="Textonormal" value="{tdescuento}">
+      &nbsp;&nbsp 
+      <input type="button" class="Textonormal" align="left" name="buscar" onClick="buscarpromo()" value="Buscar">&nbsp;&nbsp &nbsp;&nbsp 
+      <input type="button" class="Textonormal" align="left" name="grabar" onClick="grabarpromo()" value="Grabar"></td>
+  </tr>
+  
+  </form>
+
+            	</table>
+
+				  </fieldset>
+
+				  <table  width="768" border="0" cellpadding="2" cellspacing="0" class="tituloadvertencia"><td align="center">{text_maximo}</td></table>
+
+			<table width="768" border="0" cellpadding="2" cellspacing="0" class="tabla2">
+
+				<tr>
+
+					<th width="52" >N&ordm; Promo &nbsp;</th>
+
+					<th width="50" >Descrip&nbsp;</th>
+					
+					<th width="50" >Desc&nbsp;</th>
+
+					<th width="100" >Sub Rubro &nbsp;</th>
+
+					<th width="99">Desde</th>
+				
+					<th width="99">Hasta</th>
+					
+					<th width="99">Grupo</th>
+
+					<th width="148">Centro Sum</th>
+										
+					<th width="70" >Usuario &nbsp;</th>
+					
+					<th width="100" >Fecha Creaci&oacute;n &nbsp;</th>
+
+					<th width="50" >Estado</th>
+
+					<th width="128">Acciones</th>
+
+				</tr>
+
+			</table>
+
+			<div style="height:'326'; width:768; overflow:auto; ">
+
+			<table width="100%" border="1" class="tabla2" cellspacing="0">
+
+              <!-- BEGIN infopromo -->
+
+                <tr>
+
+                  <td width="2"  align="center">&nbsp;</td>
+
+                  <td width="30" align="right">{numpromo}&nbsp;&nbsp;&nbsp;</td>
+
+                  <td width="30"  align="center">&nbsp;</td>
+
+                  <td width="50" align="left">{descripcion}&nbsp;&nbsp;</td>                  
+				  
+				  <td width="50" align="left">{descuento}%&nbsp;</td>                  
+				  
+				  <td width="100" align="left">{subrubro}&nbsp;</td> 
+				  
+				  <td width="100"  align="left">{desde}&nbsp;&nbsp;</td> 
+
+  				  <td width="100"  align="left">{hasta}&nbsp;&nbsp;</td> 
+
+  				  <td width="100"  align="left">{grupo}&nbsp;&nbsp;</td> 
+				  
+				  <td width="125"  align="left">{cod_local}</td>                
+				  
+				  <td width="2" align="left">{usuariocrea}&nbsp;</td>                  
+
+                  <td width="5"  align="center">&nbsp;</td>
+
+				  <td width="200" align="left">{feccrea}&nbsp;</td>
+
+				  <td width="6"  align="center">&nbsp;</td>
+
+                  <td width="50" align="left">{estadopromo}&nbsp;</td>
+
+                  <td width="6"  align="center">&nbsp;</td>
+
+                  <td width="1"  align="center">&nbsp;</td>
+
+                  <td width="70"  align="left">{accver}&nbsp;{accmodificar}&nbsp;{acceliminar}</td>
+
+                </tr>
+
+                <!-- END infopromo -->
+
+           </table>
+
+			<p>&nbsp;</p>
+
+			</div>
+
+		</td>
+
+	</tr>
+
+</table>
+
+
+<script type="text/javascript">
+
+function selecciona_rubro(){
+	var idco = popUpWindowModal('../../COMMAND/monitorpromo/rubro_pop.php?popup=1',100, 100, 350, 500);
+	
+	if(idco){
+		window.location='monitor_promo.php?id_subrubro='+idco;
+	}
+}
+</script>
+
+
+

@@ -1,0 +1,118 @@
+connlist Object
+(
+    [first:private] => elementconnlist Object
+        (
+            [prev] => 
+            [next] => 
+            [elem] => dtodetordenent Object
+                (
+                    [arreglo:private] => Array
+                        (
+                            [id_linea] => 
+                            [id_ordenent] => 
+                            [id_tiporetiro] => 2
+                            [id_tipoentrega] => 
+                            [numlinea] => 1
+                            [descripcion] => CEMENTO ARGOS PORTLAND TIPO I X 50 KG
+                            [codprod] => 2190911
+                            [barra] => 7707269340023
+                            [nomproveedor] => No corresponde
+                            [rutproveedor] => 0
+                            [pcosto] => 18574
+                            [pventaneto] => 20500
+                            [pventaiva] => 487900.00
+                            [totallinea] => 410000
+                            [cantidade] => 20
+                            [cantidadp] => 
+                            [cantidadd] => 
+                            [id_lineadoc] => 4201454
+                            [id_documento] => 
+                            [id_documentof] => 
+                            [id_documentog] => 
+                            [unimed] => un
+                            [codtipo] => PS
+                            [codsubtipo] => PS
+                            [paginaf] => 
+                            [paginag] => 
+                            [marcaflete] => 
+                            [instalacion] => NO
+                            [peso] => 50.00
+                            [ret_ica] => 
+                            [ret_iva] => 
+                            [ret_renta] => 
+                            [rete_ica] => 0.0000
+                            [rete_renta] => 0.0000
+                            [coti_iva] => 
+                            [sumiva] => 
+                            [sumtotaliva] => 
+                            [descuento] => 0
+                            [codlocalventa] => 
+                            [iva] => 19.00
+                            [margenlinea] => 9.40
+                            [obspos] => 
+                        )
+
+                )
+
+            [elemName] => 
+        )
+
+    [last:private] => elementconnlist Object
+        (
+            [prev] => 
+            [next] => 
+            [elem] => dtodetordenent Object
+                (
+                    [arreglo:private] => Array
+                        (
+                            [id_linea] => 
+                            [id_ordenent] => 
+                            [id_tiporetiro] => 2
+                            [id_tipoentrega] => 
+                            [numlinea] => 1
+                            [descripcion] => CEMENTO ARGOS PORTLAND TIPO I X 50 KG
+                            [codprod] => 2190911
+                            [barra] => 7707269340023
+                            [nomproveedor] => No corresponde
+                            [rutproveedor] => 0
+                            [pcosto] => 18574
+                            [pventaneto] => 20500
+                            [pventaiva] => 487900.00
+                            [totallinea] => 410000
+                            [cantidade] => 20
+                            [cantidadp] => 
+                            [cantidadd] => 
+                            [id_lineadoc] => 4201454
+                            [id_documento] => 
+                            [id_documentof] => 
+                            [id_documentog] => 
+                            [unimed] => un
+                            [codtipo] => PS
+                            [codsubtipo] => PS
+                            [paginaf] => 
+                            [paginag] => 
+                            [marcaflete] => 
+                            [instalacion] => NO
+                            [peso] => 50.00
+                            [ret_ica] => 
+                            [ret_iva] => 
+                            [ret_renta] => 
+                            [rete_ica] => 0.0000
+                            [rete_renta] => 0.0000
+                            [coti_iva] => 
+                            [sumiva] => 
+                            [sumtotaliva] => 
+                            [descuento] => 0
+                            [codlocalventa] => 
+                            [iva] => 19.00
+                            [margenlinea] => 9.40
+                            [obspos] => 
+                        )
+
+                )
+
+            [elemName] => 
+        )
+
+    [act:private] => 
+)

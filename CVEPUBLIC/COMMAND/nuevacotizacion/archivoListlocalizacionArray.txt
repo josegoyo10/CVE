@@ -1,0 +1,58 @@
+connlist Object
+(
+    [first:private] => elementconnlist Object
+        (
+            [prev] => 
+            [next] => 
+            [elem] => dtolocalizacion Object
+                (
+                    [arreglo:private] => Array
+                        (
+                            [id_localizacion] => 
+                            [departamento] => BOGOTA
+                            [provincia] => BOGOTA
+                            [ciudad] => BOGOTA
+                            [localidad] => LOS MARTIRES
+                            [barrio] => EDUARDO SANTOS 
+                            [id_departamento] => 11
+                            [id_provincia] => 001
+                            [id_ciudad] => 000
+                            [id_localidad] => 014
+                            [id_barrio] => 001
+                            [id_municipio] => 
+                        )
+
+                )
+
+            [elemName] => 
+        )
+
+    [last:private] => elementconnlist Object
+        (
+            [prev] => 
+            [next] => 
+            [elem] => dtolocalizacion Object
+                (
+                    [arreglo:private] => Array
+                        (
+                            [id_localizacion] => 
+                            [departamento] => BOGOTA
+                            [provincia] => BOGOTA
+                            [ciudad] => BOGOTA
+                            [localidad] => LOS MARTIRES
+                            [barrio] => EDUARDO SANTOS 
+                            [id_departamento] => 11
+                            [id_provincia] => 001
+                            [id_ciudad] => 000
+                            [id_localidad] => 014
+                            [id_barrio] => 001
+                            [id_municipio] => 
+                        )
+
+                )
+
+            [elemName] => 
+        )
+
+    [act:private] => 
+)

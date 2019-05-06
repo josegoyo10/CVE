@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<script type="text/javascript">
+function error_usuario(){
+		document.getElementById('error_local').innerHTML='<table><tr><td><img src="../../IMAGES/alert_error.jpg"></td><td>Para su tipo de usuario es necesario tener asignado un local</td></tr></table>';
+}
+
+function guardar(){
+	if(document.cambio_local.select_suministro.value == ''){
+		alert('Seleccione un local');
+		document.adm_usr_password.nclave.focus();
+		return false;
+	}
+document.cambio_local.accion.value='guardar';
+document.cambio_local.submit();
+}
+</script>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Opciones Personales</title>
+</head>
+<body>
+<form method="post" name="cambio_local">
+<input type="hidden" name="accion">
+<table align="lefth" width="760" cellspacing="4" cellpadding="3" border="0">
+<tr><td>
+<table align="center" width="760" cellspacing="4" cellpadding="3" border="0">
+<tr><td align="center"><b>Cambiar Local</b><br><br></td></tr></table>
+<table align="center" width="760"  border="0">
+<tr>
+<td align="center"><b>Local: </b><select name="select_suministro">
+          <option value="" class="Textonormal">Seleccione</option>
+          <!-- BEGIN suministro -->
+          <option value="{codigo_local}" {selectedlocal}>{nom_local}</option>
+          <!-- END suministro -->
+        </select><br><br></td> 
+</tr><tr><tr></tr><tr></tr>
+<tr>
+		<td class="titulonormal" align="center"><div id="error_local">&nbsp;</div></td>
+</tr>
+</table>
+<table align="center" width="780" cellspacing="4" cellpadding="3" border="0">
+<tr><td align="center"><input type="button" value="Cambiar Local" onclick="guardar();">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="reset" value="Cancelar"><img align="right" src="../../IMAGES/rodillo.bmp"></td></tr></table>
+</td></tr></table></body>
+</html>
+<script type="text/javascript">
+{error_usuario}
+</script>

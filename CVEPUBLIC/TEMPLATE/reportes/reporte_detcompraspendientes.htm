@@ -1,0 +1,236 @@
+<title>DETALLE DE PEDIDO</title>
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/popup.js"></script>
+<script language="javascript" src="../../TEMPLATE/general/checkfield.js">
+</script>
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+
+<table width="768" height="32" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="titulonormal">DETALLE DE PEDIDO</td>
+	</tr>
+</table>
+
+
+<table width="768" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+		<fieldset>
+		<legend class=textonormal>Datos Orden</legend>
+			<table width="680"  border="0" cellspacing="0" cellpadding="0" class="textonormal">
+				<tr>                 
+					<th align="left" width="140"> N&ordm; Orden de Entrega</th>
+					<td width="200">{id_ordenent}</td>
+					<th align="left" width="140">Estado</th>
+					<td width="200">{nomestadop}</td>
+				</tr>
+				<tr>
+					<th align="left"> Tienda</th>
+					<td>{nom_local_csum}</td>
+					<th align="left"></th>
+					<td></td>                    
+				</tr>
+				<tr>
+				  <th align="left">Fecha de Pago </th>
+				  <td>{fechacompra}</td>
+				  <th align="left">Fecha de entrega</th>
+				  <td>{fechaentrega}</td>
+			  </tr>
+				<tr>
+				  <th align="left">Observaciones</th>
+				  <td colspan="3">{observaciones}</td>
+				   
+			  </tr>
+			</table>
+		</fieldset>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<fieldset><legend class=textonormal>Datos Cliente</legend>
+			<table width="680" border="0" cellspacing="0" cellpadding="0" class="textonormal">
+				<tr>
+					<th align="left" width="140">CC/NIT/RUT</th>
+					<td width="200">{rutcliente}</td>
+					<th align="left" width="140">Tipo Cliente</th>
+					<td width="200">{nomtipcliente}</td>
+				</tr>
+				<tr>
+					<th align="left">Raz&oacute;n Social</th>
+					<td>{razonsoc}</td>
+					<th align="left">Actividad Econ&oacute;mica</th>
+					<td>{giro}</td>
+				</tr>
+				<tr>
+					<th align="left">Contacto</th>
+					<td>{contacto}&nbsp;</td>
+					<th align="left">Tel&eacute;fono Contacto </th>
+					<td>{fonocontacto}</td>
+				</tr>
+				<tr>
+					<th align="left">Departamento</th>
+					<td>{nomdepartamento}&nbsp;</td>
+					<th align="left">Ciudad</th>
+					<td>{nomciudad}</td>
+				</tr>
+				<tr>
+					<th align="left">Direcci&oacute;n</th>
+					<td>{direccion}&nbsp;</td>
+					<th align="left">Barrio </th>
+					<td>{nomcomuna}</td>
+				</tr>
+			</table>
+		  </fieldset>
+		    <fieldset>
+		    <legend class=textonormal>Datos Despacho </legend>
+			<table width="680" border="0" cellspacing="0" cellpadding="0" class="textonormal">
+              <tr>
+                <th align="left" width="140">Departamento</th>
+                <td width="200">{departamentod}</td>
+                <th align="left" width="140">Ciudad</th>
+                <td width="200">{ciudadd}</td>
+              </tr>
+              <tr>
+                <th align="left" width="140">Direcci&oacute;n</th>
+                <td width="200">{direcciond}</td>
+                <th align="left" width="140">Barrio</th>
+                <td width="200">{comunad}</td>
+              </tr>
+              <tr>
+                <th align="left">Contacto</th>
+                <td>{contactod}</td>
+                <th align="left">Tel&eacute;fono</th>
+                <td>{fonocontactod}</td>
+              </tr>
+              <tr>
+                <th align="left">Comentario</th>
+                <td>{comentariod}&nbsp;</td>
+                <th align="left"></th>
+                <td></td>
+              </tr>
+            </table>
+		</fieldset>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<table width="768" border="0" align="center" cellpadding="2" cellspacing="0" class="textonormal">
+				<tr>
+				  <td>
+				  <table width="768" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+					  <tr>
+					    <th width="8%" align="center">Nit Proveedor</th>
+					    <th width="15%" align="center">Nombre Proveedor</th>
+					    <th width="10%" align="center">Codigo SAP Producto</th>
+					    <th width="18%" align="center">Descripción</th>
+					    <th width="5%" align="center">Cantidad</th>
+					    <th width="9%" align="center">Precio Costo</th>
+					    <th width="10%" align="center">Precio Unitario</th>
+					    <th width="10%" align="center">Total</th>
+					    <th width="15%" align="center">Numero Orden de Compra</th>
+					    </tr>
+					</table>
+				</td>
+				</tr>
+				<form name=nuevaoe method=post>
+				<input type="hidden" name="accion" value="{accionb}">
+				<tr>
+					<td valign="top">					 
+					<div style="height:162;overflow-y:scroll;">
+						<table width="768" border="0" align="left" cellpadding="0" cellspacing="1"  class="tabla2">
+						<!-- BEGIN detalleproductos -->
+						<tr valign="top">
+							<td width="8%" align="center">{nitprov}</td>
+							<td width="15%" align="center">{monprov}<br>{razonprov}</td>
+							<td width="10%" align="center">{codprod}</td>
+							<td width="18%" align="left">{descripcion}</td>
+							<td width="5%" align="center">{cantidad}</td>
+							<td width="9%" align="right">{precioc}</td>
+							<td width="10%" align="right">{preciou}</td>
+							<td width="10%" align="right">{total}</td>
+							<td width="15%" align="center"><input type=text value="{cantidadp}" name="cantact_{id_linea}" size="18" maxlength="18" class="textonormal" onChange="calculatotallinea('{id_linea}')"  {readnumsap} ></td>
+						</tr>
+						<input type=hidden name="linea[]" value="{id_linea}">
+						<input type="hidden" name="id_ordenpicking" value="{id_ordenent}">
+						  
+                          <script>
+								document.nuevaoe.cantact_{id_linea}.onkeypress = KeyIsNumberInt;
+							</script>
+                          
+						<!-- END detalleproductos -->
+                        </table>
+					</div>
+					</td>
+				</tr>	
+				<tr>
+					<td valign="top">
+						<table width="768" border="0" align="center" cellpadding="0" cellspacing="0" class="subtitulonormal">
+							
+							<tr>
+								
+								<td width="20%" align="center"></td>
+								<td width="20%" align="right"><a href="repoteordenescompraspendientes.php?{filtro}"><img src="../../IMAGES/anterior.gif" alt="Volver" width="23" height="23" name="Volver" title="Volver" border="0"></a>&nbsp;</td>
+								<td width="20%" align="left">&nbsp;&nbsp;Volver</td>
+								<td width="20%" align="left"><input type="button" value="{boton}" onClick="valida('{id_linea}')" {dis}></td>
+								<td width="20%" align="left"></td>
+							</tr>
+						</table>
+				  </td>
+				</tr>
+				</form>
+			</table> 
+		</td>
+	</tr>
+</table>
+
+<script type="text/javascript">
+
+	function copiacant(linea) {
+		formulario = document.nuevaoe;
+		eval('formulario.cantact_'+linea+'.value = formulario.cantdisp_'+linea+'.value');
+	}
+	
+	function copiatodocant() {
+		formulario = document.nuevaoe;
+		for (var i = 0; i<formulario.length; ++i) {
+			if(formulario.elements[i].name.substr(0, 7) == 'cantact') {
+				linea = formulario.elements[i].name.substr(8);
+				eval('formulario.cantact_'+linea+'.value = formulario.cantdisp_'+linea+'.value');
+			}
+		}
+	}
+	
+	function calculatotallinea(linea) {
+		formulario = document.nuevaoe;
+		if (trim(eval('formulario.cantact_'+linea+'.value')) == '' || isNaN(eval('formulario.cantact_'+linea+'.value')))
+			eval('formulario.cantact_'+linea+'.value = \'0\'');
+		if (parseFloat(eval('formulario.cantact_'+linea+'.value'))>parseFloat(eval('formulario.cantdisp_'+linea+'.value')))
+			eval('formulario.cantact_'+linea+'.value = formulario.cantdisp_'+linea+'.value');		
+	}
+	
+	function valida(linea){
+	
+		formulario = window.document.nuevaoe;
+		
+		sumadisp = 0; 
+		sumaact = 0; 
+		for (var i = 0; i<formulario.length; ++i) {
+			if(formulario.elements[i].name.substr(0, 7) == 'cantact') {
+				linea = formulario.elements[i].name.substr(8);
+				eval('sumaact = sumaact + parseFloat(formulario.cantact_'+linea+'.value)');
+				//eval('sumadisp = sumadisp + parseFloat(formulario.cantdisp_'+linea+'.value)');
+			}
+		}
+
+		if (sumaact <= 0){
+			alert('Debe ingresar numero de compra');
+			return;
+		}
+		else {
+				if(confirm("Esta accion {mensajecon}\n¿Desea continuar?")){
+				formulario.submit();
+			}
+		}
+}
+	
+</script>

@@ -1,0 +1,529 @@
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript" src="../../TEMPLATE/general/checkfield.js"></script>
+
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/popup.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript" type="text/JavaScript" SRC="../../TEMPLATE/general/CalendarPopup.js"></SCRIPT>
+
+<script language="JavaScript">
+
+
+
+function verorden(tipo,rut,id_ordenent){
+
+	popUpWindowModal('../../COMMAND/ordenent/printframe.php?popup=1&id_ordenent='+id_ordenent,100, 100, 710, 500);
+
+}
+
+
+
+function anularorden(id_ordenent){
+
+	if(confirm('¿Esta seguro que desea anular la Orden de Entrega '+id_ordenent+'?')){
+
+	document.accionesc.accion.value='anular';
+
+	document.accionesc.id_ordenent.value = id_ordenent;
+
+	document.accionesc.submit();	
+
+	}
+
+}
+
+
+
+function desbloquearorden(id_ordenent,rut){
+
+	if ('reload' == popUpWindowModal('../../COMMAND/monitoroeblo/ordenent_00print.php?popup=1&id_ordenent='+id_ordenent+'&rut='+rut,100, 100, 545, 430) )
+
+		document.location='../../COMMAND/monitoroeblo/monitor_oe_blo.php';
+
+}
+
+
+
+	function EvaluaFechas(fi,ft){
+
+		var fecha1=new Date()
+
+		var fecha2=new Date()
+
+		var str1 = fi;
+
+		var str2 = ft;
+
+		
+
+		fechaArr1 = new Array;
+
+		fechaArr2 = new Array;
+
+		 
+
+		fechaArr1 = str1.split("/");
+
+		fechaArr2 = str2.split("/");
+
+		/* convierte la fecha a número comparable*/
+
+		fecha1.setFullYear(fechaArr1[2],fechaArr1[1]-1,fechaArr1[0])
+
+		fecha2.setFullYear(fechaArr2[2],fechaArr2[1]-1,fechaArr2[0])
+
+		 
+
+		if (fecha1>fecha2){
+
+		  return false;
+
+		}
+
+		if (fecha1 == fecha2){
+
+		  return true;
+
+		}
+
+		if (fecha1 < fecha2){
+
+		  return true;
+
+		}
+
+	}
+
+
+
+function submitForm(){
+
+
+
+	formulario = document.formulario_busqueda;
+
+
+
+	var fecha_inicio,fecha_termino;
+
+	var valor=true;
+
+	
+
+	fecha_inicio =document.formulario_busqueda.feini.value;
+
+	fecha_termino=document.formulario_busqueda.fefin.value;
+
+	valor=EvaluaFechas(fecha_inicio,fecha_termino);
+
+	if(valor==false){
+
+		alert('Fecha de inicio mayor que fecha de termino en la busqueda de las ordenes de entrega bloqueadas.');
+
+		document.formulario_busqueda.feini.select();
+
+		return false;
+
+	}
+
+
+
+	if(formulario.buscar.value != ''){
+
+		if (formulario.filtro[0].checked && !checkDV(formulario.buscar)){
+
+			return false;
+
+		}
+
+	
+
+		if (formulario.filtro[2].checked && validar_numero( formulario.buscar, 'Debe ingresar numero de cotizacion' )) {
+
+			return false;
+
+		}
+
+
+
+		if (formulario.filtro[3].checked && validar_numero( formulario.buscar, 'Debe ingresar numero de Orden de Entrega' )) {
+
+			return false;
+
+		}
+
+	}
+
+	
+
+	formulario.submit();
+
+}
+
+
+
+</script>
+
+		<SCRIPT LANGUAGE="JavaScript">document.write(getCalendarStyles());</SCRIPT>
+
+		<SCRIPT LANGUAGE="JavaScript" ID="js17">
+
+			var ayer = new Date();
+
+			ayer.setDate(ayer.getDate()-1);
+
+			var cal1 = new CalendarPopup("testdiv1");
+
+			cal1.offsetX = -100;
+
+			cal1.offsetY =  60;
+
+			//cal1.addDisabledDates(null,formatDate(ayer,"yyyy-MM-dd"));
+
+	  	</SCRIPT>  
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+
+<script type="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<table width="760" height="15" border="0" cellpadding="0"cellspacing="0">
+
+	<tr>
+
+    <td width="50%"  height="30" class="titulonormal">Monitor Ordenes de Entrega Bloqueadas </td>
+
+
+
+</table>
+
+	<table width="768" height="350" border="0" cellpadding="0" cellspacing="0">
+
+		<tr>
+
+	
+
+			<td class="textonormal">
+
+				<form name="formulario_busqueda" method="post" onSubmit="return false;">
+
+				<input type="hidden" name="accion" value="">
+
+				<input type=hidden name="rut" value="{rut}">
+
+					<tr>
+
+						<td width=778> 
+
+						<fieldset>
+
+						<legend class="Textonormal">Datos de B&uacute;squeda</legend>
+
+						<table border="0" height="auto" align="left" class="textonormal">
+
+					
+
+                  		
+
+						
+
+						  <tr>
+
+
+
+								<td scope="col" colspan="4" align="right">Desde&nbsp;
+
+									  <input name="feini" id="feini" class="Textonormal" readonly type="text" size=10 maxlength=10 value="{fechaucofini}" onClick="cal1.select(document.formulario_busqueda.feini,'anchor1','dd/MM/yyyy'); return false;">
+
+				<a href="" onClick="cal1.select(document.formulario_busqueda.feini,'anchor1','dd/MM/yyyy'); return false;" name="anchor1" id="anchor1"> <img src="../../IMAGES/cal.gif" width="16" height="16" border="0" title="Fecha Validez"></a>
+
+				<DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV> &nbsp;Hasta&nbsp;<input name="fefin" id="fefin"  readonly type="text" class="Textonormal" size=10 maxlength=10 value="{fechaucoffin}" onClick="cal1.select(document.formulario_busqueda.fefin,'anchor2','dd/MM/yyyy'); return false;">
+
+				<a href="#" onClick="cal1.select(document.formulario_busqueda.fefin,'anchor2','dd/MM/yyyy'); return false;" name="anchor2" id="anchor2"> <img src="../../IMAGES/cal.gif" width="16" height="16" border="0" title="Fecha Validez"></a>
+
+				<DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>	
+
+									<input name="filtro" id="radio1" type="radio" value="1" align="left" {checkr1}>CC/NIT/RUT&nbsp;&nbsp;
+
+									<input name="filtro" id="radio2" type="radio" value="2" {checkr2}>
+
+									Raz&oacute;n Social
+
+									<input name="filtro" id="radio5" type="radio" value="3" {checkr3}>N&ordm;&nbsp;Cotizaci&oacute;n&nbsp;
+
+									<input name="filtro" type="radio" id="radio4" value="4" {checkr4}>
+
+									N&ordm;&nbsp;Orden&nbsp;Entrega&nbsp;&nbsp;
+
+									<input type="text" size="16" name="buscar" class="Textonormal" maxlength="20" value="{buscar}">
+
+									<input type="button" class="Textonormal" align="left" name="busqueda" onClick="submitForm();" value="Buscar">								</td>
+
+					</tr>
+
+			
+
+					<tr>
+
+					
+
+						<td colspan="2" align="left" width="350"><br><span class="textonormal">Tipo Entrega</span>
+
+											<select name="select_tipoentrega" onChange="submitForm()"  class="TextoNormal"> 
+
+												  <option value="0" class="Textonormal">TODOS</option>
+
+												   <!-- BEGIN tipoentrega -->
+
+												   <option value="{identrega}" {selected}>{nomtipoentrega}</option>
+
+												   <!-- END tipoentrega -->
+
+											</select>					  </td>
+
+						<td width="272" align="left"><br> 
+							<span class="textonormal">Tipo Facturaci&oacute;n</span>
+								<select name="select_facturacion" onChange="submitForm()" class="TextoNormal">
+									<option value="0" class="Textonormal">TODOS</option>
+									<!-- BEGIN tipofacturacion -->
+									<option value="1,2,3" class="Textonormal" {selected_fact1}>{nom_facturacion}Facturacion Inmediata</option>
+									<option value="4,5" class="Textonormal" {selected_fact2}>{nom_facturacion}Facturacion Diferida</option>
+									<!-- END tipofacturacion -->
+								</select>
+							</span>
+						</td>
+						
+						<td width="272" align="left"><br> 
+							<span class="textonormal">Tipo Bloqueo</span>
+								<select name="select_bloqueo" onChange="submitForm()" class="TextoNormal">
+									<!-- BEGIN tipobloqueo -->
+									<option value="{value}" class="Textonormal" {selected}>{nom_bloqueo}</option>
+									<!-- END tipobloqueo -->
+								</select>
+							</span>
+						</td>
+						
+						<td width="259" align="left"><br>
+
+					    Centro Facturación &nbsp;
+
+							
+
+					  <select name="select_suministro" onchange="submitForm()" class="TextoNormal" {deshabilitar_select}>
+
+                        <option value="0" class="Textonormal">TODOS</option>
+
+                        <!-- BEGIN suministro -->
+
+                        <option value="{codigo_local}" {selected}>{nom_local}</option>
+
+                        <!-- END suministro -->
+
+                      </select></td>
+
+					</tr> </form>
+
+				</table>
+
+			</fieldset>   
+
+			<table  width="768" border="0" cellpadding="2" cellspacing="0" class="tituloadvertencia">
+				<td align="center">
+					{text_maximo}
+				</td>
+			</table>              
+
+			<table width="100%" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+				<tr>
+					<th width="1" >&nbsp;</th>
+					<th width="60" align="center" >N&ordm; OE</th>
+					<th width="60" align="center" >N&ordm; CO </th>
+					<th width="70" align="center" >Fecha Bloqueo</th>
+					<th width="100" align="center">Tipo Entrega </th>
+					<th width="100" align="center">Tipo Factura </th>
+					<th width="100" align="center">Tienda Suministro</th>
+					<th width="100" align="center">CC/NIT/RUT</th>
+					<th width="50" align="center">Raz&oacute;n Social</th>
+					<th width="100" align="center">Tipo</th>
+					<th align="center">Acciones</th>
+				</tr>
+			</table>
+			<div style="height:'316'; width:100%; overflow:auto; ">
+				<table width="100%" border="1" class="tabla2" cellspacing="0" cellpadding="2">
+					<form name=accionesc method=post>
+						<input type=hidden name="accion" value="">
+						<input type=hidden name="imodi" value="">
+						<input type=hidden name="rut" value="">
+						<input type=hidden name="id_ordenent" value="">
+						<!-- BEGIN infocotizacion -->
+						<tr>
+							<td width="1"  align="left">&nbsp;</td>
+							<td width="60"  align="center">{OE}&nbsp;</td>
+							<td width="60"  align="center">{numerocot}&nbsp;</td>
+							<td width="70"  align="center">{fecha_blo}&nbsp;</td>
+							<td width="100" align="center" >{nomtipoentrega}&nbsp;</td>
+							<td width="100" align="center" >{nomtipofactura}&nbsp;</td>
+							<td width="100" align="center">{nom_localcsum}&nbsp;</td>
+							<td width="100" align="center">{rutdv}&nbsp;</td>
+							<td width="50"  align="center">{razonsoc}&nbsp;</td>
+							<td width="100"  align="center">{tipoBloq}&nbsp;</td>					
+							<td align="center">
+								{accdesbloquear}&nbsp;{accanular}&nbsp;
+							</td>
+						</tr>
+						<!-- END infocotizacion -->
+					</form>
+				</table>
+			</div>
+
+		</td>
+
+	</tr>
+
+</table>
+
+<script type="text/javascript">
+
+<!--
+
+	
+
+function checkDV( elem ){
+
+/*
+
+	if( validar_obligatorio( elem, "Rut es obligatorio" ))
+
+		return false;
+
+		crut = '';
+
+		mcrut= elem.value;
+
+		
+
+		for(i=0; i<mcrut.length; ++i)
+
+		if (mcrut.charAt(i) != '.' && mcrut.charAt(i) != '-'){
+
+		crut = crut + mcrut.charAt(i);
+
+	
+
+	}
+
+	largo = crut.length;
+
+	
+
+	if ( largo < 2 ){
+
+		alert("Debe ingresar el rut completo.");
+
+		elem.focus();
+
+		elem.select();
+
+		
+
+		return false;
+
+	}
+
+
+
+	if ( largo > 2 )
+
+	rut = crut.substring(0, largo - 1);
+
+	else
+
+	rut = crut.charAt(0);
+
+	dv = crut.charAt(largo-1);
+
+
+
+	if ( rut == null || dv == null )
+
+	return "";
+
+	var dvr = '0';
+
+	suma = 0;
+
+	mul  = 2;
+
+
+
+	for (i= rut.length -1 ; i >= 0; i--){
+
+	suma = suma + rut.charAt(i) * mul;
+
+	if (mul == 7)
+
+	mul = 2;
+
+	else
+
+	mul++;
+
+	}
+
+	
+
+	res = suma % 11;
+
+	if (res==1)
+
+	dvr = 'k';
+
+	
+
+	else if (res==0)
+
+	dvr = '0';
+
+	
+
+	else{
+
+	dvi = 11-res;
+
+	dvr = dvi + "";
+
+	}
+
+	
+
+	if ( dvr != dv.toLowerCase() ){
+
+		alert("El rut ingresado es incorrecto.");
+
+		elem.focus();
+
+		elem.select();
+
+		
+
+		return false;
+
+	}
+
+	
+
+	elem.value = crut.substr(0, crut.length-1); 
+
+	digito=crut.substr(crut.length-1, 1).toUpperCase();
+*/
+	return true;
+
+
+
+}
+
+document.formulario_busqueda.buscar.focus();
+
+//-->
+
+</script>
+

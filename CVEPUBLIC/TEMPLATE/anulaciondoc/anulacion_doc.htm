@@ -1,0 +1,172 @@
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript" src="../../TEMPLATE/general/checkfield.js"></script>
+
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/popup.js"></script>
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+
+
+<script type="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<table width="760" height="15" border="0" cellpadding="0"cellspacing="0">
+
+	<tr>
+
+    <td width="50%"  height="30" class="titulonormal">Anulacion de Documentos </td>
+
+</table>
+
+	<table width="778" height="200" border="0" cellpadding="0" cellspacing="0">
+
+		<tr>
+
+			<td class="textonormal">
+
+				<form name="formulario_busqueda" method="post" onSubmit="return false;">
+
+				
+
+
+					<tr>
+
+						<td width=755> 
+
+						<fieldset>
+
+						<legend class="Textonormal">Datos de B&uacute;squeda</legend>
+
+					<table width="755" border="0" height="auto" class="textonormal">
+
+					<tr>
+
+					  <td width="20" align="right">&nbsp;</td>
+
+						<td width="360" align="right"><br>
+						Centro Emisor </td>
+
+						<td width="8" align="right">&nbsp;</td>
+
+						<td width="349" align="left">
+
+							<br>
+
+							<select name="select_suministro" class="TextoNormal"{deshabilitar_select} >
+							<option value="0" {selected_todos}>TODOS LOS LOCALES</option>
+								<!-- BEGIN suministro -->
+
+									<option value="{codigo_local}" {selected}>{nom_local}</option>
+
+								<!-- END suministro -->
+
+							</select>
+
+						</td>	
+
+					</tr>
+
+					<tr>
+
+					  <td align="right">&nbsp;</td>
+
+					  <td align="right">Tipo de Documento </td>
+
+					  <td align="right">&nbsp;</td>
+
+					  <td align="left">
+
+					  	<input name="filtro" id="radio1" type="radio" value="1" align="left" {checkr1}>Factura&nbsp;&nbsp;
+
+					  	<input name="filtro" id="radio2" type="radio" value="2" {checkr2}>Gu&iacute;a de despacho
+
+					  </td>
+
+					  </tr>
+
+					<tr>
+
+					  <td align="right">&nbsp;</td>
+
+					  <td align="right">N&uacute;mero de Orden de Entrega(*) </td>
+
+					  <td align="right">&nbsp;</td>
+
+					  <td align="left"><input type="text" size="18" name="ordenent" class="Textonormal" value="{id_ordenent}" maxlength="10"></td>
+
+					  </tr>
+
+					<tr>
+
+					  <td align="right">&nbsp;</td>
+
+					  <td align="right">(*) Campos Obligatorios </td>
+
+					  <td align="right">&nbsp;</td>
+
+					  <td align="left">&nbsp;</td>
+
+					  </tr>
+
+					<tr>
+
+					  <td align="right">&nbsp;</td>
+
+					  <td align="center" colspan="3"><input type="button" name="button" class="Textonormal" value="&nbsp;&nbsp;Buscar Documento(s)&nbsp;&nbsp;" onClick="validar()"></td>
+
+					  </tr>
+
+				</table>
+
+			</fieldset>                 
+
+		</form>
+
+	</td>
+
+</tr>
+
+</table>
+
+<script>
+
+function validar(){
+	formulario = window.document.formulario_busqueda;
+
+	var id_ordenent = window.document.formulario_busqueda.ordenent.value;
+	var local = window.document.formulario_busqueda.select_suministro.value;
+
+	if(formulario.ordenent.value==''){
+
+		alert ('Debe ingresar un numero de Orden de Entrega');
+
+	}
+	else{
+
+		if(formulario.filtro[0].checked){
+			//alert('1');
+			buscarfct(id_ordenent,local);
+		} 
+	
+		if(formulario.filtro[1].checked){
+			//alert('2');
+			buscargde(id_ordenent,local);	
+		} 	
+		
+		function buscarfct(id_ordenent,local){
+			popUpWindow('anulacion_doc_01.php?popup=1&numorigen='+id_ordenent+'&sigtipodoc=FCT'+'&local='+local,100, 100,780,430);	
+			return false;
+		}
+	
+		function buscargde(id_ordenent,local){
+			popUpWindow('anulacion_doc_01.php?popup=1&numorigen='+id_ordenent+'&sigtipodoc=GDE'+'&local='+local,100, 100,780,430);	
+			return false;
+		}
+	}
+
+}		
+
+	window.document.formulario_busqueda.ordenent.onkeypress = KeyIsNumber;
+
+	document.formulario_busqueda.ordenent.focus();
+
+</script>

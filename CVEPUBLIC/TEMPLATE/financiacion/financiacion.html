@@ -1,0 +1,115 @@
+<script language="javascript" src="../../TEMPLATE/general/checkfield.js"></script>
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/popup.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/ajax.js"></script>
+<script type="text/javascript">
+function formato_financiacion(){
+window.open('../../COMMAND/financiacion/financiacion_formato.php?string_financiacion='+window.document.financia.string_financiacion.value,'','top=100, left=300, height=680,width=800,scrollbars=YES');
+}
+
+function escriben(text){
+text1 = text.split("|");
+window.document.financia.v_financia.value=text1[3];
+window.document.financia.interes.value=text1[4];
+window.document.financia.v_cheques.value=text1[5];
+window.document.financia.string_financiacion.value=text;
+document.getElementById('imagen').innerHTML='<a href="#"><img src="../../IMAGES/print2.gif" alt="Imprimir Comprobante De Financiamiento" width="28" height="28" name="Imprimir Hoja de Pickeo" onClick="formato_financiacion()"  border="0"></a>';
+//alert(text);
+}
+
+function validar(){
+	
+	if(window.document.financia.n_cheques.value =='' || window.document.financia.c_inicial.value ==''){
+	alert('es necesario ingresar el número de cheques y couta inicial');
+	return false;
+	}
+	
+	if(window.document.financia.n_cheques.value > {max_cheque}){
+	alert('exedio el maximo de cheques permitidos');
+	return false;
+	}
+	
+	if(window.document.financia.c_inicial.value < {min_c_inicial}){
+	alert('la cuota inicial se encuentra por debajo del minimo permitido');
+	return false;
+	}
+	
+	if(window.document.financia.c_inicial.value > {totalcot}){
+	alert('la cuota inicial no puede ser mayor al valor total de la cotizacion');
+	return false;
+	}
+	
+	exec_AJAXRPC('POST','./financiacion_interes_cheque.php?ncheque='+window.document.financia.n_cheques.value+'&cinicial='+window.document.financia.c_inicial.value+'&totalcot={totalcot}&id_cot='+window.document.financia.id_cot.value,'escriben');
+	//alert('paso');
+	//window.document.financia.submit();
+	
+}
+
+</script>
+<form method="post" action="financiacion.php" name="financia">
+<input type="hidden" name="string_financiacion" value="">
+<input type="hidden" name="id_cot" value="{id_cotizacion}">  
+<table width="780" height="32" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td width="390" class="titulonormal">&nbsp;Modulo De Financiación Cotización N°{id_cotizacion}</td>
+		<td width="390" class="titulonormal"></td>
+	</tr>
+</table>
+
+<table width="780" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td align="center" class="textonormal">
+<b>Total Cotización</b>
+</td>
+</tr>
+<tr>
+<td align="center" class="textonormal">
+<input type="text"  name="total_cotizacion" value="{total_cotizacion}" readonly="readonly" style="text-align: right">
+</td>
+</tr>
+</table>
+
+<table width="780" border="0" cellpadding="1" cellspacing="1" class="textonormal">
+<tr>
+<td><fieldset><legend><strong>Datos De Facturación</strong></legend>
+<table width="700" border="0" align="center" cellpadding="1" cellspacing="1" class="textonormal">
+<tr>
+<td align="center"><b>Cuota Inicial (*)</b></td>
+<td align="center"><b>Número De Cheques (*)</b></td>
+</tr>
+<tr>
+<td align="center"><input type="text" name="c_inicial" value="{min_c_inicial}"></td>
+<td align="center"><input type="text" name="n_cheques"></td>
+</table>
+</fieldset>
+<br><br><br></td>
+</tr>
+<tr>
+<td><fieldset><legend><strong>Resultado De Financiación</strong></legend>
+<table width="700" border="0" align="center" cellpadding="1" cellspacing="1" class="textonormal">
+<tr>
+<td align="center"><b>Valor A Financiar</b></td>
+<td align="center"><b>Interés</b></td>
+<td align="center"><b>Valor De Cada Cheque</b></td>
+</tr>
+<tr>
+<td align="center"><input type="text" name="v_financia" readonly="readonly"></td>
+<td align="center"><input type="text" name="interes" readonly="readonly"></td>
+<td align="center"><input type="text" name="v_cheques" readonly="readonly"></td>
+</tr>
+<tr>
+<td align="center" colspan="3"><input type="button" value="Calcular" onclick="validar()">
+<div id="imagen"></div></td>
+</tr>
+</table>
+</fieldset>
+
+</td>
+</tr>
+</table>
+</form> 
+
+<script>
+	window.document.financia.n_cheques.onkeypress = KeyIsNumberInt;
+	window.document.financia.c_inicial.onkeypress = KeyIsNumberInt;
+</script>

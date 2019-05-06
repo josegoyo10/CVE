@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='iso-8859-1'?>
+<tree id="0">
+	<item text="dhtmlxGrid v1.0" open="1">
+		<item text="Main Features" id="mf">
+			<userdata name="file">guide.html</userdata>
+		</item>
+		<item text="Supported Browsers" id="browsers">
+			<userdata name="file">guide.html</userdata>
+		</item>
+		<item text="Guide" id="guide" select="1">
+			<userdata name="file">guide.html</userdata>
+			<item text="dhtmlxTreeGrid" id="trgr">
+				<item text="Tree-&amp;-Grid initialization and usage" id="treegrid"/>
+				<item text="TreeGrid XML structure" id="xml_tree"/>
+				<item text="Math Formulas in TreeGrid" id="math_tree"/>
+				<item text="Adding nodes with Script" id="add_tree"/>
+				
+			</item>
+			<item text="Initialize object on page" id="init"/>
+			<item text="Configuration via XML" id="confxml"/>
+			<item text="Drag-n-drop in Grid" id="dnd"/>
+			<item text="Interaction with dhtmlxTree (drag-and-drop)" id="dndtree"/>
+			<item text="Set Event Handlers" id="handlers"/>
+			<item text="Serialize Grid into XML string" id="serialize"/>
+			<item text="Using Cell Editors (eXcell)" id="excell_use"/>
+			<item text="Creating Cell Editors (eXcell)" id="excell_add"/>
+			<item text="Increasing Performance" id="guide_perf"/>
+			
+			<item text="Dynamical Loading &amp; Buffering" id="dynload"/>
+			<item text="Adding nodes with Script" id="scriptadd"/>
+			<item text="Loading data with XML" id="xmlload"/>
+			<item text="Manipulating rows" id="rowsman"/>
+			<item text="Multiselection in Grid" id="multisel"/>
+			<item text="Multiline rows" id="multiline"/>
+			<item text="Moving rows" id="move"/>
+			<item text="Checkboxes &amp; Radiobuttons" id="checkbox"/>
+			<item text="Navigation with keyboard" id="keyboard"/>
+			<item text="Light Mouse Navigation" id="lightmousenav"/>
+			<item text="Math Formulas in Grid" id="math"/>
+			<item text="Context Menu in Grid" id="cmenu"/>
+			<item text="Icons in Header" id="icohdr"/>
+			<item text="Data Processing and link with Server Datasource" id="dblink"/>
+			<item text="Paginal Output" id="pgn"/>
+			<item text="Smart Rendering" id="srnd"/>
+			<item text="Merging Cells in grid" id="merg"/>
+			<item text="Split Mode. Frozen columns" id="splitm"/>
+		</item>
+		<item text="API Functions" id="api" open="1">
+			<item text="Alphabeticaly sorted" id="api_a">
+				<userdata name="file">alpha.html</userdata>
+			</item>
+			<item text="Grouped by Type" id="api_t">
+				<userdata name="file">tgroup.html</userdata>
+			</item>
+			<item text="Grouped by Object" id="api_o">
+				<userdata name="file">ogroup.html</userdata>
+			</item>
+			
+		</item>
+		
+	</item>
+</tree> 

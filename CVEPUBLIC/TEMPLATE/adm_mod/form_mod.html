@@ -1,0 +1,98 @@
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/funciones.js"></script>
+<script language="javascript" src="../../TEMPLATE/general/checkfield.js"></script>
+<script>
+	function validar_form( form ) {
+		if( validar_obligatorio( form.mod_nombre, "Debe Ingresar Nombre Módulo" ) ) return false;
+		if( validar_obligatorio( form.mod_descripcion, "Debe Ingresar Descripción módulo" ) ) return false;
+		if( validar_obligatorio( form.mod_url, "Debe Ingresar url" ) ) return false;		
+		if( validar_obligatorio( form.mod_orden, "Debe Ingresar Orden de Despliegue" ) ) return false;		
+		return true;
+	}
+</script>
+<table width="650" border="2" bordercolor="white" cellpadding="2" cellspacing="2">
+<tr>
+	<td>
+		<table width="700"  border="0" cellpadding="0"cellspacing="0">
+		<tr>
+			<td width="100%" height="20" class="titulonormal">Administración de Módulos</td>
+		</tr>
+		<tr>
+			<td width="60%"  class="titulonormal">{OUT_BARRA}</td>
+		</tr>
+		<tr>
+			<td width="60%"><p>{SUBTITULO1}</p></td>
+		</tr>    
+		</table>
+	</td>
+</tr>
+<tr>
+	<td>
+		<table width="80%" border="0"  align="center" cellpadding="0" cellspacing="0"  class="textonormal">
+		<form action="adm_mod_01.php" method="post" name="form_agregar" onSubmit="return validar_form(this);">
+		<input type=hidden name=action value={ACTION}>
+		<input type=hidden name=mod_id value="{act_mod_id}">
+		<tr>
+		<td width="200"> Nombre  </td>
+		<td width="3">:</td>
+		<td>
+			<INPUT TYPE="text" NAME="mod_nombre" SIZE="80" MAXLENGTH="80" value="{mod_nombre}" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" >
+		</td>
+	</tr>
+	<tr valign=top>
+		<td width="150">Descripción	</td>
+		<td width="3">: </td>
+		<td>
+			<TEXTAREA NAME="mod_descripcion" ROWS="4" COLS="50" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">{mod_descripcion}</TEXTAREA>
+		</td>
+	</tr>
+	<tr>
+		<td width="150">Estado </td>
+		<td width="3"> : </td>
+		<td>
+			<INPUT TYPE="radio" NAME="mod_estado" VALUE="1" {chec1}>Activo
+			<INPUT TYPE="radio" NAME="mod_estado" VALUE="2" {chec2}>Inactivo 
+		</td>
+	</tr>
+	<tr>
+		<td width="150">Nombre Página Inicio</td>
+		<td width="3">	 : 	</td>
+		<td>
+			<INPUT TYPE="text" NAME="mod_url" SIZE="80" MAXLENGTH="80" value="{mod_url}" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+		</td>
+	</tr>
+	<tr>
+		<td width="150">Módulo padre</td>
+		<td width="3"> : </td>
+		<td>
+			<select name="modulo_padre_id" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+			<option value="---"></option>
+			<!-- BEGIN Padres -->
+				<option value="{padre_mod_id}" {selected}>{padre_mod_nombre}</option>
+			<!-- END Padres -->
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td width="150">Orden de despliegue </td>
+		<td width="3"> : </td>
+		<td>
+			<INPUT TYPE="text" NAME="mod_orden" SIZE="5" MAXLENGTH="5" value="{mod_orden}" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+		</td>
+	</tr>
+	<tr>	
+      <td colspan=3 align=center>
+        <input name="imageField" type="image" src="../../IMAGES/checkin.jpg" alt="{altboton}" width="25" height="25" border="0">
+	</td>
+	</tr>
+	</FORM>
+</table>
+</td>
+</tr>
+</table>
+<script language="javascript">
+	window.document.form_agregar.mod_nombre.onkeypress = KeyIsTexto;
+	window.document.form_agregar.mod_descripcion.onkeypress = KeyIsTexto;
+	window.document.form_agregar.mod_url.onkeypress = KeyIsRuta;
+	window.document.form_agregar.mod_orden.onkeypress = KeyIsNumber;
+</script>
+<br>

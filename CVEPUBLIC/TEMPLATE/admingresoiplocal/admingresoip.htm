@@ -1,0 +1,62 @@
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/funciones.js"></script>
+<script language="javascript" src="../../TEMPLATE/general/checkfield.js"></script>
+<script>
+	function validar_form( form ) {
+		if( validar_obligatorio( form.ip_local, "IP Obligatoria" ) ) return false;
+		return true;
+	}
+</script>
+
+<body  onload="document.ingreso_ip.ip_local.focus();">  
+<table width="780" height="30" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td width="390" class="titulonormal">Ingresa IP Locales </td>
+		<td width="390" class="titulonormal">&nbsp;</td>
+	</tr>
+</table>
+<table width="780" height="75%"   border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td valign="top"> 
+	<form NAME="ingreso_ip" METHOD="POST" ACTION="admingresoip.php" onSubmit="return validar_form(this);">
+	<input type="hidden" name="accion" value="ingresa">
+		<table width="100%"  border="0" cellspacing="2" cellpadding="2">
+			<tr>
+				<td width="80%" valign="top">
+					<table width="600" height="36" border="0" align="center" cellpadding="0" cellspacing="2" class="textonormal">
+					<tr>
+					<td height="32" valign="top"><fieldset>
+					<legend>Ingresa IP</legend>
+					<span >
+					IP&nbsp;<input type="text" name="ip_local" value={ip_local}>
+					Local
+					<span >
+					<select name="select_local"  {disabled} class="select1" >
+					<option value="0" class="Textonormal">TODOS</option>
+					<!-- BEGIN Locales -->
+					<option value="{codigo_local}" {selected}>{nombre_local}</option>
+					<!-- END Locales -->
+					</select>
+					</span>
+					&nbsp;<input type="submit" name="bot_mod" value="Ingresar">
+					</fieldset>
+					</td>
+					<td  align="center"><fieldset>
+					<legend>Volver</legend>
+						<span>
+						<a href='admlistadoip.php'><img src="../../IMAGES/back.png" border="0" alt='Volver' width='22' height='18' border='0'></a>
+						</span>
+					</fieldset>
+					</td>					
+					</tr>
+					</table>
+					
+				</td>    
+			</tr> 
+		</table>
+	</form>
+</td>
+</tr>
+</table>
+<script language="javascript">
+window.document.ingreso_ip.ip_local.onkeypress = IpIsKey;
+</script>

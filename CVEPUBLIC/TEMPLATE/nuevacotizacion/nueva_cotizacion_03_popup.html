@@ -1,0 +1,508 @@
+<html>
+
+<head>
+
+	<title>Búsqueda Avanzada</title>
+
+
+
+	<script language="javascript" src="../../TEMPLATE/general/checkfield.js"></script>
+
+    <link href="../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css">
+
+    <!-- http://www.desarrolloweb.com/articulos/ejemplos/css/ejemplopacity/ejemplo.html -->
+
+</head>
+
+<script>
+
+	function devuelve(){
+
+		//alert("devolviendo"+ sap.value);
+
+		window.frames["productos"].buscasap();
+		// alert("Cod Barra:" + barra.value);
+		//alert("Sap:"  +sap.value);
+		window.returnValue = sap.value;
+		window.returnValue = barra.value;
+		
+		window.close();
+
+	}
+
+	function cerrar(){
+
+				
+		window.returnValue = "";
+
+		window.close();
+
+	}
+
+
+
+	function verifica(evt,tipo){
+
+
+		evt = (evt) ? evt : event;
+
+		var charCode = (evt.which) ? evt.which : evt.keyCode;
+
+		if(charCode==13){
+
+			document.getElementById('cargando').style.visibility="visible"
+
+					document.busqueda.cantidad.value=''
+
+			if(busqueda.radioproducto[0].checked){
+
+				
+
+				productos.location ='nueva_cotizacion_03_grilla.php?tipopedido={tipopedido}&codlocal={codlocalcsum}&tipobus=des&textobus='+busqueda.textproducto.value+'&pag='+(parseFloat(busqueda.paginas.value)-1)+'&orden='+busqueda.orden.value;			 
+
+			}
+
+			else if(busqueda.radioproducto[1].checked){
+
+				//alert("sap");
+
+				document.frames['productos'].location ='nueva_cotizacion_03_grilla.php?tipopedido={tipopedido}&codlocal={codlocalcsum}&tipobus=sap&textobus='+busqueda.textproducto.value+'&pag=0'+(parseFloat(busqueda.paginas.value)-1)+'&orden='+busqueda.orden.value;
+
+				busqueda.textproducto.focus();
+
+			    busqueda.textproducto.select();
+
+				}
+
+			else if(busqueda.radioproducto[2].checked){
+
+				//alert("barra");
+
+				productos.location ='nueva_cotizacion_03_grilla.php?tipopedido={tipopedido}&codlocal={codlocalcsum}&tipobus=bar&textobus='+busqueda.textproducto.value+'&pag=0'+(parseFloat(busqueda.paginas.value)-1)+'&orden='+busqueda.orden.value;	
+
+			}
+
+			else if(busqueda.radioproducto[3].checked){
+
+				//alert('nom');
+
+					productos.location ='nueva_cotizacion_03_grilla.php?tipopedido={tipopedido}&codlocal={codlocalcsum}&tipobus=nom&textobus='+busqueda.textproducto.value+'&pag=0'+(parseFloat(busqueda.paginas.value)-1)+'&orden='+busqueda.orden.value;	
+
+			}
+
+		}
+
+	}
+
+	
+
+	function envio(tipo){
+
+		document.getElementById('cargando').style.visibility="visible"
+
+       
+
+		if (tipo == "producto"){
+
+			
+
+			if(busqueda.radioproducto[0].checked){
+
+				//alert("descripcion")
+
+				document.productos.location ='nueva_cotizacion_03_grilla.php?tipopedido={tipopedido}&codlocal={codlocalcsum}&tipobus=des&textobus='+busqueda.textproducto.value+'&pag='+(parseFloat(busqueda.paginas.value)-1)+'&orden='+busqueda.orden.value;			 
+
+			}
+
+			else if(busqueda.radioproducto[1].checked){
+
+				//alert("sap")
+
+				productos.location ='nueva_cotizacion_03_grilla.php?tipopedido={tipopedido}&codlocal={codlocalcsum}&tipobus=sap&textobus='+busqueda.textproducto.value+'&pag=0'+(parseFloat(busqueda.paginas.value)-1)+'&orden='+busqueda.orden.value;	
+
+			}
+
+			else if(busqueda.radioproducto[2].checked){
+
+				//alert("barra")
+
+				document.productos.location ='nueva_cotizacion_03_grilla.php?tipopedido={tipopedido}&codlocal={codlocalcsum}&tipobus=bar&textobus='+busqueda.textproducto.value+'&pag=0'+(parseFloat(busqueda.paginas.value)-1)+'&orden='+busqueda.orden.value;
+
+			}
+
+			else if(busqueda.radioproducto[3].checked){
+
+				//alert("Nom")
+
+				document.productos.location ='nueva_cotizacion_03_grilla.php?tipopedido={tipopedido}&codlocal={codlocalcsum}&tipobus=nom&textobus='+busqueda.textproducto.value+'&pag=0'+(parseFloat(busqueda.paginas.value)-1)+'&orden='+busqueda.orden.value;
+
+			}
+
+	
+
+		}
+
+	}
+
+	
+
+	function llenapaginas(cantidad,pagactual){
+
+		fin = busqueda.paginas.options.length;
+
+		busqueda.paginas.options.length = 0;
+
+
+		if (cantidad < {limite}){
+
+			var options = new Option(1,1);
+
+			window.document.busqueda.paginas.options[0] = options;
+
+
+
+		}else{
+
+		
+
+			pags = cantidad%{limite};
+
+			cantidad = cantidad / {limite};
+
+			var h = 1;
+
+			for (e = 0;e < cantidad;e++ ){
+
+				var options = new Option(h,h);
+
+				window.document.busqueda.paginas.options[e] = options;
+
+				h++;
+
+			}
+
+			
+
+			busqueda.paginas.options[pagactual].selected = true;  
+
+		}
+
+	}
+
+	
+
+	function traepagina(pag){
+
+		
+
+		document.getElementById('cargando').style.visibility="visible";
+
+		pag = pag -1;
+
+	
+
+		if(busqueda.radioproducto[0].checked){
+
+			//alert("descripcion")
+
+			document.productos.location ='nueva_cotizacion_03_grilla.php?tipopedido={tipopedido}&codlocal={codlocalcsum}&tipobus=des&textobus='+busqueda.textproducto.value+'&pag='+pag+'&orden='+busqueda.orden.value;
+
+		}
+
+		else if(busqueda.radioproducto[1].checked){
+
+			//alert("sap")
+
+			productos.location ='nueva_cotizacion_03_grilla.php?tipopedido={tipopedido}&codlocal={codlocalcsum}&tipobus=sap&textobus='+busqueda.textproducto.value+'&pag='+pag+'&orden='+busqueda.orden.value;
+
+		}
+
+		else if(busqueda.radioproducto[2].checked){
+
+			//alert("barra")
+
+			document.productos.location ='nueva_cotizacion_03_grilla.php?tipopedido={tipopedido}&codlocal={codlocalcsum}&tipobus=bar&textobus='+busqueda.textproducto.value+'&pag='+pag+'&orden='+busqueda.orden.value;
+
+		}
+
+		else if(busqueda.radioproducto[3].checked){
+
+			//alert("Nom")
+
+			document.productos.location ='nueva_cotizacion_03_grilla.php?tipopedido={tipopedido}&codlocal={codlocalcsum}&tipobus=nom&textobus='+busqueda.textproducto.value+'&pag='+pag+'&orden='+busqueda.orden.value;
+
+		}
+
+
+
+	}
+
+	
+
+	function siguiente(){
+
+		var sig = parseFloat(busqueda.paginas.value);
+
+		var max = busqueda.paginas.options.length;
+
+		max = max;
+
+		if (sig != max){
+
+			traepagina(sig+1);
+
+		}
+
+	}
+
+	
+
+	function anterior(){
+
+		var ant = parseFloat(busqueda.paginas.value);
+
+		if (ant != 1){
+
+			traepagina(ant-1);
+
+		}
+
+	}
+
+	
+
+	function ultimo(){
+
+		var max = busqueda.paginas.options.length;
+
+		max = max;
+
+	
+
+		var ult = parseFloat(busqueda.paginas.value);
+
+		
+
+		if (ult != max){
+
+			
+
+			traepagina(max);
+
+		}
+
+	}
+
+	
+
+	function primero(){
+
+		var pri = parseFloat(busqueda.paginas.value);
+
+		if (pri != 1){
+
+			traepagina(1);
+
+		}
+
+	}
+	function seteaOrden(){
+	var sel = document.getElementById("ordenSelect");
+	document.busqueda.orden.value = sel.options[sel.selectedIndex].value;
+	alert(document.busqueda.orden.value);
+	}
+	
+
+</script>
+
+<body onLoad="document.getElementById('textproducto').focus()">
+
+<input type="hidden" name="sap"/>
+<input type="hidden" name="barra"/>
+
+
+<form name="busqueda" method=post onSubmit="return false;">
+<input type="hidden" name="orden" value=3/>
+<table width="744" height="395" border="0" align="left" class="titulonormal" style="position:absolute; left:0px; top:0px; ">
+
+  <th><fieldset><legend>Búsquedas avanzada</legend>
+
+		<table width="100%" height="100%" border="0" class="textonormal">
+
+			<tr>
+
+				<th width="100%" height="100%" scope="col">
+
+					
+
+					<table width="100%" height="8%" border="0" class="textonormal">
+
+						<tr>
+
+							<th width="100%" height="56" scope="col">
+
+								<fieldset><legend>Producto</legend>
+
+									<table width="90%" height="8%" border="0">
+
+										<tr class="textonormal">
+
+											<th width="77%" height="36" scope="col">
+
+												<input name="textproducto" type="text" class="textonormal" />
+
+												<input name="radioproducto" type="radio" checked="checked" />
+
+												Descripción
+
+												<input name="radioproducto" type="radio"/>
+
+												SAP
+
+												<input name="radioproducto" type="radio"/>
+
+												Barra
+
+												<input name="radioproducto" type="radio"/>
+
+												Nombre Proveedor										  </th>
+
+											<th width="11%" scope="col">
+
+										  <input name="busproducto" type="button" class="textonormal"  onclick="envio('producto')" value="Buscar"/>										  	</th>
+
+										    <th width="12%" scope="col"><label>Ordenar Por
+										      <select  id="ordenSelect" name="ordenSelect" onChange="seteaOrden()">
+										        <option value="3">EAN/UPC</option>
+										        <option value="2">Art&iacute;culo</option>
+										        <option value="4">Descripci&oacute;n</option>
+										        <option value="10">Stock</option>
+										        <option value="9">P.Lista</option>
+										        <option value="12">Proveedor</option>
+									              </select>
+										    </label></th>
+
+										</tr>
+
+								</table>
+
+								</fieldset>						  </th>
+
+						</tr>
+
+					</table>				</th>
+
+			</tr>
+
+			<tr>
+
+				<td height="100%">
+
+					<table width="100%"  border="0" align="top" cellpadding="0" cellspacing="0">
+
+						 <tr>
+
+						   <td height="233"><iframe src="nueva_cotizacion_03_grilla.php" name="productos" width="100%" height="100%" frameborder="0" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" scrolling="no"> </iframe></td>
+
+						 </tr>
+
+					</table>				</td>
+
+			</tr>
+
+			<tr>
+
+			  <td><table width="25%" border="0" align="right">
+
+                <tr>
+
+                  <th width="18%" scope="col"><input name="pri" type="button" class="textonormal" value="&lt;&lt;" onClick = "primero()"></th>
+
+                  <th width="15%" scope="col"><input name="ant" type="button" class="textonormal" value="&lt;" onClick = "anterior()"></th>
+
+                  <th width="35%" scope="col"><select name="paginas" onChange="traepagina(busqueda.paginas.value)">
+
+                    <option value="1">1</option>
+
+                  </select></th>
+
+                  <th width="14%" scope="col"><input name="sig" type="button" class="textonormal" value="&gt;" onClick = "siguiente()"></th>
+
+                  <th width="18%" scope="col"><input name="ult" type="button" class="textonormal" value="&gt;&gt;" onClick = "ultimo()"></th>
+
+                </tr>
+
+              </table></td>
+
+			</tr>
+
+			<tr>
+
+			  <td><table width="100%" border="0" class="textonormal">
+
+                <tr>
+
+                  <th width="66%" align="left" scope="col" > Se encontraron
+
+                    <input name="cantidad" class="textoespecial3" type="text" align="left" style="background-color:white" readonly size="50" Border-style="none"; /></th>
+
+                  <th width="21%" scope="col"> <input name="Submit3" type="button" value="Agregar Producto" class="textonormal" onClick="devuelve()"/>
+
+                  </th>
+
+                  <th width="13%" scope="col"> <input name="Submit2" type="button" value="Cerrar Ventana" class="textonormal" onClick="cerrar()"/>
+
+                  </th>
+
+                </tr>
+
+              </table></td>
+
+		  </tr>
+
+	  </table>
+
+	</fieldset>
+
+</th>
+
+</table>
+
+<div align="center" class="opaco" id="cargando" style="visibiliry:hidden; position:absolute; left:19px; top:99px; "> 
+
+	<table width="705" height="215" class="transparente">
+
+		<th>
+
+			
+
+			<img src="../../IMAGES/loading.gif" width="70" height="70" align="center">		</th>
+
+		
+
+	    
+
+        <tr>
+
+          <th class="cargando">CARGANDO.......</th>
+
+    </table>
+
+</div>
+
+</form>
+
+
+
+</body>
+
+<script type="text/javascript">
+
+	document.busqueda.textproducto.onkeyup = verifica;
+
+</script>
+
+</html>
+
+	
+

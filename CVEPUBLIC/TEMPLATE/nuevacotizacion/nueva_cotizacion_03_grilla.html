@@ -1,0 +1,127 @@
+<html>
+<head>
+	<link rel="STYLESHEET" type="text/css" href="../../TEMPLATE/general/dhtmlxGrid_1.1/css/dhtmlXGrid.css">
+	<script  src="../../TEMPLATE/general/dhtmlxGrid_1.1/js/dhtmlXCommon.js"></script>
+	<script  src="../../TEMPLATE/general/dhtmlxGrid_1.1/js/dhtmlXGrid.js"></script>		
+	<script  src="../../TEMPLATE/general/dhtmlxGrid_1.1/js/dhtmlXGridCell.js"></script>	
+	
+</head>
+
+
+<script>
+	var mygrid;
+	var filas = 1;
+	
+	function doOnLoad(){
+		{visible}	
+		mygrid = new dhtmlXGridObject('gridbox');
+		
+		buildGrid();
+		
+		/*
+		if (cantidad <= {limite}){
+				cantidad +=' coincidencias'; 
+		}else{
+			cantidad +=' coincidencias.Sólo se mostrarán las primeras {limite}'; 
+	
+		}
+		
+		*/
+		
+			
+		
+	}
+	function buildGrid(){
+		mygrid.imgURL = "../../TEMPLATE/general/dhtmlxGrid_1.1/imgs/";
+		mygrid.setHeader("EAN/UPC,Codigo,{tipopedido}Descripción,Um,Stock,P.Lista,Proveedor");
+		mygrid.setInitWidths("90,65,210,35,35,60,200");
+		mygrid.setColAlign("right,right,left,right,center,right,left");
+		mygrid.setColTypes("ro,ro,ro,ro,ro,price,ro");
+		mygrid.setColSorting("int,int,str,int,str,int,str");
+		//mygrid.setOnRowSelectHandler(doOnRowSelected);
+		mygrid.setOnEditCellHandler(onEditCell);
+		mygrid.setSkin("xp");
+		mygrid.enableMultiselect(true);
+		//mygrid.enableMultiline(true);
+		//mygrid.enableLightMouseNavigation(true);
+		mygrid.init();
+		<!-- BEGIN Productos -->
+		mygrid.addRow({fila},"{ean},{articulo},{des},{um},{stock},{pventa},{prove}",0);
+		<!-- END Productos -->
+		parent.document.getElementById('cargando').style.visibility="hidden";
+
+		var cantidad = {cantidad};
+		cantidad +=' coincidencias'; 
+		parent.document.busqueda.cantidad.value = cantidad;	
+		parent.llenapaginas({cantidad},{pagactual});
+		
+	}
+	
+	
+	function doOnRowSelected(idfila){
+
+		//alert('idfila:' + idfila);
+		var valor = mygrid.cells(idfila,1).getValue();
+		var codvalor = mygrid.cells(idfila,0).getValue();
+		parent.sap.value = valor;
+		parent.barra.value = codvalor; 
+		
+	}
+	
+	
+	
+	function onEditCell(stage,rowId,cellInd){
+	
+		if(stage==0){
+			
+			buscasap();	
+			parent.devuelve();
+			
+		}else if(stage==1){
+		}else if(stage==2){
+			
+			
+		}
+	}
+	
+	function buscasap(){
+		var saps = mygrid.getSelectedId();
+		
+		if (saps){
+			mygrid.clearSelection();
+			row = saps.split(',');
+			saps = null;
+			for (w=0;w < row.length;w++){
+				var valor = mygrid.cells(row[w],1).getValue();
+				var cvalor = mygrid.cells(row[w],0).getValue();
+				if (saps == null){
+					saps = valor;
+					barras = cvalor;
+				}else{
+					saps += "#" + valor;
+					barras += "#" + cvalor; 
+				}
+				
+			}
+			parent.barra.value = barras;
+			parent.sap.value = saps; 
+		}
+	}
+	
+</script>
+
+<body onload ="doOnLoad()">
+<table>
+	<tr>
+		<td>
+			<div style="width:100%;border:0px solid;border-color:lightgrey;padding:0px;">
+				<div id="gridbox" width="100%" height="225"> 
+				</div>	
+				
+			</div>
+		</td>	
+	</tr>
+</table>
+</body>
+</html>
+

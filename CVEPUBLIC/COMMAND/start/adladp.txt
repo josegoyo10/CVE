@@ -1,0 +1,17 @@
+adLDAP Object
+(
+    [_account_suffix] => @cencosud.corp
+    [_base_dn] => dc=cencosud, dc=corp
+    [_domain_controllers] => Array
+        (
+            [0] => cencosud.corp
+        )
+
+    [_ad_username] => jorodri
+    [_ad_password] => samsung19
+    [_real_primarygroup] => 1
+    [_use_ssl] => 
+    [_recursive_groups] => 1
+    [_conn] => Resource id #21
+    [_bind] => 
+)

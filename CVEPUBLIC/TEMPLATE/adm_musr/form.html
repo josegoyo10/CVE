@@ -1,0 +1,170 @@
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/funciones.js"></script>
+<script language="javascript" src="../../TEMPLATE/general/checkfield.js"></script>
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+<script>
+
+	function validar_form( form ) {
+		if( validar_obligatorio( form.usr_nombres, "Debe Ingresar Nombre" ) ) return false;
+		if( validar_obligatorio( form.usr_apellidos, "Debe Ingresar Apellidos" ) ) return false;
+		//if( validar_obligatorio( form.usr_email, "Debe Ingresar Email" ) ) return false;
+		if( validar_obligatorio( form.usr_login, "Debe Ingresar Usuario" ) ) return false;
+		if( validar_obligatorio( form.usr_clave, "Debe Ingresar una clave" ) ) return false;		
+		if( validar_obligatorio( form.usr_clave2, "Debe Reingresar la clave" ) ) return false;				
+		if( form.usr_clave.value != form.usr_clave2.value ) {
+			alert( "Las claves ingresadas deben ser iguales" );
+			return false;
+		}
+ 		//if ( document.form_agregar.tipousuario.value==2 || document.form_agregar.tipousuario.value==3){
+			if( validar_obligatorio( form.codigovendedor, "Debe Ingresar Código Vendedor" ) )
+				return false;
+	 		if ( document.form_agregar.codigovendedor.value<=0){
+				alert('Código vendedor debe ser Mayor a 0');
+				return false;			
+			}
+			if (document.form_agregar.codigovendedor.value.length!=3){
+				alert('Código vendedor debe tener 3 caracteres');
+				return false;
+			}	
+		/*}else{
+			document.form_agregar.codigovendedor.value='';
+		}*/
+		return true;
+	}
+ function codvendedor() {
+	 //if(document.form_agregar.tipousuario.value==2 || document.form_agregar.tipousuario.value==3){
+		document.form_agregar.codigovendedor.disabled=false;			 
+	 /*}else{
+		document.form_agregar.codigovendedor.disabled=true;	 
+	 }*/
+ }
+</script>
+<!-- table width="100%" border="0"  align="center" cellpadding="2" cellspacing="2"  class="textonormal"-->
+<table width="650" border="2" bordercolor="white" cellpadding="2" cellspacing="2">
+<tr>
+	<td>
+		<table width="700"  height="15" border="0" cellpadding="0"cellspacing="0">
+			<tr>
+				<td width="50%"  height="30" class="titulonormal">{TEXT_TITULO}</td>
+			</tr>
+			<tr>
+				<td width="60%"  class="titulonormal">{OUT_BARRA}</td>
+			</tr>
+			
+			<tr>
+				<td width="60%"  class="titulonormal"><p align=center class="error">{TEXT_ERROR}</p></td>
+			</tr>			
+			<tr>
+				<td width="60%"><p>{TEXT_1}</p></td>
+			</tr>    
+		</table>
+	</td>
+</tr>
+<tr>
+<td>
+<table width="650" border="0"  align="center" cellpadding="0" cellspacing="0"  class="textonormal">
+<form action="adm_musr_01.php" method="post" name="form_agregar" onSubmit="return validar_form(this);">
+<INPUT TYPE="hidden" NAME="action" VALUE="ins1">
+	<tr>
+		<td >Nombres</td>
+		<td  align=center>:</td>
+		<td>
+		<INPUT TYPE="text" NAME="usr_nombres" VALUE="" SIZE="30" MAXLENGTH="200" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+		</td>
+	</tr>
+	<tr>
+		<td >Apellidos</td>
+		<td  align=center>:</td>
+		<td>
+		<INPUT TYPE="text" NAME="usr_apellidos" VALUE="" SIZE="30" MAXLENGTH="200" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+		</td>
+	</tr>
+	<tr>
+		<td >Tipo Usuario</td>
+		<td  align=center>:</td>
+		<td>
+		<select name="tipousuario" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);" onchange="codvendedor()">
+		<!-- BEGIN Tipo_Usuario -->
+		<option value="{id_tipousuario}" {selected}>{nomtipousuario}</option>
+		<!-- END Tipo_Usuario -->
+		</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Codigo Vendedor</td>
+		<td  align=center>:</td>
+		<td>
+		<!-- <INPUT TYPE="text" NAME="codigovendedor" VALUE="" disabled SIZE="30" MAXLENGTH="200" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">  -->
+		<INPUT TYPE="text" NAME="codigovendedor" VALUE="" disabled SIZE="30" MAXLENGTH="200" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+		</td>
+	</tr>	
+	<tr>	
+	<tr>
+		<td >Email</td>
+		<td  align=center>:</td>
+		<td>
+		<INPUT TYPE="text" NAME="usr_email" VALUE="" SIZE="30" MAXLENGTH="200" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+		</td>
+	</tr>
+	<tr>
+		<td >Local</td>
+		<td  align=center>:</td>
+		<td>
+		<select name="local" {disabled} onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+		<option value="0">TODOS</option>
+		<!-- BEGIN Locales -->
+		<option value="{cod_local}" {codselected}>{nom_local}</option>
+		<!-- END Locales -->
+		</select>
+		</td>
+	</tr>
+	<tr>
+		<td >Usuario</td>
+		<td  align=center>:</td>
+		<td>
+		<INPUT TYPE="text" NAME="usr_login" VALUE="" SIZE="30" MAXLENGTH="200" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+		</td>
+	</tr>
+	<tr>
+		<td >Clave</td>
+		<td  align=center>:</td>
+		<td>
+		<INPUT TYPE="password" NAME="usr_clave" VALUE="" SIZE="30" MAXLENGTH="200" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);"> 
+		</td>
+	</tr>
+	<tr>
+		<td >Reingrese clave</td>
+		<td  align=center>:</td>
+		<td>
+		<INPUT TYPE="password" NAME="usr_clave2" VALUE="" SIZE="30" MAXLENGTH="200" onFocus="cambiar_color_on(this);" onBlur="cambiar_color_off(this);">
+		</td>
+	</tr>
+	<tr>
+		<td >Estado</td>
+		<td  align=center>:</td>
+		<td>
+		<INPUT TYPE="radio" NAME="usr_estado" value="1" checked>Activo
+		<INPUT TYPE="radio" NAME="usr_estado" value="0" >Desactivo
+		</td>
+	</tr>
+	<tr>
+		<td colspan=4 align=center><br>
+		<input name="imageField" type="image" src="../../IMAGES/checkin.jpg" alt="Agregar" width="25" height="25" border="0"></td>
+	</tr>
+</form>
+</table>
+
+
+
+</td>
+</tr>
+</table>
+
+<script language="javascript">
+window.document.form_agregar.usr_nombres.onkeypress = KeyIsTexto;
+window.document.form_agregar.usr_apellidos.onkeypress = KeyIsTexto;
+window.document.form_agregar.codigovendedor.onkeypress = KeyIsTexto;
+window.document.form_agregar.usr_email.onkeypress = KeyIsTexto;
+window.document.form_agregar.usr_login.onkeypress = KeyIsTexto;
+window.document.form_agregar.usr_clave.onkeypress = KeyIsTexto;
+window.document.form_agregar.usr_clave2.onkeypress = KeyIsTexto;
+</script>

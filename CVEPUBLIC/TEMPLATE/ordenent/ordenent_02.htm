@@ -1,0 +1,362 @@
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript" src="../../TEMPLATE/general/checkfield.js"></script>
+
+<script>window.name='popup2'</script>
+
+<script>
+
+	var arrayciudades=new Array();
+
+	arrayciudades[0] = '';
+
+	function cambiaciudad(elem, dest){
+
+		dest.value = arrayciudades[elem.options[elem.selectedIndex].value];
+
+	}
+
+	
+
+	<!-- BEGIN comunas -->
+
+	arrayciudades[{id_comuna}] = '{nomciudadl}';
+
+	<!-- END comunas -->
+
+</script>
+
+
+
+<FORM NAME="nueva_cotizacion_01" METHOD="POST" target="popup2">
+
+<INPUT TYPE="hidden" NAME="accion" VALUE="grabar">
+
+<INPUT TYPE="hidden" NAME="rut" VALUE="{rut}">
+
+<INPUT TYPE="hidden" NAME="id_direccion_elim" VALUE="">
+
+<INPUT TYPE="hidden" NAME="id_direccion" VALUE="{id_direccion}">
+
+<INPUT TYPE="hidden" NAME="numinterno" VALUE="{numinterno}">
+
+<INPUT TYPE="hidden" NAME="_item" VALUE="{item}">
+
+<INPUT TYPE="hidden" NAME="tupla_dir_mod" VALUE="">
+<script>
+//alert(document.nueva_cotizacion_01.numinterno.value);
+
+</script>
+<table width = 220>
+
+	<tr>
+
+		<td valign=top class="titulonormal">Libreta de Direcciones</td>
+
+		<td valign=top><a href="#"><img src="../../IMAGES/add.gif" width="15" border="0" align="right" onClick="adddir()" title="Agregar Direcci&oacute;n Despacho"></a></td>
+
+	</tr>
+
+</table>
+
+
+
+<script>
+
+	arr_direcciones = '';
+
+	var evaluar = '';
+
+</script>
+
+<!-- BEGIN direcciones -->
+
+	<INPUT TYPE="hidden" NAME="id_direccion_{id_direccion}" VALUE="{id_direccion}">
+
+	<script>arr_direcciones = arr_direcciones + ',' + '{id_direccion}';</script>
+
+<table>
+
+	<tr>
+
+		<td>
+
+			<fieldset>
+
+				<table cellpadding="0" cellspacing="0">
+
+					<tr>
+
+						<td class="textonormal">&nbsp;</td>
+
+						<th width="60" align=left class="textonormal">Nombre Dir:</th>
+
+						<td width="200" class="Textonormal"><input name="descripcion_{id_direccion}" type="text" class="Textonormal" value="{descripcion}" size="40"></td>
+
+						<th width="60" align=left class="Textonormal">Direcci&oacute;n:</th>
+
+						<td width="200" class="Textonormal"><input name="direccion_{id_direccion}" type="text" class="textonormal" value="{direccion}" size="43"></td>
+
+					</tr>
+
+					<script>
+
+						window.document.nueva_cotizacion_01.direccion_{id_direccion}.onkeypress = KeyIsTexto;
+
+						window.document.nueva_cotizacion_01.descripcion_{id_direccion}.onkeypress = KeyIsTexto;
+
+						
+
+					</script>
+
+					<tr>
+
+						<td class="textonormal">&nbsp;</td>
+
+						<th align=left class="textonormal">Barrio:</th>
+
+						<td>
+
+                          <select name="select_comunasd_{id_direccion}" class="TextoNormal" >
+
+   							<option value="0" {selectedt} class="Textonormal">Seleccione Comuna</option>
+
+							{bloque_comunad}
+
+				  		 </select>
+
+						<th align=left class="textonormal">Contacto:</th>
+
+						<td class="textonormal"><input name="contacto_{id_direccion}" type="text" class="Textonormal" value="{contacto}" size=15>
+
+						<script>
+
+						window.document.nueva_cotizacion_01.contacto_{id_direccion}.onkeypress = KeyIsTexto;
+
+						</script>
+
+							&nbsp;Tel&eacute;fono:&nbsp;&nbsp;
+
+							<input name="fonocontacto_{id_direccion}" type="text" class="Textonormal" value="{fonocontacto}" size=10></td>
+
+					</tr>
+
+						<script>
+
+						window.document.nueva_cotizacion_01.fonocontacto_{id_direccion}.onkeypress = KeyIsNumber;
+
+						</script>
+
+					<tr>
+
+						<td class="textonormal">&nbsp;</td>
+
+						<th align=left class="textonormal">e-mail:</th>
+
+
+
+						<td><input name="email_{id_direccion}" class="textonormal" type="text" value="{email}" size="43"></td>
+
+					</tr>
+
+						<script>
+
+						window.document.nueva_cotizacion_01.email_{id_direccion}.onkeypress = KeyIsTexto;
+
+						</script>
+
+					<tr>
+
+						<td class="textonormal">&nbsp;</td>
+
+						<th align=left class="textonormal">Comentario:</th>
+
+						<td colspan=2><TEXTAREA class="textonormal" NAME="comentario_{id_direccion}" ROWS="2" COLS="60">{comentario}</TEXTAREA></td>
+
+						<td>
+
+							<a href="#" border=0><img src="../../IMAGES/add.gif" width="15" border="0" align="right" onClick="adddir()" title="Agregar Direcci&oacute;n Despacho"></a>						
+
+							<a href="#" border=0><img src="../../IMAGES/del.gif" class="deleteME" width="15" title="Eliminar Direcci&oacute;n Despacho" align="right" border="0" id='{id_direccion}'; numoe='{num_elem_oe}' numop='{num_elem_op}'; onClick="validaelimdir(this, numoe, numop);" title="Eliminar Direcci?n Despacho"></a>
+
+							<a href="#" border=0><img src="../../IMAGES/editicon.gif" border="0" align="right" onClick="grabacliente()" title="Guardar Cambios en Direcci&oacute;n Despacho"></a>						
+
+							<a href="#" border=0><img src="../../IMAGES/check.gif" id="{id_direccion}" border="0" align="right" onClick="usardir(this)" title="Usar Direcci&oacute;n Despacho"></a>						
+
+						</td>
+
+						<script>
+
+						window.document.nueva_cotizacion_01.comentario_{id_direccion}.onkeypress = KeyIsTexto;
+
+						</script>
+
+					</tr>
+
+				</table>
+
+			</fieldset>
+
+		</td>
+
+	</tr>
+
+</table>
+
+<script> evaluar = evaluar + "validadir(document.nueva_cotizacion_01.descripcion_{id_direccion}, document.nueva_cotizacion_01.direccion_{id_direccion}, document.nueva_cotizacion_01.comuna_{id_direccion}, {id_direccion});"; </script>
+
+<!-- END direcciones -->
+</form>
+
+
+
+<script LANGUAGE="javascript">
+
+	function validaelimdir(elem,numoe,numop){
+
+
+
+		if(numoe>0&& numop<=0){
+
+			alert('No puede eliminar la direccion de despacho, puesto que esta asociada a '+numoe+' orden(es) de entrega.');
+
+			return;
+
+		}
+
+		if(numoe>0&& numop>0){
+
+		alert('No puede eliminar la direccion de despacho, puesto que esta asociada a '+numoe+' orden(es) de entrega y a '+numop+' orden(es) de picking.');
+
+			return;
+
+		}
+
+		
+
+		if(numop>0&& numoe<=0){
+
+			alert('No puede eliminar la direccion de despacho, puesto que esta asociada a '+numop+' orden(es) de picking.');
+
+			return;
+
+		}
+
+
+
+		else{
+
+		
+
+			if (confirm('Esta seguro que desea eliminar la direccion de despacho?')){
+
+				document.nueva_cotizacion_01.accion.value='elidir'; 
+
+				document.nueva_cotizacion_01.id_direccion_elim.value=elem.id; 
+
+				document.nueva_cotizacion_01.submit(); 
+
+			}
+
+			return;
+
+		}
+
+	}
+
+
+
+	function adddir(){
+
+		document.nueva_cotizacion_01.accion.value='adddir'; 
+
+		document.nueva_cotizacion_01.submit(); 
+
+	}
+
+
+
+	function usardir(elem) {
+
+		eval(evaluar);
+
+		if (!evaluardir)
+
+			return;
+
+
+
+		document.nueva_cotizacion_01.accion.value='usardir'; 
+
+		document.nueva_cotizacion_01.id_direccion_elim.value=elem.id; 
+
+		document.nueva_cotizacion_01.tupla_dir_mod.value = arr_direcciones;
+
+		document.nueva_cotizacion_01.submit(); 
+
+	}
+
+
+
+	evaluardir = true;
+
+
+
+	function validadir(descripcion, direccion, comuna, id){
+
+		var falta = '';
+
+ 		if (!descripcion.value)
+
+ 			falta += "- Nombre Dirección\n";
+
+ 		if (!direccion.value)
+
+ 			falta += "- Dirección\n";
+
+
+
+ 		if (falta) {
+
+			alert('Faltan los siguientes datos en la direccion de despacho:\n' + falta);
+
+			evaluardir = evaluardir && false;
+
+			return false;
+
+		}
+
+		else {
+
+			evaluardir = true;
+
+			return true;
+
+		}
+
+	}
+
+	
+
+	function grabacliente(){
+
+		eval(evaluar);
+
+		if (!evaluardir)
+
+			return;
+
+		
+
+		document.nueva_cotizacion_01.accion.value='grabar'; 
+
+		document.nueva_cotizacion_01.tupla_dir_mod.value = arr_direcciones;
+
+		document.nueva_cotizacion_01.submit()
+
+	}
+
+
+
+</script>
+

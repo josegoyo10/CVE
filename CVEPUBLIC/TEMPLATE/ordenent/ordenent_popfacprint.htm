@@ -1,0 +1,145 @@
+<html>
+<head>
+<title>Impresión de documento</title>
+</head>
+<body topmargin="0" leftmargin="0" marginheight="0" marginwidth="0">
+<SCRIPT LANGUAGE="javascript" src="../../TEMPLATE/general/checkfield.js"></script>
+<SCRIPT LANGUAGE="JavaScript" type="text/JavaScript" SRC="../../TEMPLATE/general/CalendarPopup.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+	window.name="popup";
+	var valida=false;
+ 
+	function valida_formulario(){
+		contnumdoc=0;
+		contnumfec=0;
+		for (g=0;g<document.Impresion.elements.length;g++){
+			if( (document.Impresion.elements[g].type=='text') ){
+				if((document.Impresion.elements[g].id=='numdoc')&&(document.Impresion.elements[g].value==0)){
+					contnumdoc++;	
+				}
+				if((document.Impresion.elements[g].name!='numdoc')&&(document.Impresion.elements[g].value==0)){
+					contnumfec++;	
+				}
+			}
+		}
+		if(contnumdoc){
+			alert('El numero del documento debe ser mayor que cero');	
+			return false;			
+		}else{
+			valida=true;
+			document.Impresion.submit();					
+		}
+	}
+
+	document.write(getCalendarStyles());
+	var ayer = new Date();
+	ayer.setDate(ayer.getDate()-30);
+	var cal1 = new CalendarPopup("testdiv1","popup");
+	cal1.offsetX = -200;
+	cal1.offsetY = -100;
+	cal1.addDisabledDates(null,formatDate(ayer,"yyyy-MM-dd"));
+</SCRIPT>
+
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css">
+<table width="600" height="403" border="0" bordercolor="black" cellpadding="0" cellspacing="0" style="border: 2px solid #ffffff;">
+	<tr>
+		<td height="20" valign="top">
+			<table width="100%"  border="0" cellspacing="0" cellpadding="2">
+			<tr>
+				<td width="79%" class="titulonormal">&nbsp;Imprime Factura</td>
+			</tr>
+			</table>
+		</td>
+	</tr>  
+	<tr>
+		<td valign="top">
+		<table width="100%"  border="0" cellspacing="2" cellpadding="2" class="textonormal">
+			<tr>
+			<td width="31%" valign="top">
+			<table width="100%" border="0" align="center" cellpadding="2" cellspacing="1" class="textonormal">
+				<tr>
+					<td><fieldset>
+					<legend><strong>Datos Orden Entrega</strong></legend>
+					<table width="600" border="0" align="center" cellpadding="2" cellspacing="1" class="textonormal">
+						<tr>                 
+							<th align="left" width="20%">N&ordm; OE</th>
+							<td width="30%">{id_ordenent}</td>
+							<th align="left" width="20%">Impresora</th>
+							<td width="30%">{impresora}</td>							
+						</tr>
+					</table>
+					</fieldset></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>
+		<table width="650" border="0" cellpadding="2" cellspacing="0" class="textonormal">
+			<tr>
+				<td colspan=2>
+					<table width="650" border="0" cellpadding="0" cellspacing="0" class="tabla2">
+						<tr>
+							<th width="100" align="center">Item</th>
+							<th width="100" align="center">Folio.</th>
+							<th width="100" align="center">Fecha Doc.</th>
+							<th width="100" align="center">Página</th>
+							<th width="100" align="center">Tipo Doc.</th>
+							<th width="100" align="center">Monto [$]</th>                
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<FORM NAME="Impresion" METHOD="POST" onSubmit="return valida_formulario();" TARGET="popup">
+			<INPUT TYPE="hidden" NAME="accion" VALUE="save">
+			<tr>
+				<td valign="top" colspan=2>	
+					<div style="width:670; height:170; overflow:auto;">					
+					<table class=textonormal width="640">
+						<!-- BEGIN listadocprn -->
+						<tr>
+							<td width="150" align=center>{item}</td>
+							<td width="150" align=center><input id="numdoc" name="numdoc[]" type="text" value="{numdocumento}" size=12 maxlength=20 class=textonormal disabled></td>
+							<td width="150" align=center>
+								<!-- <input name="fechadoc[]" readonly id="fec_valid_{id_documentou}" type="text" size=10 maxlength=10 value="{fechadoc}" class=textonormal onClick="cal1.select(document.forms[0].fec_valid_{id_documentou},'anchor_{id_documentou}','dd/MM/yyyy'); return false;">
+								<a href="#" onClick="cal1.select(document.forms[0].fec_valid_{id_documentou},'anchor_{id_documentou}','dd/MM/yyyy'); return false;" name="anchor_{id_documentou}" id="anchor_{id_documentou}">
+								<img src="../../IMAGES/cal.gif" width="16" height="16" border="0" title="Valida Desde"></a>
+								<DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV> -->
+								<input name="fechadoc[]" readonly id="fec_valid_{id_documentou}" type="text" size=10 maxlength=10 value="{fechadoc}" class=textonormal >
+								<DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>
+							</td>
+							<td width="150" align=center>{pagina}</td>
+							<td width="150" align=center>{sigla}</td>
+							<td width="150" align=right>{total}</td>
+							<input id="id_{id_documentou}" type="hidden" name="id_doc[]" value="{id_documentou}"; >
+						</tr>
+						<!-- END listadocprn -->
+					</table>
+					</div>
+				</td>
+			</tr>	
+			</FORM>
+			<tr>
+				<TD colspan=2><br><br>
+					<center>
+						<applet code="printWeb.class" name="printWeb" archive="../../INCLUDE/applet/Print/impresion.jar" width=600 height=50 mayscript>
+					  	<param name="archivo" value="{URL_CVE}COMMAND/ordenent/print_factura.php?documentos={id_documento}&oe={id_ordenent}">
+						<param name="impresora" value="{impresora}" >
+						</applet>
+					</center>
+				</TD>
+			</tr>
+			<tr>
+				<td align="center">
+				<a href="#"><img src="../../IMAGES/close.gif" border="0" onClick="window.close();" width="21" height="21"></a>&nbsp;&nbsp;Cerrar la Ventana&nbsp;&nbsp;				
+				<a href="#"><img src="../../IMAGES/siguiente.gif" border="0" onClick="valida_formulario()" width="21" height="21"></a>&nbsp;&nbsp;Finalizar&nbsp;&nbsp;
+			</tr>
+		</table>	
+		</td>
+	</tr>
+<script language="javascript">
+	window.document.Impresion.onkeypress = KeyIsNumber ;	
+</script>
+</table>
+</body>
+</html>

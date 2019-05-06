@@ -1,0 +1,779 @@
+<html>
+
+<title>Generar Orden Entrega</title>
+
+<body onload=copiatodocant()>
+
+<script>window.name='popup'</script>
+
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<script language="javascript" src="../../TEMPLATE/general/checkfield.js"></script>
+
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+
+<table width="680" height="32" border="0" cellpadding="0" cellspacing="2">
+
+	<tr>
+
+		<td class="titulonormal">&nbsp;Generar Orden Entrega</td>
+
+	</tr>
+
+</table>
+
+
+
+<table width="580" border="0" cellpadding="0" cellspacing="3">
+
+	<tr>
+
+		<form name=nuevaenc method=post target='popup'>
+
+		<INPUT TYPE="hidden" NAME="id_tipocliente" VALUE="{id_tipocliente}">		
+
+		<INPUT TYPE="hidden" NAME="id_tipoconpago" VALUE="{id_tipoconpago}">			
+
+		<td>
+
+		<fieldset><legend class=textonormal>Datos Nota de Venta</legend>
+
+
+
+			<table width="680"  border="0" cellspacing="1" cellpadding="0" class="textonormal">
+
+				<tr>                 
+
+					<th align="left" width="140">Tipo Venta</th>
+
+					<td width="200">{nomtipoventa}</td>
+
+					<th align="left" width="140">Vendedor</th>
+
+					<td width="200">{nombrevendedor}</td>	
+
+				</tr>
+
+				<tr>
+
+					<th align="left">Local Emisor</th>
+
+					<td>{nom_local}</td>
+
+					<th align="left">Centro Suministro</th>
+
+					<td>{nom_local_csum}</td>                    
+
+				</tr>
+
+				<tr>
+
+					<th align="left">IVA</th>
+
+					<td>{iva}%</td>
+
+					<th align="left">Condici&oacute;n de Pago</th>
+
+					<td>
+
+						<input type="radio" name="condpago" onclick="one(this.value)" value=1 {disabledcre}  checked>Crédito&nbsp;&nbsp;&nbsp;
+
+						<input type="radio" name="condpago" onclick="one(this.value)" value=2 {checkedcon} >Contado
+
+					</td>
+
+				</tr>
+
+				<tr>
+
+					<th align="left">Nota</th>
+
+					<td><input name="nota" type="text" value="{nota}" class="textonormal" size="40" maxlength="255" border="0"></td>
+
+					<th align="left">&nbsp;</th>
+
+					<td>
+
+						<select name="condpagodias" class="textonormal" {disabledcre} {deshabilitado}>
+
+							<!-- BEGIN condpagod -->
+
+							<option value="{id}" id="pago" {selected}>{nombre}</option>							
+
+							<!-- END condpagod -->
+
+						</select>
+
+					</td>
+
+				</tr>				
+
+			</table>
+
+		</fieldset>
+
+		</td>
+
+		</form>
+
+	</tr>
+
+	<tr>
+
+		<td>
+
+		<fieldset><legend class=textonormal>Datos Cliente</legend>
+
+			<table width="680" border="0" cellspacing="1" cellpadding="0" class="textonormal">
+
+				<tr>
+
+					<th align="left" width="140">CC/NIT/RUT</th>
+
+					<td width="200">{rutcliente}</td>
+
+					<th align="left" width="140">Tipo Cliente</th>
+
+					<td width="200">{nomtipcliente}</td>
+
+				</tr>
+
+				<tr>
+
+					<th align="left">Raz&oacute;n Social</th>
+
+					<td>{razonsoc}</td>
+
+					<th align="left">Actividad Econ&oacute;mica</th>
+
+					<td>{giro}</td>
+
+				</tr>
+
+				<tr>
+
+					<th align="left">Contacto</th>
+
+					<td>{contacto}&nbsp;</td>
+
+					<th align="left">Tel&eacute;fono Contacto </th>
+
+					<td>{fonocontacto}</td>
+
+				</tr>
+
+				<tr>
+
+					<th align="left">Direcci&oacute;n</th>
+
+					<td>{direccion}, {nomcomuna}</td>
+
+					<th align="left"></th>
+
+					<td></td>
+
+				</tr>
+
+				<tr>
+
+					<th align="left">Disponible</th>
+
+					<td>$ {disponiblef}</td>
+
+					<!-- th align="left">V&iacute;a de Pago</th>
+
+					<td>{nomtipdocpago}</td -->
+
+				</tr>				
+
+				<tr>
+
+					<th align="left">Observaciones</th>
+
+					<td colspan=3>{locksap}{lockmoro}{lockcve}{lockfecha}{comentario}</td>
+
+				</tr>
+
+			</table>
+
+		</fieldset>
+
+		</td>
+
+	</tr>
+
+	<tr>
+
+		<td>
+
+			<table width="680" border="0" align="center" cellpadding="2" cellspacing="0" class="textonormal">
+
+				<tr>
+
+					<td>
+
+						<table width="680" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+
+							<tr>
+
+								<th width="40" align="center">Art&iacute;culo</th>
+
+								<th width="200" align="center">Descripci&oacute;n</th>
+
+								<th width="90" align="right">Cantidad</th>
+
+								<th width="40" align="left">UM</th>       
+
+		{ocultaboxini}			<th width="25" align="right">D</th>                
+
+								<th width="20" align="center">R</th>         {ocultaboxfin}
+
+		{ocultaprovini}			<th width="80" align="center">Proveedor</th> {ocultaprovfin}               
+
+								<th width="80" align="center">Precio</th>
+
+								<th width="80" align="center">Total</th>
+
+							</tr>
+
+						</table>
+
+					</td>
+
+				</tr>
+
+				<form name=nuevaoe method=post target='popup'>
+
+				<input type=hidden name=accion value=genera>
+
+				<input type=hidden name=id_cotizacion value={id_cotizacion}>
+
+				<input type=hidden name=nota value="{nota}">				
+
+				<input type=hidden name=condpago value="{condpago}">				
+
+				<input type=hidden name=nomproveedor value="{nomproveedor}">
+
+				<input type=hidden name=rutproveedor value="{rutproveedor}">
+
+				<INPUT TYPE="hidden" NAME="barra" VALUE="{barra}">
+
+				<input type=hidden name=condpagot>
+
+				<input type=hidden name=condpagon>
+
+				<input type=hidden name=tipoventa value="{tipoventa}">
+
+
+
+				
+
+				<input type=hidden name="dias_condicion_pago" value="{dias_condicion_pago}">				
+
+				<tr>
+
+					<td valign="top"  align="center" >
+
+						<div style="height:160;overflow-y:scroll;">
+
+						<table width="660" border="1" align="left" cellpadding="0" cellspacing="2"  class="tabla2">              
+
+							<!-- BEGIN detalleproductos -->    
+								<td width="70" align="left"><input type=hidden value="{cantidad}" name="cantact_{id_linea}" size=2 maxlength=8 class="textonormal" onChange="calculatotallinea('{id_linea}');calculatotal();" {cantactdis}></td>
+
+							<tr valign="top" {prioridad}>
+
+								<!-- input type=hidden name="marcaflete" value="{marcaflete}"> -->		
+								<td width="40" align="right">{codprod}&nbsp;</td>
+
+								<td width="230" align="left">{descripcion}</td>
+
+								<td width="40" align="right"><input type=text value="{cantidad}" name="cantdisp_{id_linea}" size=4 maxlength=10 class="textoespecial2" readonly></td>
+
+								
+								<td width="30" align="center">{unimed}</td>  
+
+		{ocultaboxini}			<td width="30" align="right">{desp}&nbsp;</td>  
+
+								<td width="30" align="right">{ret}&nbsp;</td> 				{ocultaboxfin}
+
+		{ocultaprovini}			<td width="80" align="left">{nomproveedor}&nbsp;</td>  	{ocultaprovfin}
+
+								<td width="{larprovfin}" align="right">
+
+								<input type=hidden value="{pventaneto}" name="precventa_{id_linea}" size=8 maxlength=10 class="textoespecial2">
+
+								<input type=text value="{fpventaneto}" name="P" size=8 maxlength=10 class="textoespecial2" readonly></td>								</td>              
+
+								<td width="80" align="right">
+
+								<input type=hidden value="0" name="totallinea_{id_linea}" size=8 maxlength=10 class="textoespecial2">
+
+								<input type=text value="0" name="ftotallinea_{id_linea}" size=8 maxlength=10 class="textoespecial2" readonly></td>								
+
+							</tr>
+
+							<input type=hidden name="tipoent_{id_linea}" value="{id_tipoentrega}">
+
+							<input type=hidden name="tiporet_{id_linea}" value="{id_tiporetiro}">
+
+							<input type=hidden name="linea[]" value="{id_linea}">
+
+							<input type=hidden name="marcaflete_{id_linea}" value="{marcaflete}">							
+
+							<script>
+
+								document.nuevaoe.cantact_{id_linea}.onkeypress = KeyIsNumberDecimal;
+
+							</script>
+
+							<!-- END detalleproductos -->                
+
+						</table>
+
+						</div>
+
+					</td>
+
+				</tr>	
+
+				<tr>
+
+					<td valign="top"  align="right">
+
+						<table border="0" cellpadding="0" cellspacing="0" align=left class="subtitulonormal">
+
+							<tr>
+
+								<td colspan=3>&nbsp;</td>
+
+							</tr>
+
+							<tr>
+
+								<td width="50" align="left">&nbsp;</td>
+
+								<td width="150" align="left"><a href="#"><img alt="Cerrar Ventana" src="../../IMAGES/close.gif" onClick='window.close()' border = 0></a>&nbsp;&nbsp;&nbsp;&nbsp;Cerrar Ventana</td>
+
+								<td width="200" align="left"><a href="#"><img alt="Generar Orden Entrega" src="../../IMAGES/hojacuadro.gif" onClick='generaroe()' border = 0></a>&nbsp;&nbsp;&nbsp;&nbsp;Generar Orden Entrega</td>
+
+							</tr>
+
+						</table>
+
+						<table border="0" cellpadding="0" cellspacing="0" class="subtitulonormal">
+
+							<tr>
+
+								<th width="100" align="left">Total Neto</th>
+
+								<th width="100" align="right">
+
+									<input type=text value="0" name="totalneto" size=8 maxlength=10 class="textoespecial4" readonly>
+
+									<input type=hidden name="totalnetoh" value=0>
+
+								</th>
+
+								<th width="30" align="left">&nbsp;</th>
+
+							</tr>
+
+							<tr>
+
+								<th width="100" align="left">IVA {iva}%</th>
+
+								<th width="100" align="right">
+
+									<input type=text value="0" name="totaliva" size=8 maxlength=10 class="textoespecial4" readonly>
+
+									<input type=hidden name="totalivah" value=0>
+
+								</th>
+
+								<th width="30" align="left">&nbsp;</th>
+
+							</tr>
+
+							<tr>
+
+								<th width="100" align="left">Total</th>
+
+								<th width="100" align="right">
+
+									<input type=text value="0" name="totalciva" size=8 maxlength=10 class="textoespecial4" readonly>
+
+									<input type=hidden name="totalcivah" value=0>
+
+								</th>
+
+								<th width="30" align="left">&nbsp;</th>
+
+							</tr>				
+
+						</table>
+
+	  				</td>
+
+				</tr>
+
+				</form>
+
+			</table>
+
+		</td>
+
+	</tr>
+
+</table>
+
+</body>
+
+</html>
+
+
+
+<script type="text/javascript">
+
+
+
+	function copiacant(linea) {
+
+		formulario = document.nuevaoe;
+
+		eval('formulario.cantact_'+linea+'.value = formulario.cantdisp_'+linea+'.value');
+
+		calculatotallinea(linea);
+
+		calculatotal();
+
+	}
+
+	
+
+	function copiatodocant() {
+
+		formulario = document.nuevaoe;
+
+		for (var i = 0; i<formulario.length; ++i) {
+
+			if(formulario.elements[i].name.substr(0, 7) == 'cantact') {
+
+				linea = formulario.elements[i].name.substr(8);
+
+				eval('formulario.cantact_'+linea+'.value = formulario.cantdisp_'+linea+'.value');
+
+				calculatotallinea(linea);
+
+			}
+
+		}
+
+		calculatotal();
+
+	}
+
+	
+
+	function calculatotallinea(linea) {
+
+		formulario = document.nuevaoe;
+
+		if (trim(eval('formulario.cantact_'+linea+'.value')) == '' || isNaN(eval('formulario.cantact_'+linea+'.value')))
+
+			eval('formulario.cantact_'+linea+'.value = \'0.00\'');
+
+		if (parseFloat(eval('formulario.cantact_'+linea+'.value'))>parseFloat(eval('formulario.cantdisp_'+linea+'.value')))
+
+			eval('formulario.cantact_'+linea+'.value = formulario.cantdisp_'+linea+'.value');
+
+		eval('formulario.totallinea_'+linea+'.value = Math.round(parseFloat(formulario.cantact_'+linea+'.value) * parseFloat(formulario.precventa_'+linea+'.value))');
+
+		eval('formulario.ftotallinea_'+linea+'.value = addCommas(Math.round(parseFloat(formulario.cantact_'+linea+'.value) * parseFloat(formulario.precventa_'+linea+'.value)))');		
+
+		//calculatotal();
+
+	}
+
+
+
+	function calculatotal(){
+
+		formulario = document.nuevaoe;
+
+		var total = 0;
+
+		for (var i = 0; i<formulario.length; ++i) {
+
+			if(formulario.elements[i].name.substr(0, 10) == 'totallinea') {
+
+				total += parseFloat(formulario.elements[i].value);
+
+			}
+
+		}
+
+		var iva = {iva}+0;
+
+		formulario.totalneto.value = total;
+
+		formulario.totaliva.value = Math.round(parseFloat(total)*parseFloat(iva)/100);
+
+		formulario.totalciva.value = parseFloat(total) + parseFloat(formulario.totaliva.value);
+
+
+
+		formulario.totalnetoh.value = total;
+
+		formulario.totalivah.value = formulario.totaliva.value;
+
+		formulario.totalcivah.value = formulario.totalciva.value;
+
+		
+
+		formulario.totalneto.value = addCommas(formulario.totalneto.value);
+
+		formulario.totaliva.value = addCommas(formulario.totaliva.value);
+
+		formulario.totalciva.value = addCommas(formulario.totalciva.value);
+
+	}
+
+
+
+	function variasoe() {
+
+		formulario = document.nuevaoe;
+
+		var tipoent1 = 0; 
+
+		var tipoent2 = 0; 
+
+		var tipoent3 = 0; 
+
+		for (var i = 0; i<formulario.length; ++i) {
+
+			if(formulario.elements[i].name.substr(0, 7) == 'tipoent') {
+
+				linea = formulario.elements[i].name.substr(8);
+
+				if (parseFloat(eval('formulario.cantact_'+linea+'.value'))>0) {
+
+					if (eval('formulario.tipoent_'+linea+'.value') == 1 && eval('formulario.tiporet_'+linea+'.value') == 1)
+
+						++tipoent1;
+
+					if (eval('formulario.tipoent_'+linea+'.value') == 1 && eval('formulario.tiporet_'+linea+'.value') == 2)
+
+						++tipoent2;
+
+					if (eval('formulario.tipoent_'+linea+'.value') == 2 && eval('formulario.tiporet_'+linea+'.value') == 1)
+
+						++tipoent3;
+
+				}
+
+			}
+
+		}
+
+		if ((tipoent1>0 && tipoent2>0) || (tipoent1>0 && tipoent3>0) || (tipoent2>0 && tipoent3>0))
+
+			return true;
+
+		else
+
+			return false;
+
+	}
+
+	function one(condpago){
+		document.getElementById("pago").value=condpago;
+		var pago =document.getElementById("pago").value;
+	
+		if(pago==2){
+			document.nuevaenc.condpagodias.value = 2;
+			document.nuevaenc.condpagodias.disabled = true;
+		}else{
+			document.nuevaenc.condpagodias.disabled = false;
+		}
+	 }
+
+	function generaroe() {
+
+		formulario = document.nuevaoe;
+
+		formulario.nota.value = document.nuevaenc.nota.value;
+
+		tipocliente = parseFloat(document.nuevaenc.id_tipocliente.value);
+
+		dias_condicion =parseFloat(formulario.dias_condicion_pago.value);
+
+	
+
+		var disponible = parseFloat('{disponible}') + 0;
+
+		
+
+		if (parseFloat(formulario.totalcivah.value)<=0) {
+
+			alert('No ha seleccionado productos. No puede generar OE');
+
+			return;
+
+		}
+
+		//Se elimina esta validación. Ahora es posible emitir OE crédito incluso si el cliente no tiene crédito disponible
+
+		/*if (parseFloat(disponible) < 0 && document.nuevaenc.condpago[0].checked) {
+
+			if (!confirm('No puede emitir Orden de Entrega CREDITO debido a que el cliente no tiene disponible suficiente.\nDesea emitir la Orden de Entrega al CONTADO?'))
+
+				return; 
+
+			else
+
+				document.nuevaenc.condpago[1].checked = true;
+
+		}*/
+
+
+
+		if (document.nuevaenc.condpago[0].checked)
+
+			formulario.condpago.value = document.nuevaenc.condpago[0].value;
+
+		else
+
+			formulario.condpago.value = document.nuevaenc.condpago[1].value;
+
+			
+
+		if (formulario.condpago.value == 2) {
+
+			if (!confirm('Ha seleccionado condicion de pago al CONTADO, con lo cual, esta Orden de Entrega NO sera cargada al disponible del cliente.\nDesea continuar de todas maneras?'))
+				return; 
+
+		}
+
+		
+
+		formulario.condpagot.value = document.nuevaenc.condpagodias.options[document.nuevaenc.condpagodias.selectedIndex].text;
+
+		formulario.condpagon.value = document.nuevaenc.condpagodias.options[document.nuevaenc.condpagodias.selectedIndex].value;
+
+
+
+		///alert('tipo cliente '+document.nuevaenc.id_tipocliente.value);
+
+		///alert('condicion original '+document.nuevaenc.id_tipoconpago.value);		
+
+		///alert('condicion ingresada '+document.nuevaenc.condpagodias.value);
+
+		
+
+		if (parseFloat(formulario.totalcivah.value) > parseFloat(disponible) && formulario.condpago.value == 1){
+
+			if (confirm('El disponible ($'+disponible+') no es suficiente. Si continúa, la OE quedará en estado bloqueada.\n¿Desea continuar de todas maneras?')){
+
+				if (variasoe()) {
+
+					if (confirm('Se han incluido productos con distinta modalidad de entrega.\nEl sistema generara mas de una orden de entrega. \n¿Desea continuar de todas maneras?'))
+
+						formulario.submit();
+
+				}
+
+				else {					
+
+					if (confirm('Esta accion generara una nueva Orden de Entrega  \n¿Desea continuar?'))
+
+						formulario.submit();
+
+				}
+
+			}
+
+		}
+
+		else if (('{locksap}'!='' || '{lockmoro}'!='' || '{lockcve}'!='' || '{lockfecha}'!='') && formulario.condpago.value == 1){
+
+			if (confirm('El cliente aparece como bloqueado. Si continúa, la OE quedará en estado bloqueada.\n¿Desea continuar de todas maneras?')){
+
+				if (confirm('Esta accion generara una nueva Orden de Entrega  \n¿Desea continuar?'))
+
+					formulario.submit();
+
+			}
+
+		}
+
+		else {
+		
+
+
+		///para el caso de no tener condicion de pago y que la condicion ingresada sea mayor que 30
+
+/*			if ((tipocliente==1) && (!document.nuevaenc.id_tipoconpago.value) && (document.nuevaenc.condpagodias.value>dias_condicion)){
+
+				if (confirm('La condicion de pago seleccionada es mayor que la permitida por el sistema.\n Si continua la orden de Entrega quedara BLOQUEADA. \n¿Desea continuar?'))
+
+					formulario.submit();
+
+					return false;	
+
+			}*/
+
+			if ((tipocliente==1) && (parseFloat(document.nuevaenc.condpagodias.value) > parseFloat('{conddefaultcli}'))){
+
+				if (confirm('La condicion de pago seleccionada es mayor que la permitida para el cliente.\n Si continua, la orden de Entrega quedara BLOQUEADA. \n¿Desea continuar?'))
+
+					formulario.submit();
+
+					return false;	
+
+			}
+
+			if ((tipocliente==1) && (parseFloat(document.nuevaenc.condpagodias.value) < parseFloat('{conddefaultcli}'))){
+
+				if (confirm('La condicion de pago seleccionada es menor a la asignada al cliente.\n¿Desea continuar?'))
+
+					formulario.submit();
+
+					return false;	
+
+			}
+
+			if ((tipocliente==2) && (!document.nuevaenc.id_tipoconpago.value) && (document.nuevaenc.condpagodias.value>dias_condicion)){
+
+				if (confirm('La condicion de pago seleccionada es mayor que la permitida por el sistema. \n Si continua, la orden de Entrega quedara BLOQUEADA. \n¿Desea continuar?'))
+
+					formulario.submit();
+
+					return false;	
+
+			}			
+
+	
+
+			if (variasoe()) {
+
+				if (confirm('Se han incluido productos con distinta modalidad de entrega.\nEl sistema generara mas de una orden de entrega. \n¿Desea continuar de todas maneras?'))
+
+					formulario.submit();
+
+			}
+
+			else {					
+
+				if (confirm('Esta accion generará una nueva Orden de Entrega  \n¿Desea continuar?'))
+
+					formulario.submit();
+
+			}
+
+		}
+
+	}
+</script>
+

@@ -1,0 +1,650 @@
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript" src="../../TEMPLATE/general/checkfield.js"></script>
+
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/popup.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript" type="text/JavaScript" SRC="../../TEMPLATE/general/CalendarPopup.js"></SCRIPT>
+
+<script language="JavaScript">
+
+
+
+function verifica() {
+
+	var tupla = ''; 
+
+	var coma = '';
+
+	
+
+	for(i=0; i< document.picking.length; ++i) {
+
+		elem = document.picking[i];
+
+		if (elem.type=='checkbox' && elem.checked){
+
+			tupla += coma + elem.id;
+
+			coma = ',';
+
+		}
+
+	}
+
+	if(tupla!=''){
+
+		popUpWindowModal('../../COMMAND/monitororpick/validarimpresion.php?popup=1&id_ordenpicking='+tupla+'&logval=0',100, 100, 760, 500);
+
+	}
+
+	else
+
+	alert('Debe seleccionar por lo menos 1 OP para imprimir su orden de picking');
+
+}
+
+
+
+function verorpick(elem, rut){
+
+	var registro2 = window.open('../../COMMAND/monitororpick/monitor_orpick_03.php?id_ordenpicking='+elem.id+'&rut='+rut,100, 100, 750, 500);
+
+}
+
+
+
+function editar_orpick(elem, rut){
+
+	var registro = document.location='monitor_orpick_01.php?id_ordenpicking='+elem.id+'&rut='+rut;
+
+	
+
+}	
+
+function veroe(elem){
+
+	var registro3 = document.location='../ordenent/ordenent_00.php?oe='+elem.id;
+
+	
+
+}	
+
+
+	function EvaluaFechas(fi,ft){
+
+		var fecha1=new Date()
+
+		var fecha2=new Date()
+
+		var str1 = fi;
+
+		var str2 = ft;
+
+		
+
+		fechaArr1 = new Array;
+
+		fechaArr2 = new Array;
+
+		 
+
+		fechaArr1 = str1.split("/");
+
+		fechaArr2 = str2.split("/");
+
+		/* convierte la fecha a número comparable*/
+
+		fecha1.setFullYear(fechaArr1[2],fechaArr1[1]-1,fechaArr1[0])
+
+		fecha2.setFullYear(fechaArr2[2],fechaArr2[1]-1,fechaArr2[0])
+
+		 
+
+		if (fecha1>fecha2){
+
+		  return false;
+
+		}
+
+		if (fecha1 == fecha2){
+
+		  return true;
+
+		}
+
+		if (fecha1 < fecha2){
+
+		  return true;
+
+		}
+
+	}
+
+
+
+function chequea(campo){
+
+
+
+	if(document.picking.check_op==null){
+
+		alert ('Ud. No posee ordenes para pickear');
+
+	}						
+
+	else{
+
+		if(check.checked==true){
+
+			for (i = 0; i < campo.length; i++){
+
+				campo[i].checked = true ;
+
+			}
+
+		}//Fin If
+
+		else{
+
+			for (i = 0; i < campo.length; i++){
+
+				campo[i].checked = false ;
+
+			}
+
+		}//Fin else anidado
+
+	}//FIN ELSE PRINCIPAL
+
+}
+
+
+
+function submitForm(){
+
+
+
+	formulario = document.formulario_busqueda;
+
+
+
+	var fecha_inicio,fecha_termino;
+
+	var valor=true;
+
+	
+
+	fecha_inicio =document.formulario_busqueda.feini.value;
+
+	fecha_termino=document.formulario_busqueda.fefin.value;
+
+	valor=EvaluaFechas(fecha_inicio,fecha_termino);
+
+	if(valor==false){
+
+		alert('Fecha de inicio mayor que fecha de termino en la busqueda de ordenes de picking.');
+
+		document.formulario_busqueda.feini.select();
+
+		return false;
+
+	}
+
+	
+
+	if(formulario.buscar.value != ''){
+
+		if (formulario.filtro[0].checked && !checkDV(formulario.buscar)){
+
+			return false;
+
+		}
+
+	
+
+		if (formulario.filtro[2].checked && validar_numero( formulario.buscar, 'Debe ingresar numero de cotizacion' )) {
+
+			return false;
+
+		}
+
+
+
+		if (formulario.filtro[3].checked && validar_numero( formulario.buscar, 'Debe ingresar numero de Orden de Entrega' )) {
+
+			return false;
+
+		}
+
+	}
+
+
+
+	formulario.submit();
+
+}
+
+
+
+</script>
+
+		<SCRIPT LANGUAGE="JavaScript">document.write(getCalendarStyles());</SCRIPT>
+
+		<SCRIPT LANGUAGE="JavaScript" ID="js17">
+
+			var ayer = new Date();
+
+			ayer.setDate(ayer.getDate()-1);
+
+			var cal1 = new CalendarPopup("testdiv1");
+
+			cal1.offsetX = -110;
+
+			cal1.offsetY =  70;
+
+			var cal2 = new CalendarPopup("testdiv1");
+
+			cal2.offsetX = -90;
+
+			cal2.offsetY =  46;
+
+			
+
+			//cal1.addDisabledDates(null,formatDate(ayer,"yyyy-MM-dd"));
+
+	  	</SCRIPT>
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+
+<script type="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+
+
+<table width="760" height="15" border="0" cellpadding="0"cellspacing="0">
+
+	<tr>
+
+    <td width="50%"  height="30" class="titulonormal">Monitor Ordenes de Picking </td>
+
+
+
+</table>
+
+<table width="768"border="0" cellpadding="0" cellspacing="0">
+
+	<tr>
+
+		<td class="textonormal">
+
+			<form name="formulario_busqueda" method="post" onSubmit="return false;">
+
+				<input type="hidden" name="accion" value="">
+
+				<tr>
+
+					<td width=768> 
+
+						<fieldset>
+
+							<legend class="Textonormal">Datos de B&uacute;squeda</legend>
+
+								<table border="0" height="auto" align="left" class="textonormal">
+
+									<tr>
+
+											<td width="1" scope="col">&nbsp;</td>
+
+											<td scope="col" colspan="4" align="left">Desde&nbsp;<input name="feini" id="feini" class="Textonormal" readonly type="text" size=10 maxlength=10 value="{fechaucofini}" onClick="cal1.select(document.formulario_busqueda.feini,'anchor1','dd/MM/yyyy'); return false;">
+
+				<a href="" onClick="cal1.select(document.formulario_busqueda.feini,'anchor1','dd/MM/yyyy'); return false;" name="anchor1" id="anchor1"> <img src="../../IMAGES/cal.gif" width="16" height="16" border="0" title="Fecha Validez"></a>
+
+				<DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>&nbsp;Hasta&nbsp;<input name="fefin" id="fefin"  readonly type="text" class="Textonormal" size=10 maxlength=10 value="{fechaucoffin}" onClick="cal1.select(document.formulario_busqueda.fefin,'anchor2','dd/MM/yyyy'); return false;">
+
+				<a href="#" onClick="cal1.select(document.formulario_busqueda.fefin,'anchor2','dd/MM/yyyy'); return false;" name="anchor2" id="anchor2"> <img src="../../IMAGES/cal.gif" width="16" height="16" border="0" title="Fecha Validez"></a>
+
+				<DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>	
+
+											  <input name="filtro" id="radio1" type="radio" value="1" align="left" {checkr1}>CC/NIT/RUT&nbsp;&nbsp;
+
+											  <input name="filtro" id="radio2" type="radio" value="2" {checkr2}>Raz&oacute;n Social
+
+											  <input name="filtro" id="radio3" type="radio" value="3" {checkr3}>N&ordm;&nbsp;OE &nbsp;
+
+											  <input name="filtro" type="radio" id="radio4" value="4" {checkr4}>
+
+											  N&ordm;&nbsp;OP&nbsp;&nbsp;
+
+											  <input type="text" size="18" name="buscar" class="Textonormal" value="{buscar}">
+
+											  <input type="button" class="Textonormal" align="left" name="busqueda" onClick="submitForm();" value="Buscar">
+
+											</td>
+
+											
+
+								  </tr>
+
+									<tr>
+
+								<td align="right"></td>
+
+							<td width="232"  align="left">
+
+								Tipo Entrega<br />
+
+							  <select name="select_tipoentrega" onChange="submitForm()"  class="TextoNormal">
+
+									<option value="0" class="Textonormal">TODOS</option>
+
+									<!-- BEGIN tipoentrega -->
+
+									<option value="{identrega}" {selected}>{nomtipoentrega}</option>
+
+									<!-- END tipoentrega -->
+
+							  </select>
+
+							</td>
+
+							<td width="343">
+
+							 
+
+								Centro&nbsp;Suministro <br />
+
+							  <select name="select_suministro" onChange="submitForm()" class="TextoNormal" {deshabilitar_select}>
+
+									<option value="0" class="Textonormal">TODOS</option>
+
+									<!-- BEGIN suministro -->
+
+									<option value="{codigo_local}" {selected}>{nom_local}</option>
+
+									<!-- END suministro -->
+
+							  </select>
+
+							  </td>
+
+							  <td width="343">Prioridad<br /> 
+
+							  <select name="select_prioridad" onChange="submitForm()" class="TextoNormal" >
+
+									<option value="0" class="Textonormal">TODAS</option>
+
+									<!-- BEGIN prioridad -->
+
+									<option value="{id_prioridad}" {selected}>{des_prioridad}</option>
+
+									<!-- END prioridad -->
+
+							  </select>							</td>
+
+                            <td width="172" colspan="3">
+
+								Estado
+
+								<select name="select_estado" onChange="submitForm()" class="TextoNormal" >
+
+									<option value="0" class="Textonormal">TODOS</option>
+
+									<!-- BEGIN estado -->
+
+									<option value="{id_estado}" {selected}>{descripcion}</option>
+
+									<!-- END estado -->
+
+								</select>
+
+							</td>
+
+						</tr></form>
+
+					</table>
+
+				</fieldset><table  width="768" border="0" cellpadding="2" cellspacing="0" class="tituloadvertencia"><td align="center">{text_maximo}</td></table>                   
+
+			
+
+			<table width="100%" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+
+				<tr>
+
+					<th width="10" align="left"><input name="check" id="ALL" alt="Seleccionar Todas las órdenes de picking" type="checkbox" onClick="chequea(document.picking.check_op)" value="CheckAll"></th>
+
+					<th width="20" >N&ordm; OP</th>
+
+					<th width="25" >N&ordm; OE&nbsp;</th>
+
+					<th width="15" >Prioridad&nbsp;</th>
+
+					<th width="90" >&nbsp;Estado</th>
+
+					<th width="70">&nbsp;Tipo Entrega </th>
+
+					<th width="20">&nbsp;</th>
+
+					<th width="95">Tienda</th>
+
+					<th width="80">Fecha Creacion</th>
+
+					<th width="70">CC/NIT/RUT</th>
+
+					<th width="65">Raz&oacute;n Social</th>
+
+					<th width="auto">Acciones</th>
+
+				</tr>
+
+			</table>
+
+		  <div style="height:'296'; width:768; overflow:auto; ">
+
+				<table width="100%" border="1" class="tabla2" cellspacing="0">
+
+				<form name=picking method=post  onSubmit="return false;">
+
+				<input type=hidden name="accion" value="">
+
+				<input type=hidden name="ideli" value="">
+
+				<input type=hidden name="rut" value="{rut}">
+
+				<INPUT TYPE=hidden NAME="sendrut" VALUE="">
+
+				<INPUT TYPE=hidden NAME="tupla" VALUE="">
+
+				<!-- BEGIN infopicking -->
+
+				<tr>
+
+				{registro}
+
+				</tr>
+
+				<!-- END infopicking -->
+
+			</form>
+
+			
+
+		</table>
+
+ </div>
+
+	            <table width="376" border="0" align="center" cellpadding="0" cellspacing="0" class="subtitulonormal">
+
+                  <tr>
+
+                    <td colspan=8>&nbsp;</td>
+
+                  </tr>
+
+                  <tr>
+
+                    <td width="131" align="right"><a href="#"><img src="../../IMAGES/print2.gif" alt="Imprimir Hoja de Pickeo" width="23" height="23" name="Imprimir Hoja de Pickeo" onClick="verifica()" " border="0"></a></td>
+
+                    <td width="245" align="left">Imprimir Hoja de Pickeo</td>
+
+                  </tr>
+
+                </table>
+
+		 
+
+
+
+</td>
+
+
+
+</tr>
+
+
+
+</table>
+
+<script>
+
+
+
+function checkDV( elem ){
+
+/*
+
+	if( validar_obligatorio( elem, "Rut es obligatorio" ))
+
+		return false;
+
+		crut = '';
+
+		mcrut= elem.value;
+
+		
+
+		for(i=0; i<mcrut.length; ++i)
+
+		if (mcrut.charAt(i) != '.' && mcrut.charAt(i) != '-'){
+
+		crut = crut + mcrut.charAt(i);
+
+	
+
+	}
+
+	largo = crut.length;
+
+	
+
+	if ( largo < 2 ){
+
+		alert("Debe ingresar el rut completo.");
+
+		elem.focus();
+
+		elem.select();
+
+		
+
+		return false;
+
+	}
+
+
+
+	if ( largo > 2 )
+
+	rut = crut.substring(0, largo - 1);
+
+	else
+
+	rut = crut.charAt(0);
+
+	dv = crut.charAt(largo-1);
+
+
+
+	if ( rut == null || dv == null )
+
+	return "";
+
+	var dvr = '0';
+
+	suma = 0;
+
+	mul  = 2;
+
+
+
+	for (i= rut.length -1 ; i >= 0; i--){
+
+	suma = suma + rut.charAt(i) * mul;
+
+	if (mul == 7)
+
+	mul = 2;
+
+	else
+
+	mul++;
+
+	}
+
+	
+
+	res = suma % 11;
+
+	if (res==1)
+
+	dvr = 'k';
+
+	
+
+	else if (res==0)
+
+	dvr = '0';
+
+	
+
+	else{
+
+	dvi = 11-res;
+
+	dvr = dvi + "";
+
+	}
+
+	
+
+	if ( dvr != dv.toLowerCase() ){
+
+		alert("El rut ingresado es incorrecto.");
+
+		elem.focus();
+
+		elem.select();
+
+		
+
+		return false;
+
+	}
+
+	
+
+	elem.value = crut.substr(0, crut.length-1); 
+
+	digito=crut.substr(crut.length-1, 1).toUpperCase();
+*/
+	return true;
+
+
+
+}
+
+
+
+document.formulario_busqueda.buscar.focus();
+
+</script>

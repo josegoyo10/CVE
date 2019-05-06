@@ -1,0 +1,107 @@
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/funciones.js"></script>
+<script language="javascript" src="../../TEMPLATE/general/checkfield.js"></script>
+<script>
+	function validar_form( form ) {
+		if( validar_obligatorio( form.ip_buscar, "Debe Ingresar IP " ) ) return false;
+		return true;
+	}
+	
+	function validar_eliminarM(ip, local){
+	alert("nooo");
+	alert(ip);
+	alert(local);
+	}
+	
+</script>
+<body  onload="document.ingreso_ip.ip_buscar.focus();">  
+<table width="780" height="30" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td width="390" class="titulonormal">&nbsp;Listado IP Locales </td>
+		<td width="390" class="titulonormal">&nbsp;</td>
+	</tr>
+</table>
+<table width="780" height="75%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td valign="top"> 
+	<form NAME="ingreso_ip" METHOD="POST" ACTION="admlistadoip.php">
+	<input type="hidden" name="accion" value="buscar">
+		<table width="100%"  border="0" cellspacing="2" cellpadding="2">
+			<tr>
+				<td width="80%" valign="top">
+					<table width="600" height="36" border="0" align="center" cellpadding="0" cellspacing="2" class="textonormal">
+					<tr>
+					<td valign="top"><fieldset>
+					<legend>Búsqueda</legend>
+					<span>
+					IP <input type="text" name="ip_buscar">	Local
+					<span>
+					<select name="select_local" {disabledlocal} class="select1" >
+					<option value="0" class="Textonormal">TODOS</option>
+					<!-- BEGIN Locales -->
+					<option value="{codigo_local}" {selected}>{nombre_local}</option>
+					<!-- END Locales -->
+					</select>
+					</span>
+					<input type="submit" name="Button233" value="Filtrar">
+					</fieldset>
+					</td>
+					<td  align="center"><fieldset>
+					<legend>Ingresa IP</legend>
+						<span>
+						<a href='admingresoip.php?accioning=agre'><img src="../../IMAGES/new.png" border="0" alt='Nueva IP' width='22' height='18' border='0'></a>
+						</span>
+					</fieldset>
+					</td>
+					</tr>
+					</table>
+					
+				</td>    
+			</tr> 
+		</table>
+	</form>
+
+<table width="680" border="5" bordercolor="white" cellpadding="0"cellspacing="2">
+<tr>
+<td>
+	<table width="680" border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+	<tr>
+		<th width="200" align="left">Local</th>
+		<th width="200" align="left">Codigo Local</th>
+		<th width="100" align="center">IP Local</th>
+		<th width="100" align="left">Acciones</th>  
+	</tr>
+	</table>
+</td>
+</tr>
+<tr>
+	<td>
+	<div style="width:680; height:330; overflow:auto;">			
+	<form NAME="modifica_ip" METHOD="POST" ACTION="admingresoipmod.php" onSubmit="">
+	<input type="hidden" name="cod_local" value={cod_local}>
+	<input type="hidden" name="ip_local" value={ip_local}>	
+	<input type="hidden" name="accion" value="modifica">	
+		<table width="660" border="0" align="rigth" cellpadding="0" cellspacing="0" class="tabla2">
+	<!-- BEGIN listado_ip -->
+			<tr>
+				<td width="200" align="left">{nom_local}</td>
+				<td width="100" align="left">{cod_local}</td>
+				<td width="200" align="right">{ip_local}</td>
+				<td width="100" ><div align="center">
+				<a href='admingresoipmod.php?ip_mod={ip_local}&cod_localmod={cod_local}'><img src="../../IMAGES/edit_f2.jpg" border="0" alt='Ver'  border='0'></a>
+				<!-- a href='admingresoipdel.php?ip_del={ip_local}&cod_localdel={cod_local}'><img src="../../IMAGES/trash.png" border="0" alt='Eliminar' border='0'></a!-->
+				<A HREF='javascript:validar_eliminar( "&#191; Est&#225 seguro que desea eliminar la ip {ip_local} del local {nom_local}", "admingresoipdel.php?ip_del={ip_local}&cod_localdel={cod_local}" ); //?tm=1159822423&' title='Eliminar'><IMG SRC="../../IMAGES/trash.png" BORDER=0 ></a>				
+				</td></div>
+			</tr>	
+		<!-- END listado_ip -->	
+		</form>
+		</table>
+	</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<script language="javascript">
+window.document.ingreso_ip.ip_buscar.onkeypress = IpIsKey;
+</script>
+

@@ -1,0 +1,4 @@
+	UPDATE cotizacion_e 
+                    SET	valortotal = '622722',
+                    zona = '26' 
+                    WHERE id_cotizacion = 892313

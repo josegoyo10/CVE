@@ -1,0 +1,232 @@
+<html>
+<head>
+<script type="text/javascript">
+	function ajustarPrecioFlete(){
+	
+		var cien = parseInt(document.flete.cantidad_1.value) * 100;
+		var mil = parseInt(document.flete.cantidad_2.value) * 1000;
+		var dies = parseInt(document.flete.cantidad_3.value) * 10000;
+		var cienm = parseInt(document.flete.cantidad_4.value) * 100000;	
+		var sumatoria = parseInt(document.flete.ftotallineaj.value);
+		var totalinea = parseFloat(document.flete.totallinea.value);
+		
+				
+		if(isNaN(sumatoria)){
+		
+		   sumatoria = 0;
+		  
+		}
+		
+		if(cien == 0 && mil == 0 && dies == 0 && cienm == 0){
+			var totalineaf = 0;
+		}else{
+		
+			var totalineaf = sumatoria + cien + mil + dies + cienm + totalinea;
+			//var sumatoria = totalineaf;
+			//alert('sumatoria'+totalineaf);
+		
+		}
+		
+				
+		document.flete.ftotallineaj.value = totalineaf; 
+		document.flete.cien.value = document.flete.cantidad_1.value;
+		document.flete.mil.value =  document.flete.cantidad_2.value;
+		document.flete.dies.value = document.flete.cantidad_3.value;
+		document.flete.cienm.value = document.flete.cantidad_4.value;
+		document.flete.cienc.value = cien;
+		document.flete.milc.value =  mil;
+		document.flete.diesc.value = dies;
+		document.flete.cienmc.value = cienm;
+		docuement.flete.sumatoria.value = sumatoria; 
+	}
+	function insertarFlete(){
+	
+		var cien = parseInt(document.flete.cantidad_1.value);
+		var mil = parseInt(document.flete.cantidad_2.value);
+		var dies = parseInt(document.flete.cantidad_3.value);
+		var cienm = parseInt(document.flete.cantidad_4.value);
+		var band = 0;
+		
+	   if(cien == 0 && mil == 0 && dies == 0 && cienm == 0){
+			if(confirm("No ha depositado ninguna cantidad para ajustar el flete \n¿Desea volver a Generar OE?")){
+					window.close();
+			}
+	   }else{
+	   
+	   		if(confirm("¿Esta seguro que el ajuste del flete es el correcto?")){
+					document.flete.submit();
+					window.close();
+			}
+			
+	   }
+			
+	} 	
+</script>
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<table width="680" height="32" border="0" cellpadding="0" cellspacing="2">
+	<tr>
+    	<td class="titulonormal">Flete</td>
+	</tr>
+</table>
+<table width="680" border="0" align="center" cellpadding="2" cellspacing="0" class="textonormal">
+	<tr>
+		<td>
+			<table width="744" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+				<tr>
+	              <td width="730">
+                   <table width="672" border="0" cellpadding="0" cellspacing="0" class="tabla2">
+                       <tr>
+    						<th width="40" align="center">CODIGO</th>                      
+                            <th width="40" align="center">TIPO</th>
+							<th width="172" align="center">DESCRIPCI&Oacute;N</th>
+							<th width="80" align="center">COSTO</th>					
+                          	<th width="80" align="center">TOTAL CON AJUSTE</th>
+						</tr>
+					</table>
+				</td>
+     			</tr>
+				<form name=flete method=post target='popup'>
+				<input type=hidden name=accion value=insertarfl>
+				<input type=hidden name=rut value={rut}>
+				<input type=hidden name=id_cotizacion value={id_cotizacion}>
+				<input type=hidden name=totallinea value="{totallinea}">				
+				<input type=hidden name=cien value="">
+				<input type=hidden name=mil value="">
+				<input type=hidden name=dies value="">
+				<input type=hidden name=cienm value="">
+				<input type=hidden name=cienc value="">
+				<input type=hidden name=milc value="">
+				<input type=hidden name=diesc value="">
+				<input type=hidden name=cienmc value="">
+				<input type=hidden name=sumatoria value="">
+				
+				<input type=hidden name=cod_prod value="{codprod}">				
+
+				<tr>
+					<td valign="top"  align="center" >
+						
+						<table width="760" border="1" align="left" cellpadding="0" cellspacing="2"  class="tabla2">              
+							    
+								<!-- input type=hidden name="marcaflete" value="{marcaflete}"> -->		
+								<td width="40" align="center">{codprod}</td>                             
+                                <td width="40" align="center">{codtipo}</td>
+								<td width="225" align="center">{descripcion}</td>
+                              	<td width="40" align="center">
+								 <input type=text value="{totallinea}" name="ftotallinea" size=8 maxlength=10 class="textoespecial2" readonly></td>								
+								<td width="186" align="center">
+								<input type=text value="" name="ftotallineaj" size=8 maxlength=10 class="textoespecial2" readonly></td>
+								
+							</tr>
+														
+							                
+
+						</table>
+					
+				</td>
+			</tr>
+		</table>
+		<!-- CODIGOS DE PRODUCTOS PARA AJUSTAR -->
+		<table width="680" height="32" border="0" cellpadding="0" cellspacing="2">
+	      <tr>
+    	   <td class="titulonormal">Precios de Ajuste</td>
+	      </tr>
+        </table>
+			<table width="744" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+				<tr>
+	              <td width="730">
+                   <table width="672" border="0" cellpadding="0" cellspacing="0" class="tabla2">
+                       <tr>
+    						<th width="40" align="center">CODIGO{rut}</th>                      
+                            <th width="40" align="center">TIPO</th>
+							<th width="186" align="center">DESCRIPCI&Oacute;N</th>					
+                          	<th width="80" align="center">COSTO</th>
+                          	<th width="80" align="center">CANTIDAD</th>
+						</tr>
+					</table>
+				</td>
+     			</tr>
+				<form name=nuevaoe method=post target='popup'>
+				<input type=hidden name="id_dirdespacho" value="{idireccion}">				
+
+				<tr>
+					<td valign="top"  align="center" >
+						<table width="760" border="1" align="left" cellpadding="0" cellspacing="2"  class="tabla2">
+						<!-- BEGIN detalleproductos -->
+						<tr>              
+							    
+								<!-- input type=hidden name="marcaflete" value="{marcaflete}"> -->		
+								<td width="40" align="center">{codprods}</td>                             
+                                <td width="40" align="center">{codtipos}</td>
+								<td width="225" align="center">{descripcions}</td>
+								<input type=hidden value="{pventaneto}" name="precventa_{id_linea}" size=8 maxlength=10 class="textoespecial2">
+								<input type=text value="{fpventaneto}" name="P" size=8 maxlength=10 class="textoespecial2" readonly></td>								</td>              
+								<input type=hidden value="0" name="totallinea_uno_{id_linea}" size=8 maxlength=10 class="textoespecial2">
+								<td width="186" align="center"><input type=text value="0" name="cantidad_{textb}" size=3 maxlength=10></td>								
+
+							</tr>
+							<input type=hidden name="codprod_{textb}" value="{codprods}">
+							
+							<!-- END detalleproductos -->														
+
+							<input type=hidden name="tipoent_{id_linea}" value="{id_tipoentrega}">
+
+							<input type=hidden name="tiporet_{id_linea}" value="{id_tiporetiro}">
+
+							<input type=hidden name="linea[]" value="{id_linea}">
+
+							<input type=hidden name="marcaflete_{id_linea}" value="{marcaflete}">							
+
+							<script>
+
+								//document.nuevaoe.cantact_{id_linea}.onkeypress = KeyIsNumberDecimal;
+
+							</script>
+
+							                
+
+						</table>	
+				</td>
+			</tr>
+		</table>
+		<!-- FIN CODIGOS DE PRODUCTOS PARA AJUSTAR -->		
+	</td>
+  </tr>
+  <!-- Botones de Ajustes -->
+  <table border="0" cellpadding="0" cellspacing="0" align=left class="subtitulonormal">
+
+							<tr>
+
+								<td colspan=3>&nbsp;</td>
+
+							</tr>
+
+							<tr>
+								 <td width="50" align="left">&nbsp;</td>
+								 
+						    	<td width="200" align="left"><a href="#"><img alt="Ajustar Precio Flete" src="../../IMAGES/peso.gif" onClick='ajustarPrecioFlete()' border = 0></a>&nbsp;&nbsp;&nbsp;&nbsp;Ajustar Precio</td>
+								<td width="200" align="left"><a href="#"><img alt="Insertar Flete OE" src="../../IMAGES/hojacuadro.gif" onClick='insertarFlete()' border = 0></a>&nbsp;&nbsp;&nbsp;&nbsp;Insertar Flete en OE</td>
+									
+							</tr>
+							<tr>
+							   <td width="50" align="left">&nbsp;</td>
+							   <td width="150" align="left"><a href="#"><img alt="Cerrar Ventana" src="../../IMAGES/close.gif" onClick='window.close()' border = 0></a>&nbsp;&nbsp;&nbsp;&nbsp;Cerrar Ventana</td>
+							</tr>							
+						</table>
+  
+  <!-- Fin Botones de Ajustes -->
+  
+</table>
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+

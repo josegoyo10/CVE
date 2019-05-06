@@ -1,0 +1,32 @@
+<request>
+	<customer>
+		<Source>22</Source>
+		<IdCustomer>800232356</IdCustomer>
+		<IdCategory>3</IdCategory>
+		<IdTypeContribuyente>1</IdTypeContribuyente>
+		<TypeCustomer>
+			<IdTypeCustomer>5</IdTypeCustomer>
+		</TypeCustomer>
+		<Location>11001000014013</Location>
+		<IdDoc>31</IdDoc>
+		<FirstName>FAJOBE SA</FirstName>
+		<Surname1> </Surname1>
+		<Surname2> </Surname2>
+		<Address>CRA 22 N°.19-95</Address>		
+		<Phone>2087210</Phone>
+		<Phone2></Phone2>
+		<Fax>2087200</Fax>
+		<Email>JUANCARLOS.GARDEAZABAL@FAJOBE.COM.CO</Email>
+		<AgeRange>0</AgeRange>
+		<Quota>0</Quota>
+		<Contact>VALENCIA V BIVIANA</Contact>
+		<Gender>NA</Gender>
+		<Occupation></Occupation>
+		<ReteIca>true</ReteIca>
+		<ReteFuente>true</ReteFuente>
+		<ReteIva>true</ReteIva>
+		<ExenIva>false</ExenIva>
+		<OtrIva>false</OtrIva>
+		<State>A</State>
+	</customer>	
+</request>

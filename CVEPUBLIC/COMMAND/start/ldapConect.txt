@@ -1,0 +1,13 @@
+Array
+(
+    [server_name] => Cencosud AIO
+    [base_dn] => dc=cencosud, dc=test
+    [domain_controllers] => Array
+        (
+            [0] => 172.24.28.12
+        )
+
+    [ad_username] => jorodrir
+    [ad_password] => Cencosud2018
+    [account_suffix] => @cencosud.test
+)

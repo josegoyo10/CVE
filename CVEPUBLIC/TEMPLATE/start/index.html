@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>{TITULO}</title>
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+</head>
+<body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" onLoad="document.index.usuario.focus();">
+<table width="778"  border="0" align="left" cellpadding="0" cellspacing="0">
+	<tr>
+	    <td width="759"><img src="../../IMAGES/head.jpg" width="759" height="82"></td>
+	    <td width="41" bgcolor="#2C2C2C">&nbsp;</td>
+	</tr>
+	<tr>
+		<td height="11" background="../../IMAGES/barra.gif"><img src="../../IMAGES/spacer.gif" width="11" height="11"></td>
+		<td background="../../IMAGES/barra.gif"><img src="../../IMAGES/spacer.gif" width="11" height="11"></td>
+	</tr>
+	<tr>
+	    <td height="550" valign="top" background="../../IMAGES/boxshot1.JPG"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+	      <tr>
+	        <td width="418" height="42">&nbsp;</td>
+	        <td>&nbsp;</td>
+	        <td width="38">&nbsp;</td>
+	      </tr>
+	      <tr>
+	        <td>&nbsp;</td>
+			<form name="index" action=index.php method=post>
+			<INPUT TYPE="hidden" name="action" value="login">
+	        <td width="303" height="129" valign="bottom" background="../../IMAGES/login.png"><TABLE width="100%" border="0" cellpadding="0" cellspacing="1">
+	          <TR>
+	            <TD width="25%" align="right" class="textoLog">usuario: </TD>
+	            <TD width="70%"><input name="usuario" type="text" size="20" maxlength=20></TD>
+	            <TD width="5%">&nbsp;</TD>
+	          </TR>
+	          <TR>
+	            <TD align="right" class="textoLog">clave: </TD>
+	            <TD><input name="clave" type="password" size="20" maxlength=20></TD>
+	            <TD>&nbsp;</TD>
+	          </TR>
+	          <TR>
+	            <TD height="8" align="right"><img src="../../IMAGES/spacer.gif" width="8" height="8"></TD>
+	            <TD height="8" align="left"><img src="../../IMAGES/spacer.gif" width="8" height="8"></TD>
+	            <TD height="8" align="right"><img src="../../IMAGES/spacer.gif" width="8" height="8"></TD>
+	          </TR>
+	          <TR>
+	            <TD align="right">&nbsp;</TD>
+	            <TD align="left"><input name="image" type="image" src="../../IMAGES/log-bt.png"></TD>
+	            <TD align="right">&nbsp;</TD>
+	          </TR>
+	          <TR>
+	            <TD align="center" colspan=3>
+	              <span class="textoLog2">&nbsp;{TEXT_ERROR}</span>
+	            </TD>
+	            <TD align="left">&nbsp;</TD>
+	            <TD align="right">&nbsp;</TD>
+	          </TR>
+	        </TABLE></td>
+			</form>
+	        <td>&nbsp;</td>
+	      </tr>
+	      <tr>
+	        <td>&nbsp;</td>
+	        <td>&nbsp;</td>
+	        <td>&nbsp;</td>
+	      </tr>
+	    </table></td>
+	    <td><img align="right" src="../../IMAGES/bgHME.gif"></td>
+	</tr>
+</table>
+
+
+</body>
+</html>

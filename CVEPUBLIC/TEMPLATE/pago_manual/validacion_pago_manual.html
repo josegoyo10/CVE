@@ -1,0 +1,68 @@
+<html>
+<title>PAGO MANUAL ORDEN ENTREGA</title>
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+<head>
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/popup.js"></script>
+<script language="javascript" src="../../TEMPLATE/general/checkfield.js"></script>
+<script type="text/javascript">
+function validar(texto){
+if(window.document.pago.usuario.value ==''){
+	alert('Ingrese el usuario');
+	document.pago.usuario.focus();
+	return false;
+	}
+if(window.document.pago.clave.value ==''){
+	alert('Ingrese su clave');
+	document.pago.clave.focus();
+	return false;
+	}
+	
+	if(confirm('Esta seguro de realizar el pago manual de la orden de entrega N '+texto)){
+	window.document.pago.submit();
+	}
+	else{
+	return false;
+	}
+}
+</script>
+</head>
+<body>
+<FORM NAME="pago" METHOD="POST" action="validacion_pago_manual.php"  onsubmit="return false;">
+<input type="hidden" value="{cod_bar}" name="cod_bar">
+<input type="hidden" value="{rutclientep}" name="rutclientep">
+<input type="hidden" value="{numfactu}" name="numfactu">
+<input type="hidden" value="{respuestapago}" name="respuestapago">
+<table width="350" border="0" cellpadding="0" cellspacing="0">
+<tr>
+	  
+		<td style="width: 766px" >
+		&nbsp;&nbsp;
+		
+<TABLE width="350" align="center" border="0" cellpadding="0" cellspacing="1">
+	          
+	          <TR>
+	          	<TD width="34%"><img src="../../IMAGES/secshield.jpg" border="0"/></TD>
+	            <TD width="34%" align="right" class="textoLog" style="width: 422px"><b>Usuario:</b><BR><BR><BR><b>Password:</b></TD>
+	            <TD width="33%"><input name="usuario" type="text" size="22" maxlength=20><br><br><input name="clave" type="password" size="22" maxlength="20"/></TD>  
+	          </TR>
+	          <TR>
+	          	<TD></TD>
+	           	<td colspan="2" align="center" style="width: 723px"><br><input type="button" value="Realizar Pago Manual" onclick="validar({cod_bar});">&nbsp;&nbsp;
+				<INPUT TYPE ="reset" VALUE ="Cancelar" style="width: 95px;">
+				</td> 
+	            </TR>
+	            <tr><td><br><br><br></td><td></td><TD></TD></tr>
+	        </TABLE>
+	        
+<table width="700" align="center" border="0" cellpadding="0" cellspacing="0" align="center">
+<tr>
+	  
+		<td style="width: 766px" align="right">
+		
+		<img src="../../IMAGES/logotipo_negro.gif" width="100" height="50" border=0 >
+		</td></tr></table>	
+</form>
+</body>
+<script type="text/javascript">
+{ejecutar}</script>

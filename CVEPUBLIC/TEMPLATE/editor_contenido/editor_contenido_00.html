@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script type="text/javascript">
+function valida(id_mensaje_seleccion) { 
+document.tinymce.id_mensaje.value=id_mensaje_seleccion;
+document.tinymce.submit();
+} 
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form method="post" action="editor_contenido_01.php" name="tinymce">
+<input type="hidden" name=id_mensaje>
+<table width="780" border="0" cellpadding="0">
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="editor_contenido.php"><img src="../../IMAGES/anterior.gif"  alt="prueba" width="23" height="23" border="0" title="Anterior" ></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="center"><img src="../../IMAGES/{imagentema}"></td></tr>
+<!-- BEGIN mensaje_editor -->
+<tr>{tabla}</td>
+<!-- END mensaje_editor -->
+</table>
+</body>
+</html>

@@ -1,0 +1,405 @@
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/popup.js"></script>
+
+<script>
+
+	function editacliente(){
+
+		window.location='nueva_cotizacion_01.php?rut={rut}';
+
+	}
+
+	function crear_cotizacion(tipo){
+		//alert(tipo);
+		var idco = popUpWindowModal('../../COMMAND/nuevacotizacion/nueva_cotizacion_02_popup.php?popup=1&rut={rut}',100, 100, 350, 300);
+		if(tipo=='PS'){
+		if (idco) window.location='nueva_cotizacion_03.php?id_cotizacion='+idco+'&np=0';
+		}
+		else{
+		if (idco) window.location='nueva_cotizacion_03pege.php?id_cotizacion='+idco+'&np=0';
+		}
+	}
+
+	function vercoti(elem){
+
+		document.location = 'nueva_cotizacion_04.php?id_cotizacion=' + elem.id;
+
+	}
+
+	function editarcoti(elem){
+
+		document.location = 'nueva_cotizacion_03.php?editar=Edit&id_cotizacion=' + elem.id;
+
+	}
+	
+	function editarcotipege(elem){
+
+		document.location = 'nueva_cotizacion_03pege.php?editar=Edit&id_cotizacion=' + elem.id;
+
+	}
+
+	function eliminarcoti(elem){
+
+		if (confirm('Esta seguro que desea eliminar la cotizacion ' + elem.id)){
+
+			document.accionesc.accion.value='eli';
+
+			document.accionesc.ideli.value=elem.id;
+
+			document.accionesc.submit();
+
+		}
+
+	}
+
+</script>
+
+
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+
+<script type="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+
+
+<table width="760" height="15" border="0" cellpadding="0"cellspacing="0">
+
+  <tr>
+
+    <td width="50%"  height="30" class="titulonormal">Nueva Cotizaci&oacute;n - Paso 3 - Listado de Cotizaciones</td>
+
+    <td width="414" class="titulonormal">
+
+    	<table  border="0" align="right" cellpadding="0" cellspacing="0">
+
+    		<tr>
+
+	        	<td><img src="../../IMAGES/1a.gif" width="40" height="40"></td>
+
+	            <td><img src="../../IMAGES/redarrow.gif" width="24" height="20"></td>
+
+	            <td><img src="../../IMAGES/2a.gif" width="40" height="40"></td>
+
+	            <td><img src="../../IMAGES/redarrow.gif" width="24" height="20"></td>
+
+	            <td><img src="../../IMAGES/3b.gif" width="40" height="40"></td>
+
+	            <td><img src="../../IMAGES/redarrow.gif" width="24" height="20"></td>
+
+	            <td><img src="../../IMAGES/4a.gif" width="40" height="40"></td>
+
+	            <td><img src="../../IMAGES/redarrow.gif" width="24" height="20"></td>
+
+	            <td><img src="../../IMAGES/5a.gif" width="40" height="40"></td>
+
+	        </tr>
+
+    	</table>
+
+    </td>
+
+</table>
+
+<table width="778" border="0" cellpadding="0" cellspacing="0">
+
+	<tr>
+
+		<td class="textonormal">
+
+            <fieldset><legend>Datos del Cliente</legend>
+
+               	<table border="0" align="left" class="textonormal">
+
+                  <tr>
+
+                   	<th width="70"  class="textonormal" align=left>CC/Nit/Rut</th>
+
+                   	<td width="130" class="textonormal" align=left>{rutdv}</td>
+
+                   	<th width="110"  class="textonormal" align=left>Raz&oacute;n Social</th>
+
+                   	<td width="240" class="textonormal" align=left>{razonsoc}</td>
+
+                   	<th width="70"  class="textonormal" align=left>Tipo Cliente</th>
+
+                   	<td width="130" class="textonormal" align=right>{nomtipcliente}</td>
+
+                  </tr>
+
+                  <tr>
+
+                  	<th class="textonormal" align=left>Departamento</th>
+
+                    <td class="textonormal" align=left>{departamento}</td>
+                    
+                    <th class="textonormal" align=left>Ciudad</th>
+
+                    <td class="textonormal" align=left>{nomciudad}</td>
+                    
+                    <th class="textonormal" align=left>Barrio</th>
+
+                    <td class="textonormal" align=right>{nomcomuna}</td>
+                    
+                   </tr>
+<tr>
+
+                  	<th class="textonormal" align=left>Direcci&oacute;n</th>
+
+                    <td class="textonormal" align=left>{direccion}</td>
+                    
+                    <th class="textonormal" align=left></th>
+
+                    <td class="textonormal" align=left></td>
+                    
+                    <th class="textonormal" align=left></th>
+
+                    <td class="textonormal" align=right></td>
+                    
+                   </tr>
+
+                  <tr>
+                    <th class="textonormal" align=left>Tel&eacute;fono</th>
+
+                    <td class="textonormal" align=left>{fonocontacto}</td>
+
+                    <th class="textonormal" align=left>Actividad Econ&oacute;mica</th>
+
+                    <td class="textonormal" align=left>{giro}</td>
+                    <th class="textonormal" align=left>Disponible</th>
+
+                    <td class="textodisponible" align=right>{disponible}&nbsp;</td>
+                    
+                         
+                  </tr>
+
+                  <tr>
+
+                    <th class="textonormal" align=left>Rubro</th>
+
+                    <td class="textonormal" align=right>{nomrubro}</td>
+
+                    <th class="textonormal" align=left>Tipo Pago</th>
+
+                    <td class="textonormal" align=left>{nomtipopago}</td>                  
+
+                    <th class="textonormal" align=left >Dias condici&oacute;n de Pago</th>
+
+                    <td class="textonormal" align=left>{diascondicion}</td>
+
+                  </tr>
+
+                  <tr>
+
+                    <th class="textonormal" align=left height=22 colspan=2 >Observaciones</th>
+
+                    <td align=left colspan=3 class="subtitulonormal">{locksap}{lockmoro}{lockcve}{lockfecha}{comentario}</td>
+
+                    <th class="textonormal" align=left>&nbsp;</th>
+
+                    <td class="textonormal" align=left>&nbsp;</td>                      
+
+                  </tr>                  
+
+            	</table>
+
+          	</fieldset> 
+
+		</td>
+
+	</tr>
+
+	<tr>
+
+		<td align=center>
+
+			<form>
+
+			<input type="button"  style="color:#FF0000" value="Crear Nueva Cotización" class="Textonormal" onClick="crear_cotizacion('PS');">&nbsp;&nbsp;
+			<input type="button" value="Crear Nueva Cotización Genéricos" class="Textonormal" onClick="crear_cotizacion('PE');">
+			</form>
+		</td>
+	</tr>
+	<tr>
+	  <td align=center class="textofolios">Historial de Cotizaciones</td>
+  </tr>
+	<tr>
+
+		<td width=778>
+
+			<form NAME="filtro" METHOD="POST" action="?rut={rut}">
+
+				<fieldset>
+
+				<table align=center>
+
+					<tr>
+
+						<td class="textonormal" align=center>Tipo Venta 
+
+							<select name="select_tipoventa" class="TextoNormal" >
+
+								<option value="0" class="Textonormal">TODOS</option>
+
+								<!-- BEGIN tipoventa -->
+
+								<option value="{idventa}" {selected}>{nomtipoventa}</option>
+
+								<!-- END tipoventa -->
+
+							</select>
+
+						</td>
+
+						<td class="textonormal" align=center>&nbsp;&nbsp;Almac&eacute;n
+
+							<select name="select_suministro" class="TextoNormal" {disabled}>
+
+								<option value="0" class="Textonormal">TODOS</option>
+
+								<!-- BEGIN suministro -->
+
+								<option value="{codigo_local}" {selected}>{nom_local}</option>
+
+								<!-- END suministro -->
+
+							</select>
+
+						</td>
+
+						<td class="textonormal" align=center>&nbsp;&nbsp;Estado
+
+							<select name="select_estado" class="TextoNormal" >
+
+								<option value="0" class="Textonormal">TODOS</option>
+
+								<!-- BEGIN estado -->
+
+								<option value="{id_estado}" {selected}>{descripcion}</option>
+
+								<!-- END estado -->
+
+							</select>
+
+						</td>
+
+						<td class="textonormal" align=center>&nbsp;&nbsp;<input type="submit" value="Buscar"></td>			</form>
+
+						
+
+					</tr>
+
+				</table>
+
+				</fieldset>
+
+		</td>
+
+	</tr>
+
+	<tr>
+
+		<td>
+
+			<table width="778" border="0" align="center" cellpadding="0" cellspacing="0" class="tabla2">
+
+				<tr>
+
+					<th width="60" >N&ordm; CO&nbsp;</th>
+
+					<th width="60" >Usuario &nbsp;</th>
+
+					<th width="60" >Estado &nbsp;</th>
+
+					<th width="100">Tipo Venta</th>
+
+					<th width="70" >Condici&oacute;n </th>
+
+					<th width="150">Almac&eacute;n</th>
+
+					<th width="70" >V&aacute;lido Hasta</th>
+
+					<th width="80">Acciones</th>
+
+				</tr>
+
+			</table><div style="height:'180'; overflow:auto;">
+
+			<table width="778" border="1" class="tabla2" cellspacing="0" >
+
+				<form name=accionesc method=post>
+
+				<input type=hidden name="accion" value="">
+
+				<input type=hidden name="ideli" value="">
+
+				<input type=hidden name="rut" value="{rut}">
+
+	            <!-- BEGIN infocotizacion -->
+
+				<tr>
+
+					<td width="60"  align="center">{numerocot}&nbsp;</td>
+
+					<td width="60"  align="center">{usuariocrea}&nbsp;</td>					
+
+					<td width="60"  align="center">{nomestadocot}&nbsp;</td>
+
+					<td width="100" align="center" >{nomtipoventacot}&nbsp;</td>
+
+					<td width="70"  align="center">{condicioncot}&nbsp;</td>
+
+					<td width="150" align="center">{nom_localcsum}&nbsp;</td>
+
+					<td width="70"  align="center">{fechavalidacot}&nbsp;</td>
+
+					<td width="80"  align="left">
+
+						{accver}&nbsp;
+
+						{accmodificar}&nbsp;
+
+						{acceliminar}&nbsp;
+
+					</td>
+
+				</tr>
+
+	            <!-- END infocotizacion -->
+
+	            </form>
+
+			</table>
+
+			</div>
+
+		</td>
+
+	</tr>
+
+	<tr>
+
+	  <td><table width="760">
+
+              <tr>
+
+                <td width="200">&nbsp;</td>
+
+                <td width="33"><a href="nueva_cotizacion_01.php?rut={rut}"><img src="../../IMAGES/anterior.gif"  alt="prueba" width="23" height="23" border="0" title="Anterior"></a></td>
+
+                <td width="59" class="Textonormal">Anterior</td>
+
+                <td width="70" class="Textonormal">Siguiente</td>
+
+                <td width="31"><a href="#" onClick="crear_cotizacion();"><img src="../../IMAGES/siguiente.gif" alt="prueba" width="23" height="23" border="0" title="Siguiente"></a></td>
+
+                <td width="200">&nbsp;</td>
+
+              </tr>
+
+            </table></td>
+
+	</tr>
+
+</table>
+

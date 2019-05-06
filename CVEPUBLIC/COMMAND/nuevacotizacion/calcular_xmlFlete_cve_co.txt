@@ -1,0 +1,23 @@
+<despacho>
+<direccion>CRA 44 43 41</direccion>
+<idDepartamento>05</idDepartamento>
+<idMunicipio>001</idMunicipio>
+<idCentroPoblado>000</idCentroPoblado>
+<idLocalidad>000</idLocalidad>
+<idBarrio>000</idBarrio>
+</despacho>
+<centroSuministro>
+<idLocal>9</idLocal>
+<idDepartamento>05</idDepartamento>
+<idMunicipio>001</idMunicipio>
+<idCentroPoblado>000</idCentroPoblado>
+<idLocalidad>000</idLocalidad>
+<idBarrio>000</idBarrio>
+</centroSuministro>
+<entregaProductos>
+<lstTipoDespacho>
+<codigoTipo>2</codigoTipo>
+<peso>0.02</peso>
+</lstTipoDespacho>
+</entregaProductos>
+<codEmpresaTransportadora>0</codEmpresaTransportadora>

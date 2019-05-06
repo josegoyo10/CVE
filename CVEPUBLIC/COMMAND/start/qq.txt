@@ -1,0 +1,4 @@
+	SELECT	usr_id
+                    FROM	usuarios 
+                    WHERE	usr_login = 'SMBahamonP'
+                        AND	usr_estado <> 2 and usr_estado <> 0

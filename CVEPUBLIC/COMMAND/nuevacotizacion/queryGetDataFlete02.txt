@@ -1,0 +1,11 @@
+Array
+(
+    [id] => 120
+    [id_type_rate] => 2
+    [id_zone] => 26
+    [value1] => 19500
+    [value2] => 19
+    [value3] => 750
+    [prd_sap] => 9525
+    [prd_sap_kg_adic] => 9535
+)

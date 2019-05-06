@@ -1,0 +1,194 @@
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript" src="../../TEMPLATE/general/checkfield.js"></script>
+
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/popup.js"></script>
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+
+<script type="javascript" src="../../TEMPLATE/general/funciones.js">
+
+<script type="javascript" src="../../TEMPLATE/general/checkfield.js">
+
+</script>
+
+<style type="text/css">
+
+<!--
+
+.style1 {
+
+	color: #FF0000;
+
+	font-weight: bold;
+
+}
+
+-->
+
+</style>
+
+	<table width="780" border="0" cellpadding="0" cellspacing="0">
+ 	  <td  class="titulonormal">Apertura y Modificaci&oacute;n  Tiendas EASY </td>
+
+		<tr>
+
+			<td class="textonormal">
+
+					<tr>
+
+						<td width=287 align="center"> 
+						<table width="780" border="0" align="center" class="textonormal">
+
+					 <tr><form name="formulariounico" method="post">
+					   					  <td height="30" align="center">Local				      
+						
+					    <select name="select_suministro" onchange="obtenerlocales()" class="TextoNormal" {deshabilitar_select}>
+
+                          <option value="-1" class="Textonormal">SELECCIONE</option>
+
+                          <!-- BEGIN suministro -->
+
+                          <option value="{codigo_local}" {selected}>{nom_local}</option>
+
+                          <!-- END suministro -->
+
+                        </select>
+						
+						</td>
+					   </tr>
+					   	
+						<input type="hidden" name="accion" value="{accion}">
+					 <tr>
+
+					  <td align="center" colspan="4" height="15" class="fondoregistro">C&oacute;digo nueva tienda</td>
+
+					  </tr>
+
+					<tr>
+						<td height="15" align="center">
+                              <input type="text" name="cod_local" width="100" class="textonormal" maxlength="20" value="{cod_local}" />
+						 </td>
+					</tr>
+					<tr>
+					  <td height="15" align="center" class="fondoregistro">Nombre de nueva tienda </td>
+					  </tr>
+					<tr>
+					  <td align="center" height="15" colspan="4"><input type="text" name="nom_local" width="100" class="textonormal" maxlength="20" value="{nom_local}" /></td>
+					</tr>
+					
+					<tr>
+
+					  <td align="center" height="15" colspan="4" class="fondoregistro">Direcci&oacute;n de la tienda</td>
+
+					</tr>
+
+					<tr>
+
+					  <td align="center" height="15" colspan="4"><input type="text" name="dir_local" width="100" class="textonormal" maxlength="20" value="{dir_local}" /></td>
+
+					</tr>					
+
+					<tr>
+
+					  <td align="center" height="15" colspan="4" class="fondoregistro">Direcci&oacute;n IP tienda</td>
+
+					</tr>
+
+					<tr>
+
+					  <td align="center" height="15" colspan="4"><input type="text" name="ip_local" width="100" class="textonormal" maxlength="20" value="{ip_local}" /></td>
+
+					</tr>
+
+					<tr>
+
+					  <td align="center" height="15" colspan="4" class="fondoregistro">Identificador SAP Oficina de venta</td>
+
+					</tr>
+
+					<tr>
+
+					  <td align="center" height="15" colspan="4"><input type="text" name="id_sap" width="100" class="textonormal" maxlength="20" value="{id_sap}" /></td>
+
+					</tr>
+
+					<tr>
+
+					  <td align="center" height="15" colspan="4" >{mensaje_creacion}</td>
+
+					</tr>
+
+					<tr>
+
+					  <td align="center" height="15" colspan="4"><input type="button" name="crear_local" class="Textonormal" value="{valor_boton}" onclick="crea_local()" /></td>
+
+					</tr>
+				
+				</table>
+
+	</td>
+</form>
+</tr>
+
+</table>
+
+<script>
+
+function obtenerlocales()
+
+{
+
+formulario = window.document.formulariounico;
+formulario.accion.value=null;
+formulario.submit();
+
+}
+
+function crea_local(){
+
+formulario = window.document.formulariounico;
+if((formulario.cod_local.value=='')||(formulario.cod_local.value==null)){
+	alert('El campo de codigo local no puede estar en blanco.');
+	return false;
+}
+formulario.submit();
+
+}
+
+function IsNumeric(valor){ 
+
+	var log=valor.length; 
+
+	var sw="S"; 
+
+	
+
+	for (x=0; x<log; x++){
+
+		v1=valor.substr(x,1); 
+
+		v2 = parseInt(v1); 
+
+		//Compruebo si es un valor numérico 
+
+		if (isNaN(v2)){ 
+
+			sw= "N";
+
+		} 
+
+	} 
+
+	if (sw=="S"){
+
+		return true;
+
+	}else{
+
+		return false;
+
+	}
+
+}
+</script>

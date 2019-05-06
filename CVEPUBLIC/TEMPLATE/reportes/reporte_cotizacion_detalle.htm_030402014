@@ -1,0 +1,83 @@
+<table border="0" cellpadding="0" cellspacing="0" width = "100%">
+
+	<tr>
+
+		<td>
+
+			<table border="0" cellpadding="2" cellspacing="2" class="tabla1" width="100%">
+
+				<tr>
+
+					<th>N° Cotizaci&oacute;n </th>
+
+					<th>Usuario</th>
+
+					<th>F. Creaci&oacute;n </th>
+
+					<th width="100">F. Vencimiento </th>
+
+					<th width="100">Estado</th>
+
+					<th width="60">CC/NIT/RUT </th>
+
+					<th>Raz&oacute;n Social </th>
+
+					<th>Tipo Venta </th>
+
+					<th>Local Emisor </th>
+
+					<th>Tienda</th>
+
+					<th>Total Neto </th>
+					
+					<th>Margen Total </th>
+
+				</tr>
+
+
+
+<!-- BEGIN reportedetalle_NOM -->            
+
+				<tr>
+
+					<td align="right">{valor1}</td>
+
+					<td align="center">{valor2}</td>
+
+					<td align="center"><nobr>{valor3}</nobr></td>
+
+					<td align="center"><nobr>{valor4}</nobr></td>
+
+					<td align="center">{valor5}</td>
+
+					<td align="right">{valor6}</td>
+
+					<td>{valor7}</td>
+
+					<td>{valor8}</td>
+
+					<td>{valor9}</td>
+
+					<td>{valor10}</td>
+
+					<td align="right">$ {valor11}</td>
+
+					<td align="right">{valor12}%</td>
+					
+				</tr>
+<!-- END reportedetalle_NOM --> 
+
+				<tr>
+				  <td align="right" colspan="9">&nbsp;</td>
+				  <th align="right" colspan="2">Margen Total promedio </th>
+				  <th align="right"><nobr>{totalvalor12}%</nobr></th>
+			  </tr>
+
+			</table>
+
+		</td>
+
+	</tr>	
+
+</table>
+

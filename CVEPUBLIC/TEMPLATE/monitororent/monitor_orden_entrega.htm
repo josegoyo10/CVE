@@ -1,0 +1,360 @@
+<script language="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+<SCRIPT LANGUAGE="JavaScript" src="../../TEMPLATE/general/checkfield.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/popup.js"></script>
+<SCRIPT LANGUAGE="JavaScript" type="text/JavaScript" SRC="../../TEMPLATE/general/CalendarPopup.js"></SCRIPT>
+
+<script language="JavaScript">
+
+	function veroe(elem){
+		document.location = '../ordenent/ordenent_00.php?oe=' + elem.id;
+	}
+
+	function bloquearOE(id_ordenent) {
+		if(confirm('¿Esta seguro que desea bloquear la Orden de Entrega '+id_ordenent+'?')){
+			document.accionesc.accion.value='bloqManual';
+			document.accionesc.id_ordenent.value = id_ordenent;
+			document.accionesc.submit();
+		}
+	}
+
+
+	function EvaluaFechas(fi,ft){
+		var fecha1=new Date()
+		var fecha2=new Date()
+		var str1 = fi;
+		var str2 = ft;
+		
+		fechaArr1 = new Array;
+		fechaArr2 = new Array;
+		 
+		fechaArr1 = str1.split("/");
+		fechaArr2 = str2.split("/");
+		/* convierte la fecha a nÃºmero comparable*/
+		fecha1.setFullYear(fechaArr1[2],fechaArr1[1]-1,fechaArr1[0])
+		fecha2.setFullYear(fechaArr2[2],fechaArr2[1]-1,fechaArr2[0])
+		 
+		if (fecha1>fecha2){
+		  return false;
+		}
+		if (fecha1 == fecha2){
+		  return true;
+		}
+		if (fecha1 < fecha2){
+		  return true;
+		}
+	}
+
+function submitForm(){
+
+	formulario = document.formulario_busqueda;
+
+	var fecha_inicio,fecha_termino;
+	var valor=true;
+	
+	fecha_inicio =document.formulario_busqueda.feini.value;
+	fecha_termino=document.formulario_busqueda.fefin.value;
+	valor=EvaluaFechas(fecha_inicio,fecha_termino);
+	if(valor==false){
+		alert('Fecha de inicio mayor que fecha de termino en la busqueda de la orden de entrega.');
+		document.formulario_busqueda.feini.select();
+		return false;
+	}
+	
+	if(formulario.buscar.value != ''){
+		if (formulario.filtro[0].checked && validar_numero( formulario.buscar, 'Debe ingresar numero CC/NIT valido' )) {
+			return false;
+		}
+	
+		if (formulario.filtro[2].checked && validar_numero( formulario.buscar, 'Debe ingresar numero de cotizacion' )) {
+			return false;
+		}
+
+		if (formulario.filtro[3].checked && validar_numero( formulario.buscar, 'Debe ingresar numero de Orden de Entrega' )) {
+			return false;
+		}
+	}
+	formulario.submit();
+}
+
+</script>
+		<SCRIPT LANGUAGE="JavaScript">document.write(getCalendarStyles());</SCRIPT>
+		<SCRIPT LANGUAGE="JavaScript" ID="js17">
+			var ayer = new Date();
+			ayer.setDate(ayer.getDate()-1);
+			var cal1 = new CalendarPopup("testdiv1");
+			cal1.offsetX = -110;
+			cal1.offsetY =  70;
+			var cal2 = new CalendarPopup("testdiv1");
+			cal2.offsetX = -90;
+			cal2.offsetY =  46;
+			
+			//cal1.addDisabledDates(null,formatDate(ayer,"yyyy-MM-dd"));
+	  	</SCRIPT>
+<script>
+function verifica() {
+
+	var tupla = ''; 
+
+	var coma = '';
+
+	
+
+	for(i=0; i< document.accionesc.length; ++i) {
+
+		elem = document.accionesc[i];
+
+		if (elem.type=='checkbox' && elem.checked){
+
+			tupla += coma + elem.id;
+
+			coma = ',';
+
+		}
+
+	}
+
+	if(tupla!=''){
+		/*Funcion para validar la impresion guia de despacho*/
+		var val = 1;
+		//alert('esta es la cadena'+tupla);
+		    popUpWindowModal('../../COMMAND/ordenent/validacion_ordenent.php?id_ordenent='+tupla,100, 100, 309, 189);
+			//location.href='../monitororent/monitor_orden_entrega.php?id_ordenent='+tupla+'&accion=validar';
+		/*for (g=0;g<document.accionesc.elements.length;g++){
+			
+			if (arrlockdocprnsap[document.accionesc.elements[g].id2] == '1') {
+
+				alert('Esta gu\xeda de despacho  No OE ' + document.accionesc.elements[g].desc + ' ya ha sido enviado a SAP.\nNo puede reimprimir el documento');
+                val = 0;
+				return;
+
+			}
+				
+			if (arrlockop[document.accionesc.elements[g].id2] > 0) {
+		  
+				alert('Esta gu\xeda de despacho  No OE ' + document.accionesc.elements[g].desc + ' no puede ser impreso debido a que no se ha cerrado la\nOrden de Picking asociada (OP: '+arrlockop[document.accionesc.elements[g].id]+')');
+		        val = 0;
+				return;
+		
+			}
+		
+			if ('{BLOQUEO_IMPRESION_GDE}'=='1') {
+		
+				if (arrlockdoc[document.accionesc.elements[g].id2] == '1') {
+		            val = 0;
+					var conf = confirm('Esta gu\xeda de despacho  No OE ' + document.accionesc.elements[g].desc + ' ya fue impresa.\n \xbfDesea Reimprimirla?');
+					
+				}
+		
+			}
+			
+		
+		}/*
+			
+		/*Fin Funcion para validar la impresion guia de despacho*/
+       /*if(conf){ 		
+			popUpWindowModal('../../COMMAND/monitororent/printframe2.php?popup=1&id_ordenent='+tupla,100, 100, 309, 189);	
+			
+		}*/
+		/*if(val == 1){
+			popUpWindowModal('../../COMMAND/monitororent/printframe.php?popup=1&id_ordenent='+tupla,100, 100, 760, 500);
+		}*/
+	}
+
+	else{
+
+		alert('Debe seleccionar por lo menos 1 OE para imprimir su gu\xeda de despacho');
+	}
+	
+
+}
+
+/*Instancia para cargar la validacion de generacion de picking*/
+var arrlockdoc = new Array();
+
+var arrlockop = new Array();
+
+var arrlockdocprnsap = new Array();
+
+
+
+<!-- BEGIN doclocklist -->
+
+	arrlockdoc['{id_documento}'] = '{lockprintgde}';
+
+	arrlockop['{id_documento}'] = '{lockprintop}';
+
+	arrlockdocprnsap['{id_documento}'] = '{indmsgsap}';
+
+<!-- END doclocklist -->
+
+/*Fin Instancia para cargar la validacion de generacion de picking*/
+
+function chequea(campo){
+
+
+
+	if(document.accionesc.check_op==null){
+
+		alert ('Ud. No tiene guias de despacho para pickear');
+
+	}						
+
+	else{
+
+		if(check.checked==true){
+
+			for (i = 0; i < campo.length; i++){
+
+				campo[i].checked = true ;
+                
+			}
+
+		}//Fin If
+
+		else{
+
+			for (i = 0; i < campo.length; i++){
+
+				campo[i].checked = false ;
+
+			}
+
+		}//Fin else anidado
+
+	}//FIN ELSE PRINCIPAL
+
+}
+
+</script>
+
+<link href="estilos.css" rel="stylesheet" type="text/css">
+<script type="javascript" src="../../TEMPLATE/general/funciones.js"></script>
+
+<table width="760" height="15" border="0" cellpadding="0"cellspacing="0">
+	<tr>
+    <td width="50%"  height="30" class="titulonormal">Monitor Orden de Entrega </td>
+
+</table>
+	<table width="768"  height="350" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+	
+			<td class="textonormal">
+				<form name="formulario_busqueda" method="post" onSubmit="return false;">
+				<input type="hidden" name="accion" value="">
+					<tr>
+						<td width=768>						<fieldset>
+						<legend class="Textonormal">Datos de B&uacute;squeda</legend>
+						                 
+						<table border="0" height="auto" align="left" class="textonormal">
+  <tr>
+    <td width="2" scope="col">&nbsp;</td>
+    <td scope="col" colspan="4" align="left">Desde&nbsp;<input name="feini" id="feini" class="Textonormal" readonly type="text" size=10 maxlength=10 value="{fechaucofini}" onClick="cal1.select(document.formulario_busqueda.feini,'anchor1','dd/MM/yyyy'); return false;">
+				<a href="" onClick="cal1.select(document.formulario_busqueda.feini,'anchor1','dd/MM/yyyy'); return false;" name="anchor1" id="anchor1"> <img src="../../IMAGES/cal.gif" width="16" height="16" border="0" title="Fecha Validez"></a>
+				<DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>&nbsp;Hasta&nbsp;<input name="fefin" id="fefin"  readonly type="text" class="Textonormal" size=10 maxlength=10 value="{fechaucoffin}" onClick="cal1.select(document.formulario_busqueda.fefin,'anchor2','dd/MM/yyyy'); return false;">
+				<a href="#" onClick="cal1.select(document.formulario_busqueda.fefin,'anchor2','dd/MM/yyyy'); return false;" name="anchor2" id="anchor2"> <img src="../../IMAGES/cal.gif" width="16" height="16" border="0" title="Fecha Validez"></a>
+				<DIV ID="testdiv1" STYLE="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></DIV>		 
+      <input name="filtro" id="radio1" type="radio" value="1" align="left" {checkr1}>
+      CC/NIT/RUT&nbsp;&nbsp;
+      <input name="filtro" id="radio2" type="radio" value="2" {checkr2}>
+      Raz&oacute;n Social
+      <input name="filtro" id="radio3" type="radio" value="3" {checkr3}>
+      N&ordm;&nbsp;CO&nbsp;
+      <input name="filtro" type="radio" id="radio15" value="4" {checkr4}>
+      N&ordm;&nbsp;OE
+      <input type="text" size="18" name="buscar" class="Textonormal" value="{buscar}">
+      <input type="button" class="Textonormal" align="left" name="busqueda2" onClick="submitForm();" value="Buscar">
+						  
+    </td>
+    
+  </tr>
+  <tr>
+    <td align="right"></td>
+    <td width="272"  align="left"> Tipo Facturaci&oacute;n 
+      <select name="select_facturacion" onChange="submitForm()" class="TextoNormal">
+          <option value="0" class="Textonormal">TODOS</option>
+          <!-- BEGIN tipofacturacion -->
+          <option value="1,2,3" class="Textonormal" {selected_fact1}>{nom_facturacion}Facturacion Inmediata</option>
+          <option value="4,5" class="Textonormal" {selected_fact2}>{nom_facturacion}Facturacion Diferida</option>
+          <!-- END tipofacturacion -->
+        </select>
+    </td>
+    <td width="279"> Centro&nbsp;Facturación
+        <select name="select_suministro" onChange="submitForm()" class="TextoNormal" {deshabilitar_select}>
+          <option value="0" class="Textonormal">TODOS</option>
+          <!-- BEGIN suministro -->
+          <option value="{codigo_local}" {selected}>{nom_local}</option>
+          <!-- END suministro -->
+        </select>
+    </td>
+    <td width="200" colspan="3"> Estado
+        <select name="select_estado" onChange="submitForm()" class="TextoNormal" >
+          <option value="0" class="Textonormal">TODOS</option>
+          <!-- BEGIN estado -->
+          <option value="{id_estado}" {selected}>{descripcion}</option>
+          <!-- END estado -->
+        </select>
+    </td>
+  </tr></form>
+</table>
+</fieldset>
+<table  width="768" border="0" cellpadding="2" cellspacing="0" class="tituloadvertencia"><td height="2" align="center">{text_maximo}</td></table>
+			<table width="768" border="0" cellpadding="2" cellspacing="0" class="tabla2">
+				<tr>
+				    {chek1}
+					<th width="58" >N&ordm; OE</th>
+					<th width="25" >N&ordm; CO </th>
+					<th width="90" >Estado &nbsp;</th>
+					<th width="53">Fecha Creacion</th>
+					<th width="158">Tipo Entrega </th>
+					<th width="71">Tipo Factura </th>
+					<th width="71">N&ordm; Docu De Pago </th>
+					<th width="127">Tienda Suministro</th>
+					<th width="98">CC/NIT/RUT</th>
+					<th width="106">Raz&oacute;n Social</th>
+					<th width="51">Acciones</th>
+				</tr>
+			</table>
+			<div style="height:'331'; width:768; overflow:auto;">
+			<table width=100% border="1" class="tabla2" cellspacing="0">
+				<form name=accionesc method=post  onSubmit="return false;">
+					<input type=hidden name="id_ordenent" value="">
+					<input type=hidden name="accion" value="">
+					<input type=hidden name="ideli" value="">
+					<input type=hidden name="rut" value="{rut}">
+					<INPUT TYPE=hidden NAME="sendrut" VALUE="">
+					<!-- BEGIN infocotizacion -->
+					<tr>
+						{chek2}
+						<td width="35"  align="right">{OE}&nbsp;</td>
+						<td width="35"  align="right">{numerocot}&nbsp;</td>
+						<td width="10" align="right">&nbsp;</td>
+						<td width="60"  align="left">{nomestadocot}&nbsp;</td>
+						<td width="10" align="right">&nbsp;</td>
+						<td width="55"  align="left">{fecha_crea}&nbsp;</td>
+						<td width="5" align="right">&nbsp;</td>
+						<td width="110" align="left" >{nomtipoentrega}&nbsp;</td>
+						<td width="10" align="right">&nbsp;</td>
+						<td width="80" align="left" >{nomtipofactura}&nbsp;</td>
+						<td width="92" align="center">{numdocpago}</td>
+						<td width="92" align="left">{nom_localcsum}&nbsp;</td>
+						<td width="85" align="left">{rutdv}&nbsp;</td>	
+						<td width="95" align="left">{razonsoc}&nbsp;</td>
+						<td width="30" align="left">{accver}&nbsp;</td>
+						<td width="30" align="left">{accbloq}&nbsp;</td>
+					</tr>
+					<!-- END infocotizacion -->
+	            </form>
+	            {icoimp}
+			</table>
+			</div>
+		</td>
+	</tr>
+</table>
+<script type="text/javascript">
+<!--
+function checkDV( elem ){
+	return true;
+}
+document.formulario_busqueda.buscar.focus();
+//-->
+</script>

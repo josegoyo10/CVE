@@ -1,0 +1,1098 @@
+<html>
+
+<title>Generar Orden Entrega</title>
+
+<body>
+<script type="text/JavaScript" src="../../TEMPLATE/general/popup.js"></script>
+<!--<script type="text/JavaScript" src="../../TEMPLATE/general/calendar.js"></script>-->
+<script type="text/javascript" src="../../TEMPLATE/general/mootools.js"></script>
+  <script type="text/javascript" src="../../TEMPLATE/general/calendar.js"></script>
+  
+    <script type="text/javascript">
+    window.addEvent('domready', function() { myCal = new Calendar({ date: 'd/m/Y'  }, { direction: .5 });  });
+	
+	window.addEvent('domready', function() { myCal = new Calendar({ date1: 'd/m/Y' }, { direction: .5 });  }); 
+  </script>
+  
+  <script type="text/javascript">
+  	/* esto es para el retorno de flete, popUpWindowModal('nueva_cotizacion_05.php?popup=1&id_cotizacion=' + cotizacion,100, 100,800,720);*/
+  	
+  	function ImprimeCot(estado,rut, tipo){
+           // alert('Estado:' + estado + '- ' + 'Rut:'+ rut + '-' + 'Tipo:'+ tipo);
+
+            tipo = (typeof tipo === 'undefined') ? 'cotizacion' : tipo;
+
+		if(estado='CV'){
+
+			popUpWindowModal('../../COMMAND/nuevacotizacion/printframe.php?popup=1&id_cotizacion={id_cotizacion}&rut={rut}&tipo='+tipo,100, 100, 750, 950);
+		}
+		else{
+
+			popUpWindowModal('../../COMMAND/nuevacotizacion/printframe_ndv.php?popup=1&id_cotizacion={id_cotizacion}&id_estado_origen=tipo&rut={rut}',100, 100, 750, 950);
+		}		
+
+	}
+  	
+  	
+  	function liquidf(cotizacion,rut){
+  		var fch = document.nuevaenc.validdesdedpi.value;
+  		var fechi = document.nuevaenc.fech.value;
+  		var fchr = document.nuevaenc.validdesderci.value;
+  		var valor = document.nuevaenc.vl2.value;
+        var value_margen = document.getElementById('margen_orden').value;
+  		 
+  		//alert('El margen de liqui:'+ value_margen);
+  		
+  		if( valor == 'hidden'){
+  			if(fch == ''){
+  				alert('Porfavor Ingrese la Fecha de Despacho');
+  			}else{
+               // alert('id_cotizacion 1:' + cotizacion);
+                // alert('rut:' + rut);
+               
+               //añadido por J.G 30-01-2019
+
+               popUpWindowModalscroll('nueva_cotizacion_06.php?popup=1&id_cotizacion='+ cotizacion + '&rut='+ rut + '&margen_gen='+ value_margen , '&validdesde='+ fechi + '&fchp='+ fch + '&fchpr='+ fchr,100, 100,800,720);
+
+  				
+  				window.close();
+  			}
+  		}else{
+  			if(fch == '' || fchr == '' ){
+  				alert('Porfavor Ingrese la Fecha de Despacho');
+  			}else{
+                 //añadido por J.G 30-01-2019
+                
+               //alert('id_cotizacion 2:' + cotizacion);
+
+  				 popUpWindowModal('nueva_cotizacion_06.php?popup=1&id_cotizacion='+ cotizacion + '&rut='+ rut + '&margen_gen='+ value_margen,'&validdesde='+ fechi + '&fchp='+ fch + '&fchpr='+ fchr,100, 100,800,720);
+  				window.close();
+  			}
+  		}
+  	}
+  	function ajustarFlete(cotizacion){
+  	    var fn           = document.nuevaenc.fnacional.value;
+  	    var fch          = document.nuevaenc.validdesdedpi.value;
+  	    var fchr         = document.nuevaenc.validdesderci.value;
+  	    var band         = document.nuevaenc.validfp.value;
+  	  	var valor 		 = document.nuevaenc.vl2.value;
+  	  	var value_margen = document.getElementById('margen_orden').value;
+  	  	
+      //  alert('El margen es fLETE:' + value_margen);
+
+  	  	if(band == '1'){
+  	  		var fch = document.nuevaenc.validdesdedp.value;
+  	    	var fchr = document.nuevaenc.validdesderc.value;
+  	  	}
+  	  	
+  	  	if(valor == 'hidden'){
+  	    	if(fch == '' && band == ''){
+  	    		alert('Porfavor Ingrese la Fecha de Despacho');
+  	    	}else{
+  	        	if(fn == 1){
+  	           		window.open('nueva_cotizacion_07.php?nac=1&id_cotizacion='+ cotizacion + '&fchp='+ fch + '&fchpr='+ fchr,'','&margen_Orden=' +  value_margen, 'top=100, left=300, height=500,width=680');
+  		   	   		window.close();
+  	    		}else{
+  	       	   		window.open('nueva_cotizacion_07.php?id_cotizacion='+ cotizacion + '&fchp='+ fch + '&fchpr='+ fchr,'','&margen_Orden=' +  value_margen,'top=100, left=300, height=500,width=680');
+  		       		window.close();
+  	    		}
+  	    	}
+  	    }else{
+  	    
+  	    	if((fch == '' || fchr == '') && band == ''){
+  	    		alert('Porfavor Ingrese la Fecha de Despacho');
+  	    	}else{
+  	        	if(fn == 1){
+  	           		window.open('nueva_cotizacion_07.php?nac=1&id_cotizacion='+ cotizacion + '&fchp='+ fch + '&fchpr='+ fchr,'','&margen_Orden=' +  value_margen,'top=100, left=300, height=500,width=680');
+  		   	   		window.close();
+  	    		}else{
+  	       	   		window.open('nueva_cotizacion_07.php?id_cotizacion='+ cotizacion + '&fchp='+ fch + '&fchpr='+ fchr,'','&margen_Orden=' +  value_margen,'top=100, left=300, height=500,width=680');
+  		       		window.close();
+  	    		}
+  	    	}
+  	    
+  	    }
+  	}
+  </script>
+  
+<link rel="stylesheet" type="text/css" media="all" href="../../TEMPLATE/general/calendar.css" />
+
+<script>window.name='popup'</script>
+
+
+
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+
+<table width="680" height="32" border="0" cellpadding="0" cellspacing="2">
+
+	<tr>
+
+		<td class="titulonormal">&nbsp;Generar Orden Entrega</td>
+
+	</tr>
+
+</table>
+
+
+
+<table width="580" border="0" cellpadding="0" cellspacing="3">
+
+	<tr>
+
+		<form name=nuevaenc method=post target='popup'>
+
+		<INPUT TYPE="hidden" NAME="id_tipocliente" VALUE="{id_tipocliente}">		
+
+		<INPUT TYPE="hidden" NAME="id_tipoconpago" VALUE="{id_tipoconpago}">
+		
+		<INPUT TYPE="hidden" NAME="fech" VALUE="{validdesde}">
+		
+		<INPUT TYPE="hidden" NAME="validfp" VALUE="{validfp}">
+		
+		<INPUT TYPE="hidden" NAME="fnacional" VALUE="{nac}">
+		
+		<INPUT TYPE="hidden" NAME="vl2" VALUE="{val2}">
+		
+		<INPUT TYPE="hidden" NAME="vl3" VALUE="{val6}">
+		
+		<INPUT TYPE="hidden" NAME="vl4" VALUE="{val4}">
+		
+		<INPUT TYPE="hidden" NAME="vl5" VALUE="{val5}">
+		
+		<td>
+
+		<fieldset><legend class=textonormal>Datos Cotizaci&oacute;n</legend>
+
+
+
+			<table width="680"  border="0" cellspacing="1" cellpadding="0" class="textonormal">
+
+				<tr>                 
+
+					<th align="left" width="140">Tipo Venta</th>
+
+					<td width="200">{nomtipoventa}</td>
+
+					<th align="left" width="140">Vendedor</th>
+
+					<td width="200">{nombrevendedor}</td>	
+
+				</tr>
+
+				<tr>
+
+					<th align="left">Tienda</th>
+
+					<td>{nom_local}</td>
+
+					<th align="left">Centro Suministro</th>
+
+					<td>{nom_local_csum}</td>                    
+
+				</tr>
+
+				<tr>
+                   <td></td><td></td>
+					<!-- <th align="left">IVA</th>
+
+					<td>{iva}%</td>-->
+
+					<th align="left" style="font-size: 12">Condici&oacute;n de Pago</th>
+
+					<th style="font-size: 12">
+
+						<input type="radio" name="condpago" onClick="one(this.value)" value=1 {disabledcre} >Crédito&nbsp;&nbsp;&nbsp;
+
+						<input type="radio" name="condpago" onClick="one(this.value)" value=2 {checkedcon} checked>Contado
+
+					</th>
+
+				</tr>
+
+				<tr>
+
+					<th align="left">Observaciones</th>
+
+					<td><input name="nota" type="text" value="{nota}" class="textonormal" size="40" maxlength="255" border="0" {disable}></td>
+
+					<th align="left">&nbsp;</th>
+
+					<td>
+
+						<select name="condpagodias" class="textonormal" {disabledcre} {deshabilitado}>
+
+							<!-- BEGIN condpagod -->
+
+							<option value="{id}" id="pago" {selected}>{nombre}</option>							
+
+							<!-- END condpagod -->
+
+						</select>
+
+					</td>
+
+				</tr>				
+                <tr>
+                  <th align="left">Fecha Entrega Retira Cliente</th>
+                  <td><div id="rc" style= "visibility: {val2};"><input id="date" class="calendar" type="text" name="validdesderci" readonly size=10 maxlength=10  value=""/></div> 
+                      <div id="rcp" style= "visibility: {val6};"><input id="date" type="text" name="validdesderc" readonly size=10 maxlength=10  value="{fchr}" {disabledd}/></div></td>
+                  <td></td>
+           <!---  </tr>
+                <tr>  -->
+                  <th align="left">Fecha Entrega Inmediato</th>
+                  <td><div id="rc" style= "visibility: {val3};"><input name ="validdesdei"  readonly id="fecha_Inmediato" type="text" size=12 maxlength=10 value="{validdesde}" ></div></td>
+                </tr>
+                <tr>
+                  <th align="left">Fecha Entrega Domicilio Programado</th>
+                  <td><div id="rc" style= "visibility: {val4};"><input id="date1" class="calendar" type="text" name="validdesdedpi" readonly size=10 maxlength=10  value="" />
+                       </div>
+                       <div id="rp" style= "visibility: {val5};"><input id="date1" type="text" name="validdesdedp" readonly size=10 maxlength=10  value="{fch}" {disabledd}/>
+
+                   
+  </div></td>
+  
+             <!--   </tr>
+                <tr> --><td>OE Cruzadas</td><td>{oecruzadas}</td></tr>
+           </table>
+
+		</fieldset>
+
+		</td>
+
+		</form>
+
+	</tr>
+
+	<tr>
+
+		<td>
+
+		<fieldset><legend class=textonormal>Datos Cliente</legend>
+
+			<table width="744" border="0" cellspacing="1" cellpadding="0" class="textonormal">
+
+				<tr>
+
+					<th align="left" width="140">CC/NIT/RUT</th>
+
+					<td width="200">{rutcliente}</td>
+
+					<th align="left" width="140">Tipo Cliente</th>
+
+					<td width="200">{nomtipcliente}</td>
+
+				</tr>
+
+				<tr>
+
+					<th align="left">Raz&oacute;n Social</th>
+
+					<td>{razonsoc}</td>
+
+					<th align="left">Actividad Econ&oacute;mica</th>
+
+					<td>{giro}</td>
+
+				</tr>
+
+				<tr>
+
+					<th align="left">Contacto</th>
+
+					<td>{contacto}&nbsp;</td>
+
+					<th align="left">Tel&eacute;fono Contacto</th>
+
+					<td>{fonocontacto}</td>
+
+				</tr>
+
+				<tr>
+
+					<th align="left">Direcci&oacute;n</th>
+
+					<td>{direccion}</td>
+
+					<th align="left">Departamento</th>
+
+					<td>{departamento}</td>
+
+				</tr>
+				<tr>
+
+					<th align="left">Ciudad</th>
+
+					<td>{ciudad}</td>
+
+					<th align="left">Barrio</th>
+
+					<td>{comuna}</td>
+
+				</tr>
+
+				<tr>
+
+					<th align="left">Disponible</th>
+
+					<td>$ {disponiblef}</td>
+
+					<!-- th align="left">V&iacute;a de Pago</th>
+
+					<td>{nomtipdocpago}</td -->
+
+				</tr>				
+
+				<tr>
+
+					<th align="left">Observaciones</th>
+
+					<td colspan=3>{locksap}{lockmoro}{lockcve}{lockfecha}{comentario}{saldodisp}</td>
+
+				</tr>
+                  
+                <tr>
+                  <th align="left" style="display: none;">Observaciones Pos</th>
+
+					<td><input type="hidden" name="observaciones_pos" value=" {observaciones_pos}" class="textonormal" size="40" maxlength="255" border="0" {disable} disabled></td>
+
+					<th align="left">&nbsp;</th>
+            
+                        <th align="left" style="display: none;">Margen:</th>
+
+					<td><input name="margen_orden" type="hidden" id="margen_orden" value="{margen_orden}" class="textonormal" size="40" maxlength="255" border="0" {disable} disabled>
+					</td>
+
+					<th align="left">&nbsp;</th>
+                 </tr>
+
+				{titulo_nom_dir}
+			</table>
+
+		</fieldset>
+
+		</td>
+
+	</tr>
+
+	<tr>
+
+		<td>
+
+			<table width="680" border="0" align="center" cellpadding="2" cellspacing="0" class="textonormal">
+
+				<tr>
+
+					<td>
+
+						<table width="744" border="0" align="center" cellpadding="2" cellspacing="0" class="tabla2">
+
+							<tr>
+				              <td width="730">
+			                   <table width="760" border="0" cellpadding="0" cellspacing="0" class="tabla2">
+                                  <tr>
+	
+    								<th width="40" align="center">CODIGO</th>
+                                
+                                    <th width="40" align="center">TIPO</th>
+
+									<th width="130" align="center">DESCRIPCI&Oacute;N</th>
+                                                                        
+                                   <th width="65" align="center">Grupo / Categor&iacute;a</th>
+                                
+                             		<th width="40" align="right">D</th>                
+
+									<th width="15" align="right">R&nbsp;</th>
+
+         							<th width="70" align="center">UNIDAD DE MEDIDA</th>
+                                
+                    	            <th width="60" align="center">INSTALACION</th>
+                                
+                        	        <th width="40" align="center">PESO</th>
+                                
+                          		    <th width="40" align="center">CANTIDAD</th>
+                          		    
+                          		    <th width="40" align="center">DESCUENTO</th>              
+
+									<th width="{larprovfin}" align="center">PRECIO CON IVA</th>
+
+									<th width="70" align="center">TOTAL CON IVA</th>
+
+								</tr>
+
+							</table>
+
+						</td>
+
+				</tr>
+
+				<form name=nuevaoe method=post target='popup'>
+
+				<input type=hidden name=accion value=genera>
+
+				<input type=hidden name=id_cotizacion value={id_cotizacion}>
+
+				<input type=hidden name=nota value="{nota}">				
+
+				<input type=hidden name=condpago value="{condpago}">				
+
+				<input type=hidden name=nomproveedor value="{nomproveedor}">
+
+				<input type=hidden name=rutproveedor value="{rutproveedor}">
+
+				<INPUT TYPE="hidden" NAME="barra" VALUE="{barra}">
+
+				<input type=hidden name=condpagot>
+
+				<input type=hidden name=condpagon>
+
+				<input type=hidden name=tipoventa value="{tipoventa}">
+				
+				<INPUT TYPE="hidden" NAME="fecha_retira_cliente" VALUE="">
+		
+				<INPUT TYPE="hidden" NAME="fecha_entrega_inmediato" VALUE="">
+		
+				<INPUT TYPE="hidden" NAME="fecha_domicilio_programado" VALUE="">
+		
+				<input type=hidden name="dias_condicion_pago" value="{dias_condicion_pago}">
+				
+				<input type=hidden name="id_dirdespacho" value="{idireccion}">
+
+				<input type=hidden name="margen_OE" value="{margen_orden}">	
+
+				<tr>
+
+					<td valign="top"  align="center" >
+
+						<div style="height:65;overflow-y:scroll;">
+
+						<table width="760" border="1" align="left" cellpadding="0" cellspacing="2"  class="tabla2">              
+
+							<!-- BEGIN detalleproductos -->    
+								<td align="left"><input type=hidden value="{cantidad}" name="cantact_{id_linea}" size=2 maxlength=8 class="textonormal" onChange="calculatotallinea('{id_linea}');calculatotal();" {cantactdis}></td>
+
+							<tr valign="top" {prioridad}>
+
+								<!-- input type=hidden name="marcaflete" value="{marcaflete}"> -->		
+								<td width="40" align="center">{codprod}</td>
+                                
+                                <td width="40" align="center">{codtipo}</td>
+
+								<td width="130" align="center">{descripcion}</td>
+                                                                
+                                <td width="65" align="center">{grupocat}</td>
+                                
+        			            <td width="23" align="right">{desp}&nbsp;</td>
+        
+                                <td width="30" align="center">{ret}&nbsp;</td>   
+
+								<td width="70" align="center">{unimed}</td>
+								
+								<td width="88" align="center">{instalacion}</td>
+								
+								<td width="30" align="center">{peso}</td>  
+
+		                        <td width="70" align="center">{cantidad}</td>
+		                        
+		                        <td width="70" align="center">{descuento}</td><!--<input type=text value="{cantidad}" name="cantdisp_{id_linea}" size=4 maxlength=10 class="textoespecial2" readonly></td>-->
+
+								<td width="{larprovfin}" align="right">
+
+								<input type=hidden value="{pventaneto}" name="precventa_{id_linea}" size=8 maxlength=10 class="textoespecial2">
+
+								<input type=text value="{fpventaneto}" name="P" size=8 maxlength=10 class="textoespecial2" readonly></td>								</td>              
+
+								<td width="70" align="right">
+
+								<input type=hidden value="0" name="totallinea_{id_linea}" size=8 maxlength=10 class="textoespecial2">
+
+								<input type=text value="{totallinea}" name="ftotallinea_{id_linea}" size=8 maxlength=10 class="textoespecial2" readonly></td>								
+
+							</tr>
+
+							<input type=hidden name="tipoent_{id_linea}" value="{id_tipoentrega}">
+
+							<input type=hidden name="tiporet_{id_linea}" value="{id_tiporetiro}">
+
+							<input type=hidden name="linea[]" value="{id_linea}">
+
+							<input type=hidden name="marcaflete_{id_linea}" value="{marcaflete}">							
+
+							<script>
+
+								//document.nuevaoe.cantact_{id_linea}.onkeypress = KeyIsNumberDecimal;
+
+							</script>
+
+							<!-- END detalleproductos -->                
+
+						</table>
+
+						</div>
+
+					</td>
+
+				</tr>	
+
+				<tr>
+
+					<td valign="top"  align="right">
+
+						<table border="0" cellpadding="0" cellspacing="0" align=left class="subtitulonormal">
+
+							<tr>
+
+								<td colspan=3>&nbsp;</td>
+
+							</tr>
+
+							<tr>
+								 <td width="50" align="left">&nbsp;</td>
+								 
+						    {td}<div width="200" align="left" style= "visibility: {val1};"><a href="#"><img alt="Liquidar Transporte" src="../../IMAGES/hojacuadro.gif" onClick='liquidf({id_cotizacion},{rut})' border = 0></a>&nbsp;&nbsp;&nbsp;&nbsp;Liquidar Transporte</div>{tdcerr}
+
+							{tda}<div width="200" align="left" style= "visibility: {vala};"><a href="#"><img alt="Ajustar Transporte" src="../../IMAGES/hojacuadro.gif" onClick='ajustarFlete({id_cotizacion})' border = 0></a>&nbsp;&nbsp;&nbsp;&nbsp;Ajustar Transporte</div>{tdcerra}
+
+									
+							</tr>
+							<tr>
+								<td width="50" align="left">&nbsp;</td>
+								{tdc}<div width="200" align="left" style= "visibility: {valc};"><a href="#"><img alt="Imprimir Cotizacion" src="../../IMAGES/hojacuadro.gif" onClick="ImprimeCot('CV',{rutcliented})" border = 0></a>&nbsp;&nbsp;&nbsp;Imprimir Cotizaci&oacute;n{tdcerrc}								
+								{tdc}<div width="200" align="left" style= "visibility: {valc};"><a href="#"><img alt="Generar Orden Entrega" src="../../IMAGES/hojacuadro.gif" onClick='generaroe({vali1},{vali2},{vali3})' border = 0></a>&nbsp;&nbsp;&nbsp;&nbsp;Generar Orden Entrega{tdcerrac}
+
+								
+							</tr>
+							<tr>
+							   <td width="50" align="left">&nbsp;</td>
+							   <td width="200" align="left"><div width="200" align="left" style= "visibility: {valc};"><a href="#"><img alt="Imprimir Proforma" src="../../IMAGES/hojacuadro.gif" onClick="ImprimeCot('CV',{rutcliented}, 'proforma')" border = 0></a>&nbsp;&nbsp;&nbsp;Imprimir Proforma</td>
+							   <td width="150" align="left"><a href="#"><img alt="Cerrar Ventana" src="../../IMAGES/close.gif" onClick='window.close()' border = 0></a>&nbsp;&nbsp;&nbsp;&nbsp;Cerrar Ventana</td>
+							</tr>							
+						</table>
+
+						<table border="0" cellpadding="0" cellspacing="0" class="subtitulonormal">
+
+							<tr>
+
+								<th width="100" align="left">Sub-Total</th>
+
+								<th width="100" align="right">
+
+									{valortotal}
+								</th>
+
+								<th width="30" align="left">&nbsp;</th>
+
+							</tr>
+
+							<tr>
+
+								<th width="100" align="left">Descuentos</th>
+
+								<th width="100" align="right">
+
+									{descuentot}
+
+								</th>
+
+								<th width="30" align="left">&nbsp;</th>
+
+							</tr>
+							 <tr>
+                               <th width="100" align="left">Valor Iva</th>
+
+								<th width="100" align="right">
+
+									{valortotaliva}
+
+								</th>
+
+								<th width="30" align="left">&nbsp;</th>
+                               
+                          </tr>
+                           <tr>
+                               <th width="100" align="left">Retencion Renta</th>
+
+								<th width="100" align="right">
+
+									{valortotalrenta}
+
+								</th>
+
+								<th width="30" align="left">&nbsp;</th>
+                               
+                          </tr>
+                           <tr>
+                               <th width="100" align="left">Retencion Iva</th>
+
+								<th width="100" align="right">
+
+									{valortotalriva}
+
+								</th>
+
+								<th width="30" align="left">&nbsp;</th>
+                               
+                          </tr>
+                          <tr>
+                               <th width="100" align="left">Retencion ICA</th>
+
+								<th width="100" align="right">
+
+									{valortotalrica}
+
+								</th>
+
+								<th width="30" align="left">&nbsp;</th>
+                               
+                          </tr>
+                         
+                    
+                          <tr>
+
+								<th width="100" align="left">Total A Pagar</th>
+
+								<th width="100" align="right">
+
+									<input type=text value="{sumtotal}" name="sumtotal" size=8 maxlength=10 class="textoespecial4" readonly>
+
+									<input type=hidden name="sumtotal" value=0>
+
+								</th>
+
+								<th width="30" align="left">&nbsp;</th>
+
+							</tr>				
+
+						</table>
+
+	  				</td>
+
+				</tr>
+
+				</form>
+
+			</table>
+
+		</td>
+
+	</tr>
+
+</table>
+
+</body>
+
+</html>
+
+
+
+<script type="text/javascript">
+
+
+
+	/*function copiacant(linea) {
+
+		formulario = document.nuevaoe;
+
+		eval('formulario.cantact_'+linea+'.value = formulario.cantdisp_'+linea+'.value');
+
+		calculatotallinea(linea);
+
+		calculatotal();
+
+	}
+
+	
+
+	function copiatodocant() {
+
+		formulario = document.nuevaoe;
+
+		for (var i = 0; i<formulario.length; ++i) {
+
+			if(formulario.elements[i].name.substr(0, 7) == 'cantact') {
+
+				linea = formulario.elements[i].name.substr(8);
+
+				eval('formulario.cantact_'+linea+'.value = formulario.cantdisp_'+linea+'.value');
+
+				calculatotallinea(linea);
+
+			}
+
+		}
+
+		calculatotal();
+
+	}
+
+	
+
+	function calculatotallinea(linea) {
+
+		formulario = document.nuevaoe;
+
+		if (trim(eval('formulario.cantact_'+linea+'.value')) == '' || isNaN(eval('formulario.cantact_'+linea+'.value')))
+
+			eval('formulario.cantact_'+linea+'.value = \'0.00\'');
+
+		if (parseFloat(eval('formulario.cantact_'+linea+'.value'))>parseFloat(eval('formulario.cantdisp_'+linea+'.value')))
+
+			eval('formulario.cantact_'+linea+'.value = formulario.cantdisp_'+linea+'.value');
+
+		eval('formulario.totallinea_'+linea+'.value = Math.round(parseFloat(formulario.cantact_'+linea+'.value) * parseFloat(formulario.precventa_'+linea+'.value))');
+
+		eval('formulario.ftotallinea_'+linea+'.value = addCommas(Math.round(parseFloat(formulario.cantact_'+linea+'.value) * parseFloat(formulario.precventa_'+linea+'.value)))');		
+
+		//calculatotal();
+
+	}
+
+
+
+	function calculatotal(){
+
+		formulario = document.nuevaoe;
+
+		var total = 0;
+
+		for (var i = 0; i<formulario.length; ++i) {
+
+			if(formulario.elements[i].name.substr(0, 10) == 'totallinea') {
+
+				total += parseFloat(formulario.elements[i].value);
+
+			}
+
+		}
+
+		var iva = {iva}+0;
+
+		formulario.totalneto.value = total;
+
+		formulario.totaliva.value = Math.round(parseFloat(total)*parseFloat(iva)/100);
+
+		formulario.totalciva.value = parseFloat(total) + parseFloat(formulario.totaliva.value);
+
+
+
+		formulario.totalnetoh.value = total;
+
+		formulario.totalivah.value = formulario.totaliva.value;
+
+		formulario.totalcivah.value = formulario.totalciva.value;
+
+		
+
+		formulario.totalneto.value = addCommas(formulario.totalneto.value);
+
+		formulario.totaliva.value = addCommas(formulario.totaliva.value);
+
+		formulario.totalciva.value = addCommas(formulario.totalciva.value);
+
+	}*/
+
+
+
+	function variasoe() {
+
+		formulario = document.nuevaoe;
+
+		var tipoent1 = 0; 
+
+		var tipoent2 = 0; 
+
+		var tipoent3 = 0; 
+
+		for (var i = 0; i<formulario.length; ++i) {
+
+			if(formulario.elements[i].name.substr(0, 7) == 'tipoent') {
+
+				linea = formulario.elements[i].name.substr(8);
+
+				if (parseFloat(eval('formulario.cantact_'+linea+'.value'))>0) {
+
+					if (eval('formulario.tipoent_'+linea+'.value') == 1 && eval('formulario.tiporet_'+linea+'.value') == 1)
+
+						++tipoent1;
+
+					if (eval('formulario.tipoent_'+linea+'.value') == 1 && eval('formulario.tiporet_'+linea+'.value') == 2)
+
+						++tipoent2;
+
+					if (eval('formulario.tipoent_'+linea+'.value') == 2 && eval('formulario.tiporet_'+linea+'.value') == 1)
+
+						++tipoent3;
+
+				}
+
+			}
+
+		}
+
+		if ((tipoent1>0 && tipoent2>0) || (tipoent1>0 && tipoent3>0) || (tipoent2>0 && tipoent3>0))
+
+			return true;
+
+		else
+
+			return false;
+
+	}
+
+	function one(condpago){
+		document.getElementById("pago").value=condpago;
+		var pago =document.getElementById("pago").value;
+	
+		if(pago==2){
+			document.nuevaenc.condpagodias.value = 2;
+			document.nuevaenc.condpagodias.disabled = true;
+		}else{
+			document.nuevaenc.condpagodias.disabled = false;
+		}
+	 }
+
+	function generaroe( vali1, vali2, vali3) {
+
+     
+
+		formulario = document.nuevaoe;
+
+		  // alert('generar0e' + formulario );
+		  // alert('vali1: ' + vali1 );
+		  // alert('vali2:  ' + vali2 );
+		  // alert('vali3: ' + vali3 );
+          // alert('vali4' + vali4 );
+
+		formulario.nota.value = document.nuevaenc.nota.value;
+
+		tipocliente = parseFloat(document.nuevaenc.id_tipocliente.value);
+
+		dias_condicion =parseFloat(formulario.dias_condicion_pago.value);
+		
+	    /*Captura fechas de despacho*/
+	    String1 = document.nuevaenc.validdesderc.value;
+		
+		String2 = document.nuevaenc.validdesdei.value;
+		
+		String3 = document.nuevaenc.validdesdedp.value;
+		
+		String4 = document.nuevaenc.validdesderci.value;
+		
+		String5 = document.nuevaenc.validdesdedpi.value;
+		
+		valor = document.nuevaenc.vl2.value;
+		
+		var valr = document.nuevaenc.vl3.value;
+		
+		var valor2 = document.nuevaenc.vl4.value;
+		
+		var valr2 = document.nuevaenc.vl5.value;
+
+        var value_margen = document.getElementById('margen_orden').value;
+		// var margen = document.nuevaenc.margen_OE.value;
+		// alert("Margen FIN oe:" + value_margen);
+		
+		if(String4 == '' && valor != 'hidden'){
+				alert('Porfavor Ingrese la Fecha de Despacho');
+		}else{
+		if(String5 == '' && valor2 != 'hidden'){
+				alert('Porfavor Ingrese la Fecha de Despacho');
+		}else{
+		if(valr == 'hidden'){
+		 String1 = document.nuevaenc.validdesderci.value;	
+		}
+		
+		if(valr2 == 'hidden'){
+		 String3 = document.nuevaenc.validdesdedpi.value;
+		}
+		
+		if(vali2 == 1){
+		
+			document.nuevaoe.fecha_retira_cliente.value= String1;
+		}else{
+		    document.nuevaoe.fecha_retira_cliente.value= 0;
+		}
+		
+		if(vali3 == 1){
+		
+			document.nuevaoe.fecha_entrega_inmediato.value= String2;
+		}else{
+			document.nuevaoe.fecha_entrega_inmediato.value= 0;
+		}
+		
+		if(vali1 == 1){
+			document.nuevaoe.fecha_domicilio_programado.value= String3;
+		 }else{
+		 	document.nuevaoe.fecha_domicilio_programado.value= 0;
+		 }
+	    /*Fin Captura fechas de despacho*/
+
+		var disponible = parseFloat('{disponible}') + 0;
+
+		
+
+		if (parseFloat(formulario.sumtotal.value)<=0) {
+
+			alert('No ha seleccionado productos. No puede generar OE');
+
+			return;
+
+		}
+
+		//Se elimina esta validación. Ahora es posible emitir OE crédito incluso si el cliente no tiene crédito disponible
+
+		/*if (parseFloat(disponible) < 0 && document.nuevaenc.condpago[0].checked) {
+
+			if (!confirm('No puede emitir Orden de Entrega CREDITO debido a que el cliente no tiene disponible suficiente.\nDesea emitir la Orden de Entrega al CONTADO?'))
+
+				return; 
+
+			else
+
+				document.nuevaenc.condpago[1].checked = true;
+
+		}*/
+
+
+
+		if (document.nuevaenc.condpago[0].checked)
+
+			formulario.condpago.value = document.nuevaenc.condpago[0].value;
+
+		else
+
+			formulario.condpago.value = document.nuevaenc.condpago[1].value;
+
+			
+
+		if (formulario.condpago.value == 2) {
+
+			if (!confirm('Ha seleccionado condicion de pago al CONTADO, con lo cual, esta Orden de Entrega NO sera cargada al disponible del cliente.\nDesea continuar de todas maneras?'))
+				return; 
+
+		}
+
+		
+
+		formulario.condpagot.value = document.nuevaenc.condpagodias.options[document.nuevaenc.condpagodias.selectedIndex].text;
+
+       //alert('Formulario condpagot' + formulario.condpagot.value);
+
+
+		formulario.condpagon.value = document.nuevaenc.condpagodias.options[document.nuevaenc.condpagodias.selectedIndex].value;
+
+  //       alert('Formulario condpagon' + formulario.condpagon.value);
+
+		// alert('tipo cliente '+document.nuevaenc.id_tipocliente.value);
+
+		// alert('condicion original '+document.nuevaenc.id_tipoconpago.value);		
+
+		// alert('condicion ingresada '+document.nuevaenc.condpagodias.value);
+
+		
+
+		if (parseFloat(formulario.sumtotal.value) > parseFloat(disponible) && formulario.condpago.value == 1){
+
+			if (confirm('El disponible ($'+disponible+') no es suficiente. Si continúa, la OE quedará en estado bloqueada.\n¿Desea continuar de todas maneras?')){
+
+				if (variasoe()) {
+
+					if (confirm('Se han incluido productos con distinta modalidad de entrega.\nEl sistema generara mas de una orden de entrega. \n¿Desea continuar de todas maneras?'))
+
+						formulario.submit();
+
+				}
+
+				else {					
+
+					if (confirm('Esta accion generara una nueva Orden de Entrega  \n¿Desea continuar?'))
+ 
+						formulario.submit();
+
+				}
+
+			}
+
+		}
+
+		else if (('{locksap}'!='' || '{lockmoro}'!='' || '{lockcve}'!='' || '{lockfecha}'!='') && formulario.condpago.value == 1){
+
+			if (confirm('El cliente aparece como bloqueado. Si continúa, la OE quedará en estado bloqueada.\n¿Desea continuar de todas maneras?')){
+
+				if (confirm('Esta accion generara una nueva Orden de Entrega  \n¿Desea continuar?'))
+
+					formulario.submit();
+
+			}
+
+		}
+
+		else {
+		
+
+
+		///para el caso de no tener condicion de pago y que la condicion ingresada sea mayor que 30
+
+/*			if ((tipocliente==1) && (!document.nuevaenc.id_tipoconpago.value) && (document.nuevaenc.condpagodias.value>dias_condicion)){
+
+				if (confirm('La condicion de pago seleccionada es mayor que la permitida por el sistema.\n Si continua la orden de Entrega quedara BLOQUEADA. \n¿Desea continuar?'))
+
+					formulario.submit();
+
+					return false;	
+
+			}*/
+
+			if ((tipocliente==1) && (parseFloat(document.nuevaenc.condpagodias.value) > parseFloat('{conddefaultcli}'))){
+
+				if (confirm('La condicion de pago seleccionada es mayor que la permitida para el cliente.\n Si continua, la orden de Entrega quedara BLOQUEADA. \n¿Desea continuar?'))
+
+					formulario.submit();
+
+					return false;	
+
+			}
+
+			if ((tipocliente==1) && (parseFloat(document.nuevaenc.condpagodias.value) < parseFloat('{conddefaultcli}'))){
+
+				if (confirm('La condicion de pago seleccionada es menor a la asignada al cliente.\n¿Desea continuar?'))
+
+					formulario.submit();
+
+					return false;	
+
+			}
+
+			if ((tipocliente==2) && (!document.nuevaenc.id_tipoconpago.value) && (document.nuevaenc.condpagodias.value>dias_condicion)){
+
+				if (confirm('La condicion de pago seleccionada es mayor que la permitida por el sistema. \n Si continua, la orden de Entrega quedara BLOQUEADA. \n¿Desea continuar?'))
+
+					formulario.submit();
+
+					return false;	
+
+			}			
+
+	
+
+			if (variasoe()) {
+
+				if (confirm('Se han incluido productos con distinta modalidad de entrega.\nEl sistema generara mas de una orden de entrega. \n¿Desea continuar de todas maneras?'))
+
+					formulario.submit();
+
+			}
+
+			else {					
+
+				if (confirm('Esta accion generará una nueva Orden de Entrega  \n¿Desea continuar?'))
+
+					formulario.submit();
+
+			}
+
+		}
+	   }
+	 }
+	}
+	
+</script>

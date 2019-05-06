@@ -1,0 +1,32 @@
+<request>
+	<customer>
+		<Source>22</Source>
+		<IdCustomer>6767599</IdCustomer>
+		<IdCategory>3</IdCategory>
+		<IdTypeContribuyente>3</IdTypeContribuyente>
+		<TypeCustomer>
+			<IdTypeCustomer>5</IdTypeCustomer>
+		</TypeCustomer>
+		<Location>11001000008274</Location>
+		<IdDoc>31</IdDoc>
+		<FirstName>MARCO TULIO SANCHEZ LOPEZ</FirstName>
+		<Surname1> </Surname1>
+		<Surname2> </Surname2>
+		<Address>CALLE 41 SUR N°.92 B -22</Address>		
+		<Phone>3134211053</Phone>
+		<Phone2></Phone2>
+		<Fax></Fax>
+		<Email>NA</Email>
+		<AgeRange>0</AgeRange>
+		<Quota>0</Quota>
+		<Contact>SANCHEZ LOPEZ MARCOTULIO</Contact>
+		<Gender>NA</Gender>
+		<Occupation></Occupation>
+		<ReteIca>false</ReteIca>
+		<ReteFuente>false</ReteFuente>
+		<ReteIva>false</ReteIva>
+		<ExenIva>false</ExenIva>
+		<OtrIva>false</OtrIva>
+		<State>A</State>
+	</customer>	
+</request>

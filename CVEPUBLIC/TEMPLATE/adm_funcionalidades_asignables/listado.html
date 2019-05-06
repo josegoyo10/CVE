@@ -1,0 +1,154 @@
+<script language="JavaScript" type="text/JavaScript" src="../../TEMPLATE/general/funciones.js"></script>
+<link href= "../../TEMPLATE/general/estilos.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+    
+function asignar_selecciondas()
+{
+    for( var i=(document.getElementById('funcionalidades_no_asignables').length-1); i >= 0; i-- )
+    {
+        if ( document.getElementById('funcionalidades_no_asignables')[i].selected )
+        {
+            // alert(document.getElementById('funcionalidades_no_asignables')[i].value);
+            // Agregar el elemento a la lista de funcionalidades asignables
+            var newOption = document.createElement('option');
+            newOption.text = document.getElementById('funcionalidades_no_asignables')[i].text;
+            newOption.value = document.getElementById('funcionalidades_no_asignables')[i].value;
+            if (/MSIE (\d+\.\d+);/.test(navigator.userAgent))
+            {            
+              document.getElementById('funcionalidades_asignables').add(newOption, 0);
+            }
+            else
+            {
+              document.getElementById('funcionalidades_asignables').add(newOption, null);              
+            }
+            // Eliminar el elemento de la lista de funcionalidades no asignables
+            document.getElementById('funcionalidades_no_asignables').removeChild(document.getElementById('funcionalidades_no_asignables')[i]);                
+        }
+    }    
+}
+       
+function desasignar_selecciondas()
+{
+    for( var i=(document.getElementById('funcionalidades_asignables').length-1); i >= 0; i-- )
+    {
+        if ( document.getElementById('funcionalidades_asignables')[i].selected )
+        {    
+            // Agregar el elemento a la lista de funcionalidades asignables            
+            var newOption = document.createElement('option');
+            newOption.text = document.getElementById('funcionalidades_asignables')[document.getElementById('funcionalidades_asignables').selectedIndex].text;
+            newOption.value = document.getElementById('funcionalidades_asignables')[document.getElementById('funcionalidades_asignables').selectedIndex].value;
+            if (/MSIE (\d+\.\d+);/.test(navigator.userAgent))
+            {
+              document.getElementById('funcionalidades_no_asignables').add(newOption, 0);              
+            }
+            else
+            {
+              document.getElementById('funcionalidades_no_asignables').add(newOption, null);
+            }
+            // Eliminar el elemento de la lista de funcionalidades no asignables
+            document.getElementById('funcionalidades_asignables').removeChild(document.getElementById('funcionalidades_asignables')[document.getElementById('funcionalidades_asignables').selectedIndex]);    
+         }
+    }
+}
+
+function onSubmit()
+{
+    // Marcar como seleccionado todas las funcionalidades_no_asignables
+    for( var i=(document.getElementById('funcionalidades_no_asignables').length-1); i >= 0; i-- )
+    {
+        document.getElementById('funcionalidades_no_asignables').options[i].selected=true;
+    }   
+    // Marcar como seleccionado todas las funcionalidades_asignables
+    for( var i=(document.getElementById('funcionalidades_asignables').length-1); i >= 0; i-- )
+    {
+        document.getElementById('funcionalidades_asignables').options[i].selected=true;
+    }        
+}
+    
+</script>
+
+<form action="adm_funcionalidades_asignables.php" method="post" onSubmit="onSubmit();">
+
+<div style="margin-left:15px">
+
+<table width="700" height="15" border="0" cellpadding="0"cellspacing="0">
+	<tr>
+		<td width="50%"  height="30" class="titulonormal">{TEXT_TITULO}</td>
+	</tr>
+	<tr>
+		<td width="60%"  class="titulonormal">{OUT_BARRA}</td>
+	</tr>
+	<tr>
+		<td width="60%"><p>{TEXT_1}</p></td>
+	</tr>    
+</table>
+
+
+
+<p>El perfil (seleccione perfil) &nbsp;&nbsp;&nbsp;<br><br>
+
+<select name="perfiles" id="perfiles" onChange="window.location = 'adm_funcionalidades_asignables.php?perfil_asignador_id='+document.getElementById('perfiles').options[document.getElementById('perfiles').selectedIndex].value+'&perfil_asignado_id='+document.getElementById('perfiles_asignables').options[document.getElementById('perfiles_asignables').selectedIndex].value;">
+<!-- BEGIN perfiles -->
+<option value="{id_perfil}" {selected}>{descripcion}</option>
+<!-- END perfiles -->
+</select>
+
+<br><br><br>Puede asignarle al perfil (seleccione perfil):&nbsp;&nbsp;&nbsp;<br>
+<br>
+ 
+<select name="perfiles_asignables" id="perfiles_asignables" onChange="window.location = 'adm_funcionalidades_asignables.php?perfil_asignador_id='+document.getElementById('perfiles').options[document.getElementById('perfiles').selectedIndex].value+'&perfil_asignado_id='+document.getElementById('perfiles_asignables').options[document.getElementById('perfiles_asignables').selectedIndex].value;">
+<!-- BEGIN perfiles_asignables -->
+<option value="{id_perfil}" {selected}>{descripcion}</option>
+<!-- END perfiles_asignables -->
+</select>
+
+<br><br>Las siguientes funcionalidades:<br></p>
+
+<table>
+
+<tr>
+
+<td>
+Funcionalidades no asignables por el perfil<br><br>
+<select name="funcionalidades_no_asignables[]" id="funcionalidades_no_asignables" size="25" multiple="multiple" style="width: 300px;">
+
+<!-- BEGIN funcionalidades_no_asignadas -->
+<option value="{id_funcionalidad}" {selected}>{descripcion}</option>
+<!-- END funcionalidades_no_asignadas -->    
+
+</select>
+
+</td>
+
+<td>
+
+<input type="button" value="Asignar >>" onClick="asignar_selecciondas();"><br>
+<input type="button" value="Desasignar <<" onClick="desasignar_selecciondas();">
+
+</td>
+
+<td>
+Funcionalidades asignables por el perfil<br><br>
+<select name="funcionalidades_asignables[]" id="funcionalidades_asignables" size="25" multiple="multiple" style="width: 300px;">
+
+<!-- BEGIN funcionalidades_asignadas -->
+<option value="{id_funcionalidad}" {selected}>{descripcion}</option>
+<!-- END funcionalidades_asignadas -->    
+
+</select>
+
+</td>
+
+</tr>
+
+</table>
+ 
+
+</div>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="submit" value="Guardar funcionalidades asignables por este perfil">
+<br><br>
+
+</form>
